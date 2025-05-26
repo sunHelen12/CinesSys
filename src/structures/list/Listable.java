@@ -1,3 +1,5 @@
+package structures.list;
+
 import java.util.NoSuchElementException;
 
 public interface Listable<T> {

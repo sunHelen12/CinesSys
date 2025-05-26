@@ -1,3 +1,5 @@
+package structures.list;
+
 import java.util.NoSuchElementException;
 /**
  * Código referente a lista genérica que cresce

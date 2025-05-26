@@ -1,5 +1,8 @@
 package models;
 
+import structures.list.GenericDynamicList;
+
+
 import java.time.LocalDate;
 
 public class Client {
@@ -8,13 +11,13 @@ public class Client {
     private String name;
     private String email;
     private LocalDate birthday;
-    private CircularDinamicList<Ticket> purchasingHistory;
+    private GenericDynamicList<Ticket> purchasingHistory;
     
     public Client(String name, String email, LocalDate birthday) {
         this.name = name;
         this.email = email;
         this.birthday = birthday;
-        purchasingHistory = new CircularDinamicList<Ticket>();
+        purchasingHistory = new GenericDynamicList<Ticket>();
         id = _idGenerator++;
     }
 
@@ -30,7 +33,7 @@ public class Client {
         return email;
     }
 
-    public CircularDinamicList<Ticket> getPurchasingHistory() {
+    public GenericDynamicList<Ticket> getPurchasingHistory() {
         return purchasingHistory;
     }
 

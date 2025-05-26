@@ -1,3 +1,5 @@
+package structures.list;
+
 public class Node<T> {
     private Node<T> previous;
     private T element;
