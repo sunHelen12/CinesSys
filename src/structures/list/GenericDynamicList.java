@@ -1,5 +1,12 @@
 import java.util.NoSuchElementException;
-
+/**
+ * Código referente a lista genérica que cresce
+ * de forma dinâmica.
+ *
+ * @author Vinícius Nunes de Andrade
+ * @since 25-05-2025
+ * @version 1
+ */
 public class GenericDynamicList<T> implements Listable<T> {
     private Node<T> inicialPointer;
     private Node<T> finalPointer;

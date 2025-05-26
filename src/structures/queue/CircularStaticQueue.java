@@ -1,5 +1,12 @@
 import java.util.NoSuchElementException;
 
+/**
+ * Código referente a uma fila genérica estática.
+ *
+ * @author Vinícius Nunes de Andrade
+ * @since 25-05-2025
+ * @version 1
+ */
 public class CircularStaticQueue<T> implements Queueable<T> {
     private T[] data;
     private int inicialPointer;
