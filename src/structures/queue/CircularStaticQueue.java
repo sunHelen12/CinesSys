@@ -1,3 +1,4 @@
+package structures.queue;
 import java.util.NoSuchElementException;
 
 /**

@@ -1,3 +1,4 @@
+package structures.list;
 import java.util.NoSuchElementException;
 
 public interface Listable<T> {
@@ -17,4 +18,5 @@ public interface Listable<T> {
     public boolean isFull();
     public boolean isEmpty();
     public String print();
+    public int size();
 }

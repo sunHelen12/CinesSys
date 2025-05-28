@@ -1,6 +1,6 @@
 bin/
 lib/
 doc/
-out
-.idea
+out/
+.idea/
 CinesSys.iml

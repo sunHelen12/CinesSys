@@ -1,4 +1,6 @@
 import org.junit.Test;
+import structures.queue.CircularStaticQueue;
+
 import java.util.NoSuchElementException;
 import static org.junit.Assert.*;
 

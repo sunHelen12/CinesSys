@@ -1,3 +1,4 @@
+package structures.list;
 import java.util.NoSuchElementException;
 /**
  * Código referente a lista genérica que cresce
@@ -243,5 +244,14 @@ public class GenericDynamicList<T> implements Listable<T> {
             auxPointer = auxPointer.getNext();
         }
         return aux + "]";
+    }
+
+    /**
+     * Retorna o tamanho atual da lista.
+     * @return o tamanho da lista.
+     */
+    @Override
+    public int size() {
+        return amount;
     }
 }
