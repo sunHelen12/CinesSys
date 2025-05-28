@@ -3,6 +3,7 @@ package models;
 import structures.list.GenericDynamicList;
 
 import java.time.LocalDate;
+
 public class Client {
     private static int _idGenerator = 1;
     private int id;
