@@ -41,7 +41,7 @@ public class Ticket {
                "\nClient= " + client.getName() + 
                "\nSession= " + session.getMovie().getTitle() + 
                "\nDate= " + session.getDate() + 
-               "\nTime= " + session.getTime() + 
+               "\nDuration= " + session.getDuration() +
                "\nPayment Method= " + paymentMethod;
     }    
     

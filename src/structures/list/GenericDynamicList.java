@@ -10,18 +10,18 @@ import java.util.NoSuchElementException;
  * @version 1
  */
 public class GenericDynamicList<T> implements Listable<T> {
-    private Node<T> inicialPointer;
-    private Node<T> finalPointer;
+    private Node<T> headPointer;
+    private Node<T> tailPointer;
     private int amount;
-    private int max;
+    private final int max;
 
     public GenericDynamicList(){
         this(1000);
     }
 
     public GenericDynamicList(int max){
-        inicialPointer = null;
-        finalPointer = null;
+        headPointer = null;
+        tailPointer = null;
         this.max = max;
         this.amount = 0;
     }
@@ -39,7 +39,7 @@ public class GenericDynamicList<T> implements Listable<T> {
         Node<T> newNode = new Node<>();
         newNode.setElement(element);
         Node<T> previousPointer = null;
-        Node<T> nextPointer = inicialPointer;
+        Node<T> nextPointer = headPointer;
 
         for (int i = 0; i < index; i++) {
             previousPointer = nextPointer;
@@ -48,13 +48,13 @@ public class GenericDynamicList<T> implements Listable<T> {
         if (previousPointer != null) {
             previousPointer.setNext(newNode);
         } else {
-            inicialPointer = newNode;
+            headPointer = newNode;
         }
 
         if (nextPointer != null) {
             nextPointer.setPrevious(newNode);
         } else {
-            finalPointer = newNode;
+            tailPointer = newNode;
         }
 
         newNode.setPrevious(previousPointer);
@@ -73,13 +73,13 @@ public class GenericDynamicList<T> implements Listable<T> {
         if(isFull())
             throw new Exception("List is full!");
         Node<T> newNode = new Node<>(element);
-        newNode.setPrevious(finalPointer);
+        newNode.setPrevious(tailPointer);
         if (!isEmpty())
-            finalPointer.setNext(newNode);
+            tailPointer.setNext(newNode);
         else
-            inicialPointer = newNode;
-        newNode.setPrevious(finalPointer);
-        finalPointer = newNode;
+            headPointer = newNode;
+        newNode.setPrevious(tailPointer);
+        tailPointer = newNode;
         amount++;
     }
 
@@ -97,7 +97,7 @@ public class GenericDynamicList<T> implements Listable<T> {
             throw new NoSuchElementException("Lista vazia");
         if(index <0 || index >= amount)
             throw new IndexOutOfBoundsException("Índice inválido!");
-        Node<T> newNode = inicialPointer;
+        Node<T> newNode = headPointer;
         for (int i = 0; i < index; i++) {
             newNode =  newNode.getNext();
         }
@@ -114,7 +114,7 @@ public class GenericDynamicList<T> implements Listable<T> {
     public Object[] getAll() throws NoSuchElementException {
         if(isEmpty())
             throw new NoSuchElementException("List is empty!");
-        Node<T> newNode = inicialPointer;
+        Node<T> newNode = headPointer;
         Object[] aux =new Object[amount];
         for (int i = 0; i < amount; i++) {
             aux[i] = newNode.getElement();
@@ -132,7 +132,7 @@ public class GenericDynamicList<T> implements Listable<T> {
     @Override
     public boolean contains(T dado) {
         boolean aux = false;
-        Node<T> ponteiroAux = inicialPointer;
+        Node<T> ponteiroAux = headPointer;
         for (int i = 0; i < amount; i++) {
             if (ponteiroAux.getElement() == dado) {
                 aux = true;
@@ -158,7 +158,7 @@ public class GenericDynamicList<T> implements Listable<T> {
         if(index <0 || index >= amount)
             throw new IndexOutOfBoundsException("Índice inválido!");
 
-        Node<T> ponteiroAux = inicialPointer;
+        Node<T> ponteiroAux = headPointer;
         for (int i = 0; i < index; i++) {
             ponteiroAux = ponteiroAux.getNext();
         }
@@ -179,7 +179,7 @@ public class GenericDynamicList<T> implements Listable<T> {
             throw new NoSuchElementException("Lista vazia!");
         if(index < 0 || index >= amount)
             throw new IndexOutOfBoundsException("Índice inválido!");
-        Node<T> auxPointer = inicialPointer;
+        Node<T> auxPointer = headPointer;
 
         for (int i = 0; i < index; i++) {
             auxPointer = auxPointer.getNext();
@@ -190,12 +190,12 @@ public class GenericDynamicList<T> implements Listable<T> {
         if (pointerPrevious != null) {
             pointerPrevious.setNext(ponteiroProximo);
         } else {
-            inicialPointer = inicialPointer.getNext();
+            headPointer = headPointer.getNext();
         }
         if (ponteiroProximo != null) {
             ponteiroProximo.setPrevious(pointerPrevious);
         } else {
-            finalPointer = finalPointer.getPrevious();
+            tailPointer = tailPointer.getPrevious();
         }
         amount--;
         return auxPointer.getElement();
@@ -206,8 +206,8 @@ public class GenericDynamicList<T> implements Listable<T> {
      */
     @Override
     public void clear() {
-        inicialPointer = null;
-        finalPointer = null;
+        headPointer = null;
+        tailPointer = null;
         amount = 0;
     }
 
@@ -236,7 +236,7 @@ public class GenericDynamicList<T> implements Listable<T> {
     @Override
     public String print() {
         String aux = "[";
-        Node<T> auxPointer = inicialPointer;
+        Node<T> auxPointer = headPointer;
         for (int i = 0; i < amount; i++) {
             aux += auxPointer.getElement();
             if (i != amount - 1)
