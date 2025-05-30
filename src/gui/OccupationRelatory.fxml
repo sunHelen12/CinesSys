@@ -85,7 +85,8 @@
             <ComboBox fx:id="filtroOcupacao" layoutX="193.0" layoutY="137.0" prefWidth="150.0" style="-fx-background-color: #bb0029;">
                <cursor>
                   <Cursor fx:constant="HAND" />
-               </cursor></ComboBox>
+               </cursor>
+            </ComboBox>
             <Polyline fill="#03002c" layoutX="336.0" layoutY="184.0" points="-16.25, -37.25, 2.75, -37.25, -6.5, -28.25, -16.25, -37.25" stroke="#03002c" strokeType="INSIDE" />
             <Button layoutX="28.0" layoutY="344.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="84.0" style="-fx-background-color: #bb0029; -fx-font-weight: bold;" text="Voltar" textFill="#f2e8c6">
                <font>

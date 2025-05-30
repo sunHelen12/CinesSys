@@ -17,7 +17,7 @@ public class OccupationRelatoryController implements Initializable {
 
     private List<String> filter = new ArrayList();
     private ObservableList<String> items;
-
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         addFilter();
