@@ -75,7 +75,7 @@ public class Session {
     public String toString() {
         DateTimeFormatter formatDate = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
         return "Session " + id + ":" +
-                "\nMovie= " + getMovie().toString() +
+                "\nMovie= (" + getMovie().toString() + ")" +
                 "\nTotal Seat= " + getTotalAvailableSeats() +
                 "\nStart date= " + date.format(formatDate)+
                 "\nTicket value= " + getTicketValue();

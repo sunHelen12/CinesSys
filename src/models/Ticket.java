@@ -8,7 +8,7 @@ public class Ticket {
     private Session session;    
     private PaymentMethod paymentMethod;
 
-    public Ticket(Client client, Session session, PaymentMethod paymentMethod, int id) {        
+    public Ticket(Client client, Session session, PaymentMethod paymentMethod) {
         this.client = client;
         this.session = session;
         this.paymentMethod = paymentMethod;
