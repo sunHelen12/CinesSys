@@ -2,6 +2,7 @@ package structures.queue;
 import structures.list.Node;
 
 import java.util.NoSuchElementException;
+import java.util.Iterator;
 
 /**
  * Código referente a uma fila genérica que cresce de forma dinâmica.
@@ -10,7 +11,7 @@ import java.util.NoSuchElementException;
  * @since 29-05-2025
  * @version 2
  */
-public class GenericDynamicQueue<T> implements Queueable<T> {
+public class GenericDynamicQueue<T> implements Queueable<T>, Iterable<T> {
     private Node<T> headPointer;
     private Node<T> tailPointer;
     private int amount;
@@ -142,5 +143,28 @@ public class GenericDynamicQueue<T> implements Queueable<T> {
     @Override
     public boolean isEmpty() {
         return amount == 0;
+    }
+
+    // Implementação do Iterable
+    @Override
+    public Iterator<T> iterator() {
+        return new Iterator<T>() {
+            private Node<T> current = headPointer;
+
+            @Override
+            public boolean hasNext() {
+                return current != null;
+            }
+
+            @Override
+            public T next() {
+                if (current == null) {
+                    throw new NoSuchElementException();
+                }
+                T value = current.getElement();
+                current = current.getNext();
+                return value;
+            }
+        };
     }
 }
