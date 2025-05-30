@@ -83,11 +83,13 @@ public class PurchaseHistoryController implements Initializable {
 
         for (Client client : clientList) {
             Label labelNome = new Label("Nome: " + client.getName());
+            labelNome.setStyle("-fx-text-fill: #f2e8c6 !important; -fx-font-family: Arial !important; -fx-font-size: 14px;");
             Label labelId = new Label("ID: " + client.getId());
+            labelId.setStyle("-fx-text-fill: #f2e8c6 !important; -fx-font-family: Arial !important; -fx-font-size: 14px;");
 
             Button botaoAcessar = new Button("Acessar Relatório(s)");
             botaoAcessar.setUserData(client);
-            botaoAcessar.setStyle("-fx-background-color: #D92550; -fx-text-fill: white; -fx-font-weight: bold;");
+            botaoAcessar.setStyle("-fx-background-color: #D92550; -fx-text-fill: #f2e8c6; -fx-font-weight: bold;");
 
             botaoAcessar.setOnAction(event -> {
                 Client clienteSelecionado = (Client) ((Button) event.getSource()).getUserData();

@@ -35,6 +35,10 @@ public class Room {
         return sessions.dequeue();
     }
 
+    public GenericDynamicQueue<Session> getSessions() {
+        return sessions;
+    }
+
     @Override
     public String toString() {
         return "Room " + id + ":" + 
