@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" style="-fx-background-color: 03002C;" xmlns="http://javafx.com/javafx/21.0.7" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="400.0" prefWidth="640.0" style="-fx-background-color: 03002C;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.viewcontroller.PurchaseHistoryController">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="400.0" prefWidth="816.0" style="-fx-background-color: #03002C;" VBox.vgrow="ALWAYS">
       <children>
@@ -55,7 +55,7 @@
             </AnchorPane>
             <ImageView fitHeight="26.0" fitWidth="33.0" layoutX="531.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="../assets/img/lupa.png" />
+                  <Image url="@../assets/img/lupa.png" />
                </image>
             </ImageView>
             <Label layoutX="195.0" layoutY="23.0" prefHeight="26.0" prefWidth="378.0" style="-fx-font-weight: bold;" text="Relatório de Compras" textFill="#f2e8c6">
@@ -63,9 +63,10 @@
                   <Font name="Arial" size="18.0" />
                </font>
             </Label>
+            <Label fx:id="labelContagemResultados" layoutX="195.0" layoutY="106.0" prefHeight="17.0" prefWidth="136.0" />
             <ScrollPane fx:id="scrollResultados" layoutX="195.0" layoutY="124.0" prefHeight="247.0" prefWidth="393.0">
                <content>
-                  <VBox fx:id="containerResultados" prefHeight="246.0" prefWidth="396.0" style="-fx-background-color: #03002C;" />
+                  <VBox fx:id="containerResultados" prefHeight="224.0" prefWidth="396.0" style="-fx-background-color: #03002C;" />
                </content>
             </ScrollPane>
             <Button layoutX="531.0" layoutY="75.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="33.0" text="Button" visible="false" />

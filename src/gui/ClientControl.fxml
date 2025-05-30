@@ -45,7 +45,7 @@
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="416.0" prefWidth="672.0" style="-fx-background-color: #03002C;" VBox.vgrow="ALWAYS">
       <children>
-            <TextField layoutX="213.0" layoutY="69.0" prefHeight="27.0" prefWidth="318.0" style="-fx-background-color: #F58414; -fx-font-weight: bold;">
+            <TextField fx:id="txtBusca" layoutX="195.0" layoutY="69.0" prefHeight="37.0" prefWidth="378.0" promptText="Buscar Cliente" style="-fx-background-color: #F58414;">
                <font>
                   <Font name="Arial" size="12.0" />
                </font>
@@ -91,7 +91,7 @@
             </Label>
             <ImageView fitHeight="26.0" fitWidth="33.0" layoutX="498.0" layoutY="69.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../img/lupa.png" />
+                  <Image url="@../assets/img/lupa.png" />
                </image>
             </ImageView>
             <Button layoutX="498.0" layoutY="70.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="33.0" text="Button" visible="false" />
