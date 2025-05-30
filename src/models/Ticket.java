@@ -8,7 +8,7 @@ public class Ticket {
     private Session session;    
     private PaymentMethod paymentMethod;
 
-    public Ticket(Client client, Session session, PaymentMethod paymentMethod, int id) {        
+    public Ticket(Client client, Session session, PaymentMethod paymentMethod) {
         this.client = client;
         this.session = session;
         this.paymentMethod = paymentMethod;
@@ -41,7 +41,7 @@ public class Ticket {
                "\nClient= " + client.getName() + 
                "\nSession= " + session.getMovie().getTitle() + 
                "\nDate= " + session.getDate() + 
-               "\nTime= " + session.getTime() + 
+               "\nDuration= " + session.getDuration() +
                "\nPayment Method= " + paymentMethod;
     }    
     

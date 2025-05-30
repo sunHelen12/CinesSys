@@ -2,7 +2,6 @@ package models;
 
 import structures.list.GenericDynamicList;
 
-
 import java.time.LocalDate;
 
 public class Client {
@@ -17,7 +16,7 @@ public class Client {
         this.name = name;
         this.email = email;
         this.birthday = birthday;
-        purchasingHistory = new GenericDynamicList<Ticket>();
+        purchasingHistory = new GenericDynamicList<>();
         id = _idGenerator++;
     }
 

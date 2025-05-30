@@ -1,28 +1,30 @@
+package structures.queue;
+import structures.list.Node;
+
 import java.util.NoSuchElementException;
 
 /**
- * Código referente a uma fila genérica estática.
+ * Código referente a uma fila genérica que cresce de forma dinâmica.
  *
  * @author Vinícius Nunes de Andrade
- * @since 25-05-2025
- * @version 1
+ * @since 29-05-2025
+ * @version 2
  */
-public class CircularStaticQueue<T> implements Queueable<T> {
-    private T[] data;
-    private int inicialPointer;
-    private int finalPointer;
+public class GenericDynamicQueue<T> implements Queueable<T> {
+    private Node<T> headPointer;
+    private Node<T> tailPointer;
     private int amount;
+    private int size;
 
-    public CircularStaticQueue (){
+    public GenericDynamicQueue(){
         this(10);
     }
 
-    public CircularStaticQueue(int size) {
-
-        this.data = (T[]) new Object[size];
-        this.inicialPointer = 0;
-        this.finalPointer = -1;
+    public GenericDynamicQueue(int size) {
         this.amount = 0;
+        this.size = size;
+        tailPointer = null;
+        headPointer = null;
     }
     /**
      * Método que enfileira um dado na fila.
@@ -32,10 +34,16 @@ public class CircularStaticQueue<T> implements Queueable<T> {
      */
     @Override
     public void enqueue(T element) throws Exception{
-        if(isFull())
-            throw new Exception("Queue is full!");
-        finalPointer = (finalPointer +1)%data.length;
-        data[finalPointer] = element;
+        if (isFull())
+            throw new Exception("Queue is Full!");
+        Node<T> newNode = new Node<>(element);
+        if (isEmpty()) {
+            tailPointer = newNode;
+            headPointer = newNode;
+        }
+        newNode.setPrevious(tailPointer);
+        tailPointer.setNext(newNode);
+        tailPointer = newNode;
         amount++;
     }
 
@@ -47,9 +55,9 @@ public class CircularStaticQueue<T> implements Queueable<T> {
      */
     @Override
     public T front() throws NoSuchElementException {
-        if(isEmpty())
-            throw new NoSuchElementException("Queue is empty!");
-        return data[inicialPointer];
+        if (isEmpty())
+            throw new NoSuchElementException("Queue is Empty!");
+        return headPointer.getElement();
     }
 
     /**
@@ -60,9 +68,9 @@ public class CircularStaticQueue<T> implements Queueable<T> {
      */
     @Override
     public void updateFirst(T element) throws NoSuchElementException{
-        if(isEmpty())
-            throw new NoSuchElementException("Queue is empty!");
-        data[inicialPointer] = element;
+        if (isEmpty())
+            throw new NoSuchElementException("Queue is Empty!");
+        headPointer.setElement(element);
     }
 
     /**
@@ -73,9 +81,9 @@ public class CircularStaticQueue<T> implements Queueable<T> {
      */
     @Override
     public void updateLast(T element) throws NoSuchElementException {
-        if(isEmpty())
-            throw new NoSuchElementException("Queue is empty!");
-        data[finalPointer] = element;
+        if (isEmpty())
+            throw new NoSuchElementException("Queue is Empty!");
+        tailPointer.setElement(element);
     }
 
     /**
@@ -86,12 +94,17 @@ public class CircularStaticQueue<T> implements Queueable<T> {
      */
     @Override
     public T dequeue() throws NoSuchElementException{
-        if(isEmpty())
-            throw new NoSuchElementException("Queue is full!");
-        T aux = data[inicialPointer];
-        inicialPointer = (inicialPointer+1) % data.length;
+        if (isEmpty())
+            throw new NoSuchElementException("Queue is Empty!");
+        T inicialElement = headPointer.getElement();
+        headPointer = headPointer.getNext();
         amount--;
-        return aux;
+        if (!isEmpty())
+            headPointer.setPrevious(null);
+        else
+            tailPointer = null;
+
+        return inicialElement;
     }
 
     /**
@@ -101,12 +114,12 @@ public class CircularStaticQueue<T> implements Queueable<T> {
     @Override
     public String print() {
         String aux = "[";
-        for(int i = inicialPointer;i < amount + inicialPointer;i++){
-            if (i == (amount+inicialPointer)-1){
-                aux += data[i%data.length]; //% - Volta para o inicio, se alcançar o fim
-            } else {
-                aux += data[i] + ", ";
-            }
+        Node<T> auxPointer = headPointer;
+        for (int i = 0; i < amount; i++) {
+            aux += auxPointer.getElement();
+            if (i != amount - 1)
+                aux += ", ";
+            auxPointer = auxPointer.getNext();
         }
         return aux + "]";
     }
@@ -118,7 +131,7 @@ public class CircularStaticQueue<T> implements Queueable<T> {
      */
     @Override
     public boolean isFull() {
-        return amount == data.length;
+        return amount == size;
     }
 
     /**

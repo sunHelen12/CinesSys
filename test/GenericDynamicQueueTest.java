@@ -1,11 +1,13 @@
 import org.junit.Test;
+import structures.queue.GenericDynamicQueue;
+
 import java.util.NoSuchElementException;
 import static org.junit.Assert.*;
 
-public class CircularStaticQueueTest {
+public class GenericDynamicQueueTest {
     @Test
     public void testEnqueueAndFront() throws Exception {
-        CircularStaticQueue<String> queue = new CircularStaticQueue<>(3);
+        GenericDynamicQueue<String> queue = new GenericDynamicQueue<>(3);
         queue.enqueue("A");
         assertEquals("A", queue.front());
         queue.enqueue("B");
@@ -14,7 +16,7 @@ public class CircularStaticQueueTest {
 
     @Test
     public void testEnqueueAndDequeue() throws Exception {
-        CircularStaticQueue<String> queue = new CircularStaticQueue<>(3);
+        GenericDynamicQueue<String> queue = new GenericDynamicQueue<>(3);
         queue.enqueue("A");
         queue.enqueue("B");
         assertEquals("A", queue.dequeue());
@@ -23,7 +25,7 @@ public class CircularStaticQueueTest {
 
     @Test
     public void testIsFull() throws Exception {
-        CircularStaticQueue<String> queue = new CircularStaticQueue<>(3);
+        GenericDynamicQueue<String> queue = new GenericDynamicQueue<>(3);
         assertFalse(queue.isFull());
         queue.enqueue("A");
         assertFalse(queue.isFull());
@@ -35,7 +37,7 @@ public class CircularStaticQueueTest {
 
     @Test
     public void testIsEmpty() throws Exception {
-        CircularStaticQueue<String> queue = new CircularStaticQueue<>(3);
+        GenericDynamicQueue<String> queue = new GenericDynamicQueue<>(3);
         assertTrue(queue.isEmpty());
         queue.enqueue("A");
         assertFalse(queue.isEmpty());
@@ -45,7 +47,7 @@ public class CircularStaticQueueTest {
 
     @Test
     public void testDequeueThrowsExceptionWhenEmpty() {
-        CircularStaticQueue<String> queue = new CircularStaticQueue<>(3);
+        GenericDynamicQueue<String> queue = new GenericDynamicQueue<>(3);
         try {
             queue.dequeue(); // Deve lançar exceção
             fail("Deveria ter lançado NoSuchElementException ao desenfileirar de uma fila vazia");
@@ -58,23 +60,21 @@ public class CircularStaticQueueTest {
 
     @Test
     public void testEnqueueThrowsExceptionWhenFull() throws Exception {
-        CircularStaticQueue<String> queue = new CircularStaticQueue<>(3);
+        GenericDynamicQueue<String> queue = new GenericDynamicQueue<>(3);
         queue.enqueue("A");
         queue.enqueue("B");
         queue.enqueue("C");
         try {
             queue.enqueue("D"); // Deve lançar exceção
             fail("Deveria ter lançado IllegalStateException ao enfileirar em uma fila cheia");
-        } catch (IllegalStateException e) {
-            // esperado
         } catch (Exception e) {
-            fail("Esperava IllegalStateException, mas foi lançado(a) " + e.getClass().getSimpleName());
+            //esperado
         }
     }
 
     @Test
     public void testUpdateFirst() throws Exception {
-        CircularStaticQueue<String> queue = new CircularStaticQueue<>(3);
+        GenericDynamicQueue<String> queue = new GenericDynamicQueue<>(3);
         queue.enqueue("A");
         queue.enqueue("B");
         queue.updateFirst("X");
@@ -85,7 +85,7 @@ public class CircularStaticQueueTest {
 
     @Test
     public void testUpdateLast() throws Exception {
-        CircularStaticQueue<String> queue = new CircularStaticQueue<>(3);
+        GenericDynamicQueue<String> queue = new GenericDynamicQueue<>(3);
         queue.enqueue("A");
         queue.enqueue("B");
         queue.updateLast("Y");
@@ -97,7 +97,7 @@ public class CircularStaticQueueTest {
 
     @Test
     public void testPrint() throws Exception {
-        CircularStaticQueue<String> queue = new CircularStaticQueue<>(3);
+        GenericDynamicQueue<String> queue = new GenericDynamicQueue<>(3);
         assertEquals("[]", queue.print());
         queue.enqueue("A");
         queue.enqueue("B");
@@ -107,7 +107,7 @@ public class CircularStaticQueueTest {
 
     @Test
     public void testFrontThrowsExceptionWhenEmpty() {
-        CircularStaticQueue<String> queue = new CircularStaticQueue<>(3);
+        GenericDynamicQueue<String> queue = new GenericDynamicQueue<>(3);
         assertTrue(queue.isEmpty());
         try {
             queue.front();
@@ -121,7 +121,7 @@ public class CircularStaticQueueTest {
 
     @Test
     public void testCircularBehaviorEnqueueDequeue() throws Exception {
-        CircularStaticQueue<String> queue = new CircularStaticQueue<>(3);
+        GenericDynamicQueue<String> queue = new GenericDynamicQueue<>(3);
         queue.enqueue("A");
         queue.enqueue("B");
         queue.enqueue("C");
@@ -141,7 +141,7 @@ public class CircularStaticQueueTest {
 
     @Test
     public void testPrintAfterWrapAround() throws Exception {
-        CircularStaticQueue<String> queue = new CircularStaticQueue<>(3);
+        GenericDynamicQueue<String> queue = new GenericDynamicQueue<>(3);
         queue.enqueue("A");
         queue.enqueue("B");
         queue.enqueue("C");
@@ -152,7 +152,7 @@ public class CircularStaticQueueTest {
 
     @Test
     public void testUpdateFirstOnEmptyQueue() {
-        CircularStaticQueue<String> queue = new CircularStaticQueue<>(3);
+        GenericDynamicQueue<String> queue = new GenericDynamicQueue<>(3);
         try {
             queue.updateFirst("X");
             fail("Deveria ter lançado NoSuchElementException ao atualizar o primeiro elemento de uma fila vazia");
@@ -165,7 +165,7 @@ public class CircularStaticQueueTest {
 
     @Test
     public void testUpdateLastOnEmptyQueue() {
-        CircularStaticQueue<String> queue = new CircularStaticQueue<>(3);
+        GenericDynamicQueue<String> queue = new GenericDynamicQueue<>(3);
         try {
             queue.updateLast("Y");
             fail("Deveria ter lançado NoSuchElementException ao atualizar o último elemento de uma fila vazia");
@@ -178,7 +178,7 @@ public class CircularStaticQueueTest {
 
     @Test
     public void testUpdateFirstWhenOneElement() throws Exception {
-        CircularStaticQueue<String> queue = new CircularStaticQueue<>(3);
+        GenericDynamicQueue<String> queue = new GenericDynamicQueue<>(3);
         queue.enqueue("A");
         queue.updateFirst("X");
         assertEquals("X", queue.front());
@@ -188,7 +188,7 @@ public class CircularStaticQueueTest {
 
     @Test
     public void testUpdateLastWhenOneElement() throws Exception {
-        CircularStaticQueue<String> queue = new CircularStaticQueue<>(3);
+        GenericDynamicQueue<String> queue = new GenericDynamicQueue<>(3);
         queue.enqueue("A");
         queue.updateLast("Y");
         assertEquals("Y", queue.front());

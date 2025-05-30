@@ -1,4 +1,7 @@
 import org.junit.Test;
+import structures.list.GenericDynamicList;
+import structures.list.Listable;
+
 import java.util.NoSuchElementException;
 import static org.junit.Assert.*;
 

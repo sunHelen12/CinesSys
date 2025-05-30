@@ -15,7 +15,7 @@ public class OccupationRelatoryController implements Initializable {
     @FXML
     private ComboBox<String> filtroOcupacao;
 
-    private List<String> filter = new ArrayList();
+    private List<String> filter = new ArrayList<>();
     private ObservableList<String> items;
     
     @Override
