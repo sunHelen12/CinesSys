@@ -1,5 +1,7 @@
 package repository;
 
+import java.time.LocalDate;
+
 import models.Session;
 import structures.list.GenericDynamicList;
 
@@ -36,6 +38,27 @@ public class SessionRepository {
             }
         }
         return null;
+    } 
+
+    /**
+     * Retorna todas as sessões agendadas para uma dada data.
+     *
+     * @param date A data pela qual se quer filtrar as sessões.
+     * @return Uma GenericDynamicList contendo todas as sessões cuja data
+     *         seja igual à informada (pode retornar lista vazia se não houver nenhuma).
+     */
+    public GenericDynamicList<Session> getByDate(LocalDate date){
+        GenericDynamicList<Session> sessionsByDate = new GenericDynamicList<>();
+        for(int i = 0; i < sessions.size(); i++){
+            if (sessions.get(i).getDate().equals(date)) {
+                try {
+                    sessionsByDate.append(sessions.get(i));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return sessionsByDate;
     }
 
     /**
