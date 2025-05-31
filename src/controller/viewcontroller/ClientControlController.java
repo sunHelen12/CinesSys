@@ -21,10 +21,9 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import controller.viewcontroller.MainViews;
 import enums.PaymentMethod;
+import controller.viewcontroller.HomeScreenController;
 
 public class ClientControlController implements Initializable{
-    private static final ClientRepository clientRepository = new ClientRepository();
-   
     @FXML
     private VBox containerResultados;
 
@@ -44,7 +43,7 @@ public class ClientControlController implements Initializable{
         List<Client> searchResultsList = new ArrayList<>();
 
         if (!searchTerm.isEmpty()) {
-            for (Client client : clientRepository.getAll()) {
+            for (Client client : HomeScreenController.clientRepository.getAll()) {
                 if (client.getName().toLowerCase(Locale.ROOT).contains(searchTerm)) {
                     searchResultsList.add(client);
                 }
