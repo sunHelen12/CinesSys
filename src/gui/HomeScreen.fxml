@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1320.0" style="-fx-background-color: #03002c;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.viewcontroller.HomeScreenController">
+<AnchorPane maxHeight="720.0" maxWidth="1320.0" minHeight="720.0" minWidth="1320.0" prefHeight="720.0" prefWidth="1320.0" style="-fx-background-color: #03002c;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.viewcontroller.HomeScreenController">
    <children>
       <AnchorPane prefHeight="100.0" prefWidth="1320.0" style="-fx-background-color: #bb0029;">
          <children>
@@ -55,7 +55,7 @@
       </Label>
       <HBox layoutX="28.0" layoutY="276.0" prefHeight="101.0" prefWidth="1262.0" style="-fx-spacing: 20;">
          <children>
-            <Button fx:id="buttonControleDeFilmes" mnemonicParsing="false" onAction="#openMovieControl" prefHeight="120.0" prefWidth="300.0" style="-fx-background-color: #bb0029; -fx-font-weight: bold;" text="Controle de Filmes" textFill="#f2e8c6">
+            <Button mnemonicParsing="false" onAction="#openMovieControl" prefHeight="120.0" prefWidth="300.0" style="-fx-background-color: #bb0029; -fx-font-weight: bold;" text="Controle de Filmes" textFill="#f2e8c6">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>
@@ -70,7 +70,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="buttonControleDeSessoes" mnemonicParsing="false" onAction="#openSessionControl" prefHeight="120.0" prefWidth="300.0" style="-fx-background-color: #F58414; -fx-font-weight: bold;" text="Controle de Sessões" textFill="#f2e8c6">
+            <Button mnemonicParsing="false" onAction="#openSessionControl" prefHeight="120.0" prefWidth="300.0" style="-fx-background-color: #F58414; -fx-font-weight: bold;" text="Controle de Sessões" textFill="#f2e8c6">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>
@@ -85,7 +85,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="buttonVenderIngresso" mnemonicParsing="false" onAction="#openSessionControl" prefHeight="120.0" prefWidth="300.0" style="-fx-background-color: #bb0029; -fx-font-weight: bold;" text="Vender Ingresso&#10;(Selecione a sessão)" textAlignment="CENTER" textFill="#f2e8c6">
+            <Button mnemonicParsing="false" onAction="#openSessionControl" prefHeight="120.0" prefWidth="300.0" style="-fx-background-color: #bb0029; -fx-font-weight: bold;" text="Vender Ingresso&#10;(Selecione a sessão)" textAlignment="CENTER" textFill="#f2e8c6">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>
@@ -100,7 +100,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="buttonCadastrarCliente" mnemonicParsing="false" onAction="#openClientControl" prefHeight="120.0" prefWidth="300.0" style="-fx-background-color: #F58414; -fx-font-weight: bold;" text="Cadastrar cliente" textFill="#f2e8c6">
+            <Button mnemonicParsing="false" onAction="#openClientControl" prefHeight="120.0" prefWidth="300.0" style="-fx-background-color: #F58414; -fx-font-weight: bold;" text="Cadastrar cliente" textFill="#f2e8c6">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>
@@ -117,9 +117,9 @@
             </Button>
          </children>
       </HBox>
-      <HBox layoutX="188.0" layoutY="425.0" prefHeight="102.0" prefWidth="941.0" style="-fx-spacing: 20;">
+      <HBox layoutX="28.0" layoutY="425.0" prefHeight="101.0" prefWidth="1262.0" style="-fx-spacing: 20;">
          <children>
-            <Button fx:id="buttonCancelarIngresso" mnemonicParsing="false" onAction="#openPurchaseControl" prefHeight="120.0" prefWidth="300.0" style="-fx-background-color: #bb0029; -fx-font-weight: bold;" text="Cancelar Ingresso&#10;(Selecione a compra)" textAlignment="CENTER" textFill="#f2e8c6">
+            <Button mnemonicParsing="false" onAction="#openPurchaseControl" prefHeight="120.0" prefWidth="300.0" style="-fx-background-color: #F58414; -fx-font-weight: bold;" text="Cancelar Ingresso&#10;(Selecione a compra)" textAlignment="CENTER" textFill="#f2e8c6">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>
@@ -134,7 +134,22 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="buttonRelatoriosDeOcupaçãoDasSalas" mnemonicParsing="false" onAction="#openOccupationRelatory" prefHeight="120.0" prefWidth="300.0" style="-fx-background-color: #F58414; -fx-font-weight: bold;" text="Relatórios de Ocupação&#10;das salas" textAlignment="CENTER" textFill="#f2e8c6">
+            <Button mnemonicParsing="false" onAction="#openClientControl" prefHeight="120.0" prefWidth="300.0" style="-fx-background-color: #bb0029; -fx-font-weight: bold;" text="Controle de Clientes" textAlignment="CENTER" textFill="#f2e8c6">
+               <font>
+                  <Font name="Arial" size="20.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="88.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../assets/img/usuario.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#openOccupationRelatory" prefHeight="120.0" prefWidth="300.0" style="-fx-background-color: #F58414; -fx-font-weight: bold;" text="Relatórios de Ocupação&#10;das salas" textAlignment="CENTER" textFill="#f2e8c6">
                <font>
                   <Font name="Arial" size="18.0" />
                </font>
@@ -149,7 +164,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="buttonRelatoriosDeCompras" mnemonicParsing="false" onAction="#openPurchaseRelatory" prefHeight="120.0" prefWidth="300.0" style="-fx-background-color: #bb0029; -fx-font-weight: bold;" text="Relatórios de&#10;Compras" textAlignment="CENTER" textFill="#f2e8c6">
+            <Button mnemonicParsing="false" onAction="#openPurchaseRelatory" prefHeight="120.0" prefWidth="300.0" style="-fx-background-color: #bb0029; -fx-font-weight: bold;" text="Relatórios de&#10;Compras" textAlignment="CENTER" textFill="#f2e8c6">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>

@@ -42,7 +42,7 @@
 
 <VBox prefHeight="720.0" prefWidth="1320.0" style="-fx-background-color: 03002C;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
   <children>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="720.0" prefWidth="1320.0" style="-fx-background-color: #03002C;" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="720.0" maxWidth="1320.0" minHeight="720.0" minWidth="1320.0" prefHeight="720.0" prefWidth="1320.0" style="-fx-background-color: #03002C;" VBox.vgrow="ALWAYS">
       <children>
             <AnchorPane prefHeight="100.0" prefWidth="1320.0" style="-fx-background-color: #F58414; -fx-background-radius: 2px;">
                <children>

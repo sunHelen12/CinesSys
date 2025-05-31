@@ -45,7 +45,7 @@
 
 <VBox prefHeight="720.0" prefWidth="1320.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.viewcontroller.OccupationRelatoryController">
   <children>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1320.0" style="-fx-background-color: #03002c;" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="720.0" maxWidth="1320.0" minHeight="720.0" minWidth="1320.0" prefHeight="720.0" prefWidth="1320.0" style="-fx-background-color: #03002c;" VBox.vgrow="ALWAYS">
       <children>
             <VBox layoutY="-2.0" prefHeight="100.0" prefWidth="1320.0" style="-fx-background-color: #bb0029;">
                <children>
