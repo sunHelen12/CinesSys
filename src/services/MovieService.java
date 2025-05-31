@@ -63,6 +63,15 @@ public class MovieService {
      * @return O filme encontrado ou null caso não exista
      */
     public Movie getMovieById(int id){
+        if(id <= 0){
+            throw new IllegalArgumentException("O ID deve ser maior que zero!");
+        }
+
+        Movie movie = movieRepository.getById(id);
+        if(movie == null){
+            throw new RuntimeException("Nenhum filme encontrado com o ID" + id);
+        }
+
         return movieRepository.getById(id);
     }
 
@@ -73,6 +82,15 @@ public class MovieService {
      * @return true se o filme foi removido, false se não foi encontrado.
      */
     public boolean removeMovieById(int id){
-        return movieRepository.removeById(id);
+        if(id <= 0){
+            throw new IllegalArgumentException("O ID deve ser maior que zero!");
+        }
+
+        boolean removed = movieRepository.removeById(id);
+        if (!removed) {
+            throw new RuntimeException("Nenhum filme encontrado com o ID" + id);
+        }
+
+        return removed;
     }
 }
