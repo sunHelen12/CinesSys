@@ -167,4 +167,8 @@ public class GenericDynamicQueue<T> implements Queueable<T>, Iterable<T> {
             }
         };
     }
+
+    public int size() {
+        return amount;
+    }
 }
