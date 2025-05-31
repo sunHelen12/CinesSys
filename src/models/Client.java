@@ -48,6 +48,19 @@ public class Client {
         this.birthday = birthday;
     }
 
+    /**
+     * Adiciona um novo ticket ao histórico de compras do cliente.
+     *
+     * @param ticket O ticket que acabou de ser comprado.
+     */
+    public void addTicketToHistory(Ticket ticket) {
+        try {
+            purchasingHistory.append(ticket);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public String printHistory(){
         String result = "";
         for (int i = 0; i < purchasingHistory.size(); i++) {
