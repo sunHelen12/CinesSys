@@ -92,7 +92,7 @@
                   <VBox fx:id="containerResultados" prefHeight="474.0" prefWidth="944.0" style="-fx-background-color: #03002C;" />
                </content>
             </ScrollPane>
-            <Button layoutX="788.0" layoutY="112.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="58.0" style="-fx-background-color: #BB0029;">
+            <Button layoutX="788.0" layoutY="112.0" mnemonicParsing="false" onAction="#buscar" prefHeight="43.0" prefWidth="58.0" style="-fx-background-color: #BB0029;">
                <graphic>
                   <ImageView fitHeight="38.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>

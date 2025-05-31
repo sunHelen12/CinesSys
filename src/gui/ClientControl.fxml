@@ -116,7 +116,7 @@
                   <Font name="Arial" size="38.0" />
                </font>
             </Label>
-            <Button layoutX="730.0" layoutY="108.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="33.0" style="-fx-background-color: #F58414;">
+            <Button layoutX="730.0" layoutY="108.0" mnemonicParsing="false" onAction="#buscar" prefHeight="25.0" prefWidth="33.0" style="-fx-background-color: #F58414;">
                <graphic>
                   <ImageView fitHeight="26.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
                      <image>

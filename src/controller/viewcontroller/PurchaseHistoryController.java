@@ -62,6 +62,11 @@ public class PurchaseHistoryController implements Initializable {
     }
 
     @FXML
+    void buscar(ActionEvent event) {
+        search();
+    }
+
+    @FXML
     private void search() {
         String searchTerm = txtBusca.getText().toLowerCase(Locale.ROOT).trim();
         List<Client> searchResultsList = new ArrayList<>();
