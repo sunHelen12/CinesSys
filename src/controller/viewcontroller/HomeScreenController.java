@@ -36,7 +36,7 @@ public class HomeScreenController implements Initializable {
 
     @FXML
     void openClientControl(ActionEvent event) {
-        MainViews.changeScreen("clientControl", null);
+        MainViews.changeScreen("registerClient", null);
     }
 
     @FXML
