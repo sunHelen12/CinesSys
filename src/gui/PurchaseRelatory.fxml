@@ -63,7 +63,6 @@
                   <Font name="Arial" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="labelContagemResultados" layoutX="195.0" layoutY="106.0" prefHeight="17.0" prefWidth="136.0" />
             <ScrollPane fx:id="scrollResultados" layoutX="195.0" layoutY="124.0" prefHeight="247.0" prefWidth="393.0">
                <content>
                   <VBox fx:id="containerResultados" prefHeight="224.0" prefWidth="396.0" style="-fx-background-color: #03002C;" />

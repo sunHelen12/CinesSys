@@ -46,12 +46,8 @@ public class MovieRepository {
      * 
      * @return Uma lista contendo todos os filmes.
      */
-    public List<Movie> getAll(){
-        List<Movie> list = new ArrayList<>();
-        for (int i = 0; i < movies.size(); i++) {
-            list.add(movies.get(i));
-        }
-        return list;
+    public GenericDynamicList<Movie> getAll(){
+        return movies;
     }
 
     /**
