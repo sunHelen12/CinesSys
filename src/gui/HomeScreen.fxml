@@ -100,7 +100,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button mnemonicParsing="false" onAction="#openClientControl" prefHeight="120.0" prefWidth="300.0" style="-fx-background-color: #F58414; -fx-font-weight: bold;" text="Cadastrar cliente" textFill="#f2e8c6">
+            <Button mnemonicParsing="false" onAction="#openRegisterClient" prefHeight="120.0" prefWidth="300.0" style="-fx-background-color: #F58414; -fx-font-weight: bold;" text="Cadastrar cliente" textFill="#f2e8c6">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>

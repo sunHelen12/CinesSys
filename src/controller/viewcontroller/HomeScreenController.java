@@ -9,33 +9,16 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class HomeScreenController implements Initializable {
-
-    @FXML
-    private Button buttonCadastrarCliente;
-
-    @FXML
-    private Button buttonCancelarIngresso;
-
-    @FXML
-    private Button buttonControleDeFilmes;
-
-    @FXML
-    private Button buttonControleDeSessoes;
-
-    @FXML
-    private Button buttonRelatoriosDeCompras;
-
-    @FXML
-    private Button buttonRelatoriosDeOcupaçãoDasSalas;
-
-    @FXML
-    private Button buttonVenderIngresso;
-
     @FXML
     private ImageView closeButton;
 
     @FXML
     void openClientControl(ActionEvent event) {
+        MainViews.changeScreen("clientControl", null); 
+    }
+
+    @FXML
+    void openRegisterClient(ActionEvent event) {
         MainViews.changeScreen("registerClient", null);
     }
 

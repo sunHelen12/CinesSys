@@ -104,10 +104,6 @@ public class PurchaseHistoryController implements Initializable {
             botaoAcessar.setOnAction(event -> {
                 Client clienteSelecionado = (Client) ((Button) event.getSource()).getUserData();
 
-                // Aqui estamos simulando um Ticket fictício com data atual
-                Ticket ticketSimulado = new Ticket(clienteSelecionado, new Session(LocalDate.now(), LocalTime.now(), Room.room1, new Movie("Titulo", "Terror", 90, "Maior de idade", "Doideira"), 90.0), PaymentMethod.CASH);
-                abrirDetalhesDoRelatorio(ticketSimulado);
-
                 //Trocar Tela
                 MainViews.changeScreen("clientHistory", clienteSelecionado);
             });
@@ -120,11 +116,5 @@ public class PurchaseHistoryController implements Initializable {
         }
     }
 
-    private void abrirDetalhesDoRelatorio(Ticket compra) {
-        System.out.println("Acessando relatório para compra ID: " + compra.getId() +
-                " de " + compra.getClient().getName());
-
-        // Aqui você pode carregar um novo FXML com FXMLLoader
-        // e passar os dados do ticket para o próximo controller
-    }
+    
 }
