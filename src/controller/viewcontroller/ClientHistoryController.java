@@ -29,7 +29,7 @@ public class ClientHistoryController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        MainPurchaseHistory.addOnChangeScreenListener(new MainPurchaseHistory.OnChangeScreen() {
+        Main.addOnChangeScreenListener(new Main.OnChangeScreen() {
             @Override
             public void onScreenChanged(String newScreen, Object userDataObject) {
                 System.out.println(newScreen + ", " + userDataObject);
