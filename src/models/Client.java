@@ -63,11 +63,13 @@ public class Client {
      *
      * @param ticket O ticket que acabou de ser comprado.
      */
-    public void addTicketToHistory(Ticket ticket) {
+    public boolean addTicketToHistory(Ticket ticket) {
         try {
             purchasingHistory.append(ticket);
+            return true;
         } catch (Exception e) {
             e.printStackTrace();
+            return false;
         }
     }
 
