@@ -41,60 +41,62 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" style="-fx-background-color: 03002C;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="720.0" prefWidth="1320.0" style="-fx-background-color: 03002C;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
   <children>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="416.0" prefWidth="672.0" style="-fx-background-color: #03002C;" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="720.0" prefWidth="1320.0" style="-fx-background-color: #03002C;" VBox.vgrow="ALWAYS">
       <children>
-            <TextField fx:id="txtBusca" layoutX="195.0" layoutY="69.0" prefHeight="37.0" prefWidth="378.0" promptText="Buscar Cliente" style="-fx-background-color: #F58414;">
+            <TextField fx:id="txtBusca" layoutX="313.0" layoutY="103.0" prefHeight="43.0" prefWidth="474.0" promptText="Buscar Cliente" style="-fx-background-color: #F58414;">
                <font>
                   <Font name="Arial" size="12.0" />
                </font>
             </TextField>
-            <AnchorPane prefHeight="400.0" prefWidth="148.0" style="-fx-background-color: #F58414; -fx-background-radius: 2px;">
+            <AnchorPane prefHeight="720.0" prefWidth="265.0" style="-fx-background-color: #F58414; -fx-background-radius: 2px;">
                <children>
-              <Label alignment="CENTER" layoutX="9.0" layoutY="8.0" style="-fx-font-weight: bold;" text="CineSys" textAlignment="CENTER" textFill="#f2e8c4" wrapText="false">
+              <Label alignment="CENTER" layoutX="13.0" layoutY="14.0" style="-fx-font-weight: bold;" text="CineSys" textAlignment="CENTER" textFill="#f2e8c4" wrapText="false">
                 <font>
-                  <Font name="Arial" size="25.0" />
+                  <Font name="Arial" size="48.0" />
                 </font>
               </Label>
-                  <Button layoutX="4.0" layoutY="68.0" mnemonicParsing="false" style="-fx-background-color: #F58414;" text="Controle de Filmes" textFill="#f2e8c4">
+                  <Button layoutX="1.0" layoutY="113.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="199.0" style="-fx-background-color: #F58414;" text="Controle de Filmes" textFill="#f2e8c4">
                      <font>
-                        <Font name="Arial" size="14.0" />
+                        <Font name="Arial" size="20.0" />
                      </font>
                   </Button>
-                  <Button layoutX="4.0" layoutY="111.0" mnemonicParsing="false" style="-fx-background-color: #F58414;" text="Controle de Sessões" textFill="#f2e8c4">
+                  <Button layoutX="1.0" layoutY="166.0" mnemonicParsing="false" style="-fx-background-color: #F58414;" text="Controle de Sessões" textFill="#f2e8c4">
                      <font>
-                        <Font name="Arial" size="14.0" />
+                        <Font name="Arial" size="20.0" />
                      </font>
                   </Button>
-                  <Button layoutX="3.0" layoutY="153.0" mnemonicParsing="false" style="-fx-background-color: #F58414; -fx-font-weight: bold;" text="Controle de Clientes" textFill="#f2e8c4">
+                  <Button layoutX="1.0" layoutY="220.0" mnemonicParsing="false" style="-fx-background-color: #F58414;" text="Controle de Clientes" textFill="#f2e8c4">
                      <font>
-                        <Font name="Arial" size="14.0" />
+                        <Font name="Arial" size="20.0" />
                      </font>
                   </Button>
-                  <Button layoutX="4.0" layoutY="200.0" mnemonicParsing="false" style="-fx-background-color: #F58414;" text="Relatórios de Compras" textFill="#f2e8c4">
+                  <Button layoutX="1.0" layoutY="277.0" mnemonicParsing="false" style="-fx-background-color: #F58414; -fx-font-weight: bold;" text="Relatórios de Compras" textFill="#f2e8c4">
                      <font>
-                        <Font name="Arial" size="14.0" />
+                        <Font name="Arial" size="20.0" />
                      </font>
                   </Button>
-                  <Button layoutX="4.0" layoutY="242.0" mnemonicParsing="false" style="-fx-background-color: #F58414;" text="Relatórios de Ocupação" textFill="#f2e8c4">
+                  <Button layoutX="1.0" layoutY="333.0" mnemonicParsing="false" style="-fx-background-color: #F58414;" text="Relatórios de Ocupação" textFill="#f2e8c4">
                      <font>
-                        <Font name="Arial" size="14.0" />
+                        <Font name="Arial" size="20.0" />
                      </font>
                   </Button>
                </children>
             </AnchorPane>
-            <Label alignment="CENTER" layoutX="213.0" layoutY="33.0" style="-fx-font-weight: bold;" text="Controle de Clientes" textAlignment="CENTER" textFill="#f2e8c4" wrapText="false">
+            <Label alignment="CENTER" layoutX="313.0" layoutY="39.0" style="-fx-font-weight: bold;" text="Controle de Clientes" textAlignment="CENTER" textFill="#f2e8c4" wrapText="false">
                <font>
-                  <Font name="Arial" size="18.0" />
+                  <Font name="Arial" size="38.0" />
                </font>
             </Label>
-            <ImageView fitHeight="26.0" fitWidth="33.0" layoutX="498.0" layoutY="69.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/img/lupa.png" />
-               </image>
-            </ImageView>
-            <Button layoutX="498.0" layoutY="70.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="33.0" text="Button" visible="false" />
+            <Button layoutX="730.0" layoutY="108.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="33.0" style="-fx-background-color: #F58414;">
+               <graphic>
+                  <ImageView fitHeight="26.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../assets/img/lupa.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
       </children>
     </AnchorPane>
   </children>

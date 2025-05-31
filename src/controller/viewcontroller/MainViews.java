@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainPurchaseHistory extends Application {
+public class MainViews extends Application {
     private static Stage stage;
     private static Scene purchaseRelatoryScene;
     private static Scene clientHistoryScene;
@@ -16,7 +16,7 @@ public class MainPurchaseHistory extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         stage = primaryStage;
-        primaryStage.setTitle("Relatórios de Compras");
+        primaryStage.setTitle("CineSys");
         
         FXMLLoader loaderPurchaseRelatory = new FXMLLoader(getClass().getResource("/gui/PurchaseRelatory.fxml"));
         FXMLLoader loaderClientHistory = new FXMLLoader(getClass().getResource("/gui/ClientHistory.fxml"));
@@ -28,6 +28,7 @@ public class MainPurchaseHistory extends Application {
         clientHistoryScene = new Scene(clientHistory);
         
         primaryStage.setScene(purchaseRelatoryScene);
+        primaryStage.centerOnScreen();
         primaryStage.show();
     }    
 
