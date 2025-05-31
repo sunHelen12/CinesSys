@@ -32,8 +32,8 @@ public class Client {
         return email;
     }
 
-    public LocalDate getBirthday() {
-        return birthday;
+    public String getBirthday() {
+        return birthday + "";
     }
 
     public GenericDynamicList<Ticket> getPurchasingHistory() {

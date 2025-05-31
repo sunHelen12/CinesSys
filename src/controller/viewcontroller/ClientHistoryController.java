@@ -7,11 +7,13 @@ import javafx.scene.layout.VBox;
 import javafx.event.ActionEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
-
+import models.Client;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ClientHistoryController implements Initializable {
+    private static Client client;
+    
     @FXML
     private VBox vboxHistorico;
     
@@ -40,8 +42,21 @@ public class ClientHistoryController implements Initializable {
         MainViews.addOnChangeScreenListener(new MainViews.OnChangeScreen() {
             @Override
             public void onScreenChanged(String newScreen, Object userDataObject) {
-                System.out.println(newScreen + ", " + userDataObject);
+                if (userDataObject instanceof Client) {
+                    client = (Client) userDataObject;
+                    accessClientData(); 
+                }
             }
         });
+    }
+
+    private void accessClientData(){
+        lnlNome.setText(client.getName());
+        lblID.setText(String.valueOf(client.getId()));
+        lblEmail.setText(client.getEmail());
+        lblNascimento.setText(client.getBirthday());
+        lblNumIngressos.setText(String.valueOf(client.getPurchasingHistory().size()));
+
+        
     }
 }

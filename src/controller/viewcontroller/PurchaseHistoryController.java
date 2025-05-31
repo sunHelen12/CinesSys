@@ -9,6 +9,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import models.*;
+import repository.*;
 
 import java.net.URL;
 import java.time.LocalDate;
@@ -22,6 +23,7 @@ import controller.viewcontroller.MainViews;
 import enums.PaymentMethod;
 
 public class PurchaseHistoryController implements Initializable {
+    private final static ClientRepository clientRepository = new ClientRepository();
 
     @FXML
     private ScrollPane scrollPaneResultados;
@@ -32,13 +34,10 @@ public class PurchaseHistoryController implements Initializable {
     @FXML
     private TextField txtBusca;
 
-    // Simulação de uma base de dados
-    private final List<Client> clients = new ArrayList<>();
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        inicializarClientesMock();
         addFilter();
+        inicializarClientesMock();
     }
 
     @FXML
@@ -71,16 +70,6 @@ public class PurchaseHistoryController implements Initializable {
         // MainViews.changeScreen("sessionControl", null);
     }
 
-    private void inicializarClientesMock() {
-        clients.add(new Client("Vinicius", "vinicius@email.com", LocalDate.now()));
-        clients.add(new Client("Maria Eduarda", "mariaeduarda@email.com", LocalDate.now()));
-        clients.add(new Client("Maria Helena", "mariahelena@email.com", LocalDate.now()));
-        clients.add(new Client("Helen", "helen@email.com", LocalDate.now()));
-        clients.add(new Client("Thiago", "thiago@email.com", LocalDate.now()));
-        clients.add(new Client("Kaique", "kaique@email.com", LocalDate.now()));
-        clients.add(new Client("Carlos Henrique", "carloshenrique@email.com", LocalDate.now()));
-        clients.add(new Client("Gabriele", "gabriele@email.com", LocalDate.now()));
-    }
 
     private void addFilter() {
         txtBusca.setOnAction(event -> search());
@@ -97,7 +86,7 @@ public class PurchaseHistoryController implements Initializable {
         List<Client> searchResultsList = new ArrayList<>();
 
         if (!searchTerm.isEmpty()) {
-            for (Client client : clients) {
+            for (Client client : clientRepository.getAll()) {
                 if (client.getName().toLowerCase(Locale.ROOT).contains(searchTerm)) {
                     searchResultsList.add(client);
                 }
@@ -133,8 +122,6 @@ public class PurchaseHistoryController implements Initializable {
 
             botaoAcessar.setOnAction(event -> {
                 Client clienteSelecionado = (Client) ((Button) event.getSource()).getUserData();
-
-                //Trocar Tela
                 MainViews.changeScreen("clientHistory", clienteSelecionado);
             });
 
@@ -146,5 +133,40 @@ public class PurchaseHistoryController implements Initializable {
         }
     }
 
-    
+    // dados de teste
+    private static void inicializarClientesMock() {
+        Client c1 = new Client("Vinicius", "vinicius@email.com", LocalDate.now());
+        Client c2 = new Client("Maria Eduarda", "mariaeduarda@email.com", LocalDate.now());
+        Client c3 = new Client("Maria Helena", "mariahelena@email.com", LocalDate.now());
+        Client c4 = new Client("Helen", "helen@email.com", LocalDate.now());
+        Client c5 = new Client("Thiago", "thiago@email.com", LocalDate.now());
+        Client c6 = new Client("Kaique", "kaique@email.com", LocalDate.now());
+        Client c7 = new Client("Carlos Henrique", "carloshenrique@email.com", LocalDate.now());
+        Client c8 = new Client("Gabriele", "gabriele@email.com", LocalDate.now());
+
+        clientRepository.add(c1);
+        clientRepository.add(c2);
+        clientRepository.add(c3);
+        clientRepository.add(c4);
+        clientRepository.add(c5);
+        clientRepository.add(c6);
+        clientRepository.add(c7);
+        clientRepository.add(c8);
+
+        Ticket ticketSimulado = new Ticket(c2,
+                new Session(LocalDate.now(), LocalTime.now(), Room.room1,
+                        new Movie("It: A coisa", "Terror", 90, "+18", "Doideira"), 90.0),
+                PaymentMethod.CASH);
+        Ticket ticketSimulado2 = new Ticket(c2,
+                new Session(LocalDate.now(), LocalTime.now(), Room.room1,
+                        new Movie("Filme Aleatorio", "Drama", 150, "+14", "Doideira"), 90.0),
+                PaymentMethod.CASH);
+        Ticket ticketSimulado3 = new Ticket(c3,
+                new Session(LocalDate.now(), LocalTime.now(), Room.room1,
+                        new Movie("Chapeuzinho", "Infantil", 120, "Livre", "Leve"), 90.0),
+                PaymentMethod.CASH);
+        c2.addTicketToHistory(ticketSimulado);
+        c2.addTicketToHistory(ticketSimulado2);
+        c3.addTicketToHistory(ticketSimulado3);
+    }
 }

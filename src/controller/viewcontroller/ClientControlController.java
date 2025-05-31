@@ -23,7 +23,8 @@ import controller.viewcontroller.MainViews;
 import enums.PaymentMethod;
 
 public class ClientControlController implements Initializable{
-
+    private static final ClientRepository clientRepository = new ClientRepository();
+   
     @FXML
     private VBox containerResultados;
 
@@ -37,21 +38,13 @@ public class ClientControlController implements Initializable{
         txtBusca.setOnAction(event -> search());
     }
 
-    // Simulação de uma base de dados
-    private final List<Client> clients = new ArrayList<>();
-
-    @FXML
-    void buscar(ActionEvent event) {
-        search();
-    }
-
     @FXML
     private void search() {
         String searchTerm = txtBusca.getText().toLowerCase(Locale.ROOT).trim();
         List<Client> searchResultsList = new ArrayList<>();
 
         if (!searchTerm.isEmpty()) {
-            for (Client client : clients) {
+            for (Client client : clientRepository.getAll()) {
                 if (client.getName().toLowerCase(Locale.ROOT).contains(searchTerm)) {
                     searchResultsList.add(client);
                 }
@@ -100,29 +93,13 @@ public class ClientControlController implements Initializable{
 
             botaoExcluir.setOnAction(event -> {
                 Client clienteSelecionado = (Client) ((Button) event.getSource()).getUserData();
-
-                // Aqui estamos simulando um Ticket fictício com data atual
-                Ticket ticketSimulado = new Ticket(clienteSelecionado,
-                        new Session(LocalDate.now(), LocalTime.now(), Room.room1,
-                                new Movie("Titulo", "Terror", 90, "Maior de idade", "Doideira"), 90.0),
-                        PaymentMethod.CASH);
-
                 // Mostrar PopUp
                 //MainViews.changeScreen("", null);
-
                 //acessar pelo repository e excluir
             });
 
             botaoAlterar.setOnAction(event -> {
                 Client clienteSelecionado = (Client) ((Button) event.getSource()).getUserData();
-
-                // Aqui estamos simulando um Ticket fictício com data atual
-                Ticket ticketSimulado = new Ticket(clienteSelecionado,
-                        new Session(LocalDate.now(), LocalTime.now(), Room.room1,
-                                new Movie("Titulo", "Terror", 90, "Maior de idade", "Doideira"), 90.0),
-                        PaymentMethod.CASH);
-
-                // Trocar Tela
                 MainViews.changeScreen("changeClient", clienteSelecionado);
             });
 
@@ -169,6 +146,11 @@ public class ClientControlController implements Initializable{
         // MainViews.changeScreen("sessionControl", null);
     }
 
+    @FXML
+    void buscar(ActionEvent event) {
+        search();
+    }
+
     /**
      * @param url
      * @param resourceBundle
@@ -176,17 +158,6 @@ public class ClientControlController implements Initializable{
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         addFilter();
-        inicializarClientesMock();
     }
 
-    private void inicializarClientesMock() {
-        clients.add(new Client("Vinicius", "vinicius@email.com", LocalDate.now()));
-        clients.add(new Client("Maria Eduarda", "mariaeduarda@email.com", LocalDate.now()));
-        clients.add(new Client("Maria Helena", "mariahelena@email.com", LocalDate.now()));
-        clients.add(new Client("Helen", "helen@email.com", LocalDate.now()));
-        clients.add(new Client("Thiago", "thiago@email.com", LocalDate.now()));
-        clients.add(new Client("Kaique", "kaique@email.com", LocalDate.now()));
-        clients.add(new Client("Carlos Henrique", "carloshenrique@email.com", LocalDate.now()));
-        clients.add(new Client("Gabriele", "gabriele@email.com", LocalDate.now()));
-    }
 }
