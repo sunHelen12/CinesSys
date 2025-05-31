@@ -5,21 +5,65 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainPurchaseHistory extends Application {
-    @Override
-    public void start(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/PurchaseRelatory.fxml"));
-        Parent root = loader.load(); // aqui a injeção @FXML funciona corretamente
+    private static Stage stage;
+    private static Scene purchaseRelatoryScene;
+    private static Scene clientHistoryScene;
 
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setTitle("Relatório de Compras");
-        stage.show();
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        stage = primaryStage;
+        primaryStage.setTitle("Relatórios de Compras");
+        
+        FXMLLoader loaderPurchaseRelatory = new FXMLLoader(getClass().getResource("/gui/PurchaseRelatory.fxml"));
+        FXMLLoader loaderClientHistory = new FXMLLoader(getClass().getResource("/gui/ClientHistory.fxml"));
+        
+        Parent purchaseRelatory = loaderPurchaseRelatory.load(); 
+        purchaseRelatoryScene = new Scene(purchaseRelatory);
+
+        Parent clientHistory = loaderClientHistory.load(); 
+        clientHistoryScene = new Scene(clientHistory);
+        
+        primaryStage.setScene(purchaseRelatoryScene);
+        primaryStage.show();
     }    
+
+    public static void changeScreen(String screen, Object userDataObject){
+        switch (screen) {
+            case "purchaseRelatory":
+                stage.setScene(purchaseRelatoryScene);
+                notifyAllListerners("purchaseRelatory", userDataObject);
+                break;
+            case "clientHistory":
+                stage.setScene(clientHistoryScene);
+                notifyAllListerners("clientHistory", userDataObject);
+                break;
+            default:
+                break;
+        }
+    }
 
     public static void main(String[] args) {
         launch(args);
+    }
+
+    //Processamento de Dados na Troca de Tela
+    private static List<OnChangeScreen> listeners = new ArrayList<>();
+
+    public static interface OnChangeScreen{
+        void onScreenChanged(String newScreen, Object userDataObject);
+    }
+
+    public static void addOnChangeScreenListener(OnChangeScreen newListener){
+        listeners.add(newListener);
+    }
+
+    private static void notifyAllListerners(String newScreen, Object userDataObject){
+        for(OnChangeScreen l:listeners)
+            l.onScreenChanged(newScreen, userDataObject);
     }
 }
 

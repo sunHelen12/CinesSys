@@ -7,58 +7,58 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="484.0" prefWidth="917.0" style="-fx-background-color: #03002C;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="484.0" prefWidth="917.0" style="-fx-background-color: #03002C;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.viewcontroller.ClientHistoryController">
    <children>
       <AnchorPane prefHeight="70.0" prefWidth="917.0" style="-fx-background-color: #BB0029;">
          <children>
-            <Label layoutX="44.0" layoutY="23.0" prefHeight="26.0" prefWidth="238.0" style="-fx-font-weight: bold;" text="Histórico de Compras" textFill="WHITE">
+            <Label layoutX="44.0" layoutY="23.0" prefHeight="26.0" prefWidth="238.0" style="-fx-font-weight: bold;" text="Histórico de Compras" textFill="#f2e8c6">
                <font>
                   <Font name="Arial" size="22.0" />
                </font>
             </Label>
          </children>
       </AnchorPane>
-      <Label id="lblClient" alignment="TOP_LEFT" layoutX="46.0" layoutY="118.0" prefHeight="23.0" prefWidth="60.0" style="-fx-font-weight: bold;" text="Nome: " textFill="WHITE">
+      <Label id="lblClient" alignment="TOP_LEFT" layoutX="46.0" layoutY="118.0" prefHeight="23.0" prefWidth="60.0" style="-fx-font-weight: bold;" text="Nome: " textFill="#f2e8c6">
          <font>
             <Font name="Arial" size="16.0" />
          </font>
       </Label>
-      <Label alignment="TOP_LEFT" contentDisplay="TOP" layoutX="411.0" layoutY="118.0" prefHeight="23.0" prefWidth="319.0" style="-fx-font-weight: bold;" text="Filmes e Sessões Assistidas: " textFill="WHITE">
+      <Label alignment="TOP_LEFT" contentDisplay="TOP" layoutX="411.0" layoutY="118.0" prefHeight="23.0" prefWidth="319.0" style="-fx-font-weight: bold;" text="Filmes e Sessões Assistidas: " textFill="#f2e8c6">
          <font>
             <Font name="Arial" size="16.0" />
          </font>
       </Label>
-      <Label id="lnlNome" layoutX="114.0" layoutY="121.0" prefHeight="18.0" prefWidth="226.0" textFill="WHITE">
+      <Label fx:id="lnlNome" layoutX="114.0" layoutY="121.0" prefHeight="18.0" prefWidth="226.0" textFill="#f2e8c6">
          <font>
             <Font name="Arial" size="16.0" />
          </font>
       </Label>
-      <Label layoutX="46.0" layoutY="152.0" prefHeight="20.0" prefWidth="48.0" style="-fx-font-weight: bold;" text="Id:" textFill="WHITE">
+      <Label layoutX="46.0" layoutY="152.0" prefHeight="20.0" prefWidth="48.0" style="-fx-font-weight: bold;" text="Id:" textFill="#f2e8c6">
          <font>
             <Font name="Arial" size="16.0" />
          </font>
       </Label>
-      <Label layoutX="46.0" layoutY="185.0" prefHeight="20.0" prefWidth="54.0" style="-fx-font-weight: bold;" text="Email:" textFill="WHITE">
+      <Label layoutX="46.0" layoutY="185.0" prefHeight="20.0" prefWidth="54.0" style="-fx-font-weight: bold;" text="Email:" textFill="#f2e8c6">
          <font>
             <Font name="Arial" size="16.0" />
          </font>
       </Label>
-      <Label layoutX="46.0" layoutY="222.0" style="-fx-font-weight: bold;" text="Data de Nascimento:" textFill="WHITE">
+      <Label layoutX="46.0" layoutY="222.0" style="-fx-font-weight: bold;" text="Data de Nascimento:" textFill="#f2e8c6">
          <font>
             <Font name="Arial" size="16.0" />
          </font>
       </Label>
-      <Label id="lblNascimento" layoutX="213.0" layoutY="224.0" prefHeight="18.0" prefWidth="123.0">
+      <Label fx:id="lblNascimento" layoutX="213.0" layoutY="224.0" prefHeight="18.0" prefWidth="123.0" textFill="#f2e8c6">
          <font>
             <Font name="Arial" size="16.0" />
          </font>
       </Label>
-      <Label id="lblID" layoutX="86.0" layoutY="154.0" prefHeight="18.0" prefWidth="253.0" textFill="WHITE">
+      <Label fx:id="lblID" layoutX="86.0" layoutY="154.0" prefHeight="18.0" prefWidth="253.0" textFill="#f2e8c6">
          <font>
             <Font name="Arial" size="16.0" />
          </font>
       </Label>
-      <Label id="lblEmail" layoutX="111.0" layoutY="187.0" prefHeight="18.0" prefWidth="226.0">
+      <Label fx:id="lblEmail" layoutX="111.0" layoutY="187.0" prefHeight="18.0" prefWidth="226.0" textFill="#f2e8c6">
          <font>
             <Font name="Arial" size="16.0" />
          </font>
@@ -70,15 +70,15 @@
       </Button>
       <ScrollPane layoutX="411.0" layoutY="148.0" prefHeight="308.0" prefWidth="319.0">
          <content>
-            <VBox prefHeight="300.0" prefWidth="318.0" style="-fx-background-color: #03002C;" />
+            <VBox fx:id="vboxHistorico" prefHeight="300.0" prefWidth="318.0" style="-fx-background-color: #03002C;" />
          </content>
       </ScrollPane>
-      <Label layoutX="46.0" layoutY="252.0" style="-fx-font-weight: bold;" text="Número de ingressos Comprados: " textFill="WHITE">
+      <Label layoutX="46.0" layoutY="252.0" style="-fx-font-weight: bold;" text="Número de ingressos Comprados: " textFill="#f2e8c6">
          <font>
             <Font name="Arial" size="16.0" />
          </font>
       </Label>
-      <Label id="lblNumIngressos" layoutX="313.0" layoutY="252.0" prefHeight="20.0" prefWidth="54.0">
+      <Label fx:id="lblNumIngressos" layoutX="313.0" layoutY="252.0" prefHeight="20.0" prefWidth="54.0" textFill="#f2e8c6">
          <font>
             <Font name="Arial" size="16.0" />
          </font>

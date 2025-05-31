@@ -20,9 +20,6 @@ import java.util.ResourceBundle;
 public class PurchaseHistoryController implements Initializable {
 
     @FXML
-    private Label labelContagemResultados;
-
-    @FXML
     private ScrollPane scrollPaneResultados;
 
     @FXML
@@ -73,16 +70,20 @@ public class PurchaseHistoryController implements Initializable {
 
     private void searchResults(List<Client> clientList) {
         containerResultados.getChildren().clear();
-        labelContagemResultados.setText(clientList.size() + " cliente(s) encontrado(s)");
 
         if (clientList.isEmpty()) {
             Label noResultsLabel = new Label("Nenhum cliente encontrado.");
             containerResultados.getChildren().add(noResultsLabel);
             return;
         }
+            
+        Label labelContagemResultados = new Label(clientList.size() + " cliente(s) encontrado(s)");
+        containerResultados.getChildren().add(labelContagemResultados);
+        
+        
 
         for (Client client : clientList) {
-            Label labelNome = new Label("Nome: " + client.getName());
+            Label labelNome = new Label("\nNome: " + client.getName());
             labelNome.setStyle("-fx-text-fill: #f2e8c6 !important; -fx-font-family: Arial !important; -fx-font-size: 14px;");
             Label labelId = new Label("ID: " + client.getId());
             labelId.setStyle("-fx-text-fill: #f2e8c6 !important; -fx-font-family: Arial !important; -fx-font-size: 14px;");
@@ -97,6 +98,9 @@ public class PurchaseHistoryController implements Initializable {
                 // Aqui estamos simulando um Ticket fictício com data atual
                 Ticket ticketSimulado = new Ticket(clienteSelecionado, new Session(LocalDate.now(), Room.room1, new Movie("Titulo", "Terror", 90, "Maior de idade", "Doideira"), 90.0), PaymentMethod.CASH);
                 abrirDetalhesDoRelatorio(ticketSimulado);
+
+                //Trocar Tela
+                MainPurchaseHistory.changeScreen("clientHistory", clienteSelecionado);
             });
 
             VBox caixaEntradaResultado = new VBox(5);
