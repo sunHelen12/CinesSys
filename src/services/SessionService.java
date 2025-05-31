@@ -1,0 +1,111 @@
+package services;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.Objects;
+
+import models.Movie;
+import models.Room;
+import models.Session;
+import repository.SessionRepository;
+import structures.list.GenericDynamicList;
+
+/**
+ * Classe de serviço responsável pela lógica de negócio das sessões de cinema.
+ * Faz validações (data, conflito de horário na mesma sala, campos obrigatórios, etc.)
+ * antes de delegar ao repositório.
+ */
+public class SessionService {
+    private final SessionRepository sessionRepository;
+
+    /**
+     * Construtor do SessionService.
+     *
+     * @param sessionRepository O repositório de sessões a ser utilizado.
+     */
+    public SessionService(SessionRepository sessionRepository){
+        this.sessionRepository = sessionRepository;
+    }
+
+    /**
+     * Cria e adiciona uma nova sessão ao sistema, após realizar validações de negócio.
+     *
+     * @param date        Data da sessão (não pode ser anterior à data atual).
+     * @param time        Horário da sessão (HH:mm:ss).
+     * @param room        Sala onde a sessão ocorrerá (não pode ser {@code null}).
+     * @param movie       Filme que será exibido (não pode ser {@code null}).
+     * @param ticketValue Valor do ticket (não pode ser {@code null} ou negativo).
+     * @throws IllegalArgumentException Se alguma validação falhar:
+     *                                  <ul>
+     *                                    <li>Data anterior à data atual;</li>
+     *                                    <li>Room, Movie ou ticketValue {@code null};</li>
+     *                                    <li>ticketValue menor que zero;</li>
+     *                                    <li>Sessão conflito de horário na mesma sala.</li>
+     *                                  </ul>
+     */
+    public void addSession(LocalDate date, LocalTime time, Room room, Movie movie, Double ticketValue){
+        //Verificação se a data é passada
+        if (date.isBefore(LocalDate.now())) {
+            throw new IllegalArgumentException("A data da sessão não pode ser anterior à data atual!");
+        }
+
+        if (Objects.isNull(room) || Objects.isNull(movie) || Objects.isNull(ticketValue)) {
+            throw new IllegalArgumentException("Os campos 'Room', 'Movie' e 'ticketValue' são obrigatórios!");
+        }
+
+        if (ticketValue < 0) {
+            throw new IllegalArgumentException("O valor do ticket não pode ser negativo!");
+        }
+
+        Session newSession = new Session(date, time, room, movie, ticketValue);
+
+        // Verifica se já existe uma sessão com horário conflitante na mesma sala        
+        GenericDynamicList<Session> sessionsInRoom = sessionRepository.getAll();
+        for(int i = 0; i < sessionsInRoom.size(); i++){
+            if( sessionsInRoom.get(i).getDate().equals(newSession.getDate()) &&
+                sessionsInRoom.get(i).getTime().equals(newSession.getTime())){
+                    throw new IllegalArgumentException("Já existe uma sessão nesse horário para a sala selecionada!");
+            }
+        }
+
+        sessionRepository.add(newSession);
+    }
+
+    /**
+     * Retorna a sessão correspondente ao ID fornecido.
+     *
+     * @param id Código identificador da sessão.
+     * @return A sessão encontrada, ou {@code null} se não existir.
+     */
+    public Session getSessionById(int id){
+        return sessionRepository.getById(id);
+    }
+
+    /**
+     * Retorna todas as sessões cadastradas sem filtro.
+     *
+     * @return Uma GenericDynamicList contendo todas as sessões.
+     */
+    public GenericDynamicList<Session> getAllSessions(){
+        return sessionRepository.getAll();
+    }
+
+    /**
+     * Retorna todas as sessões agendadas para uma dada data.
+     *
+     * @param date Data para filtrar as sessões.
+     * @return Uma GenericDynamicList contendo as sessões cuja data coincide com a informada.
+     */
+    public GenericDynamicList<Session> getSessionsByDate(LocalDate date){
+        return sessionRepository.getByDate(date);
+    }
+    
+    /**
+     * Remove a sessão com o ID especificado.
+     *
+     * @param id Identificador da sessão a ser removida.
+     */
+    public void removeSession(int id){
+        sessionRepository.removeById(id);
+    }
+}
