@@ -10,12 +10,14 @@ public class Client {
     private String name;
     private String email;
     private LocalDate birthday;
+    private int points;
     private GenericDynamicList<Ticket> purchasingHistory;
     
     public Client(String name, String email, LocalDate birthday) {
         this.name = name;
         this.email = email;
         this.birthday = birthday;
+        this.points = 0;
         purchasingHistory = new GenericDynamicList<>();
         id = _idGenerator++;
     }
@@ -34,6 +36,10 @@ public class Client {
 
     public String getBirthday() {
         return birthday + "";
+    }
+
+    public int getPoints() {
+        return points;
     }
 
     public GenericDynamicList<Ticket> getPurchasingHistory() {
@@ -63,6 +69,15 @@ public class Client {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Incrementa os pontos de fidelidade do cliente.
+     *
+     * @param additionalPoints quantidade de pontos a somar
+     */
+    public void addPoints(int additionalPoints) {
+        this.points += additionalPoints;
     }
 
     public String printHistory(){
