@@ -60,7 +60,7 @@ public class MovieController {
     }
 
     private void refreshTable() {
-        ObservableList<Movie> movies = FXCollections.observableArrayList(repository.getAll());
+        ObservableList<Movie> movies = FXCollections.observableArrayList();
         movieTable.setItems(movies);
     }
 
@@ -79,7 +79,7 @@ public class MovieController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/pop_up.fxml"));
             Parent root = loader.load();
 
-            PopUpController controller = loader.getController();
+            PopUpMovieController controller = loader.getController();
             Stage stage = new Stage();
             controller.setStage(stage);
             controller.setMensagemPersonalizada(acao);

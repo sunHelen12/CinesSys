@@ -44,43 +44,43 @@ public class MainViews extends Application {
         FXMLLoader loaderRoomOccupation = new FXMLLoader(getClass().getResource("/gui/RoomOccupation.fxml"));
 
         Parent homeScreen = loaderHomeScreen.load();
-        Scene homeScreenScene = new Scene(homeScreen);
+        homeScreenScene = new Scene(homeScreen);
         
         Parent changeClient = loaderChangeClient.load();
-        Scene changeClientScene = new Scene(changeClient);
+        changeClientScene = new Scene(changeClient);
 
         Parent clientControl = loaderClientControl.load();
-        Scene clientControlScene = new Scene(clientControl);
+        clientControlScene = new Scene(clientControl);
 
         Parent clientHistory = loaderClientHistory.load();
-        Scene clientHistoryScene = new Scene(clientHistory);
+        clientHistoryScene = new Scene(clientHistory);
 
         Parent movieControl = loaderMovieControl.load();
-        Scene movieControlScene = new Scene(movieControl);
+        movieControlScene = new Scene(movieControl);
 
         Parent movieEdit = loaderMovieEdit.load();
-        Scene movieEditScene = new Scene(movieEdit);
+        movieEditScene = new Scene(movieEdit);
 
         Parent occupationRelatory = loaderOccupationRelatory.load();
-        Scene occupationRelatoryScene = new Scene(occupationRelatory);
+        occupationRelatoryScene = new Scene(occupationRelatory);
 
         Parent popUpClient = loaderPopUpClient.load();
-        Scene popUpClientScene = new Scene(popUpClient);
+        popUpClientScene = new Scene(popUpClient);
 
         Parent popUpMovies = loaderPopUpMovies.load();
-        Scene popUpMoviesScene = new Scene(popUpMovies);
+        popUpMoviesScene = new Scene(popUpMovies);
 
         Parent purchaseRelatory = loaderPurchaseRelatory.load();
-        Scene purchaseRelatoryScene = new Scene(purchaseRelatory);
+        purchaseRelatoryScene = new Scene(purchaseRelatory);
 
         Parent registerClient = loaderRegisterClient.load();
-        Scene registerClientScene = new Scene(registerClient);
+        registerClientScene = new Scene(registerClient);
 
         Parent registerMovie = loaderRegisterMovie.load();
-        Scene registerMovieScene = new Scene(registerMovie);
+        registerMovieScene = new Scene(registerMovie);
 
         Parent roomOccupation = loaderRoomOccupation.load();
-        Scene roomOccupationScene = new Scene(roomOccupation);
+        roomOccupationScene = new Scene(roomOccupation);
         
         primaryStage.setScene(homeScreenScene);
         primaryStage.centerOnScreen();

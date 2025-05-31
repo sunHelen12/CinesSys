@@ -12,6 +12,7 @@ import models.*;
 
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -103,7 +104,7 @@ public class PurchaseHistoryController implements Initializable {
                 Client clienteSelecionado = (Client) ((Button) event.getSource()).getUserData();
 
                 // Aqui estamos simulando um Ticket fictício com data atual
-                Ticket ticketSimulado = new Ticket(clienteSelecionado, new Session(LocalDate.now(), Room.room1, new Movie("Titulo", "Terror", 90, "Maior de idade", "Doideira"), 90.0), PaymentMethod.CASH);
+                Ticket ticketSimulado = new Ticket(clienteSelecionado, new Session(LocalDate.now(), LocalTime.now(), Room.room1, new Movie("Titulo", "Terror", 90, "Maior de idade", "Doideira"), 90.0), PaymentMethod.CASH);
                 abrirDetalhesDoRelatorio(ticketSimulado);
 
                 //Trocar Tela

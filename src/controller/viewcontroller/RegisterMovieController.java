@@ -1,6 +1,6 @@
 package controller.viewcontroller;
 
-import controller.PopUpController;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -44,7 +44,7 @@ public class RegisterMovieController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/PopUpMovies.fxml"));
             Parent root = loader.load();
 
-            PopUpController controller = loader.getController();
+            PopUpMovieController controller = loader.getController();
             Stage stage = new Stage();
             controller.setStage(stage);
             controller.setMensagemPersonalizada(acao);

@@ -1,6 +1,7 @@
 package controller.viewcontroller;
 
 import java.net.URL;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -82,9 +83,9 @@ public class OccupationRelatoryController implements Initializable {
 
     //Remover depois
     private void inicializarSessoesParaTeste() throws Exception{
-        sessoesDeTeste.add(new Session(LocalDate.now(), Room.room1, new Movie("Filme 1", "Drama", 231, "10", "Sinopse"), 18.5));
+        sessoesDeTeste.add(new Session(LocalDate.now(), LocalTime.now(), Room.room1, new Movie("Filme 1", "Drama", 231, "10", "Sinopse"), 18.5));
         sessoesDeTeste.add(
-                new Session(LocalDate.now(), Room.room1, new Movie("Filme 2", "Ação", 198, "9.9", "Sinopse"), 25.5));
+                new Session(LocalDate.now(), LocalTime.now(), Room.room1, new Movie("Filme 2", "Ação", 198, "9.9", "Sinopse"), 25.5));
 
         for(Session session:sessoesDeTeste){
             Room.room1.addSession(session);

@@ -1,3 +1,5 @@
+package controller.viewcontroller;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
@@ -5,7 +7,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import java.net.URL;
 import java.util.ResourceBundle;
-import controller.viewcontroller.MainViews;
 
 public class HomeScreenController implements Initializable {
 
