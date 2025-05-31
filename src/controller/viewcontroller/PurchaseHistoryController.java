@@ -19,6 +19,7 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import controller.viewcontroller.MainViews;
+import enums.PaymentMethod;
 
 public class PurchaseHistoryController implements Initializable {
 

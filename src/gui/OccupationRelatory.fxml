@@ -88,7 +88,7 @@
                   </ImageView>
                </graphic>
             </Label>
-            <Button layoutX="1207.0" layoutY="655.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="142.0" style="-fx-background-color: #bb0029; -fx-font-weight: bold;" text="Voltar" textFill="#f2e8c6">
+            <Button layoutX="1148.0" layoutY="649.0" mnemonicParsing="false" onAction="#backRoomOccupation" prefHeight="43.0" prefWidth="142.0" style="-fx-background-color: #bb0029; -fx-font-weight: bold;" text="Voltar" textFill="#f2e8c6">
                <font>
                   <Font name="Arial" size="18.0" />
                </font>

@@ -1,5 +1,7 @@
 package models;
 
+import enums.PaymentMethod;
+
 public class Ticket {
 
     private static int _idGenerator = 1;
