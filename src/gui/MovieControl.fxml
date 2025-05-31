@@ -1,54 +1,95 @@
-<?xml version="1.0" encoding="UTF-8"?> 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.geometry.Insets?>
+<?xml version="1.0" encoding="UTF-8"?>
 
-<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
-            fx:controller="controller.viewcontroller.MovieController">
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
 
-    <!-- Menu lateral -->
-    <left>
-        <VBox spacing="20" style="-fx-background-color: #c8102e;" prefWidth="200" alignment="TOP_CENTER">
-            <padding>
-                <Insets top="20" right="20" bottom="20" left="20"/>
-            </padding>
-            <Label text="CineSys" textFill="white" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
-            <VBox spacing="10">
-                <Button text="Controle de Filmes" prefWidth="160" />
-                <Button text="Controle de Sessões" prefWidth="160" />
-                <Button text="Controle de Clientes" prefWidth="160" />
-                <Button text="Relatórios de Compras" prefWidth="160" />
-                <Button text="Relatório de Ocupação" prefWidth="160" />
-            </VBox>
-        </VBox>
-    </left>
+  This file is available and licensed under the following license:
 
-    <!-- Conteúdo principal -->
-    <center>
-        <VBox spacing="15" style="-fx-background-color: #0c0c3d;">
-            <padding>
-                <Insets top="20" right="20" bottom="20" left="20"/>
-            </padding>
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
 
-            <Label text="Filmes Cadastrados"
-                   textFill="white"
-                   style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
 
-            <TableView fx:id="movieTable" prefHeight="300">
-                <columns>
-                    <TableColumn fx:id="titleColumn" text="Título" prefWidth="100"/>
-                    <TableColumn fx:id="genreColumn" text="Gênero" prefWidth="100"/>
-                    <TableColumn fx:id="durationColumn" text="Duração (min)" prefWidth="100"/>
-                    <TableColumn fx:id="ratingColumn" text="Classificação" prefWidth="100"/>
-                    <TableColumn fx:id="synopsisColumn" text="Sinopse" prefWidth="200"/>
-                </columns>
-            </TableView>
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
 
-            <HBox spacing="20" alignment="CENTER">
-                <Button text="Cadastrar" fx:id="registerButton" style="-fx-background-color: #d62828; -fx-text-fill: white;" />
-                <Button text="Alterar" fx:id="editButton" style="-fx-background-color: #d62828; -fx-text-fill: white;" />
-                <Button text="Excluir" fx:id="deleteButton" style="-fx-background-color: #d62828; -fx-text-fill: white;" />
-            </HBox>
-        </VBox>
-    </center>
-</BorderPane>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="720.0" prefWidth="1320.0" style="-fx-background-color: 03002C;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+  <children>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="720.0" prefWidth="1320.0" style="-fx-background-color: #03002C;" VBox.vgrow="ALWAYS">
+      <children>
+            <AnchorPane prefHeight="720.0" prefWidth="265.0" style="-fx-background-color: #b90028; -fx-background-radius: 2px;">
+               <children>
+              <Label alignment="CENTER" layoutX="13.0" layoutY="14.0" style="-fx-font-weight: bold;" text="CineSys" textAlignment="CENTER" textFill="#f2e8c4" wrapText="false">
+                <font>
+                  <Font name="Arial" size="48.0" />
+                </font>
+              </Label>
+                  <Button layoutX="-13.0" layoutY="113.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="237.0" style="-fx-background-color: #b90028; -fx-font-weight: bold; -fx-border-style: bold;" text="Controle de Filmes" textFill="WHITE">
+                     <font>
+                        <Font name="Arial" size="20.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="1.0" layoutY="166.0" mnemonicParsing="false" style="-fx-background-color: #b90028;" text="Controle de Sessões" textFill="WHITE">
+                     <font>
+                        <Font name="Arial" size="20.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="1.0" layoutY="220.0" mnemonicParsing="false" style="-fx-background-color: #b90028;" text="Controle de Clientes" textFill="WHITE">
+                     <font>
+                        <Font name="Arial" size="20.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="1.0" layoutY="277.0" mnemonicParsing="false" style="-fx-background-color: #b90028;" text="Relatórios de Compras" textFill="WHITE">
+                     <font>
+                        <Font name="Arial" size="20.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="1.0" layoutY="333.0" mnemonicParsing="false" style="-fx-background-color: #b90028;" text="Relatórios de Ocupação" textFill="WHITE">
+                     <font>
+                        <Font name="Arial" size="20.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <Label alignment="CENTER" layoutX="313.0" layoutY="39.0" style="-fx-font-weight: bold;" text="Filmes em Cartaz" textAlignment="CENTER" textFill="#f2e8c4" wrapText="false">
+               <font>
+                  <Font name="Arial" size="38.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="635.0" layoutY="38.0" prefHeight="43.0" prefWidth="617.0" style="-fx-font-weight: bold;" text="- selecione para excluir ou alterar" textAlignment="CENTER" textFill="#f2e8c4" wrapText="false">
+               <font>
+                  <Font name="Arial" size="38.0" />
+               </font>
+            </Label>
+            <CheckBox layoutX="313.0" layoutY="165.0" mnemonicParsing="false" />
+            <CheckBox layoutX="654.0" layoutY="168.0" mnemonicParsing="false" />
+      </children>
+    </AnchorPane>
+  </children>
+</VBox>
