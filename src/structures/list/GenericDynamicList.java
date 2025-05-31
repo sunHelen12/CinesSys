@@ -1,6 +1,8 @@
 package structures.list;
 
 import java.util.NoSuchElementException;
+import java.util.Iterator;
+
 /**
  * Código referente a lista genérica que cresce
  * de forma dinâmica.
@@ -9,7 +11,7 @@ import java.util.NoSuchElementException;
  * @since 25-05-2025
  * @version 1
  */
-public class GenericDynamicList<T> implements Listable<T> {
+public class GenericDynamicList<T> implements Listable<T>, Iterable<T>{
     private Node<T> headPointer;
     private Node<T> tailPointer;
     private int amount;
@@ -254,5 +256,28 @@ public class GenericDynamicList<T> implements Listable<T> {
     @Override
     public int size() {
         return amount;
+    }
+
+    // Implementação do Iterable
+    @Override
+    public Iterator<T> iterator() {
+        return new Iterator<T>() {
+            private Node<T> current = headPointer;
+
+            @Override
+            public boolean hasNext() {
+                return current != null;
+            }
+
+            @Override
+            public T next() {
+                if (current == null) {
+                    throw new NoSuchElementException();
+                }
+                T value = current.getElement();
+                current = current.getNext();
+                return value;
+            }
+        };
     }
 }
