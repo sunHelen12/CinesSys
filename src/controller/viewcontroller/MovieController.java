@@ -1,37 +1,60 @@
 package controller.viewcontroller;
 
+
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.stage.Stage;
-import javafx.fxml.FXMLLoader;
 import models.Movie;
 import repository.MovieRepository;
 
 public class MovieController {
 
     @FXML private TableView<Movie> movieTable;
+    @FXML private TableColumn<Movie, Boolean> selectColumn;
     @FXML private TableColumn<Movie, String> titleColumn;
     @FXML private TableColumn<Movie, String> genreColumn;
-    @FXML private TableColumn<Movie, Integer> durationColumn;
+    @FXML private TableColumn<Movie, String> durationColumn;
     @FXML private TableColumn<Movie, String> ratingColumn;
     @FXML private TableColumn<Movie, String> synopsisColumn;
 
     private final MovieRepository repository = new MovieRepository();
-
+    private final ObservableList<Movie> selectedMovies = FXCollections.observableArrayList();
 
     @FXML
     public void initialize() {
-        titleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
-        genreColumn.setCellValueFactory(new PropertyValueFactory<>("genre"));
-        durationColumn.setCellValueFactory(new PropertyValueFactory<>("duration"));
-        ratingColumn.setCellValueFactory(new PropertyValueFactory<>("classification"));
-        synopsisColumn.setCellValueFactory(new PropertyValueFactory<>("synopsis"));
+        titleColumn.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getTitle()));
+        genreColumn.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getGenre()));
+        ratingColumn.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getClassification()));
+        synopsisColumn.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getSynopsis()));
+
+        durationColumn.setCellValueFactory(cell -> {
+            int durationMin = cell.getValue().getDuration();
+            double durationHours = durationMin / 60.0;
+            return new SimpleStringProperty(String.format("%.2f", durationHours));
+        });
+
+        selectColumn.setCellValueFactory(cellData -> {
+            Movie movie = cellData.getValue();
+            SimpleBooleanProperty selected = new SimpleBooleanProperty(false);
+            selected.addListener((obs, wasSelected, isNowSelected) -> {
+                if (isNowSelected) {
+                    selectedMovies.add(movie);
+                } else {
+                    selectedMovies.remove(movie);
+                }
+            });
+            return selected;
+        });
+        selectColumn.setCellFactory(CheckBoxTableCell.forTableColumn(selectColumn));
 
         refreshTable();
     }
@@ -43,12 +66,12 @@ public class MovieController {
 
     @FXML
     private void handleDelete() {
-        Movie selected = movieTable.getSelectionModel().getSelectedItem();
-        if (selected != null) {
-            repository.removeById(selected.getId());
-            refreshTable();
-            mostrarPopUp("excluído");
+        for (Movie movie : selectedMovies) {
+            repository.removeById(movie.getId());
         }
+        selectedMovies.clear();
+        refreshTable();
+        mostrarPopUp("excluído(s)");
     }
 
     private void mostrarPopUp(String acao) {
