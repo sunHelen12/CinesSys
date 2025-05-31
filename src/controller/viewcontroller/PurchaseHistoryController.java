@@ -46,6 +46,31 @@ public class PurchaseHistoryController implements Initializable {
         MainViews.changeScreen("homeScreen", null);
     }
 
+    @FXML
+    void openClientControl(ActionEvent event) {
+        MainViews.changeScreen("clientControl", null);
+    }
+
+    @FXML
+    void openMovieControl(ActionEvent event) {
+        MainViews.changeScreen("movieControl", null);
+    }
+
+    @FXML
+    void openPurchaseHistory(ActionEvent event) {
+        MainViews.changeScreen("purchaseRelatory", null);
+    }
+
+    @FXML
+    void openRoomOccupation(ActionEvent event) {
+        MainViews.changeScreen("roomOccupation", null);
+    }
+
+    @FXML
+    void openSessionControl(ActionEvent event) {
+        // MainViews.changeScreen("sessionControl", null);
+    }
+
     private void inicializarClientesMock() {
         clients.add(new Client("Vinicius", "vinicius@email.com", LocalDate.now()));
         clients.add(new Client("Maria Eduarda", "mariaeduarda@email.com", LocalDate.now()));

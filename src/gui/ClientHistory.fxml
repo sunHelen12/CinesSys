@@ -75,7 +75,7 @@
             <Font name="Arial" size="18.0" />
          </font>
       </Label>
-      <Button id="bttVoltar" alignment="CENTER" layoutX="1133.0" layoutY="641.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="142.0" style="-fx-font-weight: bold; -fx-background-color: #BB0029;" text="Voltar" textFill="#f2e8c6">
+      <Button id="bttVoltar" alignment="CENTER" layoutX="1133.0" layoutY="641.0" mnemonicParsing="false" onAction="#backPurchase" prefHeight="43.0" prefWidth="142.0" style="-fx-font-weight: bold; -fx-background-color: #BB0029;" text="Voltar" textFill="#f2e8c6">
          <font>
             <Font name="Arial" size="18.0" />
          </font>

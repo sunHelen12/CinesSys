@@ -30,6 +30,11 @@ public class ClientHistoryController implements Initializable {
     @FXML
     private Label lnlNome;
 
+    @FXML
+    void backPurchase(ActionEvent event) {
+        MainViews.changeScreen("purchaseRelatory", null);
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         MainViews.addOnChangeScreenListener(new MainViews.OnChangeScreen() {
