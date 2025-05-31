@@ -4,6 +4,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.VBox;
+import javafx.event.ActionEvent;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -29,7 +32,7 @@ public class ClientHistoryController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Main.addOnChangeScreenListener(new Main.OnChangeScreen() {
+        MainViews.addOnChangeScreenListener(new MainViews.OnChangeScreen() {
             @Override
             public void onScreenChanged(String newScreen, Object userDataObject) {
                 System.out.println(newScreen + ", " + userDataObject);

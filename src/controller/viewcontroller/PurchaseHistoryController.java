@@ -16,6 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import controller.viewcontroller.MainViews;
 
 public class PurchaseHistoryController implements Initializable {
 
@@ -35,6 +37,11 @@ public class PurchaseHistoryController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         inicializarClientesMock();
         addFilter();
+    }
+
+    @FXML
+    void openHomeScreen(ActionEvent event) {
+        MainViews.changeScreen("homeScreen", null);
     }
 
     private void inicializarClientesMock() {
@@ -100,7 +107,7 @@ public class PurchaseHistoryController implements Initializable {
                 abrirDetalhesDoRelatorio(ticketSimulado);
 
                 //Trocar Tela
-                MainPurchaseHistory.changeScreen("clientHistory", clienteSelecionado);
+                MainViews.changeScreen("clientHistory", clienteSelecionado);
             });
 
             VBox caixaEntradaResultado = new VBox(5);

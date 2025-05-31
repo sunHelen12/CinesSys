@@ -7,12 +7,23 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.event.ActionEvent;
 
 public class MainViews extends Application {
     private static Stage stage;
-    private static Scene purchaseRelatoryScene;
+    private static Scene homeScreenScene;
+    private static Scene changeClientScene;
+    private static Scene clientControlScene;
     private static Scene clientHistoryScene;
-
+    private static Scene movieControlScene;
+    private static Scene movieEditScene;
+    private static Scene occupationRelatoryScene;
+    private static Scene popUpClientScene;
+    private static Scene popUpMoviesScene;
+    private static Scene purchaseRelatoryScene;
+    private static Scene registerClientScene;
+    private static Scene registerMovieScene;
+    private static Scene roomOccupationScene;
     @Override
     public void start(Stage primaryStage) throws Exception {
         stage = primaryStage;
@@ -71,7 +82,7 @@ public class MainViews extends Application {
         Parent roomOccupation = loaderRoomOccupation.load();
         Scene roomOccupationScene = new Scene(roomOccupation);
         
-        primaryStage.setScene(homeScreen);
+        primaryStage.setScene(homeScreenScene);
         primaryStage.centerOnScreen();
         primaryStage.show();
     }    
