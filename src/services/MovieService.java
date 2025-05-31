@@ -61,6 +61,8 @@ public class MovieService {
      * 
      * @param id O ID do filme.
      * @return O filme encontrado ou null caso não exista
+     * @throws IllegalArgumentException se o ID for menor ou igual a zero.
+     * @throws RuntimeException         se não existir um filme com esse ID.
      */
     public Movie getMovieById(int id){
         if(id <= 0){
@@ -69,7 +71,7 @@ public class MovieService {
 
         Movie movie = movieRepository.getById(id);
         if(movie == null){
-            throw new RuntimeException("Nenhum filme encontrado com o ID" + id);
+            throw new RuntimeException("Nenhum filme encontrado com o ID " + id);
         }
 
         return movieRepository.getById(id);
@@ -80,6 +82,7 @@ public class MovieService {
      * 
      * @param id O ID do filme.
      * @return true se o filme foi removido, false se não foi encontrado.
+     * @throws IllegalArgumentException se o ID for menor ou igual a zero.
      */
     public boolean removeMovieById(int id){
         if(id <= 0){
