@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="controller.viewcontroller.PopUpMovieController"
+      alignment="CENTER"
+      spacing="30"
+      style="-fx-background-color: #00002A;"
+      prefWidth="500" prefHeight="300">
+
+    <!-- Mensagem principal -->
+    <Label fx:id="mensagemLabel"
+           text=""
+           wrapText="true"
+           style="-fx-font-family: Arial; -fx-font-size: 22px; -fx-text-fill: #FFF1D0;"
+           alignment="CENTER"
+           maxWidth="480"/>
+
+    <!-- Mensagem secundária -->
+    <Label text="Retorne ao Controle de Filmes."
+           style="-fx-font-family: Arial; -fx-font-size: 12px; -fx-text-fill: white;"/>
+
+    <!-- Botão -->
+    <Button text="Voltar"
+            fx:id="okButton"
+            style="-fx-background-color: #B1002D; -fx-text-fill: white; -fx-font-family: Arial; -fx-font-size: 14px;">
+        <padding>
+            <Insets top="5" bottom="5" left="30" right="30"/>
+        </padding>
+    </Button>
+</VBox>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controller.viewcontroller.MovieController">
+
+    <!-- Menu lateral -->
+    <left>
+        <VBox spacing="20" style="-fx-background-color: #c8102e;" prefWidth="200" alignment="TOP_CENTER">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            <Label text="CineSys" textFill="white" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+            <VBox spacing="10">
+                <Button text="Controle de Filmes" prefWidth="160" />
+                <Button text="Controle de Sessões" prefWidth="160" />
+                <Button text="Controle de Clientes" prefWidth="160" />
+                <Button text="Relatórios de Compras" prefWidth="160" />
+                <Button text="Relatório de Ocupação" prefWidth="160" />
+            </VBox>
+        </VBox>
+    </left>
+
+    <!-- Conteúdo principal -->
+    <center>
+        <VBox spacing="15" style="-fx-background-color: #0c0c3d;">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+
+            <Label text="Filmes Cadastrados"
+                   textFill="white"
+                   style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+
+            <TableView fx:id="movieTable" prefHeight="300">
+                <columns>
+                    <TableColumn fx:id="titleColumn" text="Título" prefWidth="100"/>
+                    <TableColumn fx:id="genreColumn" text="Gênero" prefWidth="100"/>
+                    <TableColumn fx:id="durationColumn" text="Duração (min)" prefWidth="100"/>
+                    <TableColumn fx:id="ratingColumn" text="Classificação" prefWidth="100"/>
+                    <TableColumn fx:id="synopsisColumn" text="Sinopse" prefWidth="200"/>
+                </columns>
+            </TableView>
+
+            <HBox spacing="20" alignment="CENTER">
+                <Button text="Cadastrar" fx:id="registerButton" style="-fx-background-color: #d62828; -fx-text-fill: white;" />
+                <Button text="Alterar" fx:id="editButton" style="-fx-background-color: #d62828; -fx-text-fill: white;" />
+                <Button text="Excluir" fx:id="deleteButton" style="-fx-background-color: #d62828; -fx-text-fill: white;" />
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane>

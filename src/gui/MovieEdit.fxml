@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="controller.viewcontroller.EditMovieController"
+      spacing="15"
+      alignment="TOP_CENTER"
+      style="-fx-background-color: #00002A;"
+      prefWidth="600" prefHeight="400">
+
+    <!-- Título -->
+    <Label text="Alterar Filme"
+           style="-fx-font-family: Arial; -fx-font-size: 20px; -fx-text-fill: white; -fx-background-color: #B1002D;"
+           maxWidth="Infinity" alignment="CENTER">
+        <padding>
+            <Insets top="10" bottom="10" left="10" right="10"/>
+        </padding>
+    </Label>
+
+    <!-- Caixa com os campos -->
+    <VBox spacing="10" alignment="TOP_LEFT" style="-fx-background-color: #B1002D;">
+        <padding>
+            <Insets top="15" bottom="15" left="20" right="20"/>
+        </padding>
+
+        <Label text="Preencha os campos que deseja alterar:"
+               style="-fx-font-family: Arial; -fx-font-size: 14px; -fx-text-fill: white;"/>
+
+        <!-- Campos -->
+        <GridPane hgap="10" vgap="8">
+            <columnConstraints>
+                <ColumnConstraints percentWidth="33"/>
+                <ColumnConstraints percentWidth="33"/>
+                <ColumnConstraints percentWidth="33"/>
+            </columnConstraints>
+
+            <!-- Linha 1 -->
+            <Label text="Título:" GridPane.rowIndex="0" GridPane.columnIndex="0"
+                   style="-fx-text-fill: white; -fx-font-family: Arial;"/>
+            <TextField fx:id="titleField" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+
+            <Label text="Duração:" GridPane.rowIndex="0" GridPane.columnIndex="1"
+                   style="-fx-text-fill: white; -fx-font-family: Arial;"/>
+            <TextField fx:id="durationField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+            <Label text="Classificação Indicativa:" GridPane.rowIndex="0" GridPane.columnIndex="2"
+                   style="-fx-text-fill: white; -fx-font-family: Arial;"/>
+            <TextField fx:id="ratingField" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+
+            <!-- Linha 2 -->
+            <Label text="Gênero:" GridPane.rowIndex="2" GridPane.columnIndex="0"
+                   style="-fx-text-fill: white; -fx-font-family: Arial;"/>
+            <TextField fx:id="genreField" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+
+            <Label text="Sinopse:" GridPane.rowIndex="2" GridPane.columnIndex="1"
+                   style="-fx-text-fill: white; -fx-font-family: Arial;"/>
+            <TextField fx:id="synopsisField" GridPane.rowIndex="3" GridPane.columnIndex="1" GridPane.columnSpan="2"/>
+        </GridPane>
+    </VBox>
+
+    <!-- Botões -->
+    <HBox spacing="20" alignment="CENTER">
+        <Button text="Voltar"
+                fx:id="backButton"
+                style="-fx-background-color: #B1002D; -fx-text-fill: white; -fx-font-family: Arial;"/>
+        <Button text="Alterar"
+                fx:id="editButton"
+                style="-fx-background-color: #B1002D; -fx-text-fill: white; -fx-font-family: Arial;"/>
+    </HBox>
+</VBox>
