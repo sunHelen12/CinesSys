@@ -46,7 +46,7 @@ public class HomeScreenController implements Initializable {
 
     @FXML
     void openOccupationRelatory(ActionEvent event) {
-        MainViews.changeScreen("occupationRelatory", null);
+        MainViews.changeScreen("roomOccupation", null);
     }
 
     @FXML

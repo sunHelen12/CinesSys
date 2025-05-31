@@ -13,6 +13,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import java.time.LocalDate;
+import javafx.event.ActionEvent;
 import models.*;
 
 public class OccupationRelatoryController implements Initializable {
@@ -27,6 +28,11 @@ public class OccupationRelatoryController implements Initializable {
     private List<String> filter = new ArrayList<>();
     private ObservableList<String> items;
     
+    @FXML
+    void backRoomOccupation(ActionEvent event) {
+        MainViews.changeScreen("roomOccupation", null);
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
