@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="720.0" maxWidth="1320.0" minHeight="720.0" minWidth="1320.0" prefHeight="720.0" prefWidth="1320.0" style="-fx-background-color: #03002C;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label alignment="CENTER" layoutX="93.0" layoutY="126.0" style="-fx-font-weight: bold;" text="Erro! Não foi possível concluir a venda." textAlignment="CENTER" textFill="#f2e8c4" wrapText="false">
+         <font>
+            <Font name="Arial" size="35.0" />
+         </font>
+      </Label>
+      <Label layoutX="93.0" layoutY="183.0" text="A sala selecionada atingiu sua capacidade máxima, e o limite não pode ser excedido." textFill="#f2e8c6">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="681.0" layoutY="505.0" text="Retorne a Venda de ingressos." textFill="#f2e8c6">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Button layoutX="975.0" layoutY="496.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="142.0" style="-fx-background-color: #F58414; -fx-background-radius: 5px; -fx-font-weight: bold;" text="Voltar" textFill="#f2e8c6">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
