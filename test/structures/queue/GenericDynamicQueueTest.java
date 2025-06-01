@@ -1,5 +1,6 @@
+package structures.queue;
+
 import org.junit.Test;
-import structures.queue.GenericDynamicQueue;
 
 import java.util.NoSuchElementException;
 import static org.junit.Assert.*;
