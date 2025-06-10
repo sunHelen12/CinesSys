@@ -145,7 +145,22 @@ public class GenericDynamicQueue<T> implements Queueable<T>, Iterable<T> {
         return amount == 0;
     }
 
-    // Implementação do Iterable
+    /**
+     * Retorna o tamanho atual da lista.
+     * @return o tamanho da lista.
+     */
+    public int size() {
+        return amount;
+    }
+
+    /**
+     * Retorna um iterador que percorre sequencialmente os elementos da estrutura.
+     * 
+     * @author Maria Eduarda Campos
+     * @return um objeto interator
+     * @throws NoSuchElementException se next() for chamado e não houver mais
+     *                                elementos
+     */
     @Override
     public Iterator<T> iterator() {
         return new Iterator<T>() {
@@ -166,9 +181,5 @@ public class GenericDynamicQueue<T> implements Queueable<T>, Iterable<T> {
                 return value;
             }
         };
-    }
-
-    public int size() {
-        return amount;
     }
 }
