@@ -85,7 +85,7 @@
       </Button>
       <ScrollPane layoutX="555.0" layoutY="225.0" prefHeight="371.0" prefWidth="506.0">
          <content>
-            <VBox prefHeight="371.0" prefWidth="507.0" style="-fx-background-color: #03002C;" />
+            <VBox fx:id="containerResultados" prefHeight="371.0" prefWidth="507.0" style="-fx-background-color: #03002C;" />
          </content>
       </ScrollPane>
    </children>

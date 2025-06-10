@@ -24,6 +24,8 @@ public class MainViews extends Application {
     private static Scene registerClientScene;
     private static Scene registerMovieScene;
     private static Scene roomOccupationScene;
+    private static Scene purchaseRecordScene;
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         stage = primaryStage;
@@ -42,6 +44,7 @@ public class MainViews extends Application {
         FXMLLoader loaderRegisterClient = new FXMLLoader(getClass().getResource("/gui/RegisterClient.fxml"));
         FXMLLoader loaderRegisterMovie = new FXMLLoader(getClass().getResource("/gui/RegisterMovie.fxml"));
         FXMLLoader loaderRoomOccupation = new FXMLLoader(getClass().getResource("/gui/RoomOccupation.fxml"));
+        FXMLLoader loaderPurchaseRecord = new FXMLLoader(getClass().getResource("/gui/PurchaseRecord.fxml"));
 
         Parent homeScreen = loaderHomeScreen.load();
         homeScreenScene = new Scene(homeScreen);
@@ -81,6 +84,9 @@ public class MainViews extends Application {
 
         Parent roomOccupation = loaderRoomOccupation.load();
         roomOccupationScene = new Scene(roomOccupation);
+
+        Parent purchaseRecord = loaderPurchaseRecord.load();
+        purchaseRecordScene = new Scene(purchaseRecord);
         
         primaryStage.setScene(homeScreenScene);
         primaryStage.centerOnScreen();
@@ -93,6 +99,10 @@ public class MainViews extends Application {
                 stage.setScene(changeClientScene);
                 notifyAllListerners("changeClient", userDataObject);
                 break;
+            case "purchaseRecord":
+                stage.setScene(purchaseRecordScene);
+                notifyAllListerners("purchaseRecord", userDataObject);
+              break;
             case "clientControl":
                 stage.setScene(clientControlScene);
                 notifyAllListerners("clientControl", userDataObject);
