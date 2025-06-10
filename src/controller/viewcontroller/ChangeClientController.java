@@ -1,0 +1,26 @@
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
+
+public class ChangeClientController {
+
+    @FXML
+    private TextField boxDate;
+
+    @FXML
+    private TextField boxEmail;
+
+    @FXML
+    private TextField boxName;
+
+    @FXML
+    void backClient(ActionEvent event) {
+        MainViews.changeScreen("clientControl", null);
+    }
+
+    @FXML
+    void changeClient(ActionEvent event) {
+
+    }
+
+}
