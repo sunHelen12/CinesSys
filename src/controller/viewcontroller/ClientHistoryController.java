@@ -7,8 +7,6 @@ import javafx.scene.layout.VBox;
 import javafx.event.ActionEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
-import models.Client;
-import java.net.URL;
 import java.util.ResourceBundle;
 import java.time.format.DateTimeFormatter;
 import javafx.scene.control.Button;
@@ -70,11 +68,12 @@ public class ClientHistoryController implements Initializable {
             Label labelMovie = new Label(ticket.getSession().getMovie().getTitle());
             labelMovie.setStyle(
                     "-fx-text-fill: #f2e8c6 !important; -fx-font-family: Arial !important; -fx-font-size: 14px;");
-            Label labelSession = new Label("Sessão → " + ticket.getSession().getDate().format(formatDate) + " às" + ticket
+            Label labelSession = new Label("Sessão → " + ticket.getSession().getDate().format(formatDate) + " às " + ticket
                     .getSession().getTime().format(timeFormat) + " (Sala "+ ticket.getSession().getRoom().getId() +")");
             labelSession.setStyle(
                     "-fx-text-fill: #f2e8c6 !important; -fx-font-family: Arial !important; -fx-font-size: 14px;");
             Label labelAccess = new Label("Acessar Registro de Compras: ");
+            Label labelEmpty = new Label("");
             labelAccess.setStyle(
                     "-fx-text-fill: #f2e8c6 !important; -fx-font-family: Arial !important; -fx-font-size: 14px;");
 
@@ -83,10 +82,10 @@ public class ClientHistoryController implements Initializable {
             //imageView.setFitWidth(40); 
             //imageView.setFitHeight(40);
 
-            Button botaoAcessar = new Button();
+            Button botaoAcessar = new Button("Registro");
             botaoAcessar.setUserData(ticket);
             //botaoAcessar.setGraphic(imageView); 
-            botaoAcessar.setStyle("-fx-background-color: transparent; -fx-padding: 0; -fx-border-color: transparent;");                    
+            botaoAcessar.setStyle("-fx-background-color:  #D92550; -fx-padding: 0; -fx-border-color:  #D92550; -fx-text-fill: #f2e8c6; -fx-font-weight: bold;");                  
 
             botaoAcessar.setOnAction(event -> {
                 Ticket ticketSelecionado = (Ticket) ((Button) event.getSource()).getUserData();
@@ -95,7 +94,7 @@ public class ClientHistoryController implements Initializable {
 
             VBox caixaEntradaResultado = new VBox(5);
             caixaEntradaResultado.setPadding(new Insets(0, 0, 10, 0));
-            caixaEntradaResultado.getChildren().addAll(labelMovie, labelSession, labelAccess, botaoAcessar);
+            caixaEntradaResultado.getChildren().addAll(labelMovie, labelSession, labelAccess, botaoAcessar, labelEmpty);
 
             containerResultados.getChildren().add(caixaEntradaResultado);
         }

@@ -24,6 +24,8 @@ import enums.PaymentMethod;
 import controller.viewcontroller.HomeScreenController;
 
 public class ClientControlController implements Initializable{
+    private static Client client;
+    
     @FXML
     private VBox containerResultados;
 
@@ -156,6 +158,16 @@ public class ClientControlController implements Initializable{
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        MainViews.addOnChangeScreenListener(new MainViews.OnChangeScreen() {
+            @Override
+            public void onScreenChanged(String newScreen, Object userDataObject) {
+                if (userDataObject instanceof Client) {
+                    client = (Client) userDataObject;
+                    txtBusca.setText(client.getName()); 
+                    search();
+                }
+            }
+        });
         addFilter();
     }
 
