@@ -1,11 +1,16 @@
 package repository;
 
+import models.Session;
 import models.Ticket;
 import structures.list.GenericDynamicList;
 
 /**
  * Repositório para gerenciar os dados dos tickets.
  * Responsável por armazenar, recuperar e remover tickets.
+ * @author Vinícius Nunes de Andrade
+ * @author Thiago Ferreira Ribeiro
+ * @since 11/06/2025
+ * @version 2.0
  */
 public class TicketRepository {
     private GenericDynamicList<Ticket> tickets = new GenericDynamicList<>();
@@ -36,6 +41,34 @@ public class TicketRepository {
             }
         }
         return null;
+    }
+
+    /**
+     * Atualiza um ticket selecionado
+     *
+     * @param id do ticket a ser atualizada
+     * @param ticket novo ticket que será atualizado
+     */
+    public void update(int id, Ticket ticket){
+        if(getById(id) == null)
+            throw new IllegalArgumentException("Sessão não existe!");
+        tickets.update(getIndex(id), ticket);
+    }
+
+    /**
+     * Método auxiliar para pegar o index de um certo ticket
+     *
+     * @param id da sessão
+     * @return se o id existir, retorna o index requerido
+     *         caso não existe, retorna -1
+     */
+    private int getIndex(int id){
+        for(int i = 0; i < tickets.size(); i++){
+            if(tickets.get(i).getId() == id){
+                return i;
+            }
+        }
+        return -1;
     }
 
     /**
