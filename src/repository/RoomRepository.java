@@ -1,11 +1,15 @@
 package repository;
 
+import models.Movie;
 import models.Room;
 import structures.list.GenericDynamicList;
 
 /**
  * Classe que gerencia as salas (Rooms) do cinema.
  * Usamos uma GenericDynamicList como "banco de dados" de salas.
+ * @author Thiago Ferreira Ribeiro
+ * @since 11/06/2025
+ * @version 1.0
  */
 public class RoomRepository {
     private GenericDynamicList<Room> rooms = new GenericDynamicList<>();
