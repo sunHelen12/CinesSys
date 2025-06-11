@@ -13,6 +13,7 @@ import structures.list.GenericDynamicList;
  * Classe de serviço responsável pela lógica de negócio dos clientes.
  * @author Vinícius Nunes de Andrade
  * @author Thiago Ferreira Ribeiro
+ * @author Kaique Silva Sousa
  * @since 11/06/2025
  * @version 2.0
  */
@@ -28,21 +29,28 @@ public class ClientService {
      *
      * @param name     Nome do cliente (não pode ser vazio).
      * @param email    Email do cliente (não pode ser vazio).
-     * @param birthday Data de nascimento (não pode ser nula e deve ser no passado).
+     * @param birthday Data de nascimento (não pode ser nula e deve ser no passado e no formato dd-mm-yyyy).
      * @throws IllegalArgumentException se algum dado estiver inválido.
+     * @return Uma string falando que o cliente foi adicionado.
      */
-    public void addClient(String name, String email, LocalDate birthday){
-        //Verificações básicas
-        if(name == null || name.isBlank()){
-            throw new IllegalAccessError("O nome do cliente não pode ser vazio!");
+    public String addClient(String name, String email, String birthday){
+        if (name == null || birthday == null || email == null) {
+            throw new IllegalArgumentException("Nome, data de nascimento e email não podem ser nulos.");
         }
-        if (email == null || email.isBlank()) {
-            throw new IllegalArgumentException("O email do cliente não pode ser vazio!");
+        else if (name.isEmpty() || birthday.isEmpty() || email.isEmpty()) {
+            throw new IllegalArgumentException("Nome, data de nascimento e email não podem ser vazios.");
+        }
+        else if (!email.contains("@")) {
+            throw new IllegalArgumentException("Email inválido.");
+        }
+        else if (!birthday.matches("\\d{2}-\\d{2}-\\d{4}")) {
+            throw new IllegalArgumentException("Data de nascimento deve estar no formato dd-mm-yyyy.");
         }
 
-        //Cria o cliente e envia para o Repository
-        Client client = new Client(name, email, birthday);
-        clientRepository.add(client);
+        LocalDate birthDateParsed = LocalDate.parse(birthday, java.time.format.DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+        clientRepository.add(new Client(name, email, birthDateParsed));
+
+        return "Cliente registrado com sucesso!";
     }
 
     /**
@@ -59,23 +67,45 @@ public class ClientService {
      * @param id do cliente a ser atualizado
      * @param name     Nome do cliente (não pode ser vazio).
      * @param email    Email do cliente (não pode ser vazio).
-     * @param birthday Data de nascimento (não pode ser nula e deve ser no passado).
+     * @param birthday Data de nascimento (não pode ser nula e deve ser no passado e no formato dd-mm-yyyy).
      * @throws IllegalArgumentException se algum dado estiver inválido.
      */
-    public void updateClient(int id, String name, String email, LocalDate birthday){
+    public void updateClient(int id, String name, String email, String birthday){
         if(clientRepository.getById(id) == null)
             throw new IllegalArgumentException("A sessão selecionada não existe!");
         //Verificações básicas
-        if(name == null || name.isBlank()){
-            throw new IllegalAccessError("O nome do cliente não pode ser vazio!");
+        if (name == null || birthday == null || email == null) {
+            throw new IllegalArgumentException("Nome, data de nascimento e email não podem ser nulos.");
         }
-        if (email == null || email.isBlank()) {
-            throw new IllegalArgumentException("O email do cliente não pode ser vazio!");
+        else if (name.isEmpty() || birthday.isEmpty() || email.isEmpty()) {
+            throw new IllegalArgumentException("Nome, data de nascimento e email não podem ser vazios.");
+        }
+        else if (!email.contains("@")) {
+            throw new IllegalArgumentException("Email inválido.");
+        }
+        else if (!birthday.matches("\\d{2}-\\d{2}-\\d{4}")) {
+            throw new IllegalArgumentException("Data de nascimento deve estar no formato dd-mm-yyyy.");
         }
 
-        Client newClient = new Client(name, email, birthday);
+        LocalDate birthDateParsed = LocalDate.parse(birthday, java.time.format.DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+        Client newClient = new Client(name, email, birthDateParsed);
         clientRepository.update(id, newClient);
     }
+
+    /**
+     * Remove um cliente do sistema pelo ID.
+     * @param id
+     * @return O cliente removido.
+     * @throws IllegalArgumentException se o ID for inválido ou
+     */
+    public Client removClient(int id){
+        Client client = clientRepository.getById(id);
+        if(client == null)
+            throw new IllegalArgumentException("Cliente não encontrado!");
+        clientRepository.removeById(id);
+        return client;
+    }
+
     /**
      * Busca um cliente pelo ID.
      *
