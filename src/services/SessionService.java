@@ -14,6 +14,10 @@ import structures.list.GenericDynamicList;
  * Classe de serviço responsável pela lógica de negócio das sessões de cinema.
  * Faz validações (data, conflito de horário na mesma sala, campos obrigatórios, etc.)
  * antes de delegar ao repositório.
+ * @author Vinícius Nunes de Andrade
+ * @author Thiago Ferreira Ribeiro
+ * @since 11/06/2025
+ * @version 2.0
  */
 public class SessionService {
     private final SessionRepository sessionRepository;
@@ -71,6 +75,22 @@ public class SessionService {
         sessionRepository.add(newSession);
     }
 
+    /**
+     * Atualiza uma sessão selecionada.
+     * @param id da sessão a ser selecionada
+     * @param date        Data da sessão (não pode ser anterior à data atual).
+     * @param time        Horário da sessão (HH:mm:ss).
+     * @param room        Sala onde a sessão ocorrerá (não pode ser {@code null}).
+     * @param movie       Filme que será exibido (não pode ser {@code null}).
+     * @param ticketValue Valor do ticket (não pode ser {@code null} ou negativo).
+     * @throws IllegalArgumentException Se alguma validação falhar:
+     *                                  <ul>
+     *                                    <li>Data anterior à data atual;</li>
+     *                                    <li>Room, Movie ou ticketValue {@code null};</li>
+     *                                    <li>ticketValue menor que zero;</li>
+     *                                    <li>Sessão conflito de horário na mesma sala.</li>
+     *                                  </ul>
+     */
     public void updateSession(int id, LocalDate date, LocalTime time, Room room, Movie movie, Double ticketValue){
         if(sessionRepository.getById(id) == null)
             throw new IllegalArgumentException("A sessão selecionada não existe!");

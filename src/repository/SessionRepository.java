@@ -8,6 +8,7 @@ import structures.list.GenericDynamicList;
 /**
  * Classe que gerencia as sessões (Session) do cinema.
  * Usamos uma GenericDynamicList como "banco de dados".
+ *
  * @author Thiago Ferreira Ribeiro
  * @since 11/06/2025
  * @version 2.0

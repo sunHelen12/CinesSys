@@ -9,6 +9,10 @@ import structures.list.GenericDynamicList;
 
 /**
  * Classe de serviço responsável pela lógica de negócio dos clientes.
+ * @author Vinícius Nunes de Andrade
+ * @author Thiago Ferreira Ribeiro
+ * @since 11/06/2025
+ * @version 2.0
  */
 public class ClientService {
     private final ClientRepository clientRepository;
