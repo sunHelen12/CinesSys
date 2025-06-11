@@ -1,10 +1,15 @@
 package repository;
 
 import models.Client;
+import models.Session;
 import structures.list.GenericDynamicList;
 
 /**
  * Classe que gerencia a coleção de clientes.
+ * @author Vinícius Nunes de Andrade
+ * @author Thiago Ferreira Ribeiro
+ * @since 11/06/2025
+ * @version 2.0
  */
 public class ClientRepository {
     private GenericDynamicList<Client> clients = new GenericDynamicList<>();
@@ -35,6 +40,34 @@ public class ClientRepository {
             }
         }
         return null;
+    }
+
+    /**
+     * Atualiza um cliente selecionado
+     *
+     * @param id do cliente a ser atualizada
+     * @param client novo cliente que será atualizado
+     */
+    public void update(int id, Client client){
+        if(getById(id) == null)
+            throw new IllegalArgumentException("Sessão não existe!");
+        clients.update(getIndex(id), client);
+    }
+
+    /**
+     * Método auxiliar para pegar o index de uma certa sessão
+     *
+     * @param id da sessão
+     * @return se o id existir, retorna o index requerido
+     *         caso não existe, retorna -1
+     */
+    private int getIndex(int id){
+        for(int i = 0; i < clients.size(); i++){
+            if(clients.get(i).getId() == id){
+                return i;
+            }
+        }
+        return -1;
     }
 
     /**
