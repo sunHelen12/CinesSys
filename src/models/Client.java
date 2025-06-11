@@ -35,7 +35,7 @@ public class Client {
     }
 
     public String getBirthday() {
-        return birthday + "";
+        return birthday.format(java.time.format.DateTimeFormatter.ofPattern("dd-MM-yyyy"));
     }
 
     public int getPoints() {
