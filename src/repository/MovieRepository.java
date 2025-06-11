@@ -4,11 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import models.Movie;
+import models.Session;
 import structures.list.GenericDynamicList;
 
 /**
  * Classe que manipula diretamente a lista de filmes.
  * Utiliza a estrutura GenericDynamicList como um banco de dados para armazenar os filmes.
+ * @author Vinícius Nunes de Andrade
+ * @author Thiago Ferreira Ribeiro
+ * @since 11/06/2025
+ * @version 2.0
  */
 public class MovieRepository {
     private GenericDynamicList<Movie> movies = new GenericDynamicList<>();
@@ -39,6 +44,34 @@ public class MovieRepository {
             }
         }
         return null;
+    }
+
+    /**
+     * Atualiza um filme selecionado
+     *
+     * @param id do filme a ser atualizado
+     * @param movie nova sessão que será atualizada
+     */
+    public void update(int id, Movie movie){
+        if(getById(id) == null)
+            throw new IllegalArgumentException("Sessão não existe!");
+        movies.update(getIndex(id), movie);
+    }
+
+    /**
+     * Método auxiliar para pegar o index de um certo filme
+     *
+     * @param id da sessão
+     * @return se o id existir, retorna o index requerido
+     *         caso não existe, retorna -1
+     */
+    private int getIndex(int id){
+        for(int i = 0; i < movies.size(); i++){
+            if(movies.get(i).getId() == id){
+                return i;
+            }
+        }
+        return -1;
     }
 
     /**

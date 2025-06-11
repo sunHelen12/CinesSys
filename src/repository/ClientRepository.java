@@ -57,7 +57,7 @@ public class ClientRepository {
     /**
      * Método auxiliar para pegar o index de uma certa sessão
      *
-     * @param id da sessão
+     * @param id do cliente
      * @return se o id existir, retorna o index requerido
      *         caso não existe, retorna -1
      */
