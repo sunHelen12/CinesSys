@@ -50,7 +50,7 @@ public class ClientRepository {
      */
     public void update(int id, Client client){
         if(getById(id) == null)
-            throw new IllegalArgumentException("Sessão não existe!");
+            throw new IllegalArgumentException("Cliente não existe!");
         clients.update(getIndex(id), client);
     }
 

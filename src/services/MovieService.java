@@ -17,14 +17,14 @@ public class MovieService {
     /**
      * Adiciona um novo filme
      * 
-     * @param title
-     * @param genre
-     * @param duration
-     * @param classification
-     * @param synopsis
+     * @param title título do filme
+     * @param genre gênero do filme
+     * @param duration duração do filme
+     * @param classification classificação indicativa do filme
+     * @param synopsis sinopse do filme
      * @return true se o filme foi adicionado com sucesso, ou false se já existe um filme com o mesmo título ou com duração menor que zero
      */
-    public boolean addMovie(String title, String genre, int duration, String classification, String synopsis){
+    public String addMovie(String title, String genre, int duration, String classification, String synopsis){
         //Verificações básicas
         if(title == null || title.isBlank()){
             throw new IllegalAccessError("O título do filme não pode ser vazio!");
@@ -37,16 +37,46 @@ public class MovieService {
         GenericDynamicList<Movie> existingMovies = movieRepository.getAll();
         for(int i = 0; i < existingMovies.size(); i++){
             if(existingMovies.get(i).getTitle().equalsIgnoreCase(title)){
-                return false; //Indica filme duplicado
+                return "Filme não foi adicionado."; //Indica filme duplicado
             }
         }
 
         //Cria o filme e envia para o Repository
         Movie movie = new Movie(title, genre, duration, classification, synopsis);
         movieRepository.add(movie);
-        return true;
+        return "Filme adicionado com sucesso!";
     }
 
+    /**
+     * Método que atualiza um certo filme
+     * @param id do filme a ser atualizado
+     * @param title titulo do filme atualizado
+     * @param genre genero do filme atualizado
+     * @param duration duração do filme atualizado
+     * @param classification classificação indicativa do filme atualizado
+     * @param synopsis sinopse do filme atualizado
+     * @return {@code Filme adicionado com sucesso} se o filme for adicionado
+     */
+    public String updateMovie(int id, String title, String genre, int duration, String classification, String synopsis){
+        Movie movie = getMovieById(id);
+        if(movie == null)
+            throw new IllegalAccessError("O id do filme não existe!");
+
+        //Verificações básicas
+        if(title == null || title.isBlank()){
+            throw new IllegalAccessError("O título do filme não pode ser vazio!");
+        }
+        if (duration <= 0) {
+            throw new IllegalArgumentException("A duração do filme deve ser maior que zero!");
+        }
+
+        movie.setClassification(classification);
+        movie.setDuration(duration);
+        movie.setGenre(genre);
+        movie.setSynopsis(synopsis);
+        movie.setTitle(title);
+        return "Filme adicionado com sucesso!";
+    }
     /**
      * Retorna a lista de todos os filmes cadastrados.
      * 
