@@ -9,7 +9,7 @@ import structures.list.GenericDynamicList;
  * Classe que gerencia as sessões (Session) do cinema.
  * Usamos uma GenericDynamicList como "banco de dados".
  */
-public class SessionRepository {
+public class    SessionRepository {
     private GenericDynamicList<Session> sessions = new GenericDynamicList<>();
 
     /**
@@ -38,7 +38,35 @@ public class SessionRepository {
             }
         }
         return null;
-    } 
+    }
+
+    /**
+     * Atualiza uma sessão selecionada
+     *
+     * @param id da sessão a ser atualizada
+     * @param session nova sessão que será atualizada
+     */
+    public void update(int id, Session session){
+        if(getById(id) == null)
+            throw new IllegalArgumentException("Sessão não existe!");
+        sessions.update(getIndex(id), session);
+    }
+
+    /**
+     * Método auxiliar para pegar o index de uma certa sessão
+     *
+     * @param id da sessão
+     * @return se o id existir, retorna o index requerido
+     *         caso não existe, retorna -1
+     */
+    private int getIndex(int id){
+        for(int i = 0; i < sessions.size(); i++){
+            if(sessions.get(i).getId() == id){
+                return i;
+            }
+        }
+        return -1;
+    }
 
     /**
      * Retorna todas as sessões agendadas para uma dada data.

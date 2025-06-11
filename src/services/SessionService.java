@@ -71,6 +71,26 @@ public class SessionService {
         sessionRepository.add(newSession);
     }
 
+    public void updateSession(int id, LocalDate date, LocalTime time, Room room, Movie movie, Double ticketValue){
+        if(sessionRepository.getById(id) == null)
+            throw new IllegalArgumentException("A sessão selecionada não existe!");
+        //Verificação se a data é passada
+        if (date.isBefore(LocalDate.now())) {
+            throw new IllegalArgumentException("A data da sessão não pode ser anterior à data atual!");
+        }
+
+        if (Objects.isNull(room) || Objects.isNull(movie) || Objects.isNull(ticketValue)) {
+            throw new IllegalArgumentException("Os campos 'Room', 'Movie' e 'ticketValue' são obrigatórios!");
+        }
+
+        if (ticketValue < 0) {
+            throw new IllegalArgumentException("O valor do ticket não pode ser negativo!");
+        }
+
+        Session newSession = new Session(date, time, room, movie, ticketValue);
+        sessionRepository.update(id, newSession);
+    }
+
     /**
      * Retorna a sessão correspondente ao ID fornecido.
      *
