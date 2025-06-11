@@ -1,26 +1,25 @@
 package services;
 
 import java.time.LocalDate;
-import java.util.Objects;
 
 import models.Client;
-import models.Session;
 import models.Ticket;
 import repository.ClientRepository;
 import structures.list.GenericDynamicList;
 
 /**
  * Classe de serviço responsável pela lógica de negócio dos clientes.
+ *
  * @author Vinícius Nunes de Andrade
  * @author Thiago Ferreira Ribeiro
  * @author Kaique Silva Sousa
- * @since 11/06/2025
  * @version 2.0
+ * @since 11/06/2025
  */
 public class ClientService {
     private final ClientRepository clientRepository;
 
-    public ClientService(ClientRepository clientRepository){
+    public ClientService(ClientRepository clientRepository) {
         this.clientRepository = clientRepository;
     }
 
@@ -30,20 +29,17 @@ public class ClientService {
      * @param name     Nome do cliente (não pode ser vazio).
      * @param email    Email do cliente (não pode ser vazio).
      * @param birthday Data de nascimento (não pode ser nula e deve ser no passado e no formato dd-mm-yyyy).
-     * @throws IllegalArgumentException se algum dado estiver inválido.
      * @return Uma string falando que o cliente foi adicionado.
+     * @throws IllegalArgumentException se algum dado estiver inválido.
      */
-    public String addClient(String name, String email, String birthday){
+    public String addClient(String name, String email, String birthday) {
         if (name == null || birthday == null || email == null) {
             throw new IllegalArgumentException("Nome, data de nascimento e email não podem ser nulos.");
-        }
-        else if (name.isEmpty() || birthday.isEmpty() || email.isEmpty()) {
+        } else if (name.isEmpty() || birthday.isEmpty() || email.isEmpty()) {
             throw new IllegalArgumentException("Nome, data de nascimento e email não podem ser vazios.");
-        }
-        else if (!email.contains("@")) {
+        } else if (!email.contains("@")) {
             throw new IllegalArgumentException("Email inválido.");
-        }
-        else if (!birthday.matches("\\d{2}-\\d{2}-\\d{4}")) {
+        } else if (!birthday.matches("\\d{2}-\\d{2}-\\d{4}")) {
             throw new IllegalArgumentException("Data de nascimento deve estar no formato dd-mm-yyyy.");
         }
 
@@ -58,49 +54,51 @@ public class ClientService {
      *
      * @return Uma GenericDynamicList contendo todos os clientes.
      */
-    public GenericDynamicList<Client> getAllClients(){
+    public GenericDynamicList<Client> getAllClients() {
         return clientRepository.getAll();
     }
 
     /**
+     * Método que atualiza um certo cliente.
      *
-     * @param id do cliente a ser atualizado
+     * @param id       do cliente a ser atualizado
      * @param name     Nome do cliente (não pode ser vazio).
      * @param email    Email do cliente (não pode ser vazio).
      * @param birthday Data de nascimento (não pode ser nula e deve ser no passado e no formato dd-mm-yyyy).
      * @throws IllegalArgumentException se algum dado estiver inválido.
      */
-    public void updateClient(int id, String name, String email, String birthday){
-        if(clientRepository.getById(id) == null)
-            throw new IllegalArgumentException("A sessão selecionada não existe!");
-        //Verificações básicas
+    public void updateClient(int id, String name, String email, String birthday) {
+        Client client = clientRepository.getById(id);
+        if (client == null)
+            throw new IllegalArgumentException("O cliente selecionado não existe!");
         if (name == null || birthday == null || email == null) {
             throw new IllegalArgumentException("Nome, data de nascimento e email não podem ser nulos.");
-        }
-        else if (name.isEmpty() || birthday.isEmpty() || email.isEmpty()) {
+        } else if (name.isEmpty() || birthday.isEmpty() || email.isEmpty()) {
             throw new IllegalArgumentException("Nome, data de nascimento e email não podem ser vazios.");
-        }
-        else if (!email.contains("@")) {
+        } else if (!email.contains("@")) {
             throw new IllegalArgumentException("Email inválido.");
-        }
-        else if (!birthday.matches("\\d{2}-\\d{2}-\\d{4}")) {
+        } else if (!birthday.matches("\\d{2}-\\d{2}-\\d{4}")) {
             throw new IllegalArgumentException("Data de nascimento deve estar no formato dd-mm-yyyy.");
         }
 
         LocalDate birthDateParsed = LocalDate.parse(birthday, java.time.format.DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-        Client newClient = new Client(name, email, birthDateParsed);
-        clientRepository.update(id, newClient);
+
+        // Atualizando o próprio objeto:
+        client.setName(name);
+        client.setEmail(email);
+        client.setBirthday(birthDateParsed);
     }
 
     /**
      * Remove um cliente do sistema pelo ID.
+     *
      * @param id
      * @return O cliente removido.
      * @throws IllegalArgumentException se o ID for inválido ou
      */
-    public Client removClient(int id){
+    public Client removeClient(int id) {
         Client client = clientRepository.getById(id);
-        if(client == null)
+        if (client == null)
             throw new IllegalArgumentException("Cliente não encontrado!");
         clientRepository.removeById(id);
         return client;
@@ -114,14 +112,14 @@ public class ClientService {
      * @throws IllegalArgumentException se o ID for inválido ou
      *                                  {@code RuntimeException} se não encontrar o cliente.
      */
-    public Client getClientById(int id){
-        if(id <= 0){
+    public Client getClientById(int id) {
+        if (id <= 0) {
             throw new IllegalArgumentException("O ID deve ser maior que zero!");
         }
 
-        Client movie = clientRepository.getById(id);
-        if(movie == null){
-            throw new RuntimeException("Nenhum filme encontrado com o ID " + id);
+        Client client = clientRepository.getById(id);
+        if (client == null) {
+            throw new RuntimeException("Nenhum cliente encontrado com o ID " + id);
         }
 
         return clientRepository.getById(id);
@@ -130,8 +128,8 @@ public class ClientService {
     /**
      * Adiciona um ticket ao histórico de compras de um cliente.
      *
-     * @param clientId   ID do cliente que está comprando.
-     * @param ticket     O objeto Ticket a ser adicionado.
+     * @param clientId ID do cliente que está comprando.
+     * @param ticket   O objeto Ticket a ser adicionado.
      * @throws IllegalArgumentException se o cliente não existir ou se o ticket for nulo.
      */
     public void addTicketToClient(int clientId, Ticket ticket) {
