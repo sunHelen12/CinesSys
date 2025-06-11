@@ -1,14 +1,20 @@
 package services;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 import models.Client;
+import models.Session;
 import models.Ticket;
 import repository.ClientRepository;
 import structures.list.GenericDynamicList;
 
 /**
  * Classe de serviço responsável pela lógica de negócio dos clientes.
+ * @author Vinícius Nunes de Andrade
+ * @author Thiago Ferreira Ribeiro
+ * @since 11/06/2025
+ * @version 2.0
  */
 public class ClientService {
     private final ClientRepository clientRepository;
@@ -23,10 +29,9 @@ public class ClientService {
      * @param name     Nome do cliente (não pode ser vazio).
      * @param email    Email do cliente (não pode ser vazio).
      * @param birthday Data de nascimento (não pode ser nula e deve ser no passado).
-     * @return true se o cliente for adicionado com sucesso.
      * @throws IllegalArgumentException se algum dado estiver inválido.
      */
-    public boolean addClient(String name, String email, LocalDate birthday){
+    public void addClient(String name, String email, LocalDate birthday){
         //Verificações básicas
         if(name == null || name.isBlank()){
             throw new IllegalAccessError("O nome do cliente não pode ser vazio!");
@@ -38,7 +43,6 @@ public class ClientService {
         //Cria o cliente e envia para o Repository
         Client client = new Client(name, email, birthday);
         clientRepository.add(client);
-        return true;
     }
 
     /**
@@ -50,6 +54,28 @@ public class ClientService {
         return clientRepository.getAll();
     }
 
+    /**
+     *
+     * @param id do cliente a ser atualizado
+     * @param name     Nome do cliente (não pode ser vazio).
+     * @param email    Email do cliente (não pode ser vazio).
+     * @param birthday Data de nascimento (não pode ser nula e deve ser no passado).
+     * @throws IllegalArgumentException se algum dado estiver inválido.
+     */
+    public void updateClient(int id, String name, String email, LocalDate birthday){
+        if(clientRepository.getById(id) == null)
+            throw new IllegalArgumentException("A sessão selecionada não existe!");
+        //Verificações básicas
+        if(name == null || name.isBlank()){
+            throw new IllegalAccessError("O nome do cliente não pode ser vazio!");
+        }
+        if (email == null || email.isBlank()) {
+            throw new IllegalArgumentException("O email do cliente não pode ser vazio!");
+        }
+
+        Client newClient = new Client(name, email, birthday);
+        clientRepository.update(id, newClient);
+    }
     /**
      * Busca um cliente pelo ID.
      *
