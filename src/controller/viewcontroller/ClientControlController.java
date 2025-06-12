@@ -147,7 +147,6 @@ public class ClientControlController implements Initializable{
             botaoAlterar.setOnAction(event -> {
                 Client clienteSelecionado = (Client) ((Button) event.getSource()).getUserData();
                 MainViews.changeScreen("changeClient", clienteSelecionado);
-                mostrarPopUp("alterado");
             });
 
             VBox caixaEntradaResultado = new VBox(5);

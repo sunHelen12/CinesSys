@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import controller.viewcontroller.MainViews;
 
 public class PopUpClientController {
 
@@ -22,6 +23,7 @@ public class PopUpClientController {
 
     @FXML
     void backClientControl(ActionEvent event) {
+        MainViews.changeScreen("clientControl", null);
         stage.close();
     }
 
