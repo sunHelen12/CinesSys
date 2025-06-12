@@ -92,9 +92,9 @@ public class SessionService {
      *                                  </ul>
      */
     public void updateSession(int id, LocalDate date, LocalTime time, Room room, Movie movie, Double ticketValue){
-        if(sessionRepository.getById(id) == null)
+        Session session = getSessionById(id);
+        if(session == null)
             throw new IllegalArgumentException("A sessão selecionada não existe!");
-        //Verificação se a data é passada
         if (date.isBefore(LocalDate.now())) {
             throw new IllegalArgumentException("A data da sessão não pode ser anterior à data atual!");
         }
@@ -106,9 +106,11 @@ public class SessionService {
         if (ticketValue < 0) {
             throw new IllegalArgumentException("O valor do ticket não pode ser negativo!");
         }
-
-        Session newSession = new Session(date, time, room, movie, ticketValue);
-        sessionRepository.update(id, newSession);
+        session.setMovie(movie);
+        session.setRoom(room);
+        session.setTime(time);
+        session.setDate(date);
+        session.setTicketValue(ticketValue);
     }
 
     /**
