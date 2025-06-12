@@ -66,8 +66,9 @@ public class ClientService {
      * @param email    Email do cliente (não pode ser vazio).
      * @param birthday Data de nascimento (não pode ser nula e deve ser no passado e no formato dd-mm-yyyy).
      * @throws IllegalArgumentException se algum dado estiver inválido.
+     * @return Uma string falando que o cliente foi atualizado.
      */
-    public void updateClient(int id, String name, String email, String birthday) {
+    public String updateClient(int id, String name, String email, String birthday) {
         Client client = clientRepository.getById(id);
         if (client == null)
             throw new IllegalArgumentException("O cliente selecionado não existe!");
@@ -87,6 +88,8 @@ public class ClientService {
         client.setName(name);
         client.setEmail(email);
         client.setBirthday(birthDateParsed);
+
+        return "Cliente atualizado com sucesso!";
     }
 
     /**
