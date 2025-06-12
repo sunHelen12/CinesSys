@@ -101,7 +101,7 @@ public class MovieService {
 
         Movie movie = movieRepository.getById(id);
         if(movie == null){
-            throw new RuntimeException("Nenhum filme encontrado com o ID " + id);
+            throw new IllegalAccessError("Nenhum filme encontrado com o ID " + id);
         }
 
         return movieRepository.getById(id);
