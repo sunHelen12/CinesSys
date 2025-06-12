@@ -147,7 +147,11 @@ public class SessionService {
      *
      * @param id Identificador da sessão a ser removida.
      */
-    public void removeSession(int id){
-        sessionRepository.removeById(id);
+    public Session removeSession(int id){
+        Session sessionReturn = sessionRepository.getById(id);
+        if(!sessionRepository.removeById(id)){
+            throw new IllegalArgumentException("Sessão não existe!");
+        }
+        return sessionReturn;
     }
 }
