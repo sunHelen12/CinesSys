@@ -45,12 +45,8 @@ public class Ticket {
 
     @Override
     public String toString() {
-        return "Ticket " + id + ":" + 
-               "\nClient= " + client.getName() + 
-               "\nSession= " + session.getMovie().getTitle() + 
-               "\nDate= " + session.getDate() + 
-               "\nDuration= " + session.getDuration() +
-               "\nPayment Method= " + paymentMethod;
-    }    
-    
+        return "Ticket para " + session.getMovie().getTitle() +
+                " | Cliente: " + client.getName() +
+                " | Valor pago: R$" + String.format("%.2f", precoFinal);
+    }
 }
