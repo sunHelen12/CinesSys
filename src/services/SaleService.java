@@ -8,7 +8,11 @@ import java.util.List;
 
 /**
  * Classe responsável por realizar o processo de venda de ingressos.
-*/
+ *
+ * @author Helen Santos Rocha
+ * @since 11-06-2025
+ * @version 1.0
+ */
 
 public class SaleService {
 

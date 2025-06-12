@@ -37,7 +37,7 @@ public class Ticket {
         return paymentMethod;
     }
 
-      @Override
+    @Override
     public String toString() {
         return "Ticket " + id + ":" + 
                "\nClient= " + client.getName() + 
