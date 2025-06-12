@@ -7,6 +7,9 @@ import controller.viewcontroller.MainViews;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
+import services.ClientService;
+import models.*;
+import controller.viewcontroller.ClientControlController;
 
 public class ChangeClientController implements Initializable {
     private static Client client;
