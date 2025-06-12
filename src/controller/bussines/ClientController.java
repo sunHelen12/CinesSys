@@ -9,7 +9,7 @@ import structures.list.GenericDynamicList;
 /**
  * Classe de controle para a lógica de negócio dos clientes.
  * @author Kaique Silva Sousa
- * @date 2023-06-11
+ * @since 11/06/2025
  * @version 1.0
  */
 public class ClientController {
