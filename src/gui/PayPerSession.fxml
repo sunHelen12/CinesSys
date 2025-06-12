@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="720.0" maxWidth="1320.0" minHeight="720.0" minWidth="1320.0" prefHeight="720.0" prefWidth="1320.0" style="-fx-background-color: #03002C; -fx-background-radius: 5px; -fx-font-weight: bold;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="720.0" maxWidth="1320.0" minHeight="720.0" minWidth="1320.0" prefHeight="720.0" prefWidth="1320.0" style="-fx-background-color: #03002C; -fx-background-radius: 5px; -fx-font-weight: bold;" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane prefHeight="100.0" prefWidth="1320.0" style="-fx-background-color: #F58414;">
          <children>
@@ -16,44 +16,44 @@
             </Label>
          </children>
       </AnchorPane>
-      <Label alignment="CENTER" layoutX="61.0" layoutY="121.0" style="-fx-font-weight: bold;" text="Filme 1" textAlignment="CENTER" textFill="#f58414" wrapText="false">
+      <Label fx:id="nomeFilme" alignment="CENTER" layoutX="55.0" layoutY="121.0" prefHeight="40.0" prefWidth="214.0" style="-fx-font-weight: bold;" textAlignment="CENTER" textFill="#f58414" wrapText="false">
          <font>
             <Font size="32.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="216.0" layoutY="126.0" style="-fx-font-weight: bold;" text="Sessão: 23/09 - 08:00" textAlignment="CENTER" textFill="#f2e8c4" wrapText="false">
+      <Label alignment="CENTER" layoutX="280.0" layoutY="127.0" style="-fx-font-weight: bold;" text="Sessão: " textAlignment="CENTER" textFill="#f2e8c4" wrapText="false">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="57.0" layoutY="187.0" style="-fx-font-weight: bold;" text="Ingressos Vendidos: 113" textAlignment="CENTER" textFill="#f2e8c4" wrapText="false">
+      <Label alignment="CENTER" layoutX="57.0" layoutY="187.0" style="-fx-font-weight: bold;" text="Ingressos Vendidos: " textAlignment="CENTER" textFill="#f2e8c4" wrapText="false">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="55.0" layoutY="231.0" style="-fx-font-weight: bold;" text="Valor Total Arrecadado: R$ 3,390" textAlignment="CENTER" textFill="#f2e8c4" wrapText="false">
+      <Label alignment="CENTER" layoutX="55.0" layoutY="231.0" style="-fx-font-weight: bold;" text="Valor Total Arrecadado: R$ " textAlignment="CENTER" textFill="#f2e8c4" wrapText="false">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="517.0" layoutY="187.0" style="-fx-font-weight: bold;" text="Assentos: 200" textAlignment="CENTER" textFill="#f2e8c4" wrapText="false">
+      <Label alignment="CENTER" layoutX="517.0" layoutY="187.0" style="-fx-font-weight: bold;" text="Assentos: " textAlignment="CENTER" textFill="#f2e8c4" wrapText="false">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="517.0" layoutY="231.0" style="-fx-font-weight: bold;" text="Assentos:Duração: 1h45min 200" textAlignment="CENTER" textFill="#f2e8c4" wrapText="false">
+      <Label alignment="CENTER" layoutX="517.0" layoutY="231.0" style="-fx-font-weight: bold;" text="Duração: " textAlignment="CENTER" textFill="#f2e8c4" wrapText="false">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="920.0" layoutY="187.0" style="-fx-font-weight: bold;" text="Valor do Ingresso: R$ 30,00" textAlignment="CENTER" textFill="#f2e8c4" wrapText="false">
+      <Label alignment="CENTER" layoutX="920.0" layoutY="187.0" style="-fx-font-weight: bold;" text="Valor do Ingresso: R$ " textAlignment="CENTER" textFill="#f2e8c4" wrapText="false">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
       <Label alignment="CENTER" layoutX="55.0" layoutY="288.0" style="-fx-font-weight: bold;" text="Mapa de Assentos:" textAlignment="CENTER" textFill="#f2e8c4" wrapText="false">
          <font>
-            <Font size="20.0" />
+            <Font name="Arial" size="20.0" />
          </font>
       </Label>
       <Button layoutX="1046.0" layoutY="566.0" mnemonicParsing="false" onAction="#voltar" prefHeight="43.0" prefWidth="142.0" style="-fx-background-color: #F58414;" styleClass="-fx" text="Voltar" textFill="#f2e8c4">
@@ -61,6 +61,35 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <Label fx:id="assentos" layoutX="54.0" layoutY="360.0" prefHeight="178.0" prefWidth="565.0" />
+      <Label fx:id="mapaAssentos" layoutX="54.0" layoutY="360.0" prefHeight="178.0" prefWidth="565.0" />
+      <Label fx:id="ingressosVendidos" layoutX="293.0" layoutY="189.0" prefHeight="16.0" prefWidth="160.0" textFill="#f2e8c4">
+         <font>
+            <Font name="Arial" size="18.0" />
+         </font></Label>
+      <Label fx:id="ValorArrecadado" layoutX="367.0" layoutY="233.0" prefHeight="21.0" prefWidth="142.0" textFill="#f2e8c4">
+         <font>
+            <Font name="Arial" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="duracao" layoutX="626.0" layoutY="233.0" prefHeight="16.0" prefWidth="160.0" textFill="#f2e8c4">
+         <font>
+            <Font name="Arial" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="valorIngresso" layoutX="1170.0" layoutY="190.0" prefHeight="16.0" prefWidth="160.0" text="Label" textFill="#f2e8c4">
+         <font>
+            <Font name="Arial" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="dataHorario" layoutX="415.0" layoutY="128.0" prefHeight="21.0" prefWidth="205.0" textFill="#f2e8c4">
+         <font>
+            <Font name="Arial" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="assentos" layoutX="635.0" layoutY="193.0" prefHeight="16.0" prefWidth="160.0" textFill="#f2e8c4">
+         <font>
+            <Font name="Arial" size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
