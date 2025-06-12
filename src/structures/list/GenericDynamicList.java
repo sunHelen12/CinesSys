@@ -7,7 +7,7 @@ import java.util.Iterator;
  * Código referente a lista genérica que cresce
  * de forma dinâmica.
  *
- * @author Vinícius Nunes de Andrade
+ * @author Vinícius Nunes de Andrade e Maria Eduarda Campos
  * @since 25-05-2025
  * @version 2
  */
@@ -260,7 +260,6 @@ public class GenericDynamicList<T> implements Listable<T>, Iterable<T>{
 
     /**
      * Retorna um iterador que percorre sequencialmente os elementos da estrutura.
-     * @author Maria Eduarda Campos
      * @return um objeto interator
      * @throws NoSuchElementException se next() for chamado e não houver mais
      *                                elementos
