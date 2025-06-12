@@ -6,13 +6,15 @@ public class Ticket {
 
     private static int _idGenerator = 1;
     private int id;
+    private double precoFinal;
     private Client client;
     private Session session;    
     private PaymentMethod paymentMethod;
 
-    public Ticket(Client client, Session session, PaymentMethod paymentMethod) {
+    public Ticket(Client client, Session session, double precoFinal, PaymentMethod paymentMethod) {
         this.client = client;
         this.session = session;
+        this.precoFinal = precoFinal;
         this.paymentMethod = paymentMethod;
         this.id = _idGenerator++;
     }
@@ -23,6 +25,10 @@ public class Ticket {
 
     public int getId() {
         return id;
+    }
+
+    public double getPrecoFinal() {
+        return precoFinal;
     }
 
     public Client getClient() {
