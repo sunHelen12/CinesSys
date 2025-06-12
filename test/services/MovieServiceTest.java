@@ -101,13 +101,11 @@ public class MovieServiceTest {
 
     @Test
     public void testUpdateMovieSuccessfully() {
-        // Adiciona um filme
         String result = movieService.addMovie("Inception", "Sci-Fi", 148, "PG-13", "A mind-bending thriller");
         assertEquals("Filme adicionado com sucesso!", result);
 
         Movie addedMovie = movieService.getAllMovies().get(0);
 
-        // Atualiza o filme
         String updateResult = movieService.updateMovie(
                 addedMovie.getId(),
                 "Inception Updated",
@@ -118,7 +116,6 @@ public class MovieServiceTest {
         );
         assertEquals("Filme adicionado com sucesso!", updateResult);
 
-        // Verifica atualização
         Movie updatedMovie = movieService.getMovieById(addedMovie.getId());
         assertEquals("Inception Updated", updatedMovie.getTitle());
         assertEquals("Action", updatedMovie.getGenre());
