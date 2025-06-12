@@ -4,11 +4,6 @@ import structures.queue.GenericDynamicQueue;
 
 public class Room {
     private static int _idGenerator = 1;
-    public static final Room room1 = new Room(200);
-    public static final Room room2 = new Room(150);
-    public static final Room room3 = new Room(170);
-    public static final Room room4 = new Room(100);
-    public static final Room room5 = new Room(120);
     private int id;
     private int totalSeat;
     private GenericDynamicQueue<Session> sessions;

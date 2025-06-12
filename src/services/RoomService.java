@@ -8,6 +8,9 @@ import structures.list.GenericDynamicList;
 /**
  * Classe de serviço responsável pela lógica de negócios
  * relacionada às salas (Room) do cinema.
+ * 
+ * @author Thiago Ferreira Ribeiro
+ * @author Kaique Silva Sousa
  */
 public class RoomService {
     private final RoomRepository roomRepository;
@@ -19,6 +22,11 @@ public class RoomService {
      */
     public RoomService (RoomRepository roomRepository){
         this.roomRepository = roomRepository;
+        addRoom(200);
+        addRoom(150);
+        addRoom(170);
+        addRoom(100);
+        addRoom(120);
     }
 
     /**
@@ -27,7 +35,7 @@ public class RoomService {
      * @param totalSeat Quantidade total de assentos da sala.
      * @return true se a sala foi adicionada com sucesso.
      */
-    public boolean addRoom(int totalSeat){
+    private boolean addRoom(int totalSeat){
         if (totalSeat <= 0) {
             System.out.println("O número total de assentos deve ser maior que zero!");
             return false;
@@ -69,27 +77,6 @@ public class RoomService {
     }
 
     /**
-     * Remove uma sala pelo ID, se ela não tiver sessões pendentes.
-     *
-     * @param id O ID da sala a ser removida.
-     * @return true se a sala foi removida; false se houver sessões na fila.
-     * @throws IllegalArgumentException se o ID for menor ou igual a zero.
-     */
-    public boolean removeRoomById(int id){
-        if(id <= 0){
-            throw new IllegalArgumentException("O ID deve ser maior que zero!");
-        }
-
-        Room room = roomRepository.getById(id);
-        if (room.getSessions().size() > 0) {
-            System.out.println("Não é possível remover a sala " + id + " pois ela possui sessões agendadas!");
-            return false;
-        }
-
-        return roomRepository.removeById(id);
-    }
-
-    /**
      * Enfileira (adiciona) uma sessão na sala indicada.
      *
      * @param roomId  ID da sala onde deseja agendar a sessão.
@@ -117,6 +104,12 @@ public class RoomService {
         }
     }
 
+    /**
+     * Remove a próxima sessão da sala indicada.
+     * @param roomId
+     * @throws IllegalArgumentException se o ID da sala for inválido.
+     * @return A sessão removida.
+     */
     public Session removeNextSessionFromRoom(int roomId){
         if (roomId <= 0) {
             throw new IllegalArgumentException("O ID da sala deve ser maior que zero!");

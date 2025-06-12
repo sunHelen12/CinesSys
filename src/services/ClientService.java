@@ -17,11 +17,7 @@ import structures.list.GenericDynamicList;
  * @since 11/06/2025
  */
 public class ClientService {
-    private final ClientRepository clientRepository;
-
-    public ClientService(ClientRepository clientRepository) {
-        this.clientRepository = clientRepository;
-    }
+    private static final ClientRepository clientRepository = new ClientRepository();
 
     /**
      * Cria e adiciona um novo cliente ao sistema.
@@ -32,7 +28,7 @@ public class ClientService {
      * @return Uma string falando que o cliente foi adicionado.
      * @throws IllegalArgumentException se algum dado estiver inválido.
      */
-    public String addClient(String name, String email, String birthday) {
+    public static String addClient(String name, String email, String birthday) {
         if (name == null || birthday == null || email == null) {
             throw new IllegalArgumentException("Nome, data de nascimento e email não podem ser nulos.");
         } else if (name.isEmpty() || birthday.isEmpty() || email.isEmpty()) {
@@ -54,7 +50,7 @@ public class ClientService {
      *
      * @return Uma GenericDynamicList contendo todos os clientes.
      */
-    public GenericDynamicList<Client> getAllClients() {
+    public static GenericDynamicList<Client> getAllClients() {
         return clientRepository.getAll();
     }
 
@@ -68,7 +64,7 @@ public class ClientService {
      * @throws IllegalArgumentException se algum dado estiver inválido.
      * @return Uma string falando que o cliente foi atualizado.
      */
-    public String updateClient(int id, String name, String email, String birthday) {
+    public static String updateClient(int id, String name, String email, String birthday) {
         Client client = clientRepository.getById(id);
         if (client == null)
             throw new IllegalArgumentException("O cliente selecionado não existe!");
@@ -99,7 +95,7 @@ public class ClientService {
      * @return O cliente removido.
      * @throws IllegalArgumentException se o ID for inválido ou
      */
-    public Client removeClient(int id) {
+    public static Client removeClient(int id) {
         Client client = clientRepository.getById(id);
         if (client == null)
             throw new IllegalArgumentException("Cliente não encontrado!");
@@ -115,7 +111,7 @@ public class ClientService {
      * @throws IllegalArgumentException se o ID for inválido ou
      *                                  {@code RuntimeException} se não encontrar o cliente.
      */
-    public Client getClientById(int id) {
+    public static Client getClientById(int id) {
         if (id <= 0) {
             throw new IllegalArgumentException("O ID deve ser maior que zero!");
         }
@@ -135,7 +131,7 @@ public class ClientService {
      * @param ticket   O objeto Ticket a ser adicionado.
      * @throws IllegalArgumentException se o cliente não existir ou se o ticket for nulo.
      */
-    public void addTicketToClient(int clientId, Ticket ticket) {
+    public static void addTicketToClient(int clientId, Ticket ticket) {
         if (ticket == null) {
             throw new IllegalArgumentException("O ticket não pode ser nulo!");
         }
@@ -150,7 +146,7 @@ public class ClientService {
      * @return Uma GenericDynamicList de Tickets do cliente.
      * @throws IllegalArgumentException se o ID for inválido ou cliente não existir.
      */
-    public GenericDynamicList<Ticket> getClientHistory(int clientId) {
+    public static GenericDynamicList<Ticket> getClientHistory(int clientId) {
         Client client = getClientById(clientId);
         return client.getPurchasingHistory();
     }
