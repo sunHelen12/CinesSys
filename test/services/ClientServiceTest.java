@@ -14,11 +14,10 @@ import java.time.LocalTime;
 import static org.junit.Assert.*;
 
 public class ClientServiceTest {
-    private ClientService service;
+
 
     @Before
     public void setup() {
-        ClientRepository repository = new ClientRepository();
         service = new ClientService(repository);
     }
 
