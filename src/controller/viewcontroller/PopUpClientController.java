@@ -1,6 +1,9 @@
+package controller.viewcontroller;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 
 public class PopUpClientController {
 
@@ -10,7 +13,7 @@ public class PopUpClientController {
     private Stage stage;
 
     public void setMensagemPersonalizada(String mensagem) {
-        mensagemLabel.setText("Cliente " + mensagem + " com Sucesso!");
+        lblMsg.setText("Cliente " + mensagem + " com Sucesso!");
     }
 
     public void setStage(Stage stage) {

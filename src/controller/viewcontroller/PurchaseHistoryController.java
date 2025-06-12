@@ -9,7 +9,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import models.*;
-import repository.*;
+import services.*;
 
 import java.net.URL;
 import java.time.LocalDate;
@@ -84,7 +84,7 @@ public class PurchaseHistoryController implements Initializable {
         List<Client> searchResultsList = new ArrayList<>();
 
         if (!searchTerm.isEmpty()) {
-            for (Client client : HomeScreenController.clientRepository.getAll()) {
+            for (Client client : ClientService.getAllClients()) {
                 if (client.getName().toLowerCase(Locale.ROOT).contains(searchTerm)) {
                     searchResultsList.add(client);
                 }

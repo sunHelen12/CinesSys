@@ -5,9 +5,16 @@ import javafx.fxml.Initializable;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.*;
+import javafx.geometry.Insets;
 
-import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import javafx.scene.control.Label;
+import javafx.scene.control.Button;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -17,8 +24,10 @@ import java.util.List;
 
 import controller.viewcontroller.HomeScreenController;
 import controller.viewcontroller.MainViews;
+import controller.viewcontroller.PopUpClientController;
 import enums.PaymentMethod;
 import services.*;
+import services.ClientService;
 import models.*;
 
 /**
@@ -155,9 +164,9 @@ public class ClientControlController implements Initializable{
      * 
      * @param acao String indicando a ação que foi executada.
      */
-    public void mostrarPopUp(String acao) {
+    public static void mostrarPopUp(String acao) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/PopUpClient.fxml"));
+            FXMLLoader loader = new FXMLLoader(ClientControlController.class.getResource("/gui/PopUpClient.fxml"));
             Parent root = loader.load();
 
             PopUpClientController controller = loader.getController();
