@@ -8,9 +8,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
-import models.*;
-import repository.*;
-
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -22,6 +19,8 @@ import javafx.event.ActionEvent;
 import controller.viewcontroller.MainViews;
 import enums.PaymentMethod;
 import controller.viewcontroller.HomeScreenController;
+import models.*;
+import repository.*;
 
 public class ClientControlController implements Initializable{
     private static Client client;
@@ -94,9 +93,7 @@ public class ClientControlController implements Initializable{
 
             botaoExcluir.setOnAction(event -> {
                 Client clienteSelecionado = (Client) ((Button) event.getSource()).getUserData();
-                // Mostrar PopUp
-                //MainViews.changeScreen("", null);
-                //acessar pelo repository e excluir
+                //ClientController.deleteClient(clienteSelecionado.getId());
             });
 
             botaoAlterar.setOnAction(event -> {

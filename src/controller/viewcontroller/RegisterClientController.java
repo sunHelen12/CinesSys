@@ -12,13 +12,29 @@ import repository.*;
 
 public class RegisterClientController {
     @FXML
+    private TextField enterDate;
+
+    @FXML
+    private TextField enterEmail;
+
+    @FXML
+    private TextField enterName;
+    
+    @FXML
     void backClient(ActionEvent event) {
         MainViews.changeScreen("clientControl", null);
     }
 
     @FXML
     void registerClient(ActionEvent event) {
-        //repository.ClientRepository.add();
-    }
+        String name = enterName.getText().trim();
+        String email = enterEmail.getText().trim();
+        String date = enterDate.getText().trim();
 
+        if (name.isEmpty() || email.isEmpty() || date.isEmpty()) {
+            return;
+        }
+
+        //Cadastrar Cliente
+    }
 }
