@@ -26,6 +26,17 @@ public class Session {
         this.ticketValue = ticketValue;
     }
 
+    public Session(LocalDate date, LocalTime time, Room room, Movie movie, Double ticketValue, int totalAvailableSeats) {
+        this.id = idGenerator++;
+        this.date = date;
+        this.time = time;
+        this.room = room;
+        this.duration = movie.getDuration();
+        this.totalAvailableSeats = totalAvailableSeats;
+        this.movie = movie;
+        this.ticketValue = ticketValue;
+    }
+
     public LocalDate getDate() {
         return date;
     }
