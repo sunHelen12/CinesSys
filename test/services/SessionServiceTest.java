@@ -4,7 +4,7 @@ import models.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import controller.bussines.RoomController;
+import controller.business.RoomController;
 import repository.SessionRepository;
 
 import java.time.LocalDate;

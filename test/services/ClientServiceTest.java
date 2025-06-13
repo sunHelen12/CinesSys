@@ -8,7 +8,7 @@ import repository.RoomRepository;
 import org.junit.Before;
 import org.junit.Test;
 
-import controller.bussines.RoomController;
+import controller.business.RoomController;
 import structures.list.GenericDynamicList;
 
 import java.time.LocalDate;
@@ -149,6 +149,5 @@ public class ClientServiceTest {
             )
         );
         clientService.addTicketToClient(client.getId(), new Ticket(client, new Session(LocalDate.now(), LocalTime.now(), new Room(1, 100, 100, 100), new Movie("Filme", "Ação", 120, "Diretor", "Sinopse"), 30.0), 30.0, PaymentMethod.CREDIT_CARD));
-        clientService.addTicketTo
     }
 }
