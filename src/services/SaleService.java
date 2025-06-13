@@ -6,6 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * @author Helen Santos Rocha
+ * @since 11/06/2025
+ * @version 1.0
+ *
  * Classe responsável por realizar o processo de venda de ingressos em lote.
  * Cada venda respeita o sistema de fidelidade implementado no TicketService.
  */
