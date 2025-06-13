@@ -16,6 +16,10 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import java.time.LocalDate;
 import javafx.event.ActionEvent;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Font;
 import models.*;
 
 public class OccupationRelatoryController implements Initializable {
@@ -116,13 +120,22 @@ public class OccupationRelatoryController implements Initializable {
         containerFiltragem.getChildren().clear();
 
         if ("Filme".equals(selecionado)) {
-            for (Session session : RoomController.getRoomById(1).getSessions()) {
-                Label labelAux = new Label(
-                        session.getMovie().getTitle() + " - " + "Ocupação Média: " + 
-                        ((RoomController.getRoomById(1).getTotalSeat() - session.getTotalAvailableSeats()) / RoomController.getRoomById(1).getTotalSeat()) +"\n");
-                labelAux.setStyle("-fx-font-family: Arial; -fx-text-fill: #f2e8c6;");
-                containerFiltragem.getChildren().add(labelAux);
-                System.out.println("Filme X adicionado");
+            for (Session session : room.getSessions()) {
+                String movieTitle = session.getMovie().getTitle();
+                double ocupacao = ((double)(room.getTotalSeat() - session.getTotalAvailableSeats()) / room.getTotalSeat()) * 100;
+
+                Text titleText = new Text(movieTitle + " ");
+                titleText.setFont(Font.font("Arial", FontWeight.BOLD, 18));
+                titleText.setFill(javafx.scene.paint.Color.web("#f2e8c6"));
+
+                Text ocupacaoText = new Text("- Ocupação Média: " + String.format("%.1f", ocupacao) + "%\n");
+                ocupacaoText.setFont(Font.font("Arial", 18));
+                ocupacaoText.setFill(javafx.scene.paint.Color.web("#f2e8c6"));
+
+                TextFlow textFlow = new TextFlow(titleText, ocupacaoText);
+
+                containerFiltragem.getChildren().add(textFlow);
+                System.out.println("Filme " + movieTitle + " adicionado");
             }
         } else if ("Data".equals(selecionado)) {
             Label labelAux = new Label("Data");
