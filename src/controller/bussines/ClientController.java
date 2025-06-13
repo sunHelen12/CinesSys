@@ -66,7 +66,7 @@ public class ClientController {
     public static void addTicketToClient(int clientId, Ticket ticket) {
         clientService.addTicketToClient(clientId, ticket);
     }
-
+ 
     /**
      * Pega o histórico de compras de um cliente chamando o método getClientHistory da classe ClientService.
      * @param clientId ID do cliente.
