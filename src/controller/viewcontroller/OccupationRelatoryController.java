@@ -5,6 +5,8 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+
+import controller.bussines.RoomController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -63,10 +65,10 @@ public class OccupationRelatoryController implements Initializable {
         containerFiltragem.getChildren().clear();
 
         if ("Filme".equals(selecionado)) {
-            for (Session session : Room.room1.getSessions()) {
+            for (Session session : RoomController.getRoomById(1).getSessions()) {
                 Label labelAux = new Label(
                         session.getMovie().getTitle() + " - " + "Ocupação Média: " + 
-                        ((Room.room1.getTotalSeat() - session.getTotalAvailableSeats()) / Room.room1.getTotalSeat()) +"\n");
+                        ((RoomController.getRoomById(1).getTotalSeat() - session.getTotalAvailableSeats()) / RoomController.getRoomById(1).getTotalSeat()) +"\n");
                 labelAux.setStyle("-fx-font-family: Arial; -fx-text-fill: #f2e8c6;");
                 containerFiltragem.getChildren().add(labelAux);
                 System.out.println("Filme X adicionado");
@@ -89,12 +91,12 @@ public class OccupationRelatoryController implements Initializable {
 
     //Remover depois
     private void inicializarSessoesParaTeste() throws Exception{
-        sessoesDeTeste.add(new Session(LocalDate.now(), LocalTime.now(), Room.room1, new Movie("Filme 1", "Drama", 231, "10", "Sinopse"), 18.5));
+        sessoesDeTeste.add(new Session(LocalDate.now(), LocalTime.now(), RoomController.getRoomById(1), new Movie("Filme 1", "Drama", 231, "10", "Sinopse"), 18.5));
         sessoesDeTeste.add(
-                new Session(LocalDate.now(), LocalTime.now(), Room.room1, new Movie("Filme 2", "Ação", 198, "9.9", "Sinopse"), 25.5));
+                new Session(LocalDate.now(), LocalTime.now(), RoomController.getRoomById(1), new Movie("Filme 2", "Ação", 198, "9.9", "Sinopse"), 25.5));
 
         for(Session session:sessoesDeTeste){
-            Room.room1.addSession(session);
+            RoomController.getRoomById(1).addSession(session);
         }
 
     }
