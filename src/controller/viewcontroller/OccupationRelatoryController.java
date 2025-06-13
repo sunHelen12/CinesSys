@@ -26,6 +26,9 @@ public class OccupationRelatoryController implements Initializable {
     private Label roomName;
 
     @FXML
+    private Label totalSeat;
+
+    @FXML
     private VBox containerFiltragem;
     
     @FXML
@@ -61,8 +64,9 @@ public class OccupationRelatoryController implements Initializable {
 
     private void updateRoomSpecificUI() {
         if (room != null) { 
+            totalSeat.setText(room.getTotalSeat()+"");
             if (room.getId() == 1) {
-                roomName.setText("Sala 1");
+                roomName.setText("Sala 1"); 
             } else if (room.getId() == 2) {
                 roomName.setText("Sala 2");
             } else if (room.getId() == 3) {

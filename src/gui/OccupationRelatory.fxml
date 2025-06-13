@@ -71,7 +71,7 @@
                   </ImageView>
                </graphic>
             </Label>
-            <Label alignment="CENTER" layoutX="356.0" layoutY="152.0" style="-fx-font-weight: bold;" text="Número de Assentos: 250" textAlignment="CENTER" textFill="#f2e8c6" wrapText="false">
+            <Label alignment="CENTER" layoutX="356.0" layoutY="152.0" prefHeight="23.0" prefWidth="213.0" style="-fx-font-weight: bold;" text="Número de Assentos: " textAlignment="CENTER" textFill="#f2e8c6" wrapText="false">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>
@@ -103,6 +103,11 @@
                </cursor>
             </ComboBox>
             <Polyline fill="#03002c" layoutX="545.0" layoutY="302.0" points="-21.25, -37.25, 2.75, -37.25, -8.75, -27.0, -21.25, -37.25" stroke="#03002c" strokeType="INSIDE" />
+            <Label fx:id="totalSeat" alignment="CENTER" layoutX="577.0" layoutY="152.0" prefHeight="23.0" prefWidth="67.0" style="-fx-font-weight: bold;" textFill="#f2e8c6" wrapText="false">
+               <font>
+                  <Font name="Arial" size="20.0" />
+               </font>
+            </Label>
       </children>
     </AnchorPane>
   </children>
