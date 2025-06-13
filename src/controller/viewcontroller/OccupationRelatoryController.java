@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import controller.bussines.RoomController;
+import controller.business.RoomController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -19,7 +19,14 @@ import javafx.event.ActionEvent;
 import models.*;
 
 public class OccupationRelatoryController implements Initializable {
+    private static Room room;
     private String selecionado;
+
+    @FXML
+    private Label roomName;
+
+    @FXML
+    private Label totalSeat;
 
     @FXML
     private VBox containerFiltragem;
@@ -37,12 +44,41 @@ public class OccupationRelatoryController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        MainViews.addOnChangeScreenListener(new MainViews.OnChangeScreen() {
+            @Override
+            public void onScreenChanged(String newScreen, Object userDataObject) {
+                if (userDataObject instanceof Room) {
+                    room = (Room) userDataObject;
+                    updateRoomSpecificUI();
+                }
+            }
+        });
+        
         try {
             inicializarSessoesParaTeste();
         } catch (Exception e) {
             e.printStackTrace();
         }
         addFilter();
+    }
+
+    private void updateRoomSpecificUI() {
+        if (room != null) { 
+            totalSeat.setText(room.getTotalSeat()+"");
+            if (room.getId() == 1) {
+                roomName.setText("Sala 1"); 
+            } else if (room.getId() == 2) {
+                roomName.setText("Sala 2");
+            } else if (room.getId() == 3) {
+                roomName.setText("Sala 3");
+            } else if (room.getId() == 4) {
+                roomName.setText("Sala 4");
+            } else if (room.getId() == 5) {
+                roomName.setText("Sala 5");
+            }
+        } else {
+            roomName.setText("Sala (N/A)"); 
+        }
     }
 
     public void addFilter(){
@@ -57,11 +93,26 @@ public class OccupationRelatoryController implements Initializable {
         filtroOcupacao.setOnAction(event -> {
             selecionado = filtroOcupacao.getValue();
             System.out.println("Selecionado: " + selecionado);
-            mostrarFiltragem();
+            
+            if (room != null) {
+                if (room.getId() == 1) {
+                    mostrarFiltragem1();
+                } else if (room.getId() == 2) {
+                    mostrarFiltragem2();
+                } else if (room.getId() == 3) {
+                    mostrarFiltragem3();
+                } else if (room.getId() == 4) {
+                    mostrarFiltragem4();
+                } else if (room.getId() == 5) {
+                    mostrarFiltragem5();
+                }
+            } else {
+                System.err.println("Erro: Não foi possível aplicar filtro, 'room' é nulo.");
+            }
         });        
     }
 
-    public void mostrarFiltragem() {
+    public void mostrarFiltragem1() {
         containerFiltragem.getChildren().clear();
 
         if ("Filme".equals(selecionado)) {
@@ -84,6 +135,17 @@ public class OccupationRelatoryController implements Initializable {
         }
     }
 
+    public void mostrarFiltragem2() {
+    }
+
+    public void mostrarFiltragem3() {
+    }
+
+    public void mostrarFiltragem4() {
+    }
+
+    public void mostrarFiltragem5() {
+    }
     //Gambiarras de Teste
 
     // Simulação de uma base de dados

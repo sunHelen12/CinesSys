@@ -1,6 +1,6 @@
 package controller.viewcontroller;
 
-import controller.bussines.ClientController;
+import controller.business.ClientController;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import java.net.URL;
@@ -21,7 +21,6 @@ import java.util.Locale;
 import java.util.ArrayList;
 import java.util.List;
 
-import services.ClientService;
 import models.*;
 
 /**

@@ -1,4 +1,4 @@
-package controller.bussines;
+package controller.business;
 
 import java.time.LocalDate;
 import java.time.LocalTime;

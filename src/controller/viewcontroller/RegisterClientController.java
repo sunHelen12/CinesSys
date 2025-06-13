@@ -1,16 +1,9 @@
 package controller.viewcontroller;
 
-import controller.bussines.ClientController;
+import controller.business.ClientController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
-import javafx.event.ActionEvent;
-import javafx.fxml.Initializable;
-import java.net.URL;
-import java.util.ResourceBundle;
-import controller.viewcontroller.MainViews;
-import controller.viewcontroller.ClientControlController;
-import services.*;
 
 /**
  * Classe referente ao controle da interface "Registrar Clientes" presente na
@@ -53,6 +46,9 @@ public class RegisterClientController {
             return;
         }else{
             ClientController.addClient(name, email, date);
+            enterName.clear();
+            enterEmail.clear();
+            enterDate.clear();
             ClientControlController.mostrarPopUp("cadastrado");
         }
     }

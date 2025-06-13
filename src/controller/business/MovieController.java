@@ -1,4 +1,4 @@
-package controller.bussines;
+package controller.business;
 
 import models.Movie;
 import repository.MovieRepository;

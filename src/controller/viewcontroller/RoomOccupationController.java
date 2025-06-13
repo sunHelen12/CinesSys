@@ -1,10 +1,8 @@
 package controller.viewcontroller;
 
-import controller.bussines.RoomController;
+import controller.business.RoomController;
 import javafx.event.ActionEvent;
-import models.Room;
 import javafx.fxml.FXML;
-import controller.viewcontroller.MainViews;
 
 public class RoomOccupationController {
 
