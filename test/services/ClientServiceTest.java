@@ -7,6 +7,8 @@ import repository.RoomRepository;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import controller.bussines.RoomController;
 import structures.list.GenericDynamicList;
 
 import java.time.LocalDate;
@@ -131,5 +133,22 @@ public class ClientServiceTest {
         clientService.addClient("Sem Compras", "email@email.com", "31-12-1999");
         Client client = clientService.getAllClients().get(0);
         assertEquals(0, clientService.getClientHistory(client.getId()).size());
+    }
+
+    @Test
+    public void testCalculateDiscount() {
+        clientService.addClient("Fulano", "fulano@mail.com", "01-01-2000");
+        Client client = clientService.getAllClients().get(0);
+        clientService.addTicketToClient(
+            client.getId(), 
+            new Ticket(
+                client, 
+                new Session(LocalDate.now(), LocalTime.now(), RoomController.getRoomById(1), new Movie("Filme", "Ação", 120, "Diretor", "Sinopse"), 30.0), 
+                30.0, 
+                PaymentMethod.CREDIT_CARD
+            )
+        );
+        clientService.addTicketToClient(client.getId(), new Ticket(client, new Session(LocalDate.now(), LocalTime.now(), new Room(1, 100, 100, 100), new Movie("Filme", "Ação", 120, "Diretor", "Sinopse"), 30.0), 30.0, PaymentMethod.CREDIT_CARD));
+        clientService.addTicketTo
     }
 }
