@@ -1,5 +1,6 @@
 package controller.viewcontroller;
 
+import controller.bussines.ClientController;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import java.net.URL;
@@ -16,17 +17,10 @@ import javafx.stage.Stage;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.Locale;
 import java.util.ArrayList;
 import java.util.List;
 
-import controller.viewcontroller.HomeScreenController;
-import controller.viewcontroller.MainViews;
-import controller.viewcontroller.PopUpClientController;
-import enums.PaymentMethod;
-import services.*;
 import services.ClientService;
 import models.*;
 
@@ -86,7 +80,7 @@ public class ClientControlController implements Initializable{
         List<Client> searchResultsList = new ArrayList<>();
 
         if (!searchTerm.isEmpty()) {
-            for (Client client : ClientService.getAllClients()) {
+            for (Client client : ClientController.getAllClients()) {
                 if (client.getName().toLowerCase(Locale.ROOT).contains(searchTerm)) {
                     searchResultsList.add(client);
                 }
@@ -141,7 +135,7 @@ public class ClientControlController implements Initializable{
 
             botaoExcluir.setOnAction(event -> {
                 Client clienteSelecionado = (Client) ((Button) event.getSource()).getUserData();
-                ClientService.removeClient(clienteSelecionado.getId());
+                ClientController.removeClient(clienteSelecionado.getId());
                 mostrarPopUp("excluído");
             });
             botaoAlterar.setOnAction(event -> {

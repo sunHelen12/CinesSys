@@ -1,5 +1,6 @@
 package controller.viewcontroller;
 
+import controller.bussines.RoomController;
 import javafx.event.ActionEvent;
 import models.Room;
 import javafx.fxml.FXML;
@@ -39,27 +40,27 @@ public class RoomOccupationController {
 
     @FXML
     void openRoom1(ActionEvent event) {
-        MainViews.changeScreen("occupationRelatory", Room.room1);
+        MainViews.changeScreen("occupationRelatory", RoomController.getRoomById(1));
     }
 
     @FXML
     void openRoom2(ActionEvent event) {
-        MainViews.changeScreen("occupationRelatory", Room.room2);
+        MainViews.changeScreen("occupationRelatory", RoomController.getRoomById(2));
     }
 
     @FXML
     void openRoom3(ActionEvent event) {
-        MainViews.changeScreen("occupationRelatory", Room.room3);
+        MainViews.changeScreen("occupationRelatory", RoomController.getRoomById(3));
     }
 
     @FXML
     void openRoom4(ActionEvent event) {
-        MainViews.changeScreen("occupationRelatory", Room.room4);
+        MainViews.changeScreen("occupationRelatory", RoomController.getRoomById(4));
     }
 
     @FXML
     void openRoom5(ActionEvent event) {
-        MainViews.changeScreen("occupationRelatory", Room.room5);
+        MainViews.changeScreen("occupationRelatory", RoomController.getRoomById(5));
     }
 
 }

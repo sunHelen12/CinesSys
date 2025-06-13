@@ -1,5 +1,6 @@
 package controller.viewcontroller;
 
+import controller.bussines.ClientController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -51,7 +52,7 @@ public class RegisterClientController {
         if (name.isEmpty() || email.isEmpty() || date.isEmpty()) {
             return;
         }else{
-            ClientService.addClient(name, email, date);
+            ClientController.addClient(name, email, date);
             enterName.clear();
             enterEmail.clear();
             enterDate.clear();

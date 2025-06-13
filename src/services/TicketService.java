@@ -8,6 +8,11 @@ import repository.TicketRepository;
 import structures.list.GenericDynamicList;
 
 /**
+ * @author Helen Santos Rocha
+ * @author Thiago Ferreira Ribeiro
+ * @since 11/06/2025
+ * @version 2.0
+ *
  * Serviço responsável por gerenciar operações relacionadas aos tickets.
  * Utiliza o {@link TicketRepository} como fonte de dados.
  */
@@ -32,25 +37,7 @@ public class TicketService {
      * @return {@code true} se o ticket foi adicionado com sucesso.
      * @throws IllegalArgumentException Se algum argumento for inválido.
      */
-    public boolean addTicket(Client client, Session session, PaymentMethod paymentMethod){
-        //Verificações básicas
-        if(client == null){
-            throw new IllegalAccessError("O nome do cliente não pode ser vazio!");
-        }
-        if (session == null) {
-            throw new IllegalArgumentException("O ticket deve ter uma sessão!");
-        }
-        if (paymentMethod == null) {
-            throw new IllegalArgumentException("O ticket deve ter um método de pagamento!");
-        }
-
-        //Cria o ticket e envia para o Repository
-        Ticket ticket = new Ticket(client, session, paymentMethod);
-        ticketRepository.add(ticket);
-        return true;
-    }
-
-    /**
+     /**
      * Recupera todos os tickets armazenados.
      *
      * @return Uma lista dinâmica contendo todos os tickets.
@@ -87,5 +74,49 @@ public class TicketService {
      */
     public void removeTicketById(int id){
         ticketRepository.removeById(id);
+    }
+
+    public Ticket purchaseTicket(int clientId, int sessionId, String paymentMethod,
+                                 ClientService clientService, SessionService sessionService,
+                                 LoyaltyService loyaltyService) {
+
+        // Buscar cliente
+        Client client = clientService.getClientById(clientId);
+        if (client == null) {
+            throw new IllegalArgumentException("Cliente com ID " + clientId + " não encontrado.");
+        }
+
+        // Buscar sessão
+        Session session = sessionService.getSessionById(sessionId);
+        if (session == null) {
+            throw new IllegalArgumentException("Sessão com ID " + sessionId + " não encontrada.");
+        }
+
+        // Validar método de pagamento
+        PaymentMethod method;
+        try {
+            method = PaymentMethod.fromDescription(paymentMethod);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException("Método de pagamento inválido: " + paymentMethod);
+        }
+
+        // Calcular desconto
+        double discount = loyaltyService.calculateDiscount(clientId);
+        double basePrice = 20.0; // Pode ser dinâmico no futuro
+        double precoFinal = basePrice * (1 - discount / 100.0);
+
+        // Criar ticket com desconto
+        Ticket ticket = new Ticket(client, session, precoFinal, method);
+
+        // Adicionar ticket no repositório
+        ticketRepository.add(ticket);
+
+        // Atualizar fidelidade do cliente
+        loyaltyService.registerPoints(clientId, ticket);
+
+        // Adicionar ticket no histórico do cliente (se não for automático)
+        clientService.addTicketToClient(clientId, ticket);
+
+        return ticket;
     }
 }
