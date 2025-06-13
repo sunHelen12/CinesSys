@@ -29,6 +29,7 @@ public class RoomServiceTest {
     @Before
     public void setup() {
         roomService = new RoomService(new RoomRepository());
+        Room.resetIdGenerator();
     }
 
     /**
@@ -47,6 +48,7 @@ public class RoomServiceTest {
     @Test
     public void testGetRoomById() {
         Room room = roomService.getRoomById(1);
+        System.out.println(room.getTotalSeat());
         assertEquals(200, room.getTotalSeat());
     }
 
@@ -54,10 +56,9 @@ public class RoomServiceTest {
      * Teste para verificar o comportamento do método getRoomById quando uma sala não existe.
      * Valida se o método retorna null quando um ID de sala inexistente é fornecido.
      */
-    @Test
+    @Test(expected = RuntimeException.class)
     public void testGetRoomByIdNotFound() {
-        Room room = roomService.getRoomById(100);
-        assertNull(room);
+        Room room = roomService.getRoomById(6);
     }
 
     /**

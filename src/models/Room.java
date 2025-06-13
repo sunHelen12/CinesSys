@@ -39,5 +39,9 @@ public class Room {
         return "Room " + id + ":" + 
         "\nTotal Seat=" + totalSeat + 
         "\nSessions="+ sessions;
-    }  
+    }
+
+    public static void resetIdGenerator() {
+        _idGenerator = 1;
+    }
 }

@@ -2,6 +2,8 @@ package services;
 
 import enums.PaymentMethod;
 import models.*;
+import controller.bussines.RoomController;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -23,7 +25,8 @@ public class SaleServiceTest {
         saleService = new SaleService();
         client = new Client("João", "joao@email.com", LocalDate.of(1999, 1, 1));
         movie = new Movie("Matrix", "Sci-Fi", 136, "R", "Neo discovers reality.");
-        session = new Session(LocalDate.now(), LocalTime.now(), Room.room1, movie, 20.0, 10);
+        session = new Session(LocalDate.now(), LocalTime.now(), RoomController.getRoomById(1), movie, 20.0, 10);
+        Room.resetIdGenerator();
     }
 
     @Test
