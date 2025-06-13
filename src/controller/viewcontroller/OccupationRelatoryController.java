@@ -46,6 +46,7 @@ public class OccupationRelatoryController implements Initializable {
             public void onScreenChanged(String newScreen, Object userDataObject) {
                 if (userDataObject instanceof Room) {
                     room = (Room) userDataObject;
+                    updateRoomSpecificUI();
                 }
             }
         });
@@ -58,8 +59,25 @@ public class OccupationRelatoryController implements Initializable {
         addFilter();
     }
 
-    public void addFilter(){
+    private void updateRoomSpecificUI() {
+        if (room != null) { 
+            if (room.getId() == 1) {
+                roomName.setText("Sala 1");
+            } else if (room.getId() == 2) {
+                roomName.setText("Sala 2");
+            } else if (room.getId() == 3) {
+                roomName.setText("Sala 3");
+            } else if (room.getId() == 4) {
+                roomName.setText("Sala 4");
+            } else if (room.getId() == 5) {
+                roomName.setText("Sala 5");
+            }
+        } else {
+            roomName.setText("Sala (N/A)"); 
+        }
+    }
 
+    public void addFilter(){
         filter.add("Filme");
         filter.add("Data");
         filter.add("Horário de Sessão");
@@ -72,21 +90,20 @@ public class OccupationRelatoryController implements Initializable {
             selecionado = filtroOcupacao.getValue();
             System.out.println("Selecionado: " + selecionado);
             
-            if(room.getId() == 1){
-                roomName.setText("Sala 1");
-                mostrarFiltragem1();
-            } else if(room.getId() == 2){
-                roomName.setText("Sala 2");
-                mostrarFiltragem2();
-            } else if(room.getId() == 3){
-                roomName.setText("Sala 3");
-                mostrarFiltragem3();
-            } else if(room.getId() == 4){
-                roomName.setText("Sala 4");
-                mostrarFiltragem4();
-            }else if(room.getId() == 5){
-                roomName.setText("Sala 5");
-                mostrarFiltragem5();
+            if (room != null) {
+                if (room.getId() == 1) {
+                    mostrarFiltragem1();
+                } else if (room.getId() == 2) {
+                    mostrarFiltragem2();
+                } else if (room.getId() == 3) {
+                    mostrarFiltragem3();
+                } else if (room.getId() == 4) {
+                    mostrarFiltragem4();
+                } else if (room.getId() == 5) {
+                    mostrarFiltragem5();
+                }
+            } else {
+                System.err.println("Erro: Não foi possível aplicar filtro, 'room' é nulo.");
             }
         });        
     }
@@ -114,6 +131,17 @@ public class OccupationRelatoryController implements Initializable {
         }
     }
 
+    public void mostrarFiltragem2() {
+    }
+
+    public void mostrarFiltragem3() {
+    }
+
+    public void mostrarFiltragem4() {
+    }
+
+    public void mostrarFiltragem5() {
+    }
     //Gambiarras de Teste
 
     // Simulação de uma base de dados
