@@ -8,6 +8,11 @@ import repository.TicketRepository;
 import structures.list.GenericDynamicList;
 
 /**
+ * @author Helen Santos Rocha
+ * @author Thiago Ferreira Ribeiro
+ * @since 11/06/2025
+ * @version 2.0
+ *
  * Serviço responsável por gerenciar operações relacionadas aos tickets.
  * Utiliza o {@link TicketRepository} como fonte de dados.
  */
