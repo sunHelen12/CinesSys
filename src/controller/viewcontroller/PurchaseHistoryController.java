@@ -1,5 +1,6 @@
 package controller.viewcontroller;
 
+import controller.bussines.ClientController;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -9,19 +10,13 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import models.*;
-import services.*;
 
 import java.net.URL;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
-import controller.viewcontroller.MainViews;
-import enums.PaymentMethod;
-import controller.viewcontroller.HomeScreenController;
 
 public class PurchaseHistoryController implements Initializable {
     @FXML
@@ -84,7 +79,7 @@ public class PurchaseHistoryController implements Initializable {
         List<Client> searchResultsList = new ArrayList<>();
 
         if (!searchTerm.isEmpty()) {
-            for (Client client : ClientService.getAllClients()) {
+            for (Client client : ClientController.getAllClients()) {
                 if (client.getName().toLowerCase(Locale.ROOT).contains(searchTerm)) {
                     searchResultsList.add(client);
                 }
