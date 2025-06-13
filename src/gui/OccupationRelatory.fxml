@@ -96,8 +96,8 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <VBox fx:id="containerFiltragem" layoutX="177.0" layoutY="303.0" prefHeight="307.0" prefWidth="682.0" />
-            <ComboBox fx:id="filtroOcupacao" layoutX="306.0" layoutY="253.0" prefHeight="32.0" prefWidth="246.0" style="-fx-background-color: #bb0029;">
+            <VBox fx:id="filterContainer" layoutX="177.0" layoutY="303.0" prefHeight="307.0" prefWidth="682.0" />
+            <ComboBox fx:id="filterOccupation" layoutX="306.0" layoutY="253.0" prefHeight="32.0" prefWidth="246.0" style="-fx-background-color: #bb0029;">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>

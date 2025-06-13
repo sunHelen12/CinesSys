@@ -24,7 +24,7 @@ import models.*;
 
 public class OccupationRelatoryController implements Initializable {
     private static Room room;
-    private String selecionado;
+    private String selected;
 
     @FXML
     private Label roomName;
@@ -33,10 +33,10 @@ public class OccupationRelatoryController implements Initializable {
     private Label totalSeat;
 
     @FXML
-    private VBox containerFiltragem;
+    private VBox filterContainer;
     
     @FXML
-    private ComboBox<String> filtroOcupacao;
+    private ComboBox<String> filterOccupation;
 
     private List<String> filter = new ArrayList<>();
     private ObservableList<String> items;
@@ -92,15 +92,15 @@ public class OccupationRelatoryController implements Initializable {
 
         items = FXCollections.observableArrayList(filter);
 
-        filtroOcupacao.setItems(items);
+        filterOccupation.setItems(items);
 
-        filtroOcupacao.setOnAction(event -> {
-            selecionado = filtroOcupacao.getValue();
-            System.out.println("Selecionado: " + selecionado);
+        filterOccupation.setOnAction(event -> {
+            selected = filterOccupation.getValue();
+            System.out.println("Selecionado: " + selected);
             
             if (room != null) {
                 if (room.getId() == 1) {
-                    mostrarFiltragem1();
+                    showFilter1();
                 } else if (room.getId() == 2) {
                     mostrarFiltragem2();
                 } else if (room.getId() == 3) {
@@ -116,10 +116,10 @@ public class OccupationRelatoryController implements Initializable {
         });        
     }
 
-    public void mostrarFiltragem1() {
-        containerFiltragem.getChildren().clear();
+    public void showFilter1() {
+        filterContainer.getChildren().clear();
 
-        if ("Filme".equals(selecionado)) {
+        if ("Filme".equals(selected)) {
             for (Session session : room.getSessions()) {
                 String movieTitle = session.getMovie().getTitle();
                 double ocupacao = ((double)(room.getTotalSeat() - session.getTotalAvailableSeats()) / room.getTotalSeat()) * 100;
@@ -134,17 +134,17 @@ public class OccupationRelatoryController implements Initializable {
 
                 TextFlow textFlow = new TextFlow(titleText, ocupacaoText);
 
-                containerFiltragem.getChildren().add(textFlow);
+                filterContainer.getChildren().add(textFlow);
                 System.out.println("Filme " + movieTitle + " adicionado");
             }
-        } else if ("Data".equals(selecionado)) {
+        } else if ("Data".equals(selected)) {
             Label labelAux = new Label("Data");
             labelAux.setStyle("-fx-font-family: Arial; -fx-text-fill: #f2e8c6;");
-            containerFiltragem.getChildren().add(labelAux);
-        } else if ("Horário de Sessão".equals(selecionado)) {
+            filterContainer.getChildren().add(labelAux);
+        } else if ("Horário de Sessão".equals(selected)) {
             Label labelAux = new Label("Horário");
             labelAux.setStyle("-fx-font-family: Arial; -fx-text-fill: #f2e8c6;");
-            containerFiltragem.getChildren().add(labelAux);
+            filterContainer.getChildren().add(labelAux);
         }
     }
 
