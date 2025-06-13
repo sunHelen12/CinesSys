@@ -1,5 +1,6 @@
 package controller.viewcontroller;
 
+import controller.bussines.ClientController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -46,7 +47,7 @@ public class ChangeClientController implements Initializable {
         String email = boxEmail.getText().trim();
         String date = boxDate.getText().trim();
        
-        ClientService.updateClient(client.getId(), name, email, date);
+        ClientController.updateClient(client.getId(), name, email, date);
         ClientControlController.mostrarPopUp("alterado");
     }
 

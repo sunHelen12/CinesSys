@@ -29,7 +29,7 @@ public class SaleServiceTest {
     @Test
     public void testSuccessfulTicketSale() throws Exception {
         int quantity = 3;
-        List<Ticket> tickets = saleService.efetuarVenda(client, session, quantity, PaymentMethod.CASH);
+        List<Ticket> tickets = saleService.processSale(client, session, quantity, PaymentMethod.CASH);
 
         assertEquals(quantity, tickets.size());
         assertEquals(7, session.getTotalAvailableSeats()); // 10 - 3 = 7
@@ -39,13 +39,13 @@ public class SaleServiceTest {
     @Test(expected = IllegalArgumentException.class)
     public void testTicketSaleExceedingAvailableSeats() throws Exception {
         int quantity = 15; // Mais do que os 10 disponíveis
-        saleService.efetuarVenda(client, session, quantity, PaymentMethod.CASH);
+        saleService.processSale(client, session, quantity, PaymentMethod.CASH);
     }
 
     @Test
     public void testTicketAttributesAfterSale() throws Exception {
         int quantity = 1;
-        List<Ticket> tickets = saleService.efetuarVenda(client, session, quantity, PaymentMethod.PIX);
+        List<Ticket> tickets = saleService.processSale(client, session, quantity, PaymentMethod.PIX);
 
         Ticket ticket = tickets.get(0);
 
@@ -57,18 +57,18 @@ public class SaleServiceTest {
     @Test
     public void testMultipleSalesReduceAvailableSeatsCorrectly() throws Exception {
         // Primeira venda de 4 ingressos
-        saleService.efetuarVenda(client, session, 4, PaymentMethod.CASH);
+        saleService.processSale(client, session, 4, PaymentMethod.CASH);
         assertEquals(6, session.getTotalAvailableSeats());
 
         // Segunda venda de 3 ingressos
-        saleService.efetuarVenda(client, session, 3, PaymentMethod.DEBIT_CARD);
+        saleService.processSale(client, session, 3, PaymentMethod.DEBIT_CARD);
         assertEquals(3, session.getTotalAvailableSeats());
     }
 
     @Test
     public void testClientTicketHistoryIsUpdated() throws Exception {
         assertEquals(0, client.getPurchasingHistory().size());
-        saleService.efetuarVenda(client, session, 2, PaymentMethod.CASH);
+        saleService.processSale(client, session, 2, PaymentMethod.CASH);
         assertEquals(2, client.getPurchasingHistory().size());
     }
 }

@@ -90,15 +90,15 @@ public class TicketService {
         // Validar método de pagamento
         PaymentMethod method;
         try {
-            method = PaymentMethod.valueOf(paymentMethod.toUpperCase());
+            method = PaymentMethod.fromDescription(paymentMethod);
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException("Método de pagamento inválido: " + paymentMethod);
         }
 
         // Calcular desconto
-        double desconto = loyaltyService.calculateDiscount(clientId);
-        double precoBase = 20.0; // Pode ser dinâmico no futuro
-        double precoFinal = precoBase * (1 - desconto / 100.0);
+        double discount = loyaltyService.calculateDiscount(clientId);
+        double basePrice = 20.0; // Pode ser dinâmico no futuro
+        double precoFinal = basePrice * (1 - discount / 100.0);
 
         // Criar ticket com desconto
         Ticket ticket = new Ticket(client, session, precoFinal, method);
