@@ -17,7 +17,11 @@ import javafx.event.ActionEvent;
 import models.*;
 
 public class OccupationRelatoryController implements Initializable {
+    private static Room room;
     private String selecionado;
+
+    @FXML
+    private Label roomName;
 
     @FXML
     private VBox containerFiltragem;
@@ -35,6 +39,15 @@ public class OccupationRelatoryController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        MainViews.addOnChangeScreenListener(new MainViews.OnChangeScreen() {
+            @Override
+            public void onScreenChanged(String newScreen, Object userDataObject) {
+                if (userDataObject instanceof Room) {
+                    room = (Room) userDataObject;
+                }
+            }
+        });
+        
         try {
             inicializarSessoesParaTeste();
         } catch (Exception e) {
@@ -44,6 +57,7 @@ public class OccupationRelatoryController implements Initializable {
     }
 
     public void addFilter(){
+
         filter.add("Filme");
         filter.add("Data");
         filter.add("Horário de Sessão");
@@ -55,11 +69,27 @@ public class OccupationRelatoryController implements Initializable {
         filtroOcupacao.setOnAction(event -> {
             selecionado = filtroOcupacao.getValue();
             System.out.println("Selecionado: " + selecionado);
-            mostrarFiltragem();
+            
+            if(room.getId() == 1){
+                roomName.setText("Sala 1");
+                mostrarFiltragem1();
+            } else if(room.getId() == 2){
+                roomName.setText("Sala 2");
+                mostrarFiltragem2();
+            } else if(room.getId() == 3){
+                roomName.setText("Sala 3");
+                mostrarFiltragem3();
+            } else if(room.getId() == 4){
+                roomName.setText("Sala 4");
+                mostrarFiltragem4();
+            }else if(room.getId() == 5){
+                roomName.setText("Sala 5");
+                mostrarFiltragem5();
+            }
         });        
     }
 
-    public void mostrarFiltragem() {
+    public void mostrarFiltragem1() {
         containerFiltragem.getChildren().clear();
 
         if ("Filme".equals(selecionado)) {

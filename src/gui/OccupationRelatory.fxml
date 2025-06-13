@@ -59,7 +59,7 @@
                      </children>
                   </AnchorPane>
                </children></VBox>
-            <Label alignment="CENTER" layoutX="157.0" layoutY="125.0" style="-fx-font-weight: bold;" text="Sala 1" textAlignment="CENTER" textFill="#f2e8c6" wrapText="false">
+            <Label fx:id="roomName" alignment="CENTER" layoutX="157.0" layoutY="125.0" style="-fx-font-weight: bold;" textAlignment="CENTER" textFill="#f2e8c6" wrapText="false">
                <font>
                   <Font name="Arial" size="35.0" />
                </font>

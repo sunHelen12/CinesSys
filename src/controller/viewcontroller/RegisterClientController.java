@@ -52,6 +52,9 @@ public class RegisterClientController {
             return;
         }else{
             ClientService.addClient(name, email, date);
+            enterName.clear();
+            enterEmail.clear();
+            enterDate.clear();
             ClientControlController.mostrarPopUp("cadastrado");
         }
     }

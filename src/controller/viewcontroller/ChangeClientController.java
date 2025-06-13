@@ -47,6 +47,9 @@ public class ChangeClientController implements Initializable {
         String date = boxDate.getText().trim();
        
         ClientService.updateClient(client.getId(), name, email, date);
+        boxName.clear();
+        boxEmail.clear();
+        boxDate.clear();
         ClientControlController.mostrarPopUp("alterado");
     }
 
