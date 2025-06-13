@@ -20,7 +20,7 @@
                   <Font name="Arial" size="35.0" />
                </font>
             </Label>
-            <Label fx:id="nomeFilme" alignment="CENTER" layoutX="441.0" layoutY="30.0" prefHeight="41.0" prefWidth="368.0" style="-fx-font-weight: bold;" textAlignment="CENTER" textFill="#f2e8c4" wrapText="false">
+            <Label fx:id="movieName" alignment="CENTER" layoutX="441.0" layoutY="30.0" prefHeight="41.0" prefWidth="368.0" style="-fx-font-weight: bold;" textAlignment="CENTER" textFill="#f2e8c4" wrapText="false">
                <font>
                   <Font name="Arial" size="35.0" />
                </font>
@@ -32,22 +32,22 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Label fx:id="sala2DataHorario" layoutX="208.0" layoutY="172.0" prefHeight="25.0" prefWidth="154.0" textFill="#f2e8c6">
+      <Label fx:id="room2DateTime" layoutX="208.0" layoutY="172.0" prefHeight="25.0" prefWidth="154.0" textFill="#f2e8c6">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Label fx:id="sala3DataHorario" layoutX="214.0" layoutY="215.0" prefHeight="25.0" prefWidth="154.0" textFill="#f2e8c6">
+      <Label fx:id="room3DateTime" layoutX="214.0" layoutY="215.0" prefHeight="25.0" prefWidth="154.0" textFill="#f2e8c6">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Label fx:id="sala2DataHorario2" layoutX="214.0" layoutY="259.0" prefHeight="25.0" prefWidth="154.0" textFill="#f2e8c6">
+      <Label fx:id="room2DateTime2" layoutX="214.0" layoutY="259.0" prefHeight="25.0" prefWidth="154.0" textFill="#f2e8c6">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <RadioButton fx:id="radioSala2" layoutX="67.0" layoutY="171.0" mnemonicParsing="false" text="Sala 2" textFill="#f58414">
+      <RadioButton fx:id="radioRoom2" layoutX="67.0" layoutY="171.0" mnemonicParsing="false" text="Sala 2" textFill="#f58414">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
@@ -55,12 +55,12 @@
             <ToggleGroup fx:id="radio" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton fx:id="radioSala3" layoutX="67.0" layoutY="215.0" mnemonicParsing="false" text="Sala 3" textFill="#f58414" toggleGroup="$radio">
+      <RadioButton fx:id="radioRoom3" layoutX="67.0" layoutY="215.0" mnemonicParsing="false" text="Sala 3" textFill="#f58414" toggleGroup="$radio">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </RadioButton>
-      <RadioButton fx:id="radioSala2_2" layoutX="67.0" layoutY="259.0" mnemonicParsing="false" text="Sala 2" textFill="#f58414" toggleGroup="$radio">
+      <RadioButton fx:id="radioRoom2_2" layoutX="67.0" layoutY="259.0" mnemonicParsing="false" text="Sala 2" textFill="#f58414" toggleGroup="$radio">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
@@ -82,7 +82,7 @@
                   <Font name="Arial" size="20.0" />
                </font>
             </Label>
-            <TextField fx:id="idDoCliente" layoutX="39.0" layoutY="125.0" opacity="0.52" prefHeight="41.0" prefWidth="265.0" style="-fx-background-color: #03002C; -fx-background-radius: 5px;">
+            <TextField fx:id="clientId" layoutX="39.0" layoutY="125.0" opacity="0.52" prefHeight="41.0" prefWidth="265.0" style="-fx-background-color: #03002C; -fx-background-radius: 5px;">
                <font>
                   <Font name="Arial" size="12.0" />
                </font>
@@ -90,7 +90,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </TextField>
-            <TextField fx:id="metodoPagamento" layoutX="338.0" layoutY="125.0" opacity="0.52" prefHeight="41.0" prefWidth="265.0" style="-fx-background-color: #03002C; -fx-background-radius: 5px;">
+            <TextField fx:id="paymentMethod" layoutX="338.0" layoutY="125.0" opacity="0.52" prefHeight="41.0" prefWidth="265.0" style="-fx-background-color: #03002C; -fx-background-radius: 5px;">
                <font>
                   <Font name="Arial" size="12.0" />
                </font>
@@ -100,27 +100,27 @@
             </TextField>
          </children>
       </AnchorPane>
-      <Button layoutX="43.0" layoutY="637.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="142.0" style="-fx-background-color: #F58414; -fx-background-radius: 5px; -fx-font-weight: bold;" text="Voltar" textFill="#f2e8c6">
+      <Button fx:id="backButton" layoutX="43.0" layoutY="637.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="142.0" style="-fx-background-color: #F58414; -fx-background-radius: 5px; -fx-font-weight: bold;" text="Voltar" textFill="#f2e8c6">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <Button layoutX="686.0" layoutY="557.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="213.0" style="-fx-background-color: #F58414; -fx-background-radius: 5px; -fx-font-weight: bold;" text="Registrar Compra" textFill="#f2e8c6">
+      <Button fx:id="saleRegister" layoutX="686.0" layoutY="557.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="213.0" style="-fx-background-color: #F58414; -fx-background-radius: 5px; -fx-font-weight: bold;" text="Registrar Compra" textFill="#f2e8c6">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <Label fx:id="assentosLivresTotalSala2" layoutX="576.0" layoutY="173.0" prefHeight="21.0" prefWidth="142.0" textFill="#f2e8c6">
+      <Label fx:id="seatsFreeTotalRoom2" layoutX="576.0" layoutY="173.0" prefHeight="21.0" prefWidth="142.0" textFill="#f2e8c6">
          <font>
             <Font name="Arial" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="assentosLivresTotalSala3" layoutX="576.0" layoutY="218.0" prefHeight="21.0" prefWidth="142.0" textFill="#f2e8c6">
+      <Label fx:id="seatsFreeTotalRoom3" layoutX="576.0" layoutY="218.0" prefHeight="21.0" prefWidth="142.0" textFill="#f2e8c6">
          <font>
             <Font name="Arial" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="assentosLivresTotalSala2_2" layoutX="576.0" layoutY="262.0" prefHeight="21.0" prefWidth="142.0" textFill="#f2e8c6">
+      <Label fx:id="seatsFreeTotalRoom2_2" layoutX="576.0" layoutY="262.0" prefHeight="21.0" prefWidth="142.0" textFill="#f2e8c6">
          <font>
             <Font name="Arial" size="18.0" />
          </font>
