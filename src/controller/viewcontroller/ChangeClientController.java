@@ -1,16 +1,14 @@
 package controller.viewcontroller;
 
-import controller.bussines.ClientController;
+import controller.business.ClientController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
-import controller.viewcontroller.MainViews;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
-import services.ClientService;
 import models.*;
-import controller.viewcontroller.ClientControlController;
 
 public class ChangeClientController implements Initializable {
     private static Client client;

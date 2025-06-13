@@ -1,6 +1,6 @@
 package controller.viewcontroller;
 
-import controller.bussines.ClientController;
+import controller.business.ClientController;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
