@@ -66,6 +66,14 @@ public class ClientController {
     public static void addTicketToClient(int clientId, Ticket ticket) {
         clientService.addTicketToClient(clientId, ticket);
     }
+
+    /**
+     * Retorna uma lista com todos os clientes cadastrados chamando o método getAllClients da classe ClientService.
+     * @return lista com todos os clientes cadastrados.
+     */
+    public static GenericDynamicList<Client> getAllClients(){
+        return clientService.getAllClients();
+    }
  
     /**
      * Pega o histórico de compras de um cliente chamando o método getClientHistory da classe ClientService.
