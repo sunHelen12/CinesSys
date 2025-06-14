@@ -84,11 +84,11 @@
                </TextField>
             </children>
          </AnchorPane>
-         <Button layoutX="1105.0" layoutY="544.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="142.0" style="-fx-background-color: #B1002D; -fx-background-radius: 5px; -fx-font-weight: bold;" text="Alterar" textFill="#f2e8c6">
+         <Button layoutX="1105.0" layoutY="544.0" mnemonicParsing="false" onAction="#edit" prefHeight="43.0" prefWidth="142.0" style="-fx-background-color: #B1002D; -fx-background-radius: 5px; -fx-font-weight: bold;" text="Alterar" textFill="#f2e8c6">
             <font>
                <Font size="18.0" />
             </font></Button>
-         <Button layoutX="37.0" layoutY="641.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="142.0" style="-fx-background-color: #B1002D; -fx-background-radius: 5px; -fx-font-weight: bold;" text="Voltar" textFill="#f2e8c6">
+         <Button layoutX="37.0" layoutY="641.0" mnemonicParsing="false" onAction="#backMovieControl" prefHeight="43.0" prefWidth="142.0" style="-fx-background-color: #B1002D; -fx-background-radius: 5px; -fx-font-weight: bold;" text="Voltar" textFill="#f2e8c6">
             <font>
                <Font name="Arial" size="18.0" />
             </font>
