@@ -44,7 +44,6 @@ public class SessionControlController {
 
     @FXML
     private TableView<?> table;
-
     @FXML
     void changeSession(ActionEvent event) {
 
@@ -102,7 +101,7 @@ public class SessionControlController {
 
     @FXML
     void registerSession(ActionEvent event) {
-
+        MainViews.changeScreen("registerSession", null);
     }
 
 }

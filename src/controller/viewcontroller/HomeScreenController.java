@@ -84,6 +84,6 @@ public class HomeScreenController {
      */
     @FXML
     void openSessionControl(ActionEvent event) {
-        //MainViews.changeScreen("sessionControl", null);
+        MainViews.changeScreen("sessionControl", null);
     }    
 }
