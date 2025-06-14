@@ -1,7 +1,6 @@
 package repository;
 
 import models.Client;
-import models.Session;
 import structures.list.GenericDynamicList;
 
 /**

@@ -1,28 +1,21 @@
-package services;
+package controller.business;
 
-import controller.business.TicketController;
-import enums.PaymentMethod;
-import models.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import enums.PaymentMethod;
+import models.Client;
+import models.Session;
+import models.Ticket;
+
 /**
+ * Classe responsável por controlar operações relacionadas às vendas de ingressos.
+ * 
  * @author Helen Santos Rocha
  * @since 11/06/2025
  * @version 1.0
- *
- * Classe responsável por realizar o processo de venda de ingressos em lote.
- * Cada venda respeita o sistema de fidelidade implementado no TicketService.
  */
-public class SaleService {
-    private final LoyaltyService loyaltyService;
-
-    /**
-     * Construtor com injeção dos serviços necessários.
-     */
-    public SaleService(LoyaltyService loyaltyService) {
-        this.loyaltyService = loyaltyService;
-    }
+public class SaleController {
 
     /**
      * Processa a venda de múltiplos ingressos para um cliente, usando as regras do TicketService.
@@ -34,7 +27,7 @@ public class SaleService {
      * @return Lista com todos os tickets gerados
      * @throws Exception se não houver assentos ou ocorrer erro na geração de algum ticket
      */
-    public List<Ticket> processSale(Client client, Session session, int quantity, PaymentMethod paymentMethod) throws Exception {
+    public static List<Ticket> processSale(Client client, Session session, int quantity, PaymentMethod paymentMethod) throws Exception {
 
         if (session.getTotalAvailableSeats() < quantity) {
             throw new IllegalArgumentException("Venda excedida: não há assentos suficientes.");
@@ -49,12 +42,12 @@ public class SaleService {
             Ticket ticket = TicketController.purchaseTicket(
                     client.getId(),
                     session.getId(),
-                    paymentMethod.name(), // usa o nome para depois converter
-                    loyaltyService
+                    paymentMethod.name() // usa o nome para depois converter
             );
             tickets.add(ticket);
         }
 
         return tickets;
     }
+    
 }

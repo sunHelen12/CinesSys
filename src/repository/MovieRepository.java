@@ -1,10 +1,6 @@
 package repository;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import models.Movie;
-import models.Session;
 import structures.list.GenericDynamicList;
 
 /**

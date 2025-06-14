@@ -1,6 +1,5 @@
 package repository;
 
-import models.Session;
 import models.Ticket;
 import structures.list.GenericDynamicList;
 

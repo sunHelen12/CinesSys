@@ -1,6 +1,5 @@
 package repository;
 
-import models.Movie;
 import models.Room;
 import structures.list.GenericDynamicList;
 

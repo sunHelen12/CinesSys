@@ -1,18 +1,15 @@
 package controller.business;
 
-import models.Client;
 import models.Ticket;
 import repository.TicketRepository;
-import services.ClientService;
-import services.LoyaltyService;
-import services.SessionService;
 import services.TicketService;
 import structures.list.GenericDynamicList;
 
 /**
  * Classe responsável por controlar operações relacionadas aos tickets]
  *
- * @author Vinícius Nunes de Andrade
+ * @author Vinícius Nunes de Andrade]
+ * @author Kaique Silva Sousa
  * @version 1.0
  * @since 13-06-2025
  */
