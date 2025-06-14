@@ -81,9 +81,6 @@ public class MovieControlController implements Initializable {
     /**
      * Atualiza a tabela de filmes.
      */
-    /**
-     * Atualiza a tabela de filmes.
-     */
     private void refreshTable() {
         movies = MovieController.getAllMovies();
         moviesForTable.clear();
@@ -97,9 +94,6 @@ public class MovieControlController implements Initializable {
     /**
      * Deleta os filmes selecionados.
      */
-    /**
-     * Deleta os filmes selecionados.
-     */
     @FXML
     private void handleDelete() {
         for (Movie movie : selectedMovies) {
@@ -110,11 +104,6 @@ public class MovieControlController implements Initializable {
         mostrarPopUp("excluído(s)");
     }
 
-    /**
-     * Mostra uma janela de confirmação após a ação de exclusão.
-     * 
-     * @param acao Ação realizada.
-     */
     /**
      * Mostra uma janela de confirmação após a ação de exclusão.
      * 
@@ -138,16 +127,33 @@ public class MovieControlController implements Initializable {
         }
     }
 
+
+    /**
+     * Método que abre a Tela de Registro de Filmes.
+     *
+     * @param event Evento ao apertar o botão, caso necessário.
+     */
     @FXML
     void registerMovie(ActionEvent event) {
         MainViews.changeScreen("registerMovie", null);
     }
 
+
+    /**
+     * Método que deleta um Filme.
+     *
+     * @param event Evento ao apertar o botão, caso necessário.
+     */
     @FXML
     void deleteMovie(ActionEvent event) {
-        handleDelete(); 
+        
     }
     
+    /**
+     * Método que abre a Tela de Alteraração de Filmes.
+     *
+     * @param event Evento ao apertar o botão, caso necessário.
+     */
     @FXML
     void editMovie(ActionEvent event) {
         if (!selectedMovies.isEmpty()) {
