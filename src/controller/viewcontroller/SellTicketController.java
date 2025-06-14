@@ -112,6 +112,10 @@ public class SellTicketController {
             // Realiza a venda do ticket com base nas infos fornecidas
             Ticket ticket = ticketService.purchaseTicket(clientID, session.getId(), paymentStr, loyaltyService);
 
+            // Mostra o desconto aplicado
+            double discount = loyaltyService.calculateDiscount(clientID);
+            showDiscountPopup(discount);
+
             // Vai pra tela de confirmação com os dados do ticket
             MainViews.changeScreen("popUpRegisteredSale", List.of(ticket));
 
