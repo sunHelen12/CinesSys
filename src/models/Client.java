@@ -4,6 +4,13 @@ import structures.list.GenericDynamicList;
 
 import java.time.LocalDate;
 
+/**
+ * Classe que representa um cliente.
+ * 
+ * @author
+ * @since
+ * @version
+ */
 public class Client {
     private static int _idGenerator = 1;
     private int id;
@@ -13,6 +20,13 @@ public class Client {
     private int points;
     private GenericDynamicList<Ticket> purchasingHistory;
     
+    /**
+     * Construtor da classe Client.
+     * 
+     * @param name Nome do cliente.
+     * @param email Email do cliente.
+     * @param birthday Data de nascimento do cliente.
+     */
     public Client(String name, String email, LocalDate birthday) {
         this.name = name;
         this.email = email;
@@ -22,38 +36,75 @@ public class Client {
         id = _idGenerator++;
     }
 
+    /**
+     * Obtém o ID do cliente.
+     * 
+     * @return O ID do cliente.
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * Obtém o nome do cliente.
+     * @return O nome do cliente.
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Obtém o email do cliente.
+     * @return O email do cliente.
+     */
     public String getEmail() {
         return email;
     }
 
+    /**
+     * Obtém a data de nascimento do cliente.
+     * @return A data de nascimento do cliente.
+     */
     public String getBirthday() {
         return birthday.format(java.time.format.DateTimeFormatter.ofPattern("dd-MM-yyyy"));
     }
 
+    /**
+     * Obtém os pontos do cliente.
+     * @return Os pontos do cliente.
+     */
     public int getPoints() {
         return points;
     }
 
+    /**
+     * Obtém o histórico de compras do cliente.
+     * @return Uma lista dinâmica contendo os tickets comprados pelo cliente.
+     */
     public GenericDynamicList<Ticket> getPurchasingHistory() {
         return purchasingHistory;
     }
 
+    /**
+     * Define o nome do cliente.
+     * @param name O novo nome do cliente.
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * Define o email do cliente.
+     * @param email O novo email do cliente.
+     */
     public void setEmail(String email) {
         this.email = email;
     }
 
+    /**
+     * Define a data de nascimento do cliente.
+     * @param birthday A nova data de nascimento do cliente.
+     */
     public void setBirthday(LocalDate birthday) {
         this.birthday = birthday;
     }
@@ -82,6 +133,10 @@ public class Client {
         this.points += additionalPoints;
     }
 
+    /**
+     * Retorna uma representação em string do histórico do cliente.
+     * @return Uma string contendo o histórico de compras do cliente.
+     */
     public String printHistory(){
         String result = "";
         for (int i = 0; i < purchasingHistory.size(); i++) {
@@ -90,6 +145,10 @@ public class Client {
         return result;
     }
 
+    /**
+     * Retorna uma representação em string do cliente. sobrescreve o método toString da classe Object.
+     * @return Uma string contendo as informações do cliente.
+     */
     @Override
     public String toString() {
         return "Client " + id + ":" + 
