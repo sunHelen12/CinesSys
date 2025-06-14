@@ -6,6 +6,9 @@ import structures.list.GenericDynamicList;
 
 /**
  * Classe Service responsável pela lógica denegícios relacionada a filmes.
+ * @author Gabryelle Beatriz Duarte Moraes
+ * @since 14/06/2024
+ * @version 1.0
  */
 public class MovieService {
     private final MovieRepository movieRepository;
