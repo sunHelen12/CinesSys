@@ -1,0 +1,32 @@
+package controller.viewcontroller;
+
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.stage.Stage;
+
+/**
+ * Controlador da tela de erro por sala lotada (Oversold).
+ * Informa que a venda não foi concluída e retorna para a tela de venda.
+ *
+ * @author Helen Santos Rocha
+ * @since 13-06-2025
+ * @version 1.0
+ */
+public class OversoldController {
+
+    @FXML
+    private Button backButton;
+
+    /**
+     * Fecha a tela atual e retorna para a tela de venda de ingressos.
+     */
+    @FXML
+    private void handleBack() {
+        // Fecha a janela atual
+        Stage stage = (Stage) backButton.getScene().getWindow();
+        stage.close();
+
+        // Volta para a tela de venda
+        MainViews.changeScreen("sellTicket", null);
+    }
+}
