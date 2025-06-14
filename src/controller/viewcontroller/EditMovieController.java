@@ -30,7 +30,7 @@ public class EditMovieController implements Initializable{
     @FXML private TextField ratingField;
     @FXML private TextField synopsisField;
 
-    private Movie selectedMovie;
+    private static Movie movie;
     
     /**
      * Inicializa o controlador.
@@ -50,9 +50,13 @@ public class EditMovieController implements Initializable{
             @Override
             public void onScreenChanged(String newScreen, Object userDataObject) {
                 if (userDataObject instanceof Movie) {
-                   selectedMovie = (Movie) userDataObject;
+                    movie = (Movie) userDataObject;
+                    titleField.setText(movie.getTitle());
+                    genreField.setText(movie.getGenre());
+                    durationField.setText(String.valueOf(movie.getDuration())); 
+                    ratingField.setText(movie.getClassification()); 
+                    synopsisField.setText(movie.getSynopsis());
                 }
-
             }
         });
     }
@@ -62,6 +66,7 @@ public class EditMovieController implements Initializable{
      * 
      * @param event Evento de ação do botão.
      */
+    @FXML
     void backMovieControl(ActionEvent event) {
         MainViews.changeScreen("movieControl", null);
     }
@@ -72,7 +77,7 @@ public class EditMovieController implements Initializable{
      * @param event Evento de ação do botão.
      */
     @FXML
-    void edit(ActionEvent event) {
+    void editMovie(ActionEvent event) {
         String title = titleField.getText().trim();
         String genre = genreField.getText().trim();
         String duration = durationField.getText().trim();
@@ -80,7 +85,7 @@ public class EditMovieController implements Initializable{
         String classification = ratingField.getText().trim();
         String synopsis = synopsisField.getText().trim();
 
-        MovieController.updateMovie(selectedMovie.getId(), title, genre, drtn, classification, synopsis);
+        MovieController.updateMovie(movie.getId(), title, genre, drtn, classification, synopsis);
         titleField.clear();
         genreField.clear();
         durationField.clear();
