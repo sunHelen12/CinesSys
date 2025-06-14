@@ -154,8 +154,8 @@ public class OccupationRelatoryController implements Initializable {
             List<Button> tabButtons = List.of(hojeBtn, semanaBtn, mesBtn, anoBtn);
 
             // Define os estilos para os estados ativo e inativo
-            String activeTabStyle = "-fx-background-color: #af0e2c; -fx-text-fill: #f2e8c6; -fx-background-radius: 5;";
-            String inactiveTabStyle = "-fx-background-color: transparent; -fx-text-fill: #f2e8c6; -fx-font-size: 14px;";
+            String activeTabStyle = "-fx-background-color: #af0e2c; -fx-text-fill: #f2e8c6; -fx-background-radius: 5; -fx-font-size: 18px;";
+            String inactiveTabStyle = "-fx-background-color: transparent; -fx-text-fill: #f2e8c6; -fx-font-size: 16px;";
 
             // Define o estado inicial (ex: "Hoje" começa ativo)
             hojeBtn.setStyle(activeTabStyle);
@@ -172,6 +172,7 @@ public class OccupationRelatoryController implements Initializable {
                     }
                     // Aplica o estilo ativo apenas no botão clicado
                     btn.setStyle(activeTabStyle);
+                    btn.setFont(Font.font("Arial", FontWeight.BOLD, 18));
 
                     // TODO: Adicione aqui a lógica para recalcular a ocupação
                     // com base no botão clicado (Hoje, Esta semana, etc.)
