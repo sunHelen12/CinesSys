@@ -47,7 +47,7 @@
                      <Font name="Arial" size="20.0" />
                   </font>
                </Label>
-               <TextField fx:id="titleField1" layoutX="384.0" layoutY="125.0" opacity="0.52" prefHeight="43.0" prefWidth="330.0" promptText="Ex: 120 " style="-fx-background-color: #03002C; -fx-background-radius: 5px;">
+               <TextField fx:id="durationField" layoutX="384.0" layoutY="125.0" opacity="0.52" prefHeight="43.0" prefWidth="330.0" promptText="Ex: 120 " style="-fx-background-color: #03002C; -fx-background-radius: 5px;">
                   <font>
                      <Font name="Arial" size="12.0" />
                   </font>
@@ -57,7 +57,7 @@
                      <Font name="Arial" size="20.0" />
                   </font>
                </Label>
-               <TextField fx:id="titleField11" layoutX="746.0" layoutY="125.0" opacity="0.52" prefHeight="44.0" prefWidth="351.0" promptText="+12" style="-fx-background-color: #03002C; -fx-background-radius: 5px;">
+               <TextField fx:id="ratingField" layoutX="746.0" layoutY="125.0" opacity="0.52" prefHeight="44.0" prefWidth="351.0" promptText="+12" style="-fx-background-color: #03002C; -fx-background-radius: 5px;">
                   <font>
                      <Font name="Arial" size="12.0" />
                   </font>
@@ -72,12 +72,12 @@
                      <Font name="Arial" size="20.0" />
                   </font>
                </Label>
-               <TextField fx:id="titleField2" layoutX="37.0" layoutY="254.0" opacity="0.52" prefHeight="42.0" prefWidth="318.0" promptText="Drama" style="-fx-background-color: #03002C; -fx-background-radius: 5px;">
+               <TextField fx:id="genreField" layoutX="37.0" layoutY="254.0" opacity="0.52" prefHeight="42.0" prefWidth="318.0" promptText="Drama" style="-fx-background-color: #03002C; -fx-background-radius: 5px;">
                   <font>
                      <Font name="Arial" size="12.0" />
                   </font>
                </TextField>
-               <TextField fx:id="titleField21" layoutX="382.0" layoutY="253.0" opacity="0.52" prefHeight="42.0" prefWidth="714.0" style="-fx-background-color: #03002C; -fx-background-radius: 5px;">
+               <TextField fx:id="synopsisField" layoutX="382.0" layoutY="253.0" opacity="0.52" prefHeight="42.0" prefWidth="714.0" style="-fx-background-color: #03002C; -fx-background-radius: 5px;">
                   <font>
                      <Font name="Arial" size="12.0" />
                   </font>
