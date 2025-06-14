@@ -90,18 +90,18 @@
                </font>
             </Label>
 
-            <Button layoutX="301.0" layoutY="651.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="142.0" style="-fx-background-color: #B1002D; -fx-font-weight: bold; -fx-background-radius: 5px;" text="Cadastrar" textFill="WHITE">
+            <Button layoutX="301.0" layoutY="651.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="142.0" style="-fx-background-color: #B1002D; -fx-font-weight: bold; -fx-background-radius: 5px;" text="Cadastrar" textFill="#f2e8c4">
                <font>
                   <Font name="Arial" size="18.0" />
                </font>
          
             </Button>
-            <Button layoutX="1110.0" layoutY="651.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="142.0" style="-fx-background-color: #B1002D; -fx-font-weight: bold; -fx-background-radius: 5px;" text="Alterar" textFill="WHITE">
+            <Button layoutX="1110.0" layoutY="651.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="142.0" style="-fx-background-color: #B1002D; -fx-font-weight: bold; -fx-background-radius: 5px;" text="Alterar" textFill="#f2e8c4">
                <font>
                   <Font name="Arial" size="18.0" />
                </font>
             </Button>
-            <Button layoutX="944.0" layoutY="651.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="142.0" style="-fx-background-color: #B1002D; -fx-font-weight: bold; -fx-background-radius: 5px;" text="Excluir" textFill="WHITE">
+            <Button layoutX="944.0" layoutY="651.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="142.0" style="-fx-background-color: #B1002D; -fx-font-weight: bold; -fx-background-radius: 5px;" text="Excluir" textFill="#f2e8c4">
                <font>
                   <Font name="Arial" size="18.0" />
                </font>
