@@ -76,7 +76,7 @@ public class MovieController {
 
     private void mostrarPopUp(String acao) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/pop_up.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/PopUpMovies.fxml"));
             Parent root = loader.load();
 
             PopUpMovieController controller = loader.getController();

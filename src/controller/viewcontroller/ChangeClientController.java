@@ -51,5 +51,4 @@ public class ChangeClientController implements Initializable {
         boxDate.clear();
         ClientControlController.mostrarPopUp("alterado");
     }
-
 }

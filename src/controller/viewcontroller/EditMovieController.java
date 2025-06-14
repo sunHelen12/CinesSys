@@ -6,10 +6,13 @@ import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.fxml.FXMLLoader;
-import models.Movie;
-import repository.MovieRepository;
+import models.*;
+import controller.business.MovieController;
+import java.net.URL;
+import java.util.ResourceBundle;
+import javafx.fxml.Initializable;
 
-public class EditMovieController {
+public class EditMovieController implements Initializable{
 
     @FXML private TextField titleField;
     @FXML private TextField genreField;
@@ -18,47 +21,40 @@ public class EditMovieController {
     @FXML private TextField synopsisField;
 
     private Movie selectedMovie;
-    private final MovieRepository repository = new MovieRepository();
+    
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        MainViews.addOnChangeScreenListener(new MainViews.OnChangeScreen() {
+            @Override
+            public void onScreenChanged(String newScreen, Object userDataObject) {
+                if (userDataObject instanceof Movie) {
+                   selectedMovie = (Movie) userDataObject;
+                }
 
-    public void setMovie(Movie movie) {
-        this.selectedMovie = movie;
-        titleField.setText(movie.getTitle());
-        genreField.setText(movie.getGenre());
-        durationField.setText(String.valueOf(movie.getDuration()));
-        ratingField.setText(movie.getClassification());
-        synopsisField.setText(movie.getSynopsis());
+            }
+        });
     }
 
     @FXML
-    private void handleEdit() {
-        try {
-            selectedMovie.setTitle(titleField.getText());
-            selectedMovie.setGenre(genreField.getText());
-            selectedMovie.setDuration(Integer.parseInt(durationField.getText()));
-            selectedMovie.setClassification(ratingField.getText());
-            selectedMovie.setSynopsis(synopsisField.getText());
-
-            mostrarPopUp("alterado");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    void backMovieControl(ActionEvent event) {
+        MainViews.changeScreen("movieControl", null);
     }
 
-    private void mostrarPopUp(String acao) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/PopUpMovies.fxml"));
-            Parent root = loader.load();
+    @FXML
+    void edit(ActionEvent event) {
+        String title = titleField.getText().trim();
+        String genre = genreField.getText().trim();
+        String duration = durationField.getText().trim();
+        int drtn = Integer.parseInt(duration);
+        String classificatio = ratingField.getText().trim();
+        String synopsis = synopsisField.getText().trim();
 
-            PopUpMovieController controller = loader.getController();
-            Stage stage = new Stage();
-            controller.setStage(stage);
-            controller.setMensagemPersonalizada(acao);
-
-            stage.setScene(new Scene(root));
-            stage.setTitle("Confirmação");
-            stage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        MovieController.updateMovie(selectedMovie.getId(), title, genre, drtn, classification, synopsis);
+        titleField.clear();
+        genreField.clear();
+        durationField.clear();
+        ratingField.clear();
+        synopsisField.clear();
+        MovieControlController.mostrarPopUp("alterado");
     }
 }
