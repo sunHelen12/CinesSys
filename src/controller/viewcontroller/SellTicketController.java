@@ -2,6 +2,7 @@ package controller.viewcontroller;
 
 import controller.business.ClientController;
 import controller.business.SessionController;
+import controller.business.TicketController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -47,10 +48,6 @@ public class SellTicketController {
     private final ToggleGroup radioGroup = new ToggleGroup(); // Agrupando os radio buttons
 
     private List<Session> sessions; // Lista das sessões carregadas para exibição
-
-    // Instâncias dos serviços usados no processo de venda
-    private final LoyaltyService loyaltyService = new LoyaltyService(new repository.ClientRepository());
-    private final TicketService ticketService = new TicketService(new repository.TicketRepository());
 
     /**
      * Método chamado automaticamente ao carregar a tela (FXML).
@@ -110,10 +107,10 @@ public class SellTicketController {
             }
 
             // Realiza a venda do ticket com base nas infos fornecidas
-            Ticket ticket = ticketService.purchaseTicket(clientID, session.getId(), paymentStr, loyaltyService);
+            Ticket ticket = TicketController.purchaseTicket(clientID, session.getId(), paymentStr);
 
             // Mostra o desconto aplicado
-            double discount = loyaltyService.calculateDiscount(clientID);
+            double discount = ClientController.calculateDiscount(clientID);
             showDiscountPopup(discount);
 
             // Vai pra tela de confirmação com os dados do ticket

@@ -84,5 +84,25 @@ public class ClientController {
         return clientService.getClientHistory(clientId);
     }
 
+    /**
+     * Calcula o desconto de um cliente chamando o método calculateDiscount da classe ClientService.
+     * 
+     * @param clientId ID do cliente.
+     * @return Desconto do cliente.
+     */
+    public static double calculateDiscount(int clientId) {
+        return clientService.calculateDiscount(clientId);
+    }
+
+    /**
+     * Registra os pontos de fidelidade de um cliente chamando o método registerPoints da classe ClientService.
+     * 
+     * @param clientId ID do cliente.
+     * @param ticket Ticket que será usado para registrar os pontos.
+     */
+    public static void registerPoints(int clientId, Ticket ticket) {
+        clientService.registerPoints(clientId, ticket);      
+    }
+
         
 }

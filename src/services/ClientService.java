@@ -156,6 +156,41 @@ public class ClientService {
     }
 
     /**
+     * Calcula o desconto para o cliente com base nos pontos acumulados.
+     * 
+     * Regra de exemplo:
+     *  - Cada 10 pontos equivalem a 1% de desconto.
+     *  - Máximo de 20% de desconto, independente dos pontos.
+     *
+     * @param clientId ID do cliente que receberá o desconto.
+     * @return valor de desconto (porcentagem entre 0.0 e 20.0).
+     * @throws IllegalArgumentException se o ID for inválido ou o cliente não existir.
+     */
+    public double calculateDiscount(int clientId){
+        //Verificações básicas
+        if (clientId <= 0) {
+            throw new IllegalArgumentException("O ID do cliente deve ser maior que zero!");
+        }
+        Client client = clientRepository.getById(clientId);
+        if (client == null) {
+            throw new IllegalArgumentException("Cliente não encontrado com ID " + clientId);
+        }
+
+        //Pegando os pontos acumulados
+        int pontos = client.getPoints();
+
+        //Converte os pontos em porcentagem de desconto (10 pontos = 1% de desconto)
+        double desconto = pontos/10;
+
+        //Teto máximo de 20% de desconto
+        if (desconto > 20.0) {
+            desconto = 20.0;
+        }
+
+        return desconto;
+    }
+
+    /**
      * Registra os pontos de fidelidade para o cliente ao comprar um novo ticket.
      * 
      * Regra de exemplo:

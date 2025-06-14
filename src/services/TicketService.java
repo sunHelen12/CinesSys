@@ -70,8 +70,7 @@ public class TicketService {
         ticketRepository.removeById(id);
     }
 
-    public Ticket purchaseTicket(int clientId, int sessionId, String paymentMethod,
-                                 LoyaltyService loyaltyService) {
+    public Ticket purchaseTicket(int clientId, int sessionId, String paymentMethod) {
 
         // Buscar cliente
         Client client = ClientController.getClientById(clientId);
@@ -97,7 +96,7 @@ public class TicketService {
         }
 
         // Calcular desconto
-        double discount = loyaltyService.calculateDiscount(clientId);
+        double discount = ClientController.calculateDiscount(clientId);
         double basePrice = 20.0; // Pode ser dinâmico no futuro
         double precoFinal = basePrice * (1 - discount / 100.0);
 
@@ -108,7 +107,7 @@ public class TicketService {
         ticketRepository.add(ticket);
 
         // Atualizar fidelidade do cliente
-        loyaltyService.registerPoints(clientId, ticket);
+        ClientController.registerPoints(clientId, ticket);
 
         // Adicionar ticket no histórico do cliente (se não for automático)
         ClientController.addTicketToClient(clientId, ticket);
