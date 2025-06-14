@@ -11,6 +11,14 @@ import models.Movie;
 import javafx.event.ActionEvent;
 import controller.business.MovieController;
 
+
+/**
+ * Classe responsável por controlar a tela de cadastro de um filme.
+ * 
+ * @author Gabryelle Beatriz Duarte Moraes
+ * @since 01/06/2024
+ * @version 2.0
+ */
 public class RegisterMovieController {
 
     @FXML private TextField titleField;

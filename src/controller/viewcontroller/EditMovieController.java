@@ -18,9 +18,9 @@ import models.Movie;
 
 /**
  * Classe responsável por controlar a tela de alteração de um Filme.
- * @author
- * @since
- * @version
+ * @author Gabryelle Beatriz Duarte Moraes
+ * @since 14/06/2024
+ * @version 1.0
  */
 public class EditMovieController implements Initializable{
 
