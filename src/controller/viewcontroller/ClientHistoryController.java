@@ -55,8 +55,6 @@ public class ClientHistoryController implements Initializable {
     }
 
     private void accessClientData(){
-        DateTimeFormatter formatDate = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HH:mm");
         
         lnlNome.setText(client.getName());
         lblID.setText(String.valueOf(client.getId()));
@@ -68,8 +66,8 @@ public class ClientHistoryController implements Initializable {
             Label labelMovie = new Label(ticket.getSession().getMovie().getTitle());
             labelMovie.setStyle(
                     "-fx-text-fill: #f2e8c6 !important; -fx-font-family: Arial !important; -fx-font-size: 14px;");
-            Label labelSession = new Label("Sessão → " + ticket.getSession().getDate().format(formatDate) + " às " + ticket
-                    .getSession().getTime().format(timeFormat) + " (Sala "+ ticket.getSession().getRoom().getId() +")");
+            Label labelSession = new Label("Sessão → " + ticket.getSession().getDate() + " às " + ticket
+                    .getSession().getTime() + " (Sala "+ ticket.getSession().getRoom().getId() +")");
             labelSession.setStyle(
                     "-fx-text-fill: #f2e8c6 !important; -fx-font-family: Arial !important; -fx-font-size: 14px;");
             Label labelAccess = new Label("Acessar Registro de Compras: ");

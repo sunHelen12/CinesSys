@@ -47,12 +47,9 @@ public class PurchaseRecordController implements Initializable {
     }
 
     private void accessTicketData(){
-        DateTimeFormatter formatDate = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HH:mm");
-
         labelMovie.setText(ticket.getSession().getMovie().getTitle());
         labelName.setText(ticket.getClient().getName());
-        labelSession.setText(ticket.getSession().getDate().format(formatDate) + " às " + ticket.getSession().getTime().format(timeFormat) + " (Sala " + ticket.getSession().getRoom().getId() + ")");
+        labelSession.setText(ticket.getSession().getDate() + " às " + ticket.getSession().getTime() + " (Sala " + ticket.getSession().getRoom().getId() + ")");
         labelPagamento.setText(ticket.getPaymentMethod().toString());
         
         GenericDynamicList<Ticket> list = ticket.getClient().getPurchasingHistory();
