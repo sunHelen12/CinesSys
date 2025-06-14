@@ -2,6 +2,8 @@ package controller.viewcontroller;
 
 import java.net.URL;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -27,7 +29,7 @@ import models.*;
 
 /**
  * Classe responsável por controlar a tela de relatório de ocupação de salas.
- * 
+ *
  * @author Maria Eduarda Santos Campos
  * @author Vinícius Nunes de Andrade
  * @since 28-05-2025
@@ -45,24 +47,35 @@ public class OccupationRelatoryController implements Initializable {
 
     @FXML
     private VBox filterContainer;
-    
+
     @FXML
     private ComboBox<String> filterOccupation;
 
     private List<String> filter = new ArrayList<>();
     private ObservableList<String> items;
-    
+
     /**
      * Volta para a tela de ocupação de salas quando o botão "Voltar" é clicado.
      */
     @FXML
     void backRoomOccupation(ActionEvent event) {
+        resetScreen();
         MainViews.changeScreen("roomOccupation", null);
+    }
+
+    private void resetScreen() {
+        room = null; // Zera a referência à sala
+        selected = null; // Zera o filtro selecionado
+
+        roomName.setText(""); // Limpa o nome da sala
+        totalSeat.setText(""); // Limpa o total de assentos
+        filterContainer.getChildren().clear(); // Remove todos os filtros exibidos
+        filterOccupation.getSelectionModel().clearSelection(); // Limpa seleção da ComboBox
     }
 
     /**
      * Inicializa o controlador.
-     * 
+     *
      * @param url URL de localização do arquivo FXML, se necessário.
      * @param rb Conjunto de recursos localizados, se necessário.
      */
@@ -77,7 +90,7 @@ public class OccupationRelatoryController implements Initializable {
                 }
             }
         });
-        
+
         try {
             inicializarSessoesParaTeste();
         } catch (Exception e) {
@@ -90,10 +103,10 @@ public class OccupationRelatoryController implements Initializable {
      * tualiza a interface específica da sala.
      */
     private void updateRoomSpecificUI() {
-        if (room != null) { 
+        if (room != null) {
             totalSeat.setText(room.getTotalSeat()+"");
             if (room.getId() == 1) {
-                roomName.setText("Sala 1"); 
+                roomName.setText("Sala 1");
             } else if (room.getId() == 2) {
                 roomName.setText("Sala 2");
             } else if (room.getId() == 3) {
@@ -104,7 +117,7 @@ public class OccupationRelatoryController implements Initializable {
                 roomName.setText("Sala 5");
             }
         } else {
-            roomName.setText("Sala (N/A)"); 
+            roomName.setText("Sala (N/A)");
         }
     }
 
@@ -117,35 +130,24 @@ public class OccupationRelatoryController implements Initializable {
         filter.add("Horário de Sessão");
 
         items = FXCollections.observableArrayList(filter);
-
         filterOccupation.setItems(items);
 
         filterOccupation.setOnAction(event -> {
             selected = filterOccupation.getValue();
             System.out.println("Selecionado: " + selected);
-            
+
             if (room != null) {
-                if (room.getId() == 1) {
-                    showFilter1();
-                } else if (room.getId() == 2) {
-                    mostrarFiltragem2();
-                } else if (room.getId() == 3) {
-                    mostrarFiltragem3();
-                } else if (room.getId() == 4) {
-                    mostrarFiltragem4();
-                } else if (room.getId() == 5) {
-                    mostrarFiltragem5();
-                }
+                showFilter(); // chamada única e genérica
             } else {
                 System.err.println("Erro: Não foi possível aplicar filtro, 'room' é nulo.");
             }
-        });        
+        });
     }
 
     /**
      * Mostra os filtros para a sala 1.
      */
-    public void showFilter1() {
+    public void showFilter() {
         filterContainer.getChildren().clear();
 
         if ("Filme".equals(selected)) {
@@ -189,28 +191,6 @@ public class OccupationRelatoryController implements Initializable {
             mesBtn.setStyle(inactiveTabStyle);
             anoBtn.setStyle(inactiveTabStyle);
 
-            // Adiciona a ação para cada botão
-            for (Button btn : tabButtons) {
-                btn.setOnAction(event -> {
-                    // Atualiza o estilo de todos os botões
-                    for (Button b : tabButtons) {
-                        b.setStyle(inactiveTabStyle);
-                    }
-                    // Aplica o estilo ativo apenas no botão clicado
-                    btn.setStyle(activeTabStyle);
-                    btn.setFont(Font.font("Arial", FontWeight.BOLD, 18));
-
-                    // TODO: Adicione aqui a lógica para recalcular a ocupação
-                    // com base no botão clicado (Hoje, Esta semana, etc.)
-                    System.out.println("Filtro selecionado: " + btn.getText());
-                    // Ex: double novaOcupacao = calcularOcupacaoPara(btn.getText());
-                    //     atualizarCaixaDeResultado(novaOcupacao);
-                });
-            }
-
-            tabs.getChildren().addAll(tabButtons);
-
-
             // --- 2. Criação da Caixa Vermelha com o Resultado ---
             VBox redBox = new VBox(10);
             redBox.setPadding(new Insets(10));
@@ -220,18 +200,49 @@ public class OccupationRelatoryController implements Initializable {
             boldText.setFont(Font.font("Arial", FontWeight.BOLD, 14));
             boldText.setFill(javafx.scene.paint.Color.web("#f2e8c6"));
 
-            Text ocupacaoText = new Text("76.3%"); // Este valor viria do seu cálculo
+            double ocupacaoInicial = calcularOcupacaoPara("Hoje"); // Calcula para 'Hoje' (o botão inicial)
+            Text ocupacaoText = new Text(String.format("%.1f", ocupacaoInicial) + "%");
             ocupacaoText.setFont(Font.font("Arial", FontWeight.NORMAL, 14));
             ocupacaoText.setFill(javafx.scene.paint.Color.web("#f2e8c6"));
 
             TextFlow textFlow = new TextFlow(boldText, ocupacaoText);
             redBox.getChildren().add(textFlow);
 
+            // --- 3. Adiciona ação para os botões (usa a redBox que já existe) ---
+            for (Button btn : tabButtons) {
+                btn.setOnAction(event -> {
+                    // Atualiza o estilo dos botões
+                    for (Button b : tabButtons) {
+                        b.setStyle(inactiveTabStyle);
+                    }
+                    btn.setStyle(activeTabStyle);
+                    btn.setFont(Font.font("Arial", FontWeight.BOLD, 18));
 
-            // --- 3. Adiciona tudo no contêiner principal ---
-            // Adiciona as abas e a caixa de resultado ao contêiner que já existe no seu FXML
+                    // Calcular a ocupação com base no botão clicado
+                    String filtroSelecionado = btn.getText();
+                    double ocupacaoCalculada = calcularOcupacaoPara(filtroSelecionado);
+
+                    // Atualizar caixa de resultado (redBox)
+                    redBox.getChildren().clear();
+                    Text boldTextNovo = new Text("Ocupação média (todas as sessões): ");
+                    boldTextNovo.setFont(Font.font("Arial", FontWeight.BOLD, 14));
+                    boldTextNovo.setFill(javafx.scene.paint.Color.web("#f2e8c6"));
+
+                    Text ocupacaoTextNova = new Text(String.format("%.1f", ocupacaoCalculada) + "%");
+                    ocupacaoTextNova.setFont(Font.font("Arial", FontWeight.NORMAL, 14));
+                    ocupacaoTextNova.setFill(javafx.scene.paint.Color.web("#f2e8c6"));
+
+                    TextFlow textFlowNovo = new TextFlow(boldTextNovo, ocupacaoTextNova);
+                    redBox.getChildren().add(textFlowNovo);
+
+                    System.out.println("Filtro aplicado: " + filtroSelecionado + " | Ocupação média: " + ocupacaoCalculada + "%");
+                });
+            }
+
+            tabs.getChildren().addAll(tabButtons);
+
+            // --- 4. Adiciona tudo no contêiner principal ---
             filterContainer.getChildren().addAll(tabs, redBox);
-
         } else if ("Horário de Sessão".equals(selected)) {
             Label labelAux = new Label("Horário");
             labelAux.setStyle("-fx-font-family: Arial; -fx-text-fill: #f2e8c6;");
@@ -239,23 +250,61 @@ public class OccupationRelatoryController implements Initializable {
         }
     }
 
-    public void mostrarFiltragem2() {
+    private double calcularOcupacaoPara(String filtro) {
+        if (room == null || room.getSessions().isEmpty()) return 0.0;
+
+        LocalDate hoje = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd"); // ajuste o formato se necessário
+
+        int totalIngressosVendidos = 0;
+        int totalIngressosOferecidos = 0;
+
+        for (Session session : room.getSessions()) {
+            LocalDate dataSessao;
+            try {
+                dataSessao = LocalDate.parse(session.getDate(), formatter);
+            } catch (DateTimeParseException e) {
+                System.err.println("Formato de data inválido na sessão: " + session.getDate());
+                continue;
+            }
+
+            boolean incluir = false;
+
+            switch (filtro) {
+                case "Hoje":
+                    incluir = dataSessao.equals(hoje);
+                    break;
+                case "Esta semana":
+                    incluir = dataSessao.isAfter(hoje.with(java.time.DayOfWeek.MONDAY).minusDays(1)) &&
+                            dataSessao.isBefore(hoje.with(java.time.DayOfWeek.SUNDAY).plusDays(1));
+                    break;
+                case "Este mês":
+                    incluir = dataSessao.getMonth() == hoje.getMonth() &&
+                            dataSessao.getYear() == hoje.getYear();
+                    break;
+                case "Este ano":
+                    incluir = dataSessao.getYear() == hoje.getYear();
+                    break;
+            }
+
+            if (incluir) {
+                int vendidos = room.getTotalSeat() - session.getTotalAvailableSeats();
+                totalIngressosVendidos += vendidos;
+                totalIngressosOferecidos += room.getTotalSeat();
+            }
+        }
+
+        if (totalIngressosOferecidos == 0) return 0.0;
+
+        return ((double) totalIngressosVendidos / totalIngressosOferecidos) * 100.0;
     }
 
-    public void mostrarFiltragem3() {
-    }
-
-    public void mostrarFiltragem4() {
-    }
-
-    public void mostrarFiltragem5() {
-    }
     //Gambiarras de Teste
 
     // Simulação de uma base de dados
     private final List<Session> sessoesDeTeste = new ArrayList<>();
 
-    
+
     //Remover depois
     private void inicializarSessoesParaTeste() throws Exception{
         sessoesDeTeste.add(new Session(LocalDate.now(), LocalTime.now(), RoomController.getRoomById(1), new Movie("Filme 1", "Drama", 231, "10", "Sinopse"), 18.5));
