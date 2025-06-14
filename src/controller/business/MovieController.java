@@ -68,5 +68,14 @@ public class MovieController {
         return movieService.removeMovieById(id);
     }
 
+    /**
+     * Retorna um filme com o mesmo nome fornecido.
+     *
+     * @param name nome do filme
+     * @return filme com o mesmo nome
+     */
+    public static Movie getMovieByName(String name){
+        return movieService.getMovieByName(name);
+    }
     
 }

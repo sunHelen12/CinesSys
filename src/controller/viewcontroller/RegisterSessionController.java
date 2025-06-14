@@ -38,9 +38,7 @@ public class RegisterSessionController {
         String movie = txtMovie.getText().trim();
         String ticketPrice = txtPrice.getText().trim();
 
-        if (date.isEmpty() || time.isEmpty() || room.isEmpty()) {
-            return;
-        }else{
+        if (!date.isEmpty() && !time.isEmpty() && !room.isEmpty() && !movie.isEmpty() && !ticketPrice.isEmpty()) {
             int roomId = Integer.parseInt(room);
             double ticketPriceValue = Double.parseDouble(ticketPrice);
             SessionController.addSession(date, time, RoomController.getRoomById(roomId), MovieController.getMovieByName(movie), ticketPriceValue);

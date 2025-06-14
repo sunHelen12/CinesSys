@@ -6,12 +6,15 @@ import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.fxml.FXMLLoader;
-import models.*;
-import controller.business.MovieController;
-import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.fxml.Initializable;
+import models.Movie;
+import repository.MovieRepository;
 
+/**
+ * Classe responsável por controlar a tela de alteração de um cliente.
+ * @author
+ * @since
+ * @version
+ */
 public class EditMovieController implements Initializable{
 
     @FXML private TextField titleField;
@@ -35,7 +38,7 @@ public class EditMovieController implements Initializable{
         });
     }
 
-    @FXML
+   
     void backMovieControl(ActionEvent event) {
         MainViews.changeScreen("movieControl", null);
     }

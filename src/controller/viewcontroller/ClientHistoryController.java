@@ -7,14 +7,16 @@ import javafx.scene.layout.VBox;
 import javafx.event.ActionEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.ResourceBundle;
-import java.time.format.DateTimeFormatter;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.geometry.Insets;
 import models.*;
 
+/**
+ * Classe responsável por controlar a tela de alteração de um cliente.
+ * @author
+ * @since
+ * @version
+ */
 public class ClientHistoryController implements Initializable {
     private static Client client;
 
@@ -36,11 +38,22 @@ public class ClientHistoryController implements Initializable {
     @FXML
     private Label lnlNome;
 
+    /**
+     * Volta para a tela anterior.
+     * 
+     * @param event
+     */
     @FXML
     void backPurchase(ActionEvent event) {
         MainViews.changeScreen("purchaseRelatory", null);
     }
 
+    /**
+     * Inicializa o controlador.
+     * 
+     * @param url O URL de onde o controlador foi carregado.
+     * @param rb O ResourceBundle associado ao controlador.
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         MainViews.addOnChangeScreenListener(new MainViews.OnChangeScreen() {
@@ -54,6 +67,9 @@ public class ClientHistoryController implements Initializable {
         });
     }
 
+    /**
+     * Acessa os dados do cliente.
+     */
     private void accessClientData(){
         
         lnlNome.setText(client.getName());

@@ -94,4 +94,19 @@ public class MovieRepository {
         }
         return false;
     }
+
+    /**
+     * Retorna um filme com o mesmo nome fornecido.
+     *
+     * @param name nome do filme
+     * @return filme com o mesmo nome
+     */
+    public Movie getMovieByName(String name){
+        for (Movie movie : movies){
+            if(movie.getTitle().trim().equalsIgnoreCase(name.trim())){
+                return movie;
+            }
+        }
+        return null;
+    }
 }
