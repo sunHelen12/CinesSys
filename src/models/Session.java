@@ -11,7 +11,7 @@ import java.time.format.DateTimeFormatter;
  * duração, número de assentos disponíveis e valor do ingresso.
  * Cada sessão possui um ID único gerado automaticamente.
  * 
- * @author CinesSys Team
+ * @author Carlos henrique moreira
  * @version 1.0
  */
 public class Session {
