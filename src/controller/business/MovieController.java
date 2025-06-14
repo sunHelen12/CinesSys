@@ -1,6 +1,7 @@
 package controller.business;
 
 import models.Movie;
+import models.Session;
 import repository.MovieRepository;
 import services.MovieService;
 import structures.list.GenericDynamicList;
@@ -76,6 +77,16 @@ public class MovieController {
      */
     public static Movie getMovieByName(String name){
         return movieService.getMovieByName(name);
+    }
+
+    /**
+     * Retorna uma lista de sessões que irão passar um certo filme
+     *
+     * @param id id do filme a ser pesquisado
+     * @return lista de sessões que irão passar o filme fornecido
+     */
+    public static GenericDynamicList<Session> getSessionsByMovie(int id) {
+        return movieService.getSessionsByMovie(id);
     }
     
 }

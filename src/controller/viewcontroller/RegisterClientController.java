@@ -1,9 +1,14 @@
 package controller.viewcontroller;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import controller.business.ClientController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
+import models.Movie;
 
 /**
  * Classe referente ao controle da interface "Registrar Clientes" presente na
@@ -13,14 +18,28 @@ import javafx.scene.control.TextField;
  * @since 31-05-2025
  * @version 2
  */
-public class RegisterClientController {
+public class RegisterClientController implements Initializable {
     @FXML
     private TextField enterDate;
     @FXML
     private TextField enterEmail;
     @FXML
     private TextField enterName;
-    
+
+    /**
+     * inicializa mudando a cor do texto e do fundo dos campos de texto
+     * 
+     * @param url O URL de onde o controlador foi carregado.
+     * @param rb O ResourceBundle associado ao controlador.
+     */
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // Muda a cor do texto e do fundo dos campos de texto
+        enterName.setStyle("-fx-text-fill: white !important; -fx-background-color: #03002C !important;");
+        enterEmail.setStyle("-fx-text-fill: white !important; -fx-background-color: #03002C !important;");
+        enterDate.setStyle("-fx-text-fill: white !important; -fx-background-color: #03002C !important;");
+    }
+
     /**
      * Método que abre a Tela de Controle de Clientes.
      * 

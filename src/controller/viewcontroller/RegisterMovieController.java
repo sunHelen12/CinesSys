@@ -7,8 +7,13 @@ import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import models.Movie;
 import javafx.event.ActionEvent;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import controller.business.MovieController;
 
 
@@ -19,13 +24,29 @@ import controller.business.MovieController;
  * @since 01/06/2024
  * @version 2.0
  */
-public class RegisterMovieController {
+public class RegisterMovieController implements Initializable {
 
     @FXML private TextField titleField;
     @FXML private TextField genreField;
     @FXML private TextField durationField;
     @FXML private TextField ratingField;
     @FXML private TextField synopsisField;
+
+    /**
+     * inicializa mudando a cor do texto e do fundo dos campos de texto
+     * 
+     * @param url O URL de onde o controlador foi carregado.
+     * @param rb O ResourceBundle associado ao controlador.
+     */
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // Muda a cor do texto e do fundo dos campos de texto
+        titleField.setStyle("-fx-text-fill: white !important; -fx-background-color: #03002C !important;");
+        genreField.setStyle("-fx-text-fill: white !important; -fx-background-color: #03002C !important;");
+        durationField.setStyle("-fx-text-fill: white !important; -fx-background-color: #03002C !important;");
+        ratingField.setStyle("-fx-text-fill: white !important; -fx-background-color: #03002C !important;");
+        synopsisField.setStyle("-fx-text-fill: white !important; -fx-background-color: #03002C !important;");
+    }
 
     /**
      * Reseta a tela de controle de filmes.

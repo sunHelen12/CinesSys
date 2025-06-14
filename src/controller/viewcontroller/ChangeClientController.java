@@ -36,6 +36,11 @@ public class ChangeClientController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        // Muda a cor do texto e do fundo dos campos de texto
+        boxName.setStyle("-fx-text-fill: white !important; -fx-background-color: #03002C !important;");
+        boxEmail.setStyle("-fx-text-fill: white !important; -fx-background-color: #03002C !important;");
+        boxDate.setStyle("-fx-text-fill: white !important; -fx-background-color: #03002C !important;");
+
         MainViews.addOnChangeScreenListener(new MainViews.OnChangeScreen() {
             @Override
             public void onScreenChanged(String newScreen, Object userDataObject) {

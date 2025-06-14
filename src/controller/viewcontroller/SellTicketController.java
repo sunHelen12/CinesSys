@@ -52,9 +52,14 @@ public class SellTicketController {
     /**
      * Método chamado automaticamente ao carregar a tela (FXML).
      * Inicializa os botões de sessão, carrega sessões disponíveis e exibe as infos na interface.
+     * Alem disso, muda a cor do texto e do fundo dos campos de texto.
      */
     @FXML
     public void initialize() {
+        // Muda a cor do texto e do fundo dos campos de texto
+        clientId.setStyle("-fx-text-fill: white !important; -fx-background-color: #03002C !important;");
+        paymentMethod.setStyle("-fx-text-fill: white !important; -fx-background-color: #03002C !important;");
+
         // Agrupando os radio buttons pra garantir que só um possa ser selecionado por vez
         radioRoom2.setToggleGroup(radioGroup);
         radioRoom3.setToggleGroup(radioGroup);
