@@ -6,6 +6,9 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import controller.viewcontroller.MainViews;
 
+/**
+ * Classe responsável pela exibição de mensagens de sucesso ou erro na tela de cadastro de clientes.
+ */
 public class PopUpClientController {
 
     @FXML
@@ -13,10 +16,18 @@ public class PopUpClientController {
 
     private Stage stage;
 
+    /**
+     * Inicializa a tela de mensagem de sucesso.
+     * @param mensagem mensagem a ser exibida na tela
+     */
     public void setMensagemPersonalizada(String mensagem) {
         lblMsg.setText("Cliente " + mensagem + " com Sucesso!");
     }
 
+    /**
+     * Fecha a tela de mensagem de sucesso.
+     * @param stage 
+     */
     public void setStage(Stage stage) {
         this.stage = stage;
     }

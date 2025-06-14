@@ -30,6 +30,9 @@ import java.util.ResourceBundle;
  */
 public class MovieControlController implements Initializable {
 
+    /**
+     * Inicializa o controlador da tela de controle de filmes.
+     */
     @FXML private TableView<Movie> movieTable;
     @FXML private TableColumn<Movie, Boolean> selectColumn;
     @FXML private TableColumn<Movie, String> titleColumn;
@@ -78,6 +81,9 @@ public class MovieControlController implements Initializable {
     /**
      * Atualiza a tabela de filmes.
      */
+    /**
+     * Atualiza a tabela de filmes.
+     */
     private void refreshTable() {
         movies = MovieController.getAllMovies();
         moviesForTable.clear();
@@ -91,6 +97,9 @@ public class MovieControlController implements Initializable {
     /**
      * Deleta os filmes selecionados.
      */
+    /**
+     * Deleta os filmes selecionados.
+     */
     @FXML
     private void handleDelete() {
         for (Movie movie : selectedMovies) {
@@ -101,6 +110,11 @@ public class MovieControlController implements Initializable {
         mostrarPopUp("excluído(s)");
     }
 
+    /**
+     * Mostra uma janela de confirmação após a ação de exclusão.
+     * 
+     * @param acao Ação realizada.
+     */
     /**
      * Mostra uma janela de confirmação após a ação de exclusão.
      * 
