@@ -25,6 +25,7 @@ public class MainViews extends Application {
     private static Scene purchaseRelatoryScene;
     private static Scene registerClientScene;
     private static Scene registerMovieScene;
+    private static Scene registerSessionScene;
     private static Scene roomOccupationScene;
     private static Scene sellTicketScene;
     private static Scene purchaseRecordScene;
@@ -52,6 +53,7 @@ public class MainViews extends Application {
         FXMLLoader loaderPurchaseRelatory = new FXMLLoader(getClass().getResource("/gui/PurchaseRelatory.fxml"));
         FXMLLoader loaderRegisterClient = new FXMLLoader(getClass().getResource("/gui/RegisterClient.fxml"));
         FXMLLoader loaderRegisterMovie = new FXMLLoader(getClass().getResource("/gui/RegisterMovie.fxml"));
+        FXMLLoader loaderRegisterSession = new FXMLLoader(getClass().getResource("/gui/RegisterSession.fxml"));
         FXMLLoader loaderRoomOccupation = new FXMLLoader(getClass().getResource("/gui/RoomOccupation.fxml"));
         FXMLLoader loaderPurchaseRecord = new FXMLLoader(getClass().getResource("/gui/PurchaseRecord.fxml"));
         FXMLLoader loaderSellTicket = new FXMLLoader(getClass().getResource("/gui/SellTicket.fxml"));
@@ -92,6 +94,9 @@ public class MainViews extends Application {
 
         Parent registerMovie = loaderRegisterMovie.load();
         registerMovieScene = new Scene(registerMovie);
+
+        Parent registerSession = loaderRegisterSession.load();
+        registerSessionScene = new Scene(registerSession);
 
         Parent roomOccupation = loaderRoomOccupation.load();
         roomOccupationScene = new Scene(roomOccupation);
@@ -166,6 +171,10 @@ public class MainViews extends Application {
             case "registerMovie":
                 stage.setScene(registerMovieScene);
                 notifyAllListerners("registerMovie", userDataObject);
+                break;
+            case "registerSession":
+                stage.setScene(registerSessionScene);
+                notifyAllListerners("registerSession", userDataObject);
                 break;
             case "roomOccupation":
                 stage.setScene(roomOccupationScene);
