@@ -24,6 +24,7 @@ public class MainViews extends Application {
     private static Scene registerClientScene;
     private static Scene registerMovieScene;
     private static Scene roomOccupationScene;
+    private static Scene sellTicketScene;
     private static Scene purchaseRecordScene;
 
     @Override
@@ -45,6 +46,8 @@ public class MainViews extends Application {
         FXMLLoader loaderRegisterMovie = new FXMLLoader(getClass().getResource("/gui/RegisterMovie.fxml"));
         FXMLLoader loaderRoomOccupation = new FXMLLoader(getClass().getResource("/gui/RoomOccupation.fxml"));
         FXMLLoader loaderPurchaseRecord = new FXMLLoader(getClass().getResource("/gui/PurchaseRecord.fxml"));
+        FXMLLoader loaderSellTicket = new FXMLLoader(getClass().getResource("/gui/SellTicket.fxml"));
+
 
         Parent homeScreen = loaderHomeScreen.load();
         homeScreenScene = new Scene(homeScreen);
@@ -84,6 +87,9 @@ public class MainViews extends Application {
 
         Parent roomOccupation = loaderRoomOccupation.load();
         roomOccupationScene = new Scene(roomOccupation);
+
+        Parent sellTicket = loaderSellTicket.load();
+        sellTicketScene = new Scene(sellTicket);
 
         Parent purchaseRecord = loaderPurchaseRecord.load();
         purchaseRecordScene = new Scene(purchaseRecord);
@@ -150,6 +156,10 @@ public class MainViews extends Application {
             case "roomOccupation":
                 stage.setScene(roomOccupationScene);
                 notifyAllListerners("roomOccupation", userDataObject);
+                break;
+            case "sellTicket":
+                stage.setScene(sellTicketScene);
+                notifyAllListerners("sellTicket", userDataObject);
                 break;
             default:
                 break;
