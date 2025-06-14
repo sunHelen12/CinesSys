@@ -7,8 +7,10 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.util.ArrayList;
 import java.util.List;
-import javafx.event.ActionEvent;
 
+/**
+ * Classe da tela principal do sistema onde é possível navegar entre as telas.
+ */
 public class MainViews extends Application {
     private static Stage stage;
     private static Scene homeScreenScene;
@@ -27,6 +29,12 @@ public class MainViews extends Application {
     private static Scene sellTicketScene;
     private static Scene purchaseRecordScene;
 
+    /**
+     * Inicializa a aplicação.
+     * 
+     * @param primaryStage esta é a tela principal da aplicação.
+     * @throws Exception 
+     */
     @Override
     public void start(Stage primaryStage) throws Exception {
         stage = primaryStage;
@@ -99,6 +107,12 @@ public class MainViews extends Application {
         primaryStage.show();
     }    
 
+    /**
+     * Troca entre telas da aplicação quando o usuário clica em um botão que leva a outra tela.
+     * 
+     * @param screen
+     * @param userDataObject
+     */
     public static void changeScreen(String screen, Object userDataObject){
         switch (screen) {
             case "changeClient":
@@ -166,6 +180,11 @@ public class MainViews extends Application {
         }        
     }
 
+    /**
+     * método principal da classe
+     * 
+     * @param args
+     */
     public static void main(String[] args) {
         launch(args);
     }
@@ -173,14 +192,29 @@ public class MainViews extends Application {
     //Processamento de Dados na Troca de Tela
     private static List<OnChangeScreen> listeners = new ArrayList<>();
 
+
+    /**
+     * Interface para processamento de dados na troca de tela
+     */
     public static interface OnChangeScreen{
         void onScreenChanged(String newScreen, Object userDataObject);
     }
 
+    /**
+     * Adiciona um novo listener para a troca de tela
+     * 
+     * @param newListener novo listener
+     */
     public static void addOnChangeScreenListener(OnChangeScreen newListener){
         listeners.add(newListener);
     }
 
+    /**
+     * Notifica todos os listeners sobre a troca de tela
+     * 
+     * @param newScreen
+     * @param userDataObject
+     */
     private static void notifyAllListerners(String newScreen, Object userDataObject){
         for(OnChangeScreen l:listeners)
             l.onScreenChanged(newScreen, userDataObject);
