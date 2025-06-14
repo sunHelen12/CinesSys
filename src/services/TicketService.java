@@ -91,6 +91,18 @@ public class TicketService {
         if (session == null) {
             throw new IllegalArgumentException("Sessão com ID " + sessionId + " não encontrada.");
         }
+        if (session.getTotalAvailableSeats() <= 0) {
+            throw new IllegalStateException("Não há assentos disponíveis para a sessão " + sessionId + ".");
+        }
+        session.setTotalAvailableSeats(session.getTotalAvailableSeats() - 1);
+        sessionService.updateSession(
+            session.getId(),
+            session.getDate(),
+            session.getTime(),
+            session.getRoom(),
+            session.getMovie(),
+            session.getTicketValue()
+        );
 
         // Validar método de pagamento
         PaymentMethod method;
