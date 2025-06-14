@@ -11,8 +11,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import java.time.LocalDate;
 import javafx.event.ActionEvent;
@@ -138,9 +141,71 @@ public class OccupationRelatoryController implements Initializable {
                 System.out.println("Filme " + movieTitle + " adicionado");
             }
         } else if ("Data".equals(selected)) {
-            Label labelAux = new Label("Data");
-            labelAux.setStyle("-fx-font-family: Arial; -fx-text-fill: #f2e8c6;");
-            filterContainer.getChildren().add(labelAux);
+            // --- 1. Criação das Abas de Filtro de Data ---
+            HBox tabs = new HBox(10); // HBox para agrupar os botões de data
+            tabs.setPadding(new Insets(10, 0, 10, 0));
+
+            Button hojeBtn = new Button("Hoje");
+            Button semanaBtn = new Button("Esta semana");
+            Button mesBtn = new Button("Este mês");
+            Button anoBtn = new Button("Este ano");
+
+            // Agrupa os botões em uma lista para facilitar a manipulação dos estilos
+            List<Button> tabButtons = List.of(hojeBtn, semanaBtn, mesBtn, anoBtn);
+
+            // Define os estilos para os estados ativo e inativo
+            String activeTabStyle = "-fx-background-color: #af0e2c; -fx-text-fill: #f2e8c6; -fx-background-radius: 5; -fx-font-size: 18px;";
+            String inactiveTabStyle = "-fx-background-color: transparent; -fx-text-fill: #f2e8c6; -fx-font-size: 16px;";
+
+            // Define o estado inicial (ex: "Hoje" começa ativo)
+            hojeBtn.setStyle(activeTabStyle);
+            semanaBtn.setStyle(inactiveTabStyle);
+            mesBtn.setStyle(inactiveTabStyle);
+            anoBtn.setStyle(inactiveTabStyle);
+
+            // Adiciona a ação para cada botão
+            for (Button btn : tabButtons) {
+                btn.setOnAction(event -> {
+                    // Atualiza o estilo de todos os botões
+                    for (Button b : tabButtons) {
+                        b.setStyle(inactiveTabStyle);
+                    }
+                    // Aplica o estilo ativo apenas no botão clicado
+                    btn.setStyle(activeTabStyle);
+                    btn.setFont(Font.font("Arial", FontWeight.BOLD, 18));
+
+                    // TODO: Adicione aqui a lógica para recalcular a ocupação
+                    // com base no botão clicado (Hoje, Esta semana, etc.)
+                    System.out.println("Filtro selecionado: " + btn.getText());
+                    // Ex: double novaOcupacao = calcularOcupacaoPara(btn.getText());
+                    //     atualizarCaixaDeResultado(novaOcupacao);
+                });
+            }
+
+            tabs.getChildren().addAll(tabButtons);
+
+
+            // --- 2. Criação da Caixa Vermelha com o Resultado ---
+            VBox redBox = new VBox(10);
+            redBox.setPadding(new Insets(10));
+            redBox.setStyle("-fx-background-color: #af0e2c; -fx-background-radius: 10;");
+
+            Text boldText = new Text("Ocupação média (todas as sessões): ");
+            boldText.setFont(Font.font("Arial", FontWeight.BOLD, 14));
+            boldText.setFill(javafx.scene.paint.Color.web("#f2e8c6"));
+
+            Text ocupacaoText = new Text("76.3%"); // Este valor viria do seu cálculo
+            ocupacaoText.setFont(Font.font("Arial", FontWeight.NORMAL, 14));
+            ocupacaoText.setFill(javafx.scene.paint.Color.web("#f2e8c6"));
+
+            TextFlow textFlow = new TextFlow(boldText, ocupacaoText);
+            redBox.getChildren().add(textFlow);
+
+
+            // --- 3. Adiciona tudo no contêiner principal ---
+            // Adiciona as abas e a caixa de resultado ao contêiner que já existe no seu FXML
+            filterContainer.getChildren().addAll(tabs, redBox);
+
         } else if ("Horário de Sessão".equals(selected)) {
             Label labelAux = new Label("Horário");
             labelAux.setStyle("-fx-font-family: Arial; -fx-text-fill: #f2e8c6;");
