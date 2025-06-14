@@ -50,7 +50,7 @@ public class Session {
     }
 
     public String getTime() {
-        return time.format(java.time.format.DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+        return time.format(java.time.format.DateTimeFormatter.ofPattern("HH:mm:ss"));
     }
 
     public int getDuration() {
