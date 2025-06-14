@@ -10,6 +10,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import models.Movie;
 
+/**
+ * Classe responsável por controlar a tela de cadastro de uma sessão.
+ * 
+ * @author
+ * @since
+ * @version
+ */
 public class RegisterSessionController {
 
     @FXML
@@ -26,11 +33,22 @@ public class RegisterSessionController {
 
     @FXML
     private TextField txtTime;
+
+    /**
+     * Retorna para a tela de controle de sessões.
+     * 
+     * @param event evento de clique no botão de voltar
+     */
     @FXML
     void backSessionController(ActionEvent event) {
         MainViews.changeScreen("sessionControl", null);
     }
 
+    /**
+     * Cadastra uma sessão no sistema.
+     * 
+     * @param event evento de clique no botão de cadastrar sessão
+     */
     @FXML
     void registerSession(ActionEvent event) {
         String date = txtDate.getText().trim();

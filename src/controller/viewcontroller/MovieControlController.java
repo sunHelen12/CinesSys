@@ -61,8 +61,8 @@ public class MovieControlController implements Initializable, MainViews.OnChange
 
     /**
      * Inicializa o controlador.
-     * * @param url URL de localização do arquivo FXML, se necessário.
      * 
+     * @param url URL de localização do arquivo FXML, se necessário.
      * @param resourceBundle Conjunto de recursos localizados, se necessário.
      */
     @Override
@@ -210,9 +210,8 @@ public class MovieControlController implements Initializable, MainViews.OnChange
     }
 
     /**
-     * Método que abre a Tela de Registro de Filmes.
-     *
-     * @param event Evento ao apertar o botão, caso necessário.
+     * Método chamado quando o botão "Cadastrar Filme" é clicado e muda para a tela de cadastro de filmes.
+     * @param event evento de clique do botão
      */
     @FXML
     void registerMovie(ActionEvent event) {
@@ -220,9 +219,8 @@ public class MovieControlController implements Initializable, MainViews.OnChange
     }
 
     /**
-     * Método que deleta um Filme.
-     *
-     * @param event Evento ao apertar o botão, caso necessário.
+     * Método chamado quando o botão "Excluir Filme" é clicado e chama o método handleDelete.
+     * @param event evento de clique do botão
      */
     @FXML
     void deleteMovie(ActionEvent event) {
@@ -241,9 +239,8 @@ public class MovieControlController implements Initializable, MainViews.OnChange
     }
 
     /**
-     * Método que abre a Tela de Alteraração de Filmes.
-     *
-     * @param event Evento ao apertar o botão, caso necessário.
+     * Método chamado quando o botão "Editar" é clicado.
+     * @param event evento de clique do botão
      */
     @FXML
     void editMovie(ActionEvent event) {
