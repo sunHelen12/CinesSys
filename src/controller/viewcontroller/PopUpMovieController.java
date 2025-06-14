@@ -30,6 +30,7 @@ public class PopUpMovieController {
     @FXML
     void backMovietControl(ActionEvent event) {
         MainViews.changeScreen("movieControl", null);
+
         stage.close();
     }
 }
