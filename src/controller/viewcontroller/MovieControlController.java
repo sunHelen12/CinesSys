@@ -30,9 +30,7 @@ import java.util.ResourceBundle;
  */
 public class MovieControlController implements Initializable {
 
-    /**
-     * Inicializa o controlador da tela de controle de filmes.
-     */
+    
     @FXML
     private TableView<Movie> movieTable;
     @FXML
@@ -54,6 +52,12 @@ public class MovieControlController implements Initializable {
     // Esta será a ObservableList que a tabela usará para exibir todos os filmes.
     private ObservableList<Movie> moviesForTable; // Removido 'final' para inicializar no initialize
 
+    /**
+     * Inicializa o controlador.
+     * 
+     * @param url URL de localização do arquivo FXML, se necessário.
+     * @param resourceBundle Conjunto de recursos localizados, se necessário.
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // Inicializa a ObservableList que será usada pela tabela
@@ -153,16 +157,28 @@ public class MovieControlController implements Initializable {
         }
     }
 
+    /**
+     * Método chamado quando o botão "Cadastrar Filme" é clicado e muda para a tela de cadastro de filmes.
+     * @param event evento de clique do botão
+     */
     @FXML
     void registerMovie(ActionEvent event) {
         MainViews.changeScreen("registerMovie", null);
     }
 
+    /**
+     * Método chamado quando o botão "Excluir Filme" é clicado e chama o método handleDelete.
+     * @param event evento de clique do botão
+     */
     @FXML
     void deleteMovie(ActionEvent event) {
         handleDelete(); // Chama o método handleDelete quando o botão de exclusão é clicado
     }
 
+    /**
+     * Método chamado quando o botão "Editar" é clicado.
+     * @param event evento de clique do botão
+     */
     @FXML
     void editMovie(ActionEvent event) {
         // Lógica para edição:

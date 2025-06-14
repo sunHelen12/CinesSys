@@ -63,7 +63,7 @@ public class EditMovieController implements Initializable{
     /**
      * Método que é chamado quando o botão "Editar" é clicado e edita as informações do Filme.
      * 
-     * @param event
+     * @param event Evento de ação do botão.
      */
     @FXML
     void edit(ActionEvent event) {

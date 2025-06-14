@@ -12,6 +12,13 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import models.*;
 
+/**
+ * Classe responsável por controlar a tela de registro de compras.
+ * 
+ * @author
+ * @since
+ * @version
+ */
 public class PurchaseRecordController implements Initializable {
     private static Ticket ticket;
     
@@ -33,6 +40,9 @@ public class PurchaseRecordController implements Initializable {
     @FXML
     private Label lnlNome;
 
+    /**
+     * Inicializa a tela de registro de compras.
+     */    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         MainViews.addOnChangeScreenListener(new MainViews.OnChangeScreen() {
@@ -46,6 +56,9 @@ public class PurchaseRecordController implements Initializable {
         });
     }
 
+    /**
+     * acessa as datas de cada ticket no sistema e exibe na tela
+     */
     private void accessTicketData(){
         labelMovie.setText(ticket.getSession().getMovie().getTitle());
         labelName.setText(ticket.getClient().getName());
@@ -62,16 +75,31 @@ public class PurchaseRecordController implements Initializable {
         labelTicket.setText(tickets+"");
     }
 
+    /**
+     * Retorna ao histórico de compras do cliente.
+     * 
+     * @param event evento de clique do botão
+     */
     @FXML
     void backPurchase(ActionEvent event) {
         MainViews.changeScreen("clientHistory", null);
     }
 
+    /**
+     * Cancela o ticket.
+     * 
+     * @param event evento de clique do botão
+     */
     @FXML
     void cancelTicket(ActionEvent event) {
         //controller ticket
     }
 
+    /**
+     * Abre o histórico de compras do cliente.
+     * 
+     * @param event evento de clique do botão
+     */
     @FXML
     void openClient(ActionEvent event) {
         MainViews.changeScreen("clientControl", ticket.getClient());

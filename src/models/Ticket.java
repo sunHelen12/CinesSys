@@ -2,6 +2,13 @@ package models;
 
 import enums.PaymentMethod;
 
+/**
+ * Representa um ingresso para uma sessão de cinema.
+ * 
+ * @author
+ * @since
+ * @version
+ */
 public class Ticket {
 
     private static int _idGenerator = 1;
@@ -11,6 +18,14 @@ public class Ticket {
     private Session session;    
     private PaymentMethod paymentMethod;
 
+    /**
+     * Constrói um novo ingresso.
+     *
+     * @param client O cliente que comprou o ingresso.
+     * @param session A sessão para a qual o ingresso é válido.
+     * @param finalPrice O preço final do ingresso.
+     * @param paymentMethod O método de pagamento utilizado.
+     */
     public Ticket(Client client, Session session, double finalPrice, PaymentMethod paymentMethod) {
         this.client = client;
         this.session = session;
@@ -19,32 +34,65 @@ public class Ticket {
         this.id = _idGenerator++;
     }
 
-
-
+    /**
+     * Retorna o próximo ID a ser gerado.
+     *
+     * @return O próximo ID.
+     */
     public static int get_idGenerator() {
         return _idGenerator;
     }
 
+    /**
+     * Retorna o ID do ingresso.
+     *
+     * @return O ID do ingresso.
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * Retorna o preço final do ingresso.
+     *
+     * @return O preço final do ingresso.
+     */
     public double getFinalPrice() {
         return finalPrice;
     }
 
+    /**
+     * Retorna o cliente que comprou o ingresso.
+     *
+     * @return O cliente que comprou o ingresso.
+     */
     public Client getClient() {
         return client;
     }
 
+    /**
+     * Retorna a sessão para a qual o ingresso é válido.
+     *
+     * @return A sessão para a qual o ingresso é válido.
+     */
     public Session getSession() {
         return session;
     }
 
+    /**
+     * Retorna o método de pagamento utilizado para comprar o ingresso.
+     *
+     * @return O método de pagamento utilizado.
+     */
     public PaymentMethod getPaymentMethod() {
         return paymentMethod;
     }
 
+    /**
+     * Retorna uma representação em string do ingresso.
+     *
+     * @return Uma representação em string do ingresso.
+     */
     @Override
     public String toString() {
         return "Ticket para " + session.getMovie().getTitle() +

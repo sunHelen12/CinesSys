@@ -8,6 +8,10 @@ import controller.viewcontroller.MainViews;
 
 /**
  * Classe responsável pela exibição de mensagens de sucesso ou erro na tela de cadastro de clientes.
+ * 
+ * @author
+ * @since
+ * @version
  */
 public class PopUpClientController {
 
@@ -32,6 +36,10 @@ public class PopUpClientController {
         this.stage = stage;
     }
 
+    /**
+     * Fecha a tela de mensagem de sucesso.
+     * @param event evento de clique do botão
+     */
     @FXML
     void backClientControl(ActionEvent event) {
         MainViews.changeScreen("clientControl", null);

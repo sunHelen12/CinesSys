@@ -27,11 +27,21 @@ public class RegisterMovieController {
     @FXML private TextField ratingField;
     @FXML private TextField synopsisField;
 
+    /**
+     * Reseta a tela de controle de filmes.
+     * 
+     * @param event evento de clique no botão de voltar
+     */
     @FXML
     void backMovieControl(ActionEvent event) {
         MainViews.changeScreen("movieControl", null);
     }
 
+    /**
+     * Cadastra um filme no sistema.
+     * 
+     * @param event evento de clique no botão de cadastrar filme
+     */
     @FXML
     void registerMovie(ActionEvent event) {
         String title = titleField.getText().trim();
