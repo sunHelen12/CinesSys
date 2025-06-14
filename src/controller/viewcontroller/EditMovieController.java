@@ -9,6 +9,12 @@ import javafx.fxml.FXMLLoader;
 import models.Movie;
 import repository.MovieRepository;
 
+/**
+ * Classe responsável por controlar a tela de alteração de um cliente.
+ * @author
+ * @since
+ * @version
+ */
 public class EditMovieController {
 
     @FXML private TextField titleField;
@@ -20,6 +26,11 @@ public class EditMovieController {
     private Movie selectedMovie;
     private final MovieRepository repository = new MovieRepository();
 
+    /**
+     * seta os dados do filme selecionado
+     * 
+     * @param movie
+     */
     public void setMovie(Movie movie) {
         this.selectedMovie = movie;
         titleField.setText(movie.getTitle());
@@ -29,6 +40,9 @@ public class EditMovieController {
         synopsisField.setText(movie.getSynopsis());
     }
 
+    /**
+     * Salva as alterações do filme
+     */
     @FXML
     private void handleEdit() {
         try {
@@ -44,6 +58,11 @@ public class EditMovieController {
         }
     }
 
+    /**
+     * Mostra uma janela de confirmação
+     * 
+     * @param acao
+     */
     private void mostrarPopUp(String acao) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/PopUpMovies.fxml"));

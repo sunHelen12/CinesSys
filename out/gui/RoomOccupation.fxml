@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="720.0" prefWidth="1320.0" style="-fx-background-color: 03002C;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.viewcontroller.RoomOccupationController">
+  <children>
+    <AnchorPane id="lblSala2" maxHeight="720.0" maxWidth="1320.0" minHeight="720.0" minWidth="1320.0" prefHeight="720.0" prefWidth="1320.0" style="-fx-background-color: #03002C;" VBox.vgrow="ALWAYS">
+      <children>
+            <AnchorPane prefHeight="720.0" prefWidth="265.0" style="-fx-background-color: #BB0029; -fx-background-radius: 2px;">
+               <children>
+                  <Button layoutX="21.0" layoutY="14.0" mnemonicParsing="false" onAction="#openHomeScreen" style="-fx-background-color: #BB0029;">
+                     <graphic>
+                    <Label alignment="CENTER" style="-fx-font-weight: bold; -fx-background-color: #BB0029;" text="CineSys" textAlignment="CENTER" textFill="#f2e8c4" wrapText="false">
+                      <font>
+                        <Font name="Arial" size="48.0" />
+                      </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                    </Label>
+                     </graphic>
+                  </Button>
+                  <Button layoutX="1.0" layoutY="113.0" mnemonicParsing="false" onAction="#openMovieControl" prefHeight="37.0" prefWidth="199.0" style="-fx-background-color: #BB0029;" text="Controle de Filmes" textFill="#f2e8c4">
+                     <font>
+                        <Font name="Arial" size="20.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button layoutX="1.0" layoutY="166.0" mnemonicParsing="false" onAction="#openSessionControl" style="-fx-background-color: #BB0029;" text="Controle de Sessões" textFill="#f2e8c4">
+                     <font>
+                        <Font name="Arial" size="20.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button layoutX="1.0" layoutY="220.0" mnemonicParsing="false" onAction="#openClientControl" style="-fx-background-color: #BB0029;" text="Controle de Clientes" textFill="#f2e8c4">
+                     <font>
+                        <Font name="Arial" size="20.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button layoutX="1.0" layoutY="277.0" mnemonicParsing="false" onAction="#openPurchaseHistory" style="-fx-background-color: #BB0029; -fx-font-weight: bold;" text="Relatórios de Compras" textFill="#f2e8c4">
+                     <font>
+                        <Font name="Arial" size="20.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button layoutX="1.0" layoutY="333.0" mnemonicParsing="false" onAction="#openRoomOccupation" style="-fx-background-color: #BB0029;" text="Relatórios de Ocupação" textFill="#f2e8c4">
+                     <font>
+                        <Font name="Arial" size="20.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <Label layoutX="310.0" layoutY="30.0" prefHeight="43.0" prefWidth="466.0" style="-fx-font-weight: bold;" text="Relatório de Ocupação" textFill="#f2e8c6">
+               <font>
+                  <Font name="Arial" size="38.0" />
+               </font>
+            </Label>
+            <VBox layoutX="320.0" layoutY="113.0" prefHeight="374.0" prefWidth="360.0" style="-fx-spacing: 20;">
+               <children>
+                  <Button id="bttSala1" alignment="TOP_LEFT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#openRoom1" prefHeight="54.0" prefWidth="500.0" style="-fx-background-color: #03002C;" text="Acessar Relatório da Sala 1  " textFill="#f2e8c6">
+                     <font>
+                        <Font name="Arial" size="22.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="39.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../assets/img/pasta_cor_BB0029.png" />
+                           </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button id="bttSala1" alignment="TOP_LEFT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#openRoom2" prefHeight="54.0" prefWidth="490.0" style="-fx-background-color: #03002C;" text="Acessar Relatório da Sala 2  " textFill="#f2e8c6">
+                     <font>
+                        <Font name="Arial" size="22.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="39.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../assets/img/pasta_cor_BB0029.png" />
+                           </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button id="bttSala1" alignment="TOP_LEFT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#openRoom3" prefHeight="54.0" prefWidth="360.0" style="-fx-background-color: #03002C;" text="Acessar Relatório da Sala 3  " textFill="#f2e8c6">
+                     <font>
+                        <Font name="Arial" size="22.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="39.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../assets/img/pasta_cor_BB0029.png" />
+                           </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button id="bttSala1" alignment="TOP_LEFT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#openRoom4" prefHeight="54.0" prefWidth="508.0" style="-fx-background-color: #03002C;" text="Acessar Relatório da Sala 4  " textFill="#f2e8c6">
+                     <font>
+                        <Font name="Arial" size="22.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="39.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../assets/img/pasta_cor_BB0029.png" />
+                           </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button id="bttSala1" alignment="TOP_LEFT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#openRoom5" prefHeight="54.0" prefWidth="506.0" style="-fx-background-color: #03002C;" text="Acessar Relatório da Sala 5  " textFill="#f2e8c6">
+                     <font>
+                        <Font name="Arial" size="22.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="39.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../assets/img/pasta_cor_BB0029.png" />
+                           </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </VBox>
+      </children>
+    </AnchorPane>
+  </children>
+</VBox>

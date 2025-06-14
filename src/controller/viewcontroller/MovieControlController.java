@@ -1,6 +1,7 @@
 package controller.viewcontroller;
 
 
+import controller.business.MovieController;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -16,7 +17,14 @@ import javafx.stage.Stage;
 import models.Movie;
 import repository.MovieRepository;
 
-public class MovieController {
+
+ /**
+ * Classe responsável por controlar a tela de alteração de um cliente.
+ * @author
+ * @since
+ * @version
+ */
+public class MovieControlController {
 
     @FXML private TableView<Movie> movieTable;
     @FXML private TableColumn<Movie, Boolean> selectColumn;
@@ -26,7 +34,6 @@ public class MovieController {
     @FXML private TableColumn<Movie, String> ratingColumn;
     @FXML private TableColumn<Movie, String> synopsisColumn;
 
-    private final MovieRepository repository = new MovieRepository();
     private final ObservableList<Movie> selectedMovies = FXCollections.observableArrayList();
 
     @FXML
@@ -67,7 +74,7 @@ public class MovieController {
     @FXML
     private void handleDelete() {
         for (Movie movie : selectedMovies) {
-            repository.removeById(movie.getId());
+            MovieController.getMovieById(movie.getId());
         }
         selectedMovies.clear();
         refreshTable();
