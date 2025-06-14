@@ -14,35 +14,41 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.stage.Stage;
 import models.Movie;
-import structures.list.GenericDynamicList; 
+import structures.list.GenericDynamicList;
 import javafx.fxml.Initializable;
-
+import java.util.ArrayList; 
+import java.util.List;
 import javafx.event.ActionEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
  * Classe responsável por controlar a tela de alteração de um cliente.
- * 
  * @author Gabryelle Beatriz Duarte Moraes
+ * 
  * @since 14/06/2024
  * @version 1.0
  */
-public class MovieControlController implements Initializable {
+public class MovieControlController implements Initializable, MainViews.OnChangeScreen {
 
     /**
      * Inicializa o controlador da tela de controle de filmes.
      */
-    @FXML private TableView<Movie> movieTable;
-    @FXML private TableColumn<Movie, Boolean> selectColumn;
-    @FXML private TableColumn<Movie, String> titleColumn;
-    @FXML private TableColumn<Movie, String> genreColumn;
-    @FXML private TableColumn<Movie, String> durationColumn;
-    @FXML private TableColumn<Movie, String> ratingColumn;
-    @FXML private TableColumn<Movie, String> synopsisColumn;
+    @FXML
+    private TableView<Movie> movieTable;
+    @FXML
+    private TableColumn<Movie, Boolean> selectColumn;
+    @FXML
+    private TableColumn<Movie, String> titleColumn;
+    @FXML
+    private TableColumn<Movie, String> genreColumn;
+    @FXML
+    private TableColumn<Movie, String> durationColumn;
+    @FXML
+    private TableColumn<Movie, String> ratingColumn;
+    @FXML
+    private TableColumn<Movie, String> synopsisColumn;
 
-    
-    GenericDynamicList<Movie> movies;
     private final ObservableList<Movie> selectedMovies = FXCollections.observableArrayList();
     private ObservableList<Movie> moviesForTable;
 
@@ -81,39 +87,34 @@ public class MovieControlController implements Initializable {
         });
         selectColumn.setCellFactory(CheckBoxTableCell.forTableColumn(selectColumn));
 
-        refreshTable(); 
+        MainViews.addOnChangeScreenListener(this);
+    }
+
+    @Override
+    public void onScreenChanged(String newScreen, Object userDataObject) {
+        if (newScreen.equals("movieControl")) {
+            refreshTable();
+        }
     }
 
     /**
      * Atualiza a tabela de filmes.
      */
     private void refreshTable() {
-        movies = MovieController.getAllMovies();
         moviesForTable.clear();
-    
-        for (Movie movie : movies) { 
-            moviesForTable.add(movie);
+        GenericDynamicList<Movie> currentMovies = MovieController.getAllMovies();
+
+        if (currentMovies != null) {
+            for (Movie movie : currentMovies) {
+                moviesForTable.add(movie);
+            }
         }
         movieTable.setItems(moviesForTable);
     }
 
     /**
-     * Deleta os filmes selecionados.
-     */
-    @FXML
-    private void handleDelete() {
-        for (Movie movie : selectedMovies) {
-            System.out.println("Simulando exclusão do filme com ID: " + movie.getId() + " - " + movie.getTitle());
-            moviesForTable.remove(movie);
-        }
-        selectedMovies.clear(); 
-        mostrarPopUp("excluído(s)");
-    }
-
-    /**
      * Mostra uma janela de confirmação após a ação de exclusão.
-     * 
-     * @param acao Ação realizada.
+     * * @param acao Ação realizada.
      */
     public static void mostrarPopUp(String acao) {
         try {
@@ -148,7 +149,17 @@ public class MovieControlController implements Initializable {
      */
     @FXML
     void deleteMovie(ActionEvent event) {
-        
+        if (selectedMovies.isEmpty()) {
+            System.out.println("Nenhum filme selecionado para exclusão.");
+            return;
+        }
+        List<Movie> moviesToDelete = new ArrayList<>(selectedMovies);
+        for (Movie movie : moviesToDelete) {
+            MovieController.removeMovieById(movie.getId());
+        }
+        selectedMovies.clear();
+        refreshTable();
+        mostrarPopUp("excluído");
     }
 
     /**
@@ -158,10 +169,9 @@ public class MovieControlController implements Initializable {
     @FXML
     void editMovie(ActionEvent event) {
         if (!selectedMovies.isEmpty()) {
-            Movie movieToEdit = selectedMovies.get(0); 
-            //MainViews.changeScreen("movieEdit", movieToEdit);
-        } else {
-            System.out.println("Nenhum filme selecionado para editar.");
+            Movie movieToEdit = selectedMovies.get(0);
+            MainViews.changeScreen("movieEdit", movieToEdit);
+            mostrarPopUp("alterado");
         }
     }
 
@@ -176,7 +186,7 @@ public class MovieControlController implements Initializable {
     }
 
     /**
-     * Método que abre a Tela de Controloe de Clientes.
+     * Método que abre a Tela de Controle de Clientes.
      *
      * @param event Evento ao apertar o botão, caso necessário.
      */
