@@ -12,6 +12,7 @@ import java.time.format.DateTimeFormatter;
  * Cada sessão possui um ID único gerado automaticamente.
  * 
  * @author Carlos henrique moreira
+ * @since 11/06/2025
  * @version 1.0
  */
 public class Session {
