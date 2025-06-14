@@ -9,7 +9,12 @@ import javafx.scene.Scene;
 import javafx.fxml.FXMLLoader;
 import models.Movie;
 import repository.MovieRepository;
-
+/**
+ * Classe responsável por controlar a tela de cadastro de um filme.
+ * @author Gabryelle Beatriz Duarte Moraes
+ * @since 01/06/2024
+ * @version 2.0
+ */
 public class RegisterMovieController {
 
     @FXML private TextField titleField;
