@@ -247,8 +247,9 @@ public class MovieControlController implements Initializable, MainViews.OnChange
         if (selectedMovies.isEmpty() || selectedMovies.size() > 1) {
             return;
         }
-   
+
         Movie movieToEdit = selectedMovies.get(0);
+        System.out.println(movieToEdit);
         MainViews.changeScreen("movieEdit", movieToEdit);
     }
 

@@ -120,10 +120,13 @@ public class ClientControlController implements Initializable{
             Label labeldt = new Label("Data de Nascimento: " + client.getBirthday());
             labeldt.setStyle(
                     "-fx-text-fill: #f2e8c6 !important; -fx-font-family: Arial !important; -fx-font-size: 14px;");      
-            Label labelRelatory= new Label("Acessar Relatório de Compras: " + client.getPurchasingHistory());
+            Label labelRelatory= new Label("Acessar Relatório de Compras: ");
             labelRelatory.setStyle(
                     "-fx-text-fill: #f2e8c6 !important; -fx-font-family: Arial !important; -fx-font-size: 14px;"); 
 
+            Button botaoRel = new Button("Relatório");
+            botaoRel.setUserData(client);
+            botaoRel.setStyle("-fx-background-color: #F58414; -fx-text-fill: #f2e8c6; -fx-font-weight: bold;");
 
             Button botaoExcluir = new Button("Excluir");
             botaoExcluir.setUserData(client);
@@ -132,6 +135,10 @@ public class ClientControlController implements Initializable{
             botaoAlterar.setUserData(client);
             botaoAlterar.setStyle("-fx-background-color: #F58414; -fx-text-fill: #f2e8c6; -fx-font-weight: bold;");
 
+            botaoRel.setOnAction(event -> {
+                Client clienteSelecionado = (Client) ((Button) event.getSource()).getUserData();
+                MainViews.changeScreen("clientHistory", clienteSelecionado);
+            });
             botaoExcluir.setOnAction(event -> {
                 Client clienteSelecionado = (Client) ((Button) event.getSource()).getUserData();
                 ClientController.removeClient(clienteSelecionado.getId());
@@ -144,7 +151,7 @@ public class ClientControlController implements Initializable{
 
             VBox caixaEntradaResultado = new VBox(5);
             caixaEntradaResultado.setPadding(new Insets(0, 0, 10, 0));
-            caixaEntradaResultado.getChildren().addAll(labelNome, labelId, labelEmail, labeldt, labelRelatory, botaoExcluir, botaoAlterar);
+            caixaEntradaResultado.getChildren().addAll(labelNome, labelId, labelEmail, labeldt, labelRelatory, botaoRel, botaoExcluir, botaoAlterar);
 
             containerResultados.getChildren().add(caixaEntradaResultado);
         }
