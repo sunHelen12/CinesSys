@@ -12,8 +12,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import java.net.URL;
+import java.util.ResourceBundle;
 import models.Movie;
-import repository.MovieRepository;
 
 /**
  * Classe responsável por controlar a tela de alteração de um Filme.
@@ -54,7 +55,7 @@ public class EditMovieController implements Initializable{
         String genre = genreField.getText().trim();
         String duration = durationField.getText().trim();
         int drtn = Integer.parseInt(duration);
-        String classificatio = ratingField.getText().trim();
+        String classification = ratingField.getText().trim();
         String synopsis = synopsisField.getText().trim();
 
         MovieController.updateMovie(selectedMovie.getId(), title, genre, drtn, classification, synopsis);

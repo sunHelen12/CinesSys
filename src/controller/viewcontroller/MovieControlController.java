@@ -15,7 +15,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.stage.Stage;
 import models.Movie;
-
+import javafx.fxml.Initializable;
+import java.net.URL;
+import java.util.ResourceBundle;
 
  /**
  * Classe responsável por controlar a tela de alteração de um cliente.
@@ -23,7 +25,7 @@ import models.Movie;
  * @since 14/06/2024
  * @version 1.0
  */
-public class MovieControlController {
+public class MovieControlController implements Initializable{
 
     @FXML private TableView<Movie> movieTable;
     @FXML private TableColumn<Movie, Boolean> selectColumn;
@@ -35,8 +37,8 @@ public class MovieControlController {
 
     private final ObservableList<Movie> selectedMovies = FXCollections.observableArrayList();
 
-    @FXML
-    public void initialize() {
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
         titleColumn.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getTitle()));
         genreColumn.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getGenre()));
         ratingColumn.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getClassification()));
@@ -97,5 +99,81 @@ public class MovieControlController {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    void registerMovie(ActionEvent event) {
+        MainViews.changeScreen("registerMovie", null);
+    }
+
+    @FXML
+    void deleteMovie(ActionEvent event) {
+
+    }
+
+    @FXML
+    void editMovie(ActionEvent event) {
+
+    }
+
+    /**
+     * Método que abre a Tela Principal.
+     * 
+     * @param event Evento ao apertar o botão, caso necessário.
+     */
+    @FXML
+    void openHomeScreen(ActionEvent event) {
+        MainViews.changeScreen("homeScreen", null);
+    }
+
+    /**
+     * Método que abre a Tela de Controloe de Clientes, esta mesma.
+     * 
+     * @param event Evento ao apertar o botão, caso necessário.
+     */
+    @FXML
+    void openClientControl(ActionEvent event) {
+        MainViews.changeScreen("clientControl", null);
+    }
+
+    /**
+     * Método que abre a Tela de Controle de Filmes.
+     * 
+     * @param event Evento ao apertar o botão, caso necessário.
+     */
+    @FXML
+    void openMovieControl(ActionEvent event) {
+        MainViews.changeScreen("movieControl", null);
+    }
+
+    /**
+     * Método que abre a Tela de Histórico de Compras.
+     * 
+     * @param event Evento ao apertar o botão, caso necessário.
+     */
+    @FXML
+    void openPurchaseHistory(ActionEvent event) {
+        MainViews.changeScreen("purchaseRelatory", null);
+    }
+
+    /**
+     * Método que abre a Tela de Ocupação de Salas.
+     * 
+     * @param event Evento ao apertar o botão, caso necessário.
+     */
+    @FXML
+    void openRoomOccupation(ActionEvent event) {
+        MainViews.changeScreen("roomOccupation", null);
+    }
+
+    /**
+     * Método que abre a Tela de Controle de Sessões.
+     * 
+     * @param event Evento ao apertar o botão, caso necessário.
+     */
+    @FXML
+    void openSessionControl(ActionEvent event) {
+        // MainViews.changeScreen("sessionControl", null);
+    }
+
 }
 
