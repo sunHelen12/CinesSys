@@ -4,6 +4,8 @@ package controller.viewcontroller;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import javafx.event.ActionEvent;
+
 /**
  * Classe responsável por controlar a tela de pop up para confirmação de uma ação(cadastro, alteração, exclusão).
  * 
@@ -39,10 +41,9 @@ public class PopUpMovieController {
      * Método responsável por fechar a janela de pop up.
      */
     @FXML
-    private void fecharPopUp() {
-        if (stage != null) {
-            stage.close();
-        }
+    void backMovietControl(ActionEvent event) {
+        MainViews.changeScreen("movieControl", null);
+        stage.close();
     }
 }
 

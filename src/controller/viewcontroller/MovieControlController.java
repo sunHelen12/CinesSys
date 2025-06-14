@@ -14,7 +14,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.stage.Stage;
 import models.Movie;
-import structures.list.GenericDynamicList; // Importação adicionada para GenericDynamicList
+import structures.list.GenericDynamicList; 
 import javafx.fxml.Initializable;
 
 import javafx.event.ActionEvent;
@@ -30,27 +30,21 @@ import java.util.ResourceBundle;
  */
 public class MovieControlController implements Initializable {
 
-    
-    @FXML
-    private TableView<Movie> movieTable;
-    @FXML
-    private TableColumn<Movie, Boolean> selectColumn;
-    @FXML
-    private TableColumn<Movie, String> titleColumn;
-    @FXML
-    private TableColumn<Movie, String> genreColumn;
-    @FXML
-    private TableColumn<Movie, String> durationColumn;
-    @FXML
-    private TableColumn<Movie, String> ratingColumn;
-    @FXML
-    private TableColumn<Movie, String> synopsisColumn;
+    /**
+     * Inicializa o controlador da tela de controle de filmes.
+     */
+    @FXML private TableView<Movie> movieTable;
+    @FXML private TableColumn<Movie, Boolean> selectColumn;
+    @FXML private TableColumn<Movie, String> titleColumn;
+    @FXML private TableColumn<Movie, String> genreColumn;
+    @FXML private TableColumn<Movie, String> durationColumn;
+    @FXML private TableColumn<Movie, String> ratingColumn;
+    @FXML private TableColumn<Movie, String> synopsisColumn;
 
-    // Esta é a lista de filmes que você já está buscando
-    GenericDynamicList<Movie> movies = MovieController.getAllMovies();
+    
+    GenericDynamicList<Movie> movies;
     private final ObservableList<Movie> selectedMovies = FXCollections.observableArrayList();
-    // Esta será a ObservableList que a tabela usará para exibir todos os filmes.
-    private ObservableList<Movie> moviesForTable; // Removido 'final' para inicializar no initialize
+    private ObservableList<Movie> moviesForTable;
 
     /**
      * Inicializa o controlador.
@@ -60,7 +54,6 @@ public class MovieControlController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // Inicializa a ObservableList que será usada pela tabela
         moviesForTable = FXCollections.observableArrayList();
 
         titleColumn.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getTitle()));
@@ -76,7 +69,6 @@ public class MovieControlController implements Initializable {
 
         selectColumn.setCellValueFactory(cellData -> {
             Movie movie = cellData.getValue();
-            // Inicializa o checkbox com base se o filme já está na lista de selecionados
             SimpleBooleanProperty selected = new SimpleBooleanProperty(selectedMovies.contains(movie));
             selected.addListener((obs, wasSelected, isNowSelected) -> {
                 if (isNowSelected) {
@@ -89,27 +81,19 @@ public class MovieControlController implements Initializable {
         });
         selectColumn.setCellFactory(CheckBoxTableCell.forTableColumn(selectColumn));
 
-        refreshTable(); // Chama refreshTable para popular a tabela quando a tela carrega
+        refreshTable(); 
     }
 
     /**
      * Atualiza a tabela de filmes.
      */
     private void refreshTable() {
-        // Limpa a lista da tabela para evitar duplicatas ao recarregar
+        movies = MovieController.getAllMovies();
         moviesForTable.clear();
-        // Adiciona todos os filmes da sua GenericDynamicList 'movies' na ObservableList
-        // da tabela
-        // Assumindo que GenericDynamicList é Iterable ou tem um método paraToList()
-        for (Movie movie : movies) { // Se GenericDynamicList implementa Iterable
+    
+        for (Movie movie : movies) { 
             moviesForTable.add(movie);
         }
-        // OU, se GenericDynamicList tem um método para converter para List:
-        // moviesForTable.addAll(movies.toArrayList()); // Exemplo se o método for
-        // 'toArrayList'
-        // moviesForTable.addAll(movies.toList()); // Exemplo se o método for 'toList'
-
-        // Define a ObservableList preenchida como a fonte de dados da tabela
         movieTable.setItems(moviesForTable);
     }
 
@@ -118,19 +102,11 @@ public class MovieControlController implements Initializable {
      */
     @FXML
     private void handleDelete() {
-        // Itera sobre os filmes selecionados para processar a exclusão
         for (Movie movie : selectedMovies) {
-            // A linha abaixo apenas busca o filme, não o exclui do MovieController.
-            // Você precisará de um método de exclusão no MovieController, por exemplo:
-            // MovieController.deleteMovie(movie.getId());
             System.out.println("Simulando exclusão do filme com ID: " + movie.getId() + " - " + movie.getTitle());
-            // Após a exclusão bem-sucedida no backend, remove da lista exibida na tabela
             moviesForTable.remove(movie);
         }
-        selectedMovies.clear(); // Limpa a lista de filmes selecionados após a operação
-        // Não é necessário chamar refreshTable() aqui se você remove diretamente de
-        // moviesForTable,
-        // pois a ObservableList já notificará a tabela.
+        selectedMovies.clear(); 
         mostrarPopUp("excluído(s)");
     }
 
@@ -172,7 +148,7 @@ public class MovieControlController implements Initializable {
      */
     @FXML
     void deleteMovie(ActionEvent event) {
-        handleDelete(); // Chama o método handleDelete quando o botão de exclusão é clicado
+        
     }
 
     /**
@@ -181,16 +157,11 @@ public class MovieControlController implements Initializable {
      */
     @FXML
     void editMovie(ActionEvent event) {
-        // Lógica para edição:
         if (!selectedMovies.isEmpty()) {
-            Movie movieToEdit = selectedMovies.get(0); // Pega o primeiro filme selecionado
-            // Você pode passar este filme para a tela de edição
-            // Exemplo: MainViews.changeScreen("editMovieScreen", movieToEdit);
-            System.out.println("Simulando edição do filme: " + movieToEdit.getTitle());
-            mostrarPopUp("editado(s)");
+            Movie movieToEdit = selectedMovies.get(0); 
+            //MainViews.changeScreen("movieEdit", movieToEdit);
         } else {
             System.out.println("Nenhum filme selecionado para editar.");
-            // Opcional: mostrar um pop-up avisando para selecionar um filme
         }
     }
 
