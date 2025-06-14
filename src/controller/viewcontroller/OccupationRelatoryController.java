@@ -27,7 +27,7 @@ import models.*;
 
 /**
  * Classe responsável por controlar a tela de relatório de ocupação de salas.
- * 
+ *
  * @author Maria Eduarda Santos Campos
  * @author Vinícius Nunes de Andrade
  * @since 28-05-2025
@@ -45,13 +45,13 @@ public class OccupationRelatoryController implements Initializable {
 
     @FXML
     private VBox filterContainer;
-    
+
     @FXML
     private ComboBox<String> filterOccupation;
 
     private List<String> filter = new ArrayList<>();
     private ObservableList<String> items;
-    
+
     /**
      * Volta para a tela de ocupação de salas quando o botão "Voltar" é clicado.
      */
@@ -62,7 +62,7 @@ public class OccupationRelatoryController implements Initializable {
 
     /**
      * Inicializa o controlador.
-     * 
+     *
      * @param url URL de localização do arquivo FXML, se necessário.
      * @param rb Conjunto de recursos localizados, se necessário.
      */
@@ -77,7 +77,7 @@ public class OccupationRelatoryController implements Initializable {
                 }
             }
         });
-        
+
         try {
             inicializarSessoesParaTeste();
         } catch (Exception e) {
@@ -90,10 +90,10 @@ public class OccupationRelatoryController implements Initializable {
      * tualiza a interface específica da sala.
      */
     private void updateRoomSpecificUI() {
-        if (room != null) { 
+        if (room != null) {
             totalSeat.setText(room.getTotalSeat()+"");
             if (room.getId() == 1) {
-                roomName.setText("Sala 1"); 
+                roomName.setText("Sala 1");
             } else if (room.getId() == 2) {
                 roomName.setText("Sala 2");
             } else if (room.getId() == 3) {
@@ -104,7 +104,7 @@ public class OccupationRelatoryController implements Initializable {
                 roomName.setText("Sala 5");
             }
         } else {
-            roomName.setText("Sala (N/A)"); 
+            roomName.setText("Sala (N/A)");
         }
     }
 
@@ -117,35 +117,24 @@ public class OccupationRelatoryController implements Initializable {
         filter.add("Horário de Sessão");
 
         items = FXCollections.observableArrayList(filter);
-
         filterOccupation.setItems(items);
 
         filterOccupation.setOnAction(event -> {
             selected = filterOccupation.getValue();
             System.out.println("Selecionado: " + selected);
-            
+
             if (room != null) {
-                if (room.getId() == 1) {
-                    showFilter1();
-                } else if (room.getId() == 2) {
-                    mostrarFiltragem2();
-                } else if (room.getId() == 3) {
-                    mostrarFiltragem3();
-                } else if (room.getId() == 4) {
-                    mostrarFiltragem4();
-                } else if (room.getId() == 5) {
-                    mostrarFiltragem5();
-                }
+                showFilter(); // chamada única e genérica
             } else {
                 System.err.println("Erro: Não foi possível aplicar filtro, 'room' é nulo.");
             }
-        });        
+        });
     }
 
     /**
      * Mostra os filtros para a sala 1.
      */
-    public void showFilter1() {
+    public void showFilter() {
         filterContainer.getChildren().clear();
 
         if ("Filme".equals(selected)) {
@@ -239,23 +228,12 @@ public class OccupationRelatoryController implements Initializable {
         }
     }
 
-    public void mostrarFiltragem2() {
-    }
-
-    public void mostrarFiltragem3() {
-    }
-
-    public void mostrarFiltragem4() {
-    }
-
-    public void mostrarFiltragem5() {
-    }
     //Gambiarras de Teste
 
     // Simulação de uma base de dados
     private final List<Session> sessoesDeTeste = new ArrayList<>();
 
-    
+
     //Remover depois
     private void inicializarSessoesParaTeste() throws Exception{
         sessoesDeTeste.add(new Session(LocalDate.now(), LocalTime.now(), RoomController.getRoomById(1), new Movie("Filme 1", "Drama", 231, "10", "Sinopse"), 18.5));

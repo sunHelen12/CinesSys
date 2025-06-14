@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="720.0" prefWidth="1320.0" style="-fx-background-color: 03002C;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.viewcontroller.RegisterSessionController">
+<VBox prefHeight="720.0" prefWidth="1320.0" style="-fx-background-color: 03002C;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.viewcontroller.UpdateSessionController">
     <AnchorPane maxHeight="720.0" maxWidth="1320.0" minHeight="720.0" minWidth="1320.0" prefHeight="720.0" prefWidth="1320.0" style="-fx-background-color: #03002C;">
         <children>
             <AnchorPane prefHeight="100.0" prefWidth="1320.0" style="-fx-background-color: #F5841A; -fx-background-radius: 2px;">
@@ -84,7 +84,7 @@
                     </TextField>
                 </children>
             </AnchorPane>
-            <Button layoutX="1105.0" layoutY="544.0" mnemonicParsing="false" onAction="#registerSession" prefHeight="43.0" prefWidth="142.0" style="-fx-background-color: #F5841A; -fx-background-radius: 5px; -fx-font-weight: bold;" text="Alterar" textFill="#f2e8c4">
+            <Button layoutX="1105.0" layoutY="544.0" mnemonicParsing="false" onAction="#updateSession" prefHeight="43.0" prefWidth="142.0" style="-fx-background-color: #F5841A; -fx-background-radius: 5px; -fx-font-weight: bold;" text="Alterar" textFill="#f2e8c4">
                 <font>
                     <Font size="18.0" />
                 </font></Button>
