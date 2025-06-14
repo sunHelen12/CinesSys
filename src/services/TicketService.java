@@ -1,5 +1,7 @@
 package services;
 
+import controller.business.ClientController;
+import controller.business.SessionController;
 import enums.PaymentMethod;
 import models.Client;
 import models.Session;
@@ -77,17 +79,16 @@ public class TicketService {
     }
 
     public Ticket purchaseTicket(int clientId, int sessionId, String paymentMethod,
-                                 ClientService clientService, SessionService sessionService,
                                  LoyaltyService loyaltyService) {
 
         // Buscar cliente
-        Client client = clientService.getClientById(clientId);
+        Client client = ClientController.getClientById(clientId);
         if (client == null) {
             throw new IllegalArgumentException("Cliente com ID " + clientId + " não encontrado.");
         }
 
         // Buscar sessão
-        Session session = sessionService.getSessionById(sessionId);
+        Session session = SessionController.getSessionById(sessionId);
         if (session == null) {
             throw new IllegalArgumentException("Sessão com ID " + sessionId + " não encontrada.");
         }
@@ -95,7 +96,7 @@ public class TicketService {
             throw new IllegalStateException("Não há assentos disponíveis para a sessão " + sessionId + ".");
         }
         session.setTotalAvailableSeats(session.getTotalAvailableSeats() - 1);
-        sessionService.updateSession(
+        SessionController.updateSession(
             session.getId(),
             session.getDate(),
             session.getTime(),
@@ -127,7 +128,7 @@ public class TicketService {
         loyaltyService.registerPoints(clientId, ticket);
 
         // Adicionar ticket no histórico do cliente (se não for automático)
-        clientService.addTicketToClient(clientId, ticket);
+        ClientController.addTicketToClient(clientId, ticket);
 
         return ticket;
     }

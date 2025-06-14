@@ -1,5 +1,6 @@
 package controller.business;
 
+import models.Client;
 import repository.TicketRepository;
 import services.ClientService;
 import services.LoyaltyService;
@@ -21,14 +22,9 @@ public class TicketController {
      *
      * @param clientId id do cliente realizando a compra
      * @param sessionId id da sessão que a compra será relizada
-     * @param paymentMethod método de pagamento do ingresso.
-     * @param clientService objeto para realizar a lógica de adicionar o Ticket ao Cliente
-     * @param sessionService objeto para realizar a lógica de diminuir a quantidade de assentos disponíveis da sessão
-     * @param loyaltyService objeto para calcular o desconto do cliente baseado em seus pontos
+     * @param paymentMethod método de pagamento do ingresso
      */
-    public static void purchaseTicket(int clientId, int sessionId, String paymentMethod,
-                                      ClientService clientService, SessionService sessionService,
-                                      LoyaltyService loyaltyService) {
-        ticketService.purchaseTicket(clientId, sessionId, paymentMethod, clientService, sessionService, loyaltyService);
+    public static void purchaseTicket(int clientId, int sessionId, String paymentMethod) {
+        ticketService.purchaseTicket(clientId, sessionId, paymentMethod);
     }
 }

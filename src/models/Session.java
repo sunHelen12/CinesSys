@@ -37,8 +37,8 @@ public class Session {
         this.ticketValue = ticketValue;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public String getDate() {
+        return date.format(java.time.format.DateTimeFormatter.ofPattern("dd-MM-yyyy"));
     }
 
     public void setDate(LocalDate date) {
@@ -49,8 +49,8 @@ public class Session {
         this.time = time;
     }
 
-    public LocalTime getTime() {
-        return time;
+    public String getTime() {
+        return time.format(java.time.format.DateTimeFormatter.ofPattern("dd-MM-yyyy"));
     }
 
     public int getDuration() {
