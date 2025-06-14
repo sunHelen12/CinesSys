@@ -122,17 +122,17 @@ public class OccupationRelatoryController implements Initializable {
         if ("Filme".equals(selected)) {
             for (Session session : room.getSessions()) {
                 String movieTitle = session.getMovie().getTitle();
-                double ocupacao = ((double)(room.getTotalSeat() - session.getTotalAvailableSeats()) / room.getTotalSeat()) * 100;
+                double occupation = ((double)(room.getTotalSeat() - session.getTotalAvailableSeats()) / room.getTotalSeat()) * 100;
 
                 Text titleText = new Text(movieTitle + " ");
                 titleText.setFont(Font.font("Arial", FontWeight.BOLD, 18));
                 titleText.setFill(javafx.scene.paint.Color.web("#f2e8c6"));
 
-                Text ocupacaoText = new Text("- Ocupação Média: " + String.format("%.1f", ocupacao) + "%\n");
-                ocupacaoText.setFont(Font.font("Arial", 18));
-                ocupacaoText.setFill(javafx.scene.paint.Color.web("#f2e8c6"));
+                Text occupationText = new Text("- Ocupação Média: " + String.format("%.1f", occupation) + "%\n");
+                occupationText.setFont(Font.font("Arial", 18));
+                occupationText.setFill(javafx.scene.paint.Color.web("#f2e8c6"));
 
-                TextFlow textFlow = new TextFlow(titleText, ocupacaoText);
+                TextFlow textFlow = new TextFlow(titleText, occupationText);
 
                 filterContainer.getChildren().add(textFlow);
                 System.out.println("Filme " + movieTitle + " adicionado");

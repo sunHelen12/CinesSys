@@ -5,7 +5,7 @@ import models.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import controller.bussines.RoomController;
+import controller.business.RoomController;
 import repository.RoomRepository;
 import repository.TicketRepository;
 
