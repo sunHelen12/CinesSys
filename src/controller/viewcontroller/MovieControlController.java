@@ -35,6 +35,9 @@ public class MovieControlController {
 
     private final ObservableList<Movie> selectedMovies = FXCollections.observableArrayList();
 
+    /**
+     * Inicializa o controlador da tela de controle de filmes.
+     */
     @FXML
     public void initialize() {
         titleColumn.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getTitle()));
@@ -65,11 +68,17 @@ public class MovieControlController {
         refreshTable();
     }
 
+    /**
+     * Atualiza a tabela de filmes.
+     */
     private void refreshTable() {
         ObservableList<Movie> movies = FXCollections.observableArrayList();
         movieTable.setItems(movies);
     }
 
+    /**
+     * Deleta os filmes selecionados.
+     */
     @FXML
     private void handleDelete() {
         for (Movie movie : selectedMovies) {
@@ -80,6 +89,11 @@ public class MovieControlController {
         mostrarPopUp("excluído(s)");
     }
 
+    /**
+     * Mostra uma janela de confirmação após a ação de exclusão.
+     * 
+     * @param acao Ação realizada.
+     */
     public static void mostrarPopUp(String acao) {
         try {
             FXMLLoader loader = new FXMLLoader(MovieControlController.class.getResource("/gui/PopUpMovies.fxml"));

@@ -12,7 +12,7 @@ import javafx.geometry.Insets;
 import models.*;
 
 /**
- * Classe responsável por controlar a tela de alteração de um cliente.
+ * Classe responsável por controlar a tela de histórico de um cliente.
  * @author
  * @since
  * @version

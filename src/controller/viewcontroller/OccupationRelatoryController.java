@@ -25,6 +25,14 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Font;
 import models.*;
 
+/**
+ * Classe responsável por controlar a tela de relatório de ocupação de salas.
+ * 
+ * @author
+ * @author
+ * @since
+ * @version
+ */
 public class OccupationRelatoryController implements Initializable {
     private static Room room;
     private String selected;
@@ -44,11 +52,20 @@ public class OccupationRelatoryController implements Initializable {
     private List<String> filter = new ArrayList<>();
     private ObservableList<String> items;
     
+    /**
+     * Volta para a tela de ocupação de salas quando o botão "Voltar" é clicado.
+     */
     @FXML
     void backRoomOccupation(ActionEvent event) {
         MainViews.changeScreen("roomOccupation", null);
     }
 
+    /**
+     * Inicializa o controlador.
+     * 
+     * @param url URL de localização do arquivo FXML, se necessário.
+     * @param resourceBundle Conjunto de recursos localizados, se necessário.
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         MainViews.addOnChangeScreenListener(new MainViews.OnChangeScreen() {
@@ -69,6 +86,9 @@ public class OccupationRelatoryController implements Initializable {
         addFilter();
     }
 
+    /**
+     * tualiza a interface específica da sala.
+     */
     private void updateRoomSpecificUI() {
         if (room != null) { 
             totalSeat.setText(room.getTotalSeat()+"");
@@ -88,6 +108,9 @@ public class OccupationRelatoryController implements Initializable {
         }
     }
 
+    /**
+     * Adiciona um filtro para a ocupação de salas.
+     */
     public void addFilter(){
         filter.add("Filme");
         filter.add("Data");
@@ -119,6 +142,9 @@ public class OccupationRelatoryController implements Initializable {
         });        
     }
 
+    /**
+     * Mostra os filtros para a sala 1.
+     */
     public void showFilter1() {
         filterContainer.getChildren().clear();
 
@@ -229,6 +255,7 @@ public class OccupationRelatoryController implements Initializable {
     // Simulação de uma base de dados
     private final List<Session> sessoesDeTeste = new ArrayList<>();
 
+    
     //Remover depois
     private void inicializarSessoesParaTeste() throws Exception{
         sessoesDeTeste.add(new Session(LocalDate.now(), LocalTime.now(), RoomController.getRoomById(1), new Movie("Filme 1", "Drama", 231, "10", "Sinopse"), 18.5));

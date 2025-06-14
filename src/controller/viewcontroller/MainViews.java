@@ -10,6 +10,10 @@ import java.util.List;
 
 /**
  * Classe da tela principal do sistema onde é possível navegar entre as telas.
+ * 
+ * @author Maria Eduarda Campos
+ * @since 31-05-2025
+ * @version 2
  */
 public class MainViews extends Application {
     private static Stage stage;
@@ -115,8 +119,8 @@ public class MainViews extends Application {
     /**
      * Troca entre telas da aplicação quando o usuário clica em um botão que leva a outra tela.
      * 
-     * @param screen
-     * @param userDataObject
+     * @param screen é a tela que o usuário está.
+     * @param userDataObject é o objeto que contém os dados que serão passados para a tela.
      */
     public static void changeScreen(String screen, Object userDataObject){
         switch (screen) {
@@ -221,8 +225,8 @@ public class MainViews extends Application {
     /**
      * Notifica todos os listeners sobre a troca de tela
      * 
-     * @param newScreen
-     * @param userDataObject
+     * @param newScreen Nova tela
+     * @param userDataObject objeto de dados da troca de tela
      */
     private static void notifyAllListerners(String newScreen, Object userDataObject){
         for(OnChangeScreen l:listeners)

@@ -31,6 +31,12 @@ public class EditMovieController implements Initializable{
 
     private Movie selectedMovie;
     
+    /**
+     * Inicializa o controlador.
+     * 
+     * @param url URL de localização do arquivo FXML, se necessário.
+     * @param resourceBundle Conjunto de recursos localizados, se necessário.
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         MainViews.addOnChangeScreenListener(new MainViews.OnChangeScreen() {
@@ -44,10 +50,20 @@ public class EditMovieController implements Initializable{
         });
     }
    
+    /**
+     * Método que é chamado quando o botão "Voltar" é clicado e retorna para a tela anterior.
+     * 
+     * @param event Evento de ação do botão.
+     */
     void backMovieControl(ActionEvent event) {
         MainViews.changeScreen("movieControl", null);
     }
 
+    /**
+     * Método que é chamado quando o botão "Editar" é clicado e edita as informações do Filme.
+     * 
+     * @param event
+     */
     @FXML
     void edit(ActionEvent event) {
         String title = titleField.getText().trim();
