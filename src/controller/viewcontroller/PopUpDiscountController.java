@@ -1,6 +1,7 @@
 package controller.viewcontroller;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
@@ -15,26 +16,30 @@ import javafx.stage.Stage;
 public class PopUpDiscountController {
 
     @FXML
-    private Label discountMessage;
+    private Label discountMessage; // Label que exibe a mensagem de desconto
+
+    @FXML
+    private Button backButton; // Botão de "Voltar" para tela de venda
 
     /**
      * Define o valor de desconto no label da interface.
-     * @param discount Valor percentual de desconto
+     *
+     * @param discount Valor percentual de desconto (ex: 10.0 = 10%)
      */
     public void setDiscount(double discount) {
         discountMessage.setText(String.format("Desconto aplicado: %.0f%%", discount));
     }
 
     /**
-     * Fecha o pop-up e retorna à tela de venda de ingressos.
+     * Fecha o pop-up e retorna para a tela de venda de ingressos.
      */
     @FXML
     private void backClientControl() {
-        // Fecha o pop-up
-        Stage stage = (Stage) discountMessage.getScene().getWindow();
+        // Fecha a janelinha
+        Stage stage = (Stage) backButton.getScene().getWindow();
         stage.close();
 
-        // Retorna para a tela de venda (SellTicket)
+        // Retorna para a tela de venda
         MainViews.changeScreen("sellTicket", null);
     }
 }

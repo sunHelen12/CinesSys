@@ -12,7 +12,13 @@
             <Font name="Arial" size="30.0" />
          </font>
       </Label>
-      <Button layoutX="327.0" layoutY="255.0" mnemonicParsing="false" onAction="#backClientControl" prefHeight="41.0" prefWidth="125.0" style="-fx-background-color: #F5841A; -fx-font-weight: bold;" text="Voltar" textFill="#f2e8c6">
+      <Button fx:id="backButton"
+              layoutX="327.0" layoutY="255.0"
+              mnemonicParsing="false"
+              onAction="#backClientControl"
+              prefHeight="41.0" prefWidth="125.0"
+              style="-fx-background-color: #F5841A; -fx-font-weight: bold;"
+              text="Voltar" textFill="#f2e8c6">
          <font>
             <Font size="18.0" />
          </font>
