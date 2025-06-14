@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import controller.business.MovieController;
 import controller.business.RoomController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -26,6 +27,7 @@ import javafx.scene.text.TextFlow;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Font;
 import models.*;
+import structures.list.GenericDynamicList;
 
 /**
  * Classe responsável por controlar a tela de relatório de ocupação de salas.
@@ -90,12 +92,6 @@ public class OccupationRelatoryController implements Initializable {
                 }
             }
         });
-
-        try {
-            inicializarSessoesParaTeste();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
         addFilter();
     }
 
@@ -244,9 +240,117 @@ public class OccupationRelatoryController implements Initializable {
             // --- 4. Adiciona tudo no contêiner principal ---
             filterContainer.getChildren().addAll(tabs, redBox);
         } else if ("Horário de Sessão".equals(selected)) {
-            Label labelAux = new Label("Horário");
-            labelAux.setStyle("-fx-font-family: Arial; -fx-text-fill: #f2e8c6;");
-            filterContainer.getChildren().add(labelAux);
+            // 1. Encontrar todos os filmes únicos que têm sessões nesta sala
+            List<Movie> moviesNaSala = new ArrayList<>();
+            if (room != null && room.getSessions() != null && !room.getSessions().isEmpty()) {
+                for (Session session : room.getSessions()) {
+                    if (!moviesNaSala.contains(session.getMovie())) {
+                        moviesNaSala.add(session.getMovie());
+                    }
+                }
+            }
+
+            // 2. VERIFICAÇÃO PRINCIPAL: Se não há filmes, exibe a mensagem e para.
+            if (moviesNaSala.isEmpty()) {
+                Label noMoviesLabel = new Label("Não há sessões programadas para esta sala.");
+                noMoviesLabel.setStyle("-fx-text-fill: #f2e8c6; -fx-font-size: 14px; -fx-padding: 15px;");
+                filterContainer.getChildren().add(noMoviesLabel);
+                return; // Encerra a execução do método aqui
+            }
+
+            // --- Se encontramos filmes, continuamos a construir a UI ---
+
+            // 3. Definir estilos e criar componentes (como antes)
+            String activeTabStyle = "-fx-background-color: #af0e2c; -fx-text-fill: #f2e8c6; -fx-background-radius: 5; -fx-font-weight: bold;";
+            String inactiveTabStyle = "-fx-background-color: transparent; -fx-text-fill: #f2e8c6; -fx-font-size: 14px;";
+
+            HBox movieTabs = new HBox(15);
+            movieTabs.setPadding(new Insets(10, 0, 10, 0));
+
+            List<Button> movieButtons = new ArrayList<>();
+            for (Movie movie : moviesNaSala) {
+                Button movieBtn = new Button(movie.getTitle());
+                movieBtn.setStyle(inactiveTabStyle);
+                movieBtn.setUserData(movie);
+                movieButtons.add(movieBtn);
+            }
+            movieTabs.getChildren().addAll(movieButtons);
+
+            VBox sessionDetailsContainer = new VBox(15);
+            sessionDetailsContainer.setPadding(new Insets(15));
+            sessionDetailsContainer.setStyle("-fx-background-color: #af0e2c; -fx-background-radius: 10; -fx-min-height: 200px;");
+
+            // 4. Configurar as ações dos botões (como antes)
+            for (Button btn : movieButtons) {
+                btn.setOnAction(event -> {
+                    for (Button b : movieButtons) {
+                        b.setStyle(inactiveTabStyle);
+                    }
+                    btn.setStyle(activeTabStyle);
+                    Movie filmeSelecionado = (Movie) btn.getUserData();
+                    displaySessionsForMovie(filmeSelecionado, sessionDetailsContainer);
+                });
+            }
+
+            // Ativa o primeiro filme por padrão
+            movieButtons.getFirst().fire();
+
+            // Adiciona os componentes à tela
+            filterContainer.getChildren().addAll(movieTabs, sessionDetailsContainer);
+        }
+    }
+
+    /**
+     * Limpa o contêiner de detalhes e exibe uma lista de todas as sessões
+     * para um filme específico, buscando os dados através do MovieController.
+     *
+     * @param movie O filme cujas sessões serão exibidas.
+     * @param container O VBox onde as informações das sessões serão adicionadas.
+     */
+    private void displaySessionsForMovie(Movie movie, VBox container) {
+        container.getChildren().clear(); // Limpa a lista de sessões anterior
+
+        // 1. **[MUDANÇA PRINCIPAL]** Chama o método estático do MovieController.
+        //    Isso substitui o loop que percorria room.getSessions() manualmente.
+        //    É necessário que a classe Movie tenha um método getId().
+        GenericDynamicList<Session> sessoesDoFilme = MovieController.getSessionsByMovie(movie.getId());
+
+        // Verifica se a busca retornou alguma sessão
+        if (sessoesDoFilme == null || sessoesDoFilme.isEmpty()) { // Assumindo que a lista tenha um método isEmpty()
+            Label noSessionsLabel = new Label("Não há sessões programadas para este filme.");
+            noSessionsLabel.setStyle("-fx-text-fill: #f2e8c6;");
+            container.getChildren().add(noSessionsLabel);
+            return;
+        }
+
+        int sessionCounter = 1;
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM");
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
+
+        // 2. Itera sobre a lista retornada pelo MovieController.
+        //    (Assumindo que sua GenericDynamicList pode ser usada em um loop for-each,
+        //    o que é padrão para estruturas de lista).
+        for (Session session : sessoesDoFilme) {
+            // O restante da lógica para exibir cada sessão permanece o mesmo.
+
+            String dataFormatada = session.getDate();
+            String horaFormatada = session.getTime();
+
+            int vendidos = room.getTotalSeat() - session.getTotalAvailableSeats();
+            double ocupacao = (room.getTotalSeat() > 0) ? ((double) vendidos / room.getTotalSeat()) * 100.0 : 0.0;
+
+            Text sessionTitle = new Text("Sessão" + sessionCounter + " - " + movie.getTitle() + " (" + dataFormatada + " às " + horaFormatada + ")\n");
+            sessionTitle.setFont(Font.font("Arial", FontWeight.BOLD, 14));
+            sessionTitle.setFill(javafx.scene.paint.Color.web("#f2e8c6"));
+
+            Text occupationText = new Text("Ocupação: " + String.format("%.1f", ocupacao) + "%");
+            occupationText.setFont(Font.font("Arial", FontWeight.NORMAL, 14));
+            occupationText.setFill(javafx.scene.paint.Color.web("#f2e8c6"));
+
+            TextFlow textFlow = new TextFlow(sessionTitle, occupationText);
+            container.getChildren().add(textFlow);
+
+            sessionCounter++;
         }
     }
 
@@ -297,23 +401,5 @@ public class OccupationRelatoryController implements Initializable {
         if (totalIngressosOferecidos == 0) return 0.0;
 
         return ((double) totalIngressosVendidos / totalIngressosOferecidos) * 100.0;
-    }
-
-    //Gambiarras de Teste
-
-    // Simulação de uma base de dados
-    private final List<Session> sessoesDeTeste = new ArrayList<>();
-
-
-    //Remover depois
-    private void inicializarSessoesParaTeste() throws Exception{
-        sessoesDeTeste.add(new Session(LocalDate.now(), LocalTime.now(), RoomController.getRoomById(1), new Movie("Filme 1", "Drama", 231, "10", "Sinopse"), 18.5));
-        sessoesDeTeste.add(
-                new Session(LocalDate.now(), LocalTime.now(), RoomController.getRoomById(1), new Movie("Filme 2", "Ação", 198, "9.9", "Sinopse"), 25.5));
-
-        for(Session session:sessoesDeTeste){
-            RoomController.getRoomById(1).addSession(session);
-        }
-
     }
 }
