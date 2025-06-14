@@ -279,7 +279,7 @@ public class SessionControlController implements Initializable, MainViews.OnChan
      * @param event Evento ao apertar o botão, caso necessário.
      */
     @FXML
-    void openRoomRelatory(ActionEvent event) {
+    void openRoomOccupation(ActionEvent event) {
         MainViews.changeScreen("roomOccupation", null);
     }
 
