@@ -20,9 +20,9 @@ import repository.MovieRepository;
 
  /**
  * Classe responsável por controlar a tela de alteração de um cliente.
- * @author
- * @since
- * @version
+ * @author Gabryelle Duarte
+ * @since 14/06/2024
+ * @version 1.0
  */
 public class MovieControlController {
 
