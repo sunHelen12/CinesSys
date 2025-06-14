@@ -152,7 +152,7 @@
                   <Image url="@../../assets/img/pasta%20_cor_F5841A.png" />
                </image>
             </ImageView>
-            <TableView fx:id="table" layoutX="321.0" layoutY="212.0" prefHeight="429.0" prefWidth="676.0" style="-fx-background-color: #03002C;">
+            <TableView fx:id="table" layoutX="327.0" layoutY="213.0" prefHeight="429.0" prefWidth="676.0" style="-fx-background-color: #03002C;">
               <columns>
                   <TableColumn fx:id="select" prefWidth="75.0" style="-fx-background-color: #F5841a;" text="Selecionar" />
                 <TableColumn fx:id="movieName" prefWidth="193.0" style="-fx-background-color: #F5841a;" text="Filme" />

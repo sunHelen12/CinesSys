@@ -52,17 +52,17 @@
                             <Font name="Arial" size="12.0" />
                         </font>
                     </TextField>
-                    <Label alignment="CENTER" layoutX="37.0" layoutY="209.0" prefHeight="34.0" prefWidth="150.0" text="Nome do filme: " textAlignment="CENTER" textFill="#f2e8c4">
+                    <Label alignment="CENTER" layoutX="14.0" layoutY="209.0" prefHeight="34.0" prefWidth="150.0" text="Id do filme: " textFill="#f2e8c4">
                         <font>
                             <Font name="Arial" size="20.0" />
                         </font>
                     </Label>
-                    <Label layoutX="655.0" layoutY="209.0" prefHeight="34.0" prefWidth="247.0" style="-fx-text-fill: white; -fx-font-family: Arial;" text="Preço do ingresso: " textFill="#f2e8c4">
+                    <Label layoutX="655.0" layoutY="209.0" prefHeight="34.0" prefWidth="247.0" style="-fx-font-family: Arial;" text="Preço do ingresso: " textFill="#f2e8c4">
                         <font>
                             <Font name="Arial" size="20.0" />
                         </font>
                     </Label>
-                    <TextField fx:id="txtMovie" layoutX="37.0" layoutY="254.0" opacity="0.52" prefHeight="42.0" prefWidth="546.0" promptText="Jonh Wick" style="-fx-background-color: #03002C; -fx-background-radius: 5px;">
+                    <TextField fx:id="txtMovieId" layoutX="37.0" layoutY="254.0" opacity="0.52" prefHeight="42.0" prefWidth="546.0" promptText="Jonh Wick" style="-fx-background-color: #03002C; -fx-background-radius: 5px;" text="Ex: 12">
                         <font>
                             <Font name="Arial" size="12.0" />
                         </font>
@@ -72,7 +72,7 @@
                             <Font name="Arial" size="12.0" />
                         </font>
                     </TextField>
-                    <Label layoutX="655.0" layoutY="95.0" prefHeight="23.0" prefWidth="130.0" style="-fx-text-fill: white; -fx-font-family: Arial;" text="Sala: " textFill="#f2e8c4">
+                    <Label layoutX="655.0" layoutY="95.0" prefHeight="23.0" prefWidth="130.0" style="-fx-font-family: Arial;" text="Sala: " textFill="#f2e8c4">
                         <font>
                             <Font name="Arial" size="20.0" />
                         </font>

@@ -14,7 +14,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.stage.Stage;
 import models.Movie;
-import structures.list.GenericDynamicList;
 import javafx.fxml.Initializable;
 
 import java.util.ArrayList;
@@ -140,6 +139,12 @@ public class MovieControlController implements Initializable, MainViews.OnChange
         refreshTable();
     }
 
+    /**
+     * Chama o refreshTable() toda vez que a tela for chamada
+     * 
+     * @param newScreen      tela de mudança
+     * @param userDataObject dados passados
+     */
     @Override
     public void onScreenChanged(String newScreen, Object userDataObject) {
         if (newScreen.equals("movieControl")) {
