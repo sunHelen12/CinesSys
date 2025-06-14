@@ -22,13 +22,14 @@ public class MainViews extends Application {
     private static Scene occupationRelatoryScene;
     private static Scene popUpClientScene;
     private static Scene popUpMoviesScene;
+    private static Scene purchaseRecordScene;
     private static Scene purchaseRelatoryScene;
     private static Scene registerClientScene;
     private static Scene registerMovieScene;
     private static Scene registerSessionScene;
     private static Scene roomOccupationScene;
     private static Scene sellTicketScene;
-    private static Scene purchaseRecordScene;
+    private static Scene sessionControlScene;
 
     /**
      * Inicializa a aplicação.
@@ -57,6 +58,7 @@ public class MainViews extends Application {
         FXMLLoader loaderRoomOccupation = new FXMLLoader(getClass().getResource("/gui/RoomOccupation.fxml"));
         FXMLLoader loaderPurchaseRecord = new FXMLLoader(getClass().getResource("/gui/PurchaseRecord.fxml"));
         FXMLLoader loaderSellTicket = new FXMLLoader(getClass().getResource("/gui/SellTicket.fxml"));
+        FXMLLoader loaderSessionControl = new FXMLLoader(getClass().getResource("/gui/SessionControl.fxml"));
 
 
         Parent homeScreen = loaderHomeScreen.load();
@@ -106,6 +108,9 @@ public class MainViews extends Application {
 
         Parent purchaseRecord = loaderPurchaseRecord.load();
         purchaseRecordScene = new Scene(purchaseRecord);
+
+        Parent sessionControl = loaderSessionControl.load();
+        sessionControlScene = new Scene(sessionControl);
         
         primaryStage.setScene(homeScreenScene);
         primaryStage.centerOnScreen();
@@ -183,6 +188,10 @@ public class MainViews extends Application {
             case "sellTicket":
                 stage.setScene(sellTicketScene);
                 notifyAllListerners("sellTicket", userDataObject);
+                break;
+            case "sessionControl":
+                stage.setScene(sessionControlScene);
+                notifyAllListerners("sessionControl", userDataObject);
                 break;
             default:
                 break;
