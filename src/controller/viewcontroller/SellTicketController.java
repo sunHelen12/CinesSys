@@ -3,12 +3,17 @@ package controller.viewcontroller;
 import controller.business.ClientController;
 import controller.business.SessionController;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 import models.Client;
 import models.Session;
 import models.Ticket;
 import services.*;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -162,5 +167,31 @@ public class SellTicketController {
         alert.show();
     }
 
+    /**
+     * Exibe uma janela pop-up com o valor do desconto aplicado ao cliente.
+     * Essa janela é carregada a partir do arquivo FXML "PopUpDiscount.fxml"
+     * e mostra dinamicamente o valor do desconto.
+     *
+     * @param discount Valor percentual do desconto (ex: 10.0 para 10%)
+     */
+    @FXML
+    private void showDiscountPopup(double discount) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/PopUpDiscount.fxml"));
+            Parent root = loader.load();
+
+            PopUpDiscountController controller = loader.getController();
+            controller.setDiscount(discount);
+
+            Stage popupStage = new Stage();
+            popupStage.setTitle("Desconto Aplicado");
+            popupStage.setScene(new Scene(root));
+            popupStage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            showAlert("Erro ao carregar o pop-up de desconto.");
+        }
+    }
 
 }

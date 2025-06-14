@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="350.0" maxWidth="500.0" minHeight="350.0" minWidth="500.0" prefHeight="350.0" prefWidth="500.0" style="-fx-background-color: #03002C; -fx-background-radius: 7px;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.viewcontroller.PopUpClientController">
+<AnchorPane maxHeight="350.0" maxWidth="500.0" minHeight="350.0" minWidth="500.0" prefHeight="350.0" prefWidth="500.0" style="-fx-background-color: #03002C; -fx-background-radius: 7px;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.viewcontroller.PopUpDiscountController">
    <children>
       <Label fx:id="discountMessage" alignment="CENTER" layoutX="39.0" layoutY="57.0" prefHeight="92.0" prefWidth="431.0" style="-fx-font-weight: bold;" textFill="#f2e8c6">
          <font>
