@@ -81,9 +81,9 @@ public class MovieControlController {
         mostrarPopUp("excluído(s)");
     }
 
-    private void mostrarPopUp(String acao) {
+    public static void mostrarPopUp(String acao) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/PopUpMovies.fxml"));
+            FXMLLoader loader = new FXMLLoader(MovieControlController.class.getResource("/gui/PopUpMovies.fxml"));
             Parent root = loader.load();
 
             PopUpMovieController controller = loader.getController();
