@@ -24,7 +24,7 @@ public class TicketController {
      * @param sessionId id da sessão que a compra será relizada
      * @param paymentMethod método de pagamento do ingresso
      */
-    public static void purchaseTicket(int clientId, int sessionId, String paymentMethod) {
-        ticketService.purchaseTicket(clientId, sessionId, paymentMethod);
+    public static void purchaseTicket(int clientId, int sessionId, String paymentMethod, LoyaltyService loyaltyService) {
+        ticketService.purchaseTicket(clientId, sessionId, paymentMethod, loyaltyService);
     }
 }

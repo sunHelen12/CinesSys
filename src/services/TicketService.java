@@ -30,15 +30,6 @@ public class TicketService {
         this.ticketRepository = new TicketRepository();
     }
 
-    /**
-     * Cria e adiciona um ticket ao repositório.
-     *
-     * @param client        O cliente associado ao ticket.
-     * @param session       A sessão relacionada ao ticket.
-     * @param paymentMethod O método de pagamento usado para o ticket.
-     * @return {@code true} se o ticket foi adicionado com sucesso.
-     * @throws IllegalArgumentException Se algum argumento for inválido.
-     */
      /**
      * Recupera todos os tickets armazenados.
      *
@@ -95,15 +86,7 @@ public class TicketService {
         if (session.getTotalAvailableSeats() <= 0) {
             throw new IllegalStateException("Não há assentos disponíveis para a sessão " + sessionId + ".");
         }
-        session.setTotalAvailableSeats(session.getTotalAvailableSeats() - 1);
-        SessionController.updateSession(
-            session.getId(),
-            session.getDate(),
-            session.getTime(),
-            session.getRoom(),
-            session.getMovie(),
-            session.getTicketValue()
-        );
+
 
         // Validar método de pagamento
         PaymentMethod method;
