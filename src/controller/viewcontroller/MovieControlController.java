@@ -16,18 +16,24 @@ import javafx.stage.Stage;
 import models.Movie;
 import structures.list.GenericDynamicList;
 import javafx.fxml.Initializable;
-import java.util.ArrayList; 
+
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
 import javafx.event.ActionEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.scene.control.CheckBox; 
+import javafx.scene.control.TableCell;
 
 /**
  * Classe responsável por controlar a tela de alteração de um cliente.
- * @author Gabryelle Beatriz Duarte Moraes
  * 
+ * @author Gabryelle Beatriz Duarte Moraes
+ * @author Maria Eduarda Campos
  * @since 14/06/2024
- * @version 1.0
+ * @version 4.0
  */
 public class MovieControlController implements Initializable, MainViews.OnChangeScreen {
 
@@ -51,7 +57,14 @@ public class MovieControlController implements Initializable, MainViews.OnChange
 
     private final ObservableList<Movie> selectedMovies = FXCollections.observableArrayList();
     private ObservableList<Movie> moviesForTable;
+    private final Map<Movie, SimpleBooleanProperty> movieSelectionMap = new HashMap<>();
 
+    /**
+     * Inicializa o controlador.
+     * * @param url URL de localização do arquivo FXML, se necessário.
+     * 
+     * @param resourceBundle Conjunto de recursos localizados, se necessário.
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         moviesForTable = FXCollections.observableArrayList();
@@ -69,19 +82,62 @@ public class MovieControlController implements Initializable, MainViews.OnChange
 
         selectColumn.setCellValueFactory(cellData -> {
             Movie movie = cellData.getValue();
-            SimpleBooleanProperty selected = new SimpleBooleanProperty(selectedMovies.contains(movie));
-            selected.addListener((obs, wasSelected, isNowSelected) -> {
-                if (isNowSelected) {
-                    selectedMovies.add(movie);
-                } else {
-                    selectedMovies.remove(movie);
-                }
+            SimpleBooleanProperty selectedProp = movieSelectionMap.computeIfAbsent(movie, k -> {
+                SimpleBooleanProperty prop = new SimpleBooleanProperty(false);
+                prop.addListener((obs, oldValue, newValue) -> {
+                    if (newValue) {
+                        selectedMovies.add(movie);
+                    } else {
+                        selectedMovies.remove(movie);
+                    }
+                });
+                return prop;
             });
-            return selected;
+            selectedProp.set(selectedMovies.contains(movie));
+            return selectedProp;
         });
-        selectColumn.setCellFactory(CheckBoxTableCell.forTableColumn(selectColumn));
+
+        selectColumn.setCellFactory(column -> new TableCell<Movie, Boolean>() {
+            private final CheckBox checkBox = new CheckBox();
+            private SimpleBooleanProperty currentProp;
+            { 
+                checkBox.setOnAction(event -> {
+                    if (currentProp != null) {
+                        currentProp.set(checkBox.isSelected());
+                    }
+                });
+            }
+
+            @Override
+            protected void updateItem(Boolean item, boolean empty) {
+                super.updateItem(item, empty);
+
+                if (empty || getTableRow() == null || getTableRow().getItem() == null) {
+                    setGraphic(null);
+                    if (currentProp != null) {
+                        checkBox.selectedProperty().unbindBidirectional(currentProp);
+                        currentProp = null;
+                    }
+                } else {
+                    Movie movie = getTableRow().getItem(); 
+                    SimpleBooleanProperty propFromMap = movieSelectionMap.get(movie); 
+
+                    if (propFromMap != null) {
+                        if (currentProp != null) {
+                            checkBox.selectedProperty().unbindBidirectional(currentProp);
+                        }
+                        currentProp = propFromMap;
+                        checkBox.selectedProperty().bindBidirectional(currentProp);
+                        setGraphic(checkBox);
+                    } else {
+                        setGraphic(null);
+                    }
+                }
+            }
+        });
 
         MainViews.addOnChangeScreenListener(this);
+        refreshTable();
     }
 
     @Override
@@ -95,15 +151,40 @@ public class MovieControlController implements Initializable, MainViews.OnChange
      * Atualiza a tabela de filmes.
      */
     private void refreshTable() {
+        List<Movie> currentlySelectedCopy = new ArrayList<>(selectedMovies);
+        selectedMovies.clear();
         moviesForTable.clear();
-        GenericDynamicList<Movie> currentMovies = MovieController.getAllMovies();
 
-        if (currentMovies != null) {
-            for (Movie movie : currentMovies) {
+        GenericDynamicList<Movie> currentMoviesFromRepo = MovieController.getAllMovies();
+
+        if (currentMoviesFromRepo != null) {
+            for (Movie movie : currentMoviesFromRepo) {
                 moviesForTable.add(movie);
+
+                SimpleBooleanProperty prop = movieSelectionMap.computeIfAbsent(movie, k -> {
+                    SimpleBooleanProperty newProp = new SimpleBooleanProperty(false);
+                    newProp.addListener((obs, oldValue, newValue) -> {
+                        if (newValue) {
+                            selectedMovies.add(movie);
+                        } else {
+                            selectedMovies.remove(movie);
+                        }
+                    });
+                    return newProp;
+                });
+
+                boolean wasSelected = currentlySelectedCopy.contains(movie);
+                if (prop.get() != wasSelected) {
+                    prop.set(wasSelected);
+                }
+
+                if (prop.get()) {
+                    selectedMovies.add(movie);
+                }
             }
         }
         movieTable.setItems(moviesForTable);
+        movieTable.refresh();
     }
 
     /**
@@ -146,13 +227,14 @@ public class MovieControlController implements Initializable, MainViews.OnChange
     @FXML
     void deleteMovie(ActionEvent event) {
         if (selectedMovies.isEmpty()) {
-            System.out.println("Nenhum filme selecionado para exclusão.");
             return;
         }
         List<Movie> moviesToDelete = new ArrayList<>(selectedMovies);
         for (Movie movie : moviesToDelete) {
             MovieController.removeMovieById(movie.getId());
+            movieSelectionMap.remove(movie);
         }
+
         selectedMovies.clear();
         refreshTable();
         mostrarPopUp("excluído");
@@ -165,11 +247,12 @@ public class MovieControlController implements Initializable, MainViews.OnChange
      */
     @FXML
     void editMovie(ActionEvent event) {
-        if (!selectedMovies.isEmpty()) {
-            Movie movieToEdit = selectedMovies.get(0);
-            MainViews.changeScreen("movieEdit", movieToEdit);
-            mostrarPopUp("alterado");
+        if (selectedMovies.isEmpty() || selectedMovies.size() > 1) {
+            return;
         }
+   
+        Movie movieToEdit = selectedMovies.get(0);
+        MainViews.changeScreen("movieEdit", movieToEdit);
     }
 
     /**
@@ -229,6 +312,6 @@ public class MovieControlController implements Initializable, MainViews.OnChange
      */
     @FXML
     void openSessionControl(ActionEvent event) {
-        // MainViews.changeScreen("sessionControl", null);
+        MainViews.changeScreen("sessionControl", null);
     }
 }
