@@ -3,9 +3,9 @@ package models;
 /**
  * Classe que representa um filme.
  * 
- * @author
- * @since
- * @version
+ * @author Gabryelle Beatriz Duarte Moraes
+ * @since 01/06/2024
+ * @version 1.0
  */
 public class Movie {
 	private static int _idGenerator = 1;
