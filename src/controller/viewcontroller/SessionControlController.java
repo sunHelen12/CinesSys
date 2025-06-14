@@ -8,42 +8,25 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
 public class SessionControlController {
+    
+    @FXML private TableView<?> table;
+    @FXML private TableColumn<?, ?> select;
+    @FXML private TableColumn<?, ?> classification;
+    @FXML private TableColumn<?, ?> room;
+    @FXML private TableColumn<?, ?> duration;
+    @FXML private TableColumn<?, ?> movieName;
+    @FXML private TableColumn<?, ?> numberSeats;
 
-    @FXML
-    private TableColumn<?, ?> classification;
+    @FXML private Label date1;
 
-    @FXML
-    private Label date1;
+    @FXML private Label date2;
 
-    @FXML
-    private Label date2;
+    @FXML private Label date3;
 
-    @FXML
-    private Label date3;
+    @FXML private Label date4;
 
-    @FXML
-    private Label date4;
+    @FXML private Button openHomeScreen;
 
-    @FXML
-    private TableColumn<?, ?> duration;
-
-    @FXML
-    private TableColumn<?, ?> movieName;
-
-    @FXML
-    private TableColumn<?, ?> numberSeats;
-
-    @FXML
-    private Button openHomeScreen;
-
-    @FXML
-    private TableColumn<?, ?> room;
-
-    @FXML
-    private TableColumn<?, ?> select;
-
-    @FXML
-    private TableView<?> table;
     @FXML
     void changeSession(ActionEvent event) {
 

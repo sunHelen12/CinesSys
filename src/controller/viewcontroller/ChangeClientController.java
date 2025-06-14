@@ -41,6 +41,9 @@ public class ChangeClientController implements Initializable {
             public void onScreenChanged(String newScreen, Object userDataObject) {
                 if (userDataObject instanceof Client) {
                     client = (Client) userDataObject;
+                    boxDate.setText(client.getBirthday());
+                    boxEmail.setText(client.getEmail());
+                    boxName.setText(client.getName());
                 }
             }
         });

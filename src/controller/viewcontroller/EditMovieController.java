@@ -30,7 +30,7 @@ public class EditMovieController implements Initializable{
     @FXML private TextField ratingField;
     @FXML private TextField synopsisField;
 
-    private Movie selectedMovie;
+    private static Movie selectedMovie;
     
     /**
      * Inicializa o controlador.
@@ -45,8 +45,12 @@ public class EditMovieController implements Initializable{
             public void onScreenChanged(String newScreen, Object userDataObject) {
                 if (userDataObject instanceof Movie) {
                    selectedMovie = (Movie) userDataObject;
+                    titleField.setText(selectedMovie.getTitle());
+                    genreField.setText(selectedMovie.getGenre());
+                    durationField.setText(String.valueOf(selectedMovie.getDuration())); 
+                    ratingField.setText(selectedMovie.getClassification()); 
+                    synopsisField.setText(selectedMovie.getSynopsis());
                 }
-
             }
         });
     }
