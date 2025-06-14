@@ -8,7 +8,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.fxml.FXMLLoader;
 import models.Movie;
-import repository.MovieRepository;
+import javafx.event.ActionEvent;
+import controller.business.MovieController;
 
 public class RegisterMovieController {
 
@@ -18,42 +19,30 @@ public class RegisterMovieController {
     @FXML private TextField ratingField;
     @FXML private TextField synopsisField;
 
-    private final MovieRepository repository = new MovieRepository();
-
     @FXML
-    private void handleSubmit() {
-        try {
-            String title = titleField.getText();
-            String genre = genreField.getText();
-            int duration = Integer.parseInt(durationField.getText());
-            String rating = ratingField.getText();
-            String synopsis = synopsisField.getText();
-
-            Movie movie = new Movie(title, genre, duration, rating, synopsis);
-            repository.add(movie);
-
-            mostrarPopUp("cadastrado");
-
-        } catch (Exception e) {
-            e.printStackTrace(); // substitua por pop-up de erro se necessário
-        }
+    void backMovieControl(ActionEvent event) {
+        MainViews.changeScreen("movieControl", null);
     }
 
-    private void mostrarPopUp(String acao) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/PopUpMovies.fxml"));
-            Parent root = loader.load();
+    @FXML
+    void registerMovie(ActionEvent event) {
+        String title = titleField.getText().trim();
+        String genre = genreField.getText().trim();
+        String duration = durationField.getText().trim();
+        int drtn = Integer.parseInt(duration);
+        String classification = ratingField.getText().trim();
+        String synopsis = synopsisField.getText().trim();
 
-            PopUpMovieController controller = loader.getController();
-            Stage stage = new Stage();
-            controller.setStage(stage);
-            controller.setMensagemPersonalizada(acao);
-
-            stage.setScene(new Scene(root));
-            stage.setTitle("Confirmação");
-            stage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (title.isEmpty() || genre.isEmpty() || duration.isEmpty() || classification.isEmpty() || synopsis.isEmpty()) {
+            return;
+        } else {
+            MovieController.addMovie(title, genre, drtn, classification, synopsis);
+            titleField.clear();
+            genreField.clear();
+            durationField.clear();
+            ratingField.clear();
+            synopsisField.clear();
+            MovieControlController.mostrarPopUp("cadastrado");
         }
     }
 }
