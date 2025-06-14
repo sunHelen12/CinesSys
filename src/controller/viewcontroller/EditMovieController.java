@@ -10,7 +10,7 @@ import models.Movie;
 import repository.MovieRepository;
 
 /**
- * Classe responsável por controlar a tela de alteração de um cliente.
+ * Classe responsável por controlar a tela de alteração de um Filme.
  * @author
  * @since
  * @version
@@ -37,7 +37,6 @@ public class EditMovieController implements Initializable{
             }
         });
     }
-
    
     void backMovieControl(ActionEvent event) {
         MainViews.changeScreen("movieControl", null);
