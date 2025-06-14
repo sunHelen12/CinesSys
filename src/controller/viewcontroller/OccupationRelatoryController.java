@@ -28,10 +28,10 @@ import models.*;
 /**
  * Classe responsável por controlar a tela de relatório de ocupação de salas.
  * 
- * @author
- * @author
- * @since
- * @version
+ * @author Maria Eduarda Santos Campos
+ * @author Vinícius Nunes de Andrade
+ * @since 28-05-2025
+ * @version 3.0
  */
 public class OccupationRelatoryController implements Initializable {
     private static Room room;
@@ -64,7 +64,7 @@ public class OccupationRelatoryController implements Initializable {
      * Inicializa o controlador.
      * 
      * @param url URL de localização do arquivo FXML, se necessário.
-     * @param resourceBundle Conjunto de recursos localizados, se necessário.
+     * @param rb Conjunto de recursos localizados, se necessário.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
