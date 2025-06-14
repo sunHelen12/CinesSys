@@ -1,6 +1,7 @@
 package controller.business;
 
 import models.Client;
+import models.Ticket;
 import repository.TicketRepository;
 import services.ClientService;
 import services.LoyaltyService;
@@ -24,7 +25,7 @@ public class TicketController {
      * @param sessionId id da sessão que a compra será relizada
      * @param paymentMethod método de pagamento do ingresso
      */
-    public static void purchaseTicket(int clientId, int sessionId, String paymentMethod, LoyaltyService loyaltyService) {
-        ticketService.purchaseTicket(clientId, sessionId, paymentMethod, loyaltyService);
+    public static Ticket purchaseTicket(int clientId, int sessionId, String paymentMethod, LoyaltyService loyaltyService) {
+        return ticketService.purchaseTicket(clientId, sessionId, paymentMethod, loyaltyService);
     }
 }

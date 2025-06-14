@@ -1,5 +1,6 @@
 package services;
 
+import controller.business.TicketController;
 import enums.PaymentMethod;
 import models.*;
 import java.util.ArrayList;
@@ -14,24 +15,12 @@ import java.util.List;
  * Cada venda respeita o sistema de fidelidade implementado no TicketService.
  */
 public class SaleService {
-
-    private final TicketService ticketService;
-    private final ClientService clientService;
-    private final SessionService sessionService;
     private final LoyaltyService loyaltyService;
 
     /**
      * Construtor com injeção dos serviços necessários.
      */
-    public SaleService(
-            TicketService ticketService,
-            ClientService clientService,
-            SessionService sessionService,
-            LoyaltyService loyaltyService
-    ) {
-        this.ticketService = ticketService;
-        this.clientService = clientService;
-        this.sessionService = sessionService;
+    public SaleService(LoyaltyService loyaltyService) {
         this.loyaltyService = loyaltyService;
     }
 
@@ -57,12 +46,10 @@ public class SaleService {
         List<Ticket> tickets = new ArrayList<>();
 
         for (int i = 0; i < quantity; i++) {
-            Ticket ticket = ticketService.purchaseTicket(
+            Ticket ticket = TicketController.purchaseTicket(
                     client.getId(),
                     session.getId(),
                     paymentMethod.name(), // usa o nome para depois converter
-                    clientService,
-                    sessionService,
                     loyaltyService
             );
             tickets.add(ticket);

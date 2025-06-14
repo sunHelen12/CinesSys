@@ -87,7 +87,6 @@ public class TicketService {
             throw new IllegalStateException("Não há assentos disponíveis para a sessão " + sessionId + ".");
         }
 
-
         // Validar método de pagamento
         PaymentMethod method;
         try {
