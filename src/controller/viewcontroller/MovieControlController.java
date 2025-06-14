@@ -21,7 +21,7 @@ import java.util.ResourceBundle;
 
  /**
  * Classe responsável por controlar a tela de alteração de um cliente.
- * @author Gabryelle Duarte
+ * @author Gabryelle Beatriz Duarte Moraes
  * @since 14/06/2024
  * @version 1.0
  */
