@@ -24,29 +24,13 @@ import controller.business.MovieController;
  * @since 01/06/2024
  * @version 2.0
  */
-public class RegisterMovieController implements Initializable {
+public class RegisterMovieController {
 
     @FXML private TextField titleField;
     @FXML private TextField genreField;
     @FXML private TextField durationField;
     @FXML private TextField ratingField;
     @FXML private TextField synopsisField;
-
-    /**
-     * inicializa mudando a cor do texto e do fundo dos campos de texto
-     * 
-     * @param url O URL de onde o controlador foi carregado.
-     * @param rb O ResourceBundle associado ao controlador.
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // Muda a cor do texto e do fundo dos campos de texto
-        titleField.setStyle("-fx-text-fill: white !important; -fx-background-color: #03002C !important;");
-        genreField.setStyle("-fx-text-fill: white !important; -fx-background-color: #03002C !important;");
-        durationField.setStyle("-fx-text-fill: white !important; -fx-background-color: #03002C !important;");
-        ratingField.setStyle("-fx-text-fill: white !important; -fx-background-color: #03002C !important;");
-        synopsisField.setStyle("-fx-text-fill: white !important; -fx-background-color: #03002C !important;");
-    }
 
     /**
      * Reseta a tela de controle de filmes.
@@ -71,6 +55,12 @@ public class RegisterMovieController implements Initializable {
         int drtn = Integer.parseInt(duration);
         String classification = ratingField.getText().trim();
         String synopsis = synopsisField.getText().trim();
+
+        titleField.setStyle("-fx-text-fill: white !important; -fx-background-color: #03002C !important;");
+        genreField.setStyle("-fx-text-fill: white !important; -fx-background-color: #03002C !important;");
+        durationField.setStyle("-fx-text-fill: white !important; -fx-background-color: #03002C !important;");
+        ratingField.setStyle("-fx-text-fill: white !important; -fx-background-color: #03002C !important;");
+        synopsisField.setStyle("-fx-text-fill: white !important; -fx-background-color: #03002C !important;");
 
         if (title.isEmpty() || genre.isEmpty() || duration.isEmpty() || classification.isEmpty() || synopsis.isEmpty()) {
             return;

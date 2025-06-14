@@ -25,6 +25,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.scene.control.CheckBox; 
 import javafx.scene.control.TableCell;
+import structures.list.GenericDynamicList;
 
 /**
  * Classe responsável por controlar a tela de alteração de um cliente.
