@@ -17,7 +17,7 @@ import javafx.stage.Stage;
 import models.Movie;
 import javafx.fxml.Initializable;
 
-import java.awt.event.ActionEvent;
+import javafx.event.ActionEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -174,8 +174,7 @@ public class MovieControlController implements Initializable{
      */
     @FXML
     void openSessionControl(ActionEvent event) {
-        // MainViews.changeScreen("sessionControl", null);
+        //MainViews.changeScreen("sessionControl", null);
     }
-
 }
 
