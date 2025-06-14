@@ -51,27 +51,27 @@
                   <Font name="Arial" size="48.0" />
                 </font>
               </Label>
-                  <Button layoutX="-13.0" layoutY="113.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="237.0" style="-fx-background-color: #b90028; -fx-font-weight: bold; -fx-border-style: bold;" text="Controle de Filmes" textFill="WHITE">
+                  <Button layoutX="-13.0" layoutY="113.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="237.0" style="-fx-background-color: #b90028; -fx-font-weight: bold; -fx-border-style: bold;" text="Controle de Filmes" textFill="#f2e8c4">
                      <font>
                         <Font name="Arial" size="20.0" />
                      </font>
                   </Button>
-                  <Button layoutX="1.0" layoutY="166.0" mnemonicParsing="false" style="-fx-background-color: #b90028;" text="Controle de Sessões" textFill="WHITE">
+                  <Button layoutX="1.0" layoutY="166.0" mnemonicParsing="false" style="-fx-background-color: #b90028;" text="Controle de Sessões" textFill="#f2e8c4">
                      <font>
                         <Font name="Arial" size="20.0" />
                      </font>
                   </Button>
-                  <Button layoutX="1.0" layoutY="220.0" mnemonicParsing="false" style="-fx-background-color: #b90028;" text="Controle de Clientes" textFill="WHITE">
+                  <Button layoutX="1.0" layoutY="220.0" mnemonicParsing="false" style="-fx-background-color: #b90028;" text="Controle de Clientes" textFill="#f2e8c4">
                      <font>
                         <Font name="Arial" size="20.0" />
                      </font>
                   </Button>
-                  <Button layoutX="1.0" layoutY="277.0" mnemonicParsing="false" style="-fx-background-color: #b90028;" text="Relatórios de Compras" textFill="WHITE">
+                  <Button layoutX="1.0" layoutY="277.0" mnemonicParsing="false" style="-fx-background-color: #b90028;" text="Relatórios de Compras" textFill="#f2e8c4">
                      <font>
                         <Font name="Arial" size="20.0" />
                      </font>
                   </Button>
-                  <Button layoutX="1.0" layoutY="333.0" mnemonicParsing="false" style="-fx-background-color: #b90028;" text="Relatórios de Ocupação" textFill="WHITE">
+                  <Button layoutX="1.0" layoutY="333.0" mnemonicParsing="false" style="-fx-background-color: #b90028;" text="Relatórios de Ocupação" textFill="#f2e8c4">
                      <font>
                         <Font name="Arial" size="20.0" />
                      </font>
@@ -89,33 +89,33 @@
                   <Font name="Arial" size="38.0" />
                </font>
             </Label>
-            <TableView fx:id="movieTable" layoutX="313.0" layoutY="100.0" prefHeight="550.0" prefWidth="980.0">
-                     <columns>
-                        <TableColumn fx:id="selectColumn" prefWidth="100.0" text="Selecionar" />
-                        <TableColumn fx:id="titleColumn" prefWidth="200.0" text="Título" />
-                        <TableColumn fx:id="genreColumn" prefWidth="150.0" text="Gênero" />
-                        <TableColumn fx:id="durationColumn" prefWidth="150.0" text="Duração (h)" />
-                        <TableColumn fx:id="ratingColumn" prefWidth="150.0" text="Classificação" />
-                        <TableColumn fx:id="synopsisColumn" prefWidth="300.0" text="Sinopse" />
-                     </columns>
-            </TableView>
 
-            <Button layoutX="945.0" layoutY="623.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="142.0" style="-fx-background-color: #B1002D; -fx-font-weight: bold; -fx-background-radius: 5px;" text="Cadastrar" textFill="WHITE">
+            <Button layoutX="301.0" layoutY="651.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="142.0" style="-fx-background-color: #B1002D; -fx-font-weight: bold; -fx-background-radius: 5px;" text="Cadastrar" textFill="WHITE">
                <font>
                   <Font name="Arial" size="18.0" />
                </font>
          
             </Button>
-            <Button layoutX="1123.0" layoutY="623.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="142.0" style="-fx-background-color: #B1002D; -fx-font-weight: bold; -fx-background-radius: 5px;" text="Alterar" textFill="WHITE">
+            <Button layoutX="1110.0" layoutY="651.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="142.0" style="-fx-background-color: #B1002D; -fx-font-weight: bold; -fx-background-radius: 5px;" text="Alterar" textFill="WHITE">
                <font>
                   <Font name="Arial" size="18.0" />
                </font>
             </Button>
-            <Button layoutX="945.0" layoutY="622.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="142.0" style="-fx-background-color: #B1002D; -fx-font-weight: bold; -fx-background-radius: 5px;" text="Excluir" textFill="WHITE">
+            <Button layoutX="944.0" layoutY="651.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="142.0" style="-fx-background-color: #B1002D; -fx-font-weight: bold; -fx-background-radius: 5px;" text="Excluir" textFill="WHITE">
                <font>
                   <Font name="Arial" size="18.0" />
                </font>
             </Button>
+            <TableView fx:id="movieTable" layoutX="323.0" layoutY="110.0" prefHeight="522.0" prefWidth="961.0" style="-fx-background-color: #03002C;">
+               <columns>
+                  <TableColumn fx:id="selectColumn" prefWidth="100.0" style="-fx-background-color: #B1002D;" text="Selecionar" />
+                  <TableColumn fx:id="titleColumn" prefWidth="200.0" style="-fx-background-color: #B1002D;" text="Título" />
+                  <TableColumn fx:id="genreColumn" prefWidth="150.0" style="-fx-background-color: #B1002D;" text="Gênero" />
+                  <TableColumn fx:id="durationColumn" prefWidth="150.0" style="-fx-background-color: #B1002D;" text="Duração (h)" />
+                  <TableColumn fx:id="ratingColumn" prefWidth="150.0" style="-fx-background-color: #B1002D;" text="Classificação" />
+                  <TableColumn fx:id="synopsisColumn" prefWidth="300.0" style="-fx-background-color: #B1002D;" text="Sinopse" />
+               </columns>
+            </TableView>
       </children>
     </AnchorPane>
   </children>
