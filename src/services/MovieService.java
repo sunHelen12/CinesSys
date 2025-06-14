@@ -126,4 +126,14 @@ public class MovieService {
 
         return removed;
     }
+
+    /**
+     * Retorna um filme com o mesmo nome fornecido.
+     *
+     * @param name nome do filme
+     * @return filme com o mesmo nome
+     */
+    public Movie getMovieByName(String name){
+        return movieRepository.getMovieByName(name);
+    }
 }
