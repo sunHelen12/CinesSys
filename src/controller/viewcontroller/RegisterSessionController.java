@@ -1,5 +1,8 @@
 package controller.viewcontroller;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import com.sun.tools.javac.Main;
 import controller.business.ClientController;
 import controller.business.MovieController;
@@ -7,6 +10,7 @@ import controller.business.RoomController;
 import controller.business.SessionController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import models.Movie;
 
@@ -17,7 +21,7 @@ import models.Movie;
  * @since
  * @version
  */
-public class RegisterSessionController {
+public class RegisterSessionController implements Initializable {
 
     @FXML
     private TextField txtDate;
@@ -33,6 +37,20 @@ public class RegisterSessionController {
 
     @FXML
     private TextField txtTime;
+
+    /**
+     * inicializa mudando a cor do texto e do fundo dos campos de texto
+     * 
+     * @param url O URL de onde o controlador foi carregado.
+     * @param rb O ResourceBundle associado ao controlador.
+     */
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // Muda a cor do texto e do fundo dos campos de texto
+        txtDate.setStyle("-fx-text-fill: white !important; -fx-background-color: #03002C !important;");
+        txtMovie.setStyle("-fx-text-fill: white !important; -fx-background-color: #03002C !important;");
+        txtPrice.setStyle("-fx-text-fill: white !important; -fx-background-color: #03002C !important;");
+    }
 
     /**
      * Retorna para a tela de controle de sessões.

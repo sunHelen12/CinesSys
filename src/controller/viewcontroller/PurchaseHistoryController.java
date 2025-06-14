@@ -43,6 +43,8 @@ public class PurchaseHistoryController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // Muda a cor do texto e do fundo dos campos de texto
+        txtBusca.setStyle("-fx-text-fill: white !important; -fx-background-color: #03002C !important;");
         addFilter();
     }
 
