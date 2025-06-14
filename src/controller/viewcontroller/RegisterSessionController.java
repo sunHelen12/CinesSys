@@ -1,5 +1,6 @@
 package controller.viewcontroller;
 
+import com.sun.tools.javac.Main;
 import controller.business.ClientController;
 import controller.business.MovieController;
 import controller.business.RoomController;
@@ -27,7 +28,7 @@ public class RegisterSessionController {
     private TextField txtTime;
     @FXML
     void backSessionController(ActionEvent event) {
-
+        MainViews.changeScreen("sessionControl", null);
     }
 
     @FXML

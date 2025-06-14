@@ -4,9 +4,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
 public class SessionControlController {
+
+    @FXML
+    private TableColumn<?, ?> classification;
 
     @FXML
     private Label date1;
@@ -21,11 +25,25 @@ public class SessionControlController {
     private Label date4;
 
     @FXML
+    private TableColumn<?, ?> duration;
+
+    @FXML
+    private TableColumn<?, ?> movieName;
+
+    @FXML
+    private TableColumn<?, ?> numberSeats;
+
+    @FXML
     private Button openHomeScreen;
 
     @FXML
-    private TableView<?> table;
+    private TableColumn<?, ?> room;
 
+    @FXML
+    private TableColumn<?, ?> select;
+
+    @FXML
+    private TableView<?> table;
     @FXML
     void changeSession(ActionEvent event) {
 
@@ -83,7 +101,7 @@ public class SessionControlController {
 
     @FXML
     void registerSession(ActionEvent event) {
-
+        MainViews.changeScreen("registerSession", null);
     }
 
 }
