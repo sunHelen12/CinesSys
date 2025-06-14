@@ -17,13 +17,13 @@ import javafx.stage.Stage;
 import models.Movie;
 import javafx.fxml.Initializable;
 
-import java.awt.event.ActionEvent;
+import javafx.event.ActionEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
 
  /**
  * Classe responsável por controlar a tela de alteração de um cliente.
- * @author Gabryelle Duarte
+ * @author Gabryelle Beatriz Duarte Moraes
  * @since 14/06/2024
  * @version 1.0
  */
@@ -174,8 +174,7 @@ public class MovieControlController implements Initializable{
      */
     @FXML
     void openSessionControl(ActionEvent event) {
-        // MainViews.changeScreen("sessionControl", null);
+        //MainViews.changeScreen("sessionControl", null);
     }
-
 }
 
