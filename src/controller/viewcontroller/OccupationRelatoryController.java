@@ -181,9 +181,8 @@ public class OccupationRelatoryController implements Initializable {
 
             sessoesList.stream()
                     .collect(Collectors.groupingBy(Session::getMovie)) // Agrupa sessões pelo objeto Movie
-                    .forEach((movie, sessoesDoFilme) -> { // Para cada filme e sua lista de sessões...
+                    .forEach((movie, sessoesDoFilme) -> {
 
-                        // O resto do seu código permanece exatamente o mesmo
                         double totalOcupacao = 0;
                         for (Session session : sessoesDoFilme) {
                             int vendidos = room.getTotalSeat() - session.getTotalAvailableSeats();
@@ -352,7 +351,7 @@ public class OccupationRelatoryController implements Initializable {
         GenericDynamicList<Session> sessoesDoFilme = MovieController.getSessionsByMovie(movie.getId());
 
         // Verifica se a busca retornou alguma sessão
-        if (sessoesDoFilme == null || sessoesDoFilme.isEmpty()) { // Assumindo que a lista tenha um método isEmpty()
+        if (sessoesDoFilme == null || sessoesDoFilme.isEmpty()) {
             Label noSessionsLabel = new Label("Não há sessões programadas para este filme.");
             noSessionsLabel.setStyle("-fx-text-fill: #f2e8c6;");
             container.getChildren().add(noSessionsLabel);

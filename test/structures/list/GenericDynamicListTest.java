@@ -1,12 +1,26 @@
 package structures.list;
 
 import org.junit.Test;
-
 import java.util.NoSuchElementException;
 import static org.junit.Assert.*;
 
+/**
+ * Classe de testes para a classe GenericDynamicList.
+ *
+ * Testa a funcionalidade dos métodos da lista, incluindo casos de sucesso,
+ * casos de borda e o lançamento de exceções.
+ *
+ * @author Vinícius Nunes de Andrade
+ * @version 2.0
+ * @since 20-05-2025
+ */
 public class GenericDynamicListTest {
 
+    /**
+     * Testa a criação de listas com diferentes tipos de dados.
+     *
+     * @throws Exception se ocorrer um erro ao adicionar elementos.
+     */
     @Test
     public void testDifferentTypesList() throws Exception {
         Listable<Integer> listaInt = new GenericDynamicList<>(2);
@@ -20,6 +34,11 @@ public class GenericDynamicListTest {
         assertEquals(Double.valueOf(1.5), listaDouble.get(0));
     }
 
+    /**
+     * Testa o construtor padrão e o limite de capacidade da lista.
+     *
+     * @throws Exception se ocorrer um erro ao adicionar elementos.
+     */
     @Test
     public void testDefaultConstructor() throws Exception {
         Listable<String> lista = new GenericDynamicList<>();
@@ -35,6 +54,11 @@ public class GenericDynamicListTest {
         }
     }
 
+    /**
+     * Testa a adição de elementos no final da lista e sua recuperação.
+     *
+     * @throws Exception se ocorrer um erro ao adicionar elementos.
+     */
     @Test
     public void testAppendAndGet() throws Exception {
         GenericDynamicList<String> list = new GenericDynamicList<>();
@@ -44,6 +68,9 @@ public class GenericDynamicListTest {
         assertEquals("B", list.get(1));
     }
 
+    /**
+     * Testa se a tentativa de obter um elemento de uma lista vazia lança uma exceção.
+     */
     @Test
     public void testGetFromEmptyListThrowsException() {
         GenericDynamicList<String> list = new GenericDynamicList<>();
@@ -55,6 +82,11 @@ public class GenericDynamicListTest {
         }
     }
 
+    /**
+     * Testa se a tentativa de obter um elemento com um índice inválido lança uma exceção.
+     *
+     * @throws Exception se ocorrer um erro ao adicionar elementos.
+     */
     @Test
     public void testGetInvalidIndexThrowsException() throws Exception {
         GenericDynamicList<String> list = new GenericDynamicList<>();
@@ -67,6 +99,11 @@ public class GenericDynamicListTest {
         }
     }
 
+    /**
+     * Testa a inserção de um elemento em uma posição específica da lista.
+     *
+     * @throws Exception se ocorrer um erro ao adicionar ou inserir elementos.
+     */
     @Test
     public void testInsert() throws Exception {
         GenericDynamicList<String> list = new GenericDynamicList<>();
@@ -76,6 +113,11 @@ public class GenericDynamicListTest {
         assertEquals("B", list.get(1));
     }
 
+    /**
+     * Testa a atualização de um elemento existente na lista.
+     *
+     * @throws Exception se ocorrer um erro ao adicionar elementos.
+     */
     @Test
     public void testUpdate() throws Exception {
         GenericDynamicList<String> list = new GenericDynamicList<>();
@@ -84,6 +126,9 @@ public class GenericDynamicListTest {
         assertEquals("Y", list.get(0));
     }
 
+    /**
+     * Testa se a tentativa de atualizar um elemento em uma lista vazia lança uma exceção.
+     */
     @Test
     public void testUpdateInEmptyList() {
         GenericDynamicList<String> list = new GenericDynamicList<>();
@@ -98,6 +143,9 @@ public class GenericDynamicListTest {
         }
     }
 
+    /**
+     * Testa se a tentativa de inserir um elemento em um índice inválido lança uma exceção.
+     */
     @Test
     public void testInsertInvalidIndexThrowsException() {
         GenericDynamicList<String> list = new GenericDynamicList<>();
@@ -111,6 +159,11 @@ public class GenericDynamicListTest {
         }
     }
 
+    /**
+     * Testa a remoção de um elemento de uma posição específica da lista.
+     *
+     * @throws Exception se ocorrer um erro ao adicionar elementos.
+     */
     @Test
     public void testRemove() throws Exception {
         GenericDynamicList<String> list = new GenericDynamicList<>();
@@ -124,6 +177,11 @@ public class GenericDynamicListTest {
         assertEquals(2, list.getAll().length);
     }
 
+    /**
+     * Testa se o método "contains" funciona corretamente para elementos presentes e ausentes.
+     *
+     * @throws Exception se ocorrer um erro ao adicionar elementos.
+     */
     @Test
     public void testContains() throws Exception {
         GenericDynamicList<String> list = new GenericDynamicList<>();
@@ -134,6 +192,11 @@ public class GenericDynamicListTest {
         assertFalse(list.contains("Gamma"));
     }
 
+    /**
+     * Testa se o método "clear" remove todos os elementos da lista.
+     *
+     * @throws Exception se ocorrer um erro ao adicionar elementos.
+     */
     @Test
     public void testClear() throws Exception {
         GenericDynamicList<String> list = new GenericDynamicList<>();
@@ -143,6 +206,11 @@ public class GenericDynamicListTest {
         assertTrue(list.isEmpty());
     }
 
+    /**
+     * Testa a representação em String de uma lista com elementos.
+     *
+     * @throws Exception se ocorrer um erro ao adicionar elementos.
+     */
     @Test
     public void testPrint() throws Exception {
         GenericDynamicList<String> list = new GenericDynamicList<>();
@@ -152,13 +220,22 @@ public class GenericDynamicListTest {
         assertEquals("[A, B, C]", list.print());
     }
 
+    /**
+     * Testa a representação em String de uma lista vazia.
+     *
+     * @throws Exception se ocorrer um erro durante a execução.
+     */
     @Test
     public void testEmptyPrint() throws Exception {
         GenericDynamicList<String> list = new GenericDynamicList<>();
         assertEquals("[]", list.print());
     }
 
-
+    /**
+     * Testa se o estado de "cheia" é atingido corretamente e lança uma exceção.
+     *
+     * @throws Exception é esperada ao tentar adicionar a uma lista cheia.
+     */
     @Test
     public void testIsFullThrowsException() throws Exception {
         GenericDynamicList<String> list = new GenericDynamicList<>(2);
