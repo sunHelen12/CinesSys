@@ -104,5 +104,10 @@ public class ClientController {
         clientService.registerPoints(clientId, ticket);      
     }
 
-        
+    /**
+     * Remove todos os clientes cadastrados chamando o método removeAllClients da classe ClientService.
+     */
+    public static void removeAllClients() {
+        clientService.removeAllClients();
+    }
 }

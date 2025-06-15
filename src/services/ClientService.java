@@ -221,4 +221,11 @@ public class ClientService {
         int pontosGanhos = 5;
         client.addPoints(pontosGanhos);
     }
+
+    /**
+     * Remove todos os clientes do repositório.
+     */
+    public void removeAllClients(){
+        clientRepository.clear();
+    }
 }

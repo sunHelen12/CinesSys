@@ -98,4 +98,11 @@ public class TicketRepository {
         }
         return false;
     }
+
+    /**
+     * Remove todos os tickets do repositório.
+     */
+    public void clear(){
+        tickets.clear();
+    }
 }

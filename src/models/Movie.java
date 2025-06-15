@@ -151,4 +151,10 @@ public class Movie {
 				"\nSynopsis=" + synopsis ;
 	}
 	
+	/**
+	 * Resetar o ID gerado para o próximo teste.
+	 */
+	public static void resetIdGenerator() {
+		_idGenerator = 1;
+	}
 }

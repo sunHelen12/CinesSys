@@ -17,7 +17,7 @@ import java.time.format.DateTimeFormatter;
  */
 public class Session {
     /** Gerador automático de IDs únicos para as sessões */
-    private static int idGenerator = 1;
+    private static int _idGenerator = 1;
     
     /** ID único da sessão */
     private int id;
@@ -55,7 +55,7 @@ public class Session {
      * @param ticketValue Valor do ingresso
      */
     public Session(LocalDate date, LocalTime time, Room room, Movie movie, Double ticketValue) {
-        this.id = idGenerator++;
+        this.id = _idGenerator++;
         this.date = date;
         this.time = time;
         this.room = room;
@@ -77,7 +77,7 @@ public class Session {
      * @param totalAvailableSeats Número específico de assentos disponíveis
      */
     public Session(LocalDate date, LocalTime time, Room room, Movie movie, Double ticketValue, int totalAvailableSeats) {
-        this.id = idGenerator++;
+        this.id = _idGenerator++;
         this.date = date;
         this.time = time;
         this.room = room;
@@ -231,4 +231,11 @@ public class Session {
                 "\nStart Time= " + time.format(timeFormat) +
                 "\nTicket value= " + getTicketValue();
     }
+
+    /**
+     * Reseta o gerador de IDs para iniciar novamente a partir do ID 1.
+     */
+    public static void resetIdGenerator() {
+		_idGenerator = 1;
+	}
 }

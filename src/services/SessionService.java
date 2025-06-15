@@ -161,4 +161,11 @@ public class SessionService {
         }
         return sessionReturn;
     }
+
+    /**
+     * Remove todas as sessões cadastradas.
+     */
+    public void removeAllSessions(){
+        sessionRepository.clear();
+    }
 }
