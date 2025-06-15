@@ -43,7 +43,7 @@ public class UpdateSessionController implements Initializable {
 
     @FXML
     void backSessionController(ActionEvent event) {
-        MainViews.changeScreen("sessionController", null);
+        MainViews.changeScreen("sessionControl", null);
     }
 
     @FXML

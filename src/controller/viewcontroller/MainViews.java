@@ -24,6 +24,7 @@ public class MainViews extends Application {
     private static Scene movieControlScene;
     private static Scene movieEditScene;
     private static Scene occupationRelatoryScene;
+    private static Scene payPerSessionScene;
     private static Scene popUpClientScene;
     private static Scene popUpMoviesScene;
     private static Scene purchaseRecordScene;
@@ -63,6 +64,7 @@ public class MainViews extends Application {
         FXMLLoader loaderPurchaseRecord = new FXMLLoader(getClass().getResource("/gui/PurchaseRecord.fxml"));
         FXMLLoader loaderSellTicket = new FXMLLoader(getClass().getResource("/gui/SellTicket.fxml"));
         FXMLLoader loaderSessionControl = new FXMLLoader(getClass().getResource("/gui/SessionControl.fxml"));
+        FXMLLoader loaderPayPerSession = new FXMLLoader(getClass().getResource("/gui/PayPerSession.fxml"));
 
 
         Parent homeScreen = loaderHomeScreen.load();
@@ -115,6 +117,9 @@ public class MainViews extends Application {
 
         Parent sessionControl = loaderSessionControl.load();
         sessionControlScene = new Scene(sessionControl);
+
+        Parent payPerSession = loaderPayPerSession.load();
+        payPerSessionScene = new Scene(payPerSession);
         
         primaryStage.setScene(homeScreenScene);
         primaryStage.centerOnScreen();
@@ -197,6 +202,9 @@ public class MainViews extends Application {
                 stage.setScene(sessionControlScene);
                 notifyAllListerners("sessionControl", userDataObject);
                 break;
+            case "payPerSession":
+                stage.setScene(payPerSessionScene);
+                notifyAllListerners("payPerSession", userDataObject);
             default:
                 break;
         }        
