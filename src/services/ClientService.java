@@ -228,4 +228,57 @@ public class ClientService {
     public void removeAllClients(){
         clientRepository.clear();
     }
+
+    /**
+     * Remove um ticket específico do histórico de compras de um cliente.
+     *
+     * @param clientId O ID do cliente.
+     * @param ticketToRemove O objeto Ticket a ser removido.
+     */
+    public void removeTicketFromHistory(int clientId, Ticket ticketToRemove) {
+        // Reutiliza o método getClientById para encontrar o cliente e validar o ID
+        Client client = getClientById(clientId);
+
+        if (ticketToRemove == null) {
+            throw new IllegalArgumentException("O ticket a ser removido não pode ser nulo.");
+        }
+
+        GenericDynamicList<Ticket> history = client.getPurchasingHistory();
+        int indexToRemove = -1;
+        boolean removed = false;
+
+        // 1. Encontra o índice do ticket que queremos remover
+        for (int i = 0; i < history.size(); i++) {
+            // Compara o ticket na lista com o ticket que queremos remover.
+            // Isso depende de um método .equals() bem definido na sua classe Ticket.
+            if (history.get(i).equals(ticketToRemove)) {
+                indexToRemove = i;
+                break; // Encontrou o ticket, pode parar o loop
+            }
+        }
+
+        // 2. Se o ticket foi encontrado (índice é válido), remove pelo índice
+        if (indexToRemove != -1) {
+            history.remove(indexToRemove); // Usa o método de remover por índice que já existe
+            removed = true;
+        }
+
+        if (!removed) {
+            System.err.println("Aviso: O ticket com ID " + ticketToRemove.getId() + " não foi encontrado no histórico do cliente " + clientId);
+        }
+    }
+
+    /**
+     * Subtrai uma quantidade de pontos de fidelidade de um cliente.
+     *
+     * @param clientId O ID do cliente.
+     * @param pointsToRemove A quantidade de pontos a ser subtraída.
+     */
+    public void removePoints(int clientId, int pointsToRemove) {
+        // Encontra o cliente (a validação já está em getClientById)
+        Client client = getClientById(clientId);
+
+        // DELEGA a responsabilidade de remover os pontos para o próprio objeto Client
+        client.removePoints(pointsToRemove);
+    }
 }

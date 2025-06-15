@@ -36,6 +36,21 @@ public class SessionController {
     }
 
     /**
+     * Adiciona uma nova sessão ao sistema.
+     * @param date Data da sessão (não pode ser anterior à data atual).
+     * @param time Horário da sessão (HH:mm:ss).
+     * @param room Sala onde a sessão ocorrerá (não pode ser {@code null}).
+     * @param movie Filme que será exibido (não pode ser {@code null}).
+     * @param ticketValue Valor do ticket (não pode ser {@code null} ou negativo).
+     * @param totalAvailabelSeats total de assentos disponíveis
+     */
+    public static void addSession(String date, String time, Room room, Movie movie, Double ticketValue, int totalAvailabelSeats){
+        LocalDate dateParsed = LocalDate.parse(date, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+        LocalTime timeParsed = LocalTime.parse(time, DateTimeFormatter.ofPattern("HH:mm"));
+        sessionService.addSession(dateParsed, timeParsed, room, movie, ticketValue, totalAvailabelSeats);
+    }
+
+    /**
      * Atualiza uma sessão existente.
      * @param id ID da sessão a ser atualizada.
      * @param date Data da sessão (não pode ser anterior à data atual).

@@ -110,4 +110,24 @@ public class ClientController {
     public static void removeAllClients() {
         clientService.removeAllClients();
     }
+
+    /**
+     * Remove um ticket específico do histórico de compras de um cliente.
+     * Delega a chamada para o método correspondente em ClientService.
+     * * @param clientId O ID do cliente.
+     * @param ticket O objeto Ticket a ser removido do histórico.
+     */
+    public static void removeTicketFromHistory(int clientId, Ticket ticket) {
+        clientService.removeTicketFromHistory(clientId, ticket);
+    }
+
+    /**
+     * Remove uma quantidade de pontos de fidelidade de um cliente.
+     * Delega a chamada para o método correspondente em ClientService.
+     * * @param clientId O ID do cliente.
+     * @param pointsToRemove A quantidade de pontos a ser removida.
+     */
+    public static void removePoints(int clientId, int pointsToRemove) {
+        clientService.removePoints(clientId, pointsToRemove);
+    }
 }
