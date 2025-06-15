@@ -78,6 +78,28 @@ public class Client {
     }
 
     /**
+     * Seta os pontos do cliente.
+     */
+    public void setPoints(int points) {
+        this.points = points;
+    }
+
+    /**
+     * Subtrai uma quantidade de pontos do cliente.
+     * Garante que a pontuação não se torne negativa.
+     *
+     * @param pointsToRemove A quantidade de pontos a ser removida.
+     */
+    public void removePoints(int pointsToRemove) {
+        if (pointsToRemove > 0) {
+            this.points -= pointsToRemove;
+            if (this.points < 0) {
+                this.points = 0; // Garante que não fique negativo
+            }
+        }
+    }
+
+    /**
      * Obtém o histórico de compras do cliente.
      * @return Uma lista dinâmica contendo os tickets comprados pelo cliente.
      */
