@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="350.0" maxWidth="500.0" minHeight="350.0" minWidth="500.0" prefHeight="350.0" prefWidth="500.0" style="-fx-background-color: #03002C; -fx-background-radius: 7px;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.viewcontroller.PopUpDiscountController">
+   <children>
+      <Label fx:id="discountMessage" alignment="CENTER" layoutX="39.0" layoutY="57.0" prefHeight="92.0" prefWidth="431.0" style="-fx-font-weight: bold;" textFill="#f2e8c6">
+         <font>
+            <Font name="Arial" size="30.0" />
+         </font>
+      </Label>
+      <Button fx:id="backButton"
+              layoutX="327.0" layoutY="255.0"
+              mnemonicParsing="false"
+              onAction="#backClientControl"
+              prefHeight="41.0" prefWidth="125.0"
+              style="-fx-background-color: #F5841A; -fx-font-weight: bold;"
+              text="Voltar" textFill="#f2e8c6">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Label layoutX="118.0" layoutY="263.0" prefHeight="28.0" prefWidth="224.0" style="-fx-font-weight: bold;" text="Retorne a venda de Ingressos." textFill="#f2e8c6">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

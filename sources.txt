@@ -1,16 +1,51 @@
-﻿C:\Users\Usuario\OneDrive\Imagens\Área de Trabalho\Programação\ED\CinesSys\src\controller\viewcontroller\MainOccupationRoom.java
-C:\Users\Usuario\OneDrive\Imagens\Área de Trabalho\Programação\ED\CinesSys\src\controller\viewcontroller\MainPurchaseHistory.java
-C:\Users\Usuario\OneDrive\Imagens\Área de Trabalho\Programação\ED\CinesSys\src\controller\viewcontroller\OccupationRelatoryController.java
-C:\Users\Usuario\OneDrive\Imagens\Área de Trabalho\Programação\ED\CinesSys\src\controller\viewcontroller\PurchaseHistoryController.java
-C:\Users\Usuario\OneDrive\Imagens\Área de Trabalho\Programação\ED\CinesSys\src\models\Client.java
-C:\Users\Usuario\OneDrive\Imagens\Área de Trabalho\Programação\ED\CinesSys\src\models\Movie.java
-C:\Users\Usuario\OneDrive\Imagens\Área de Trabalho\Programação\ED\CinesSys\src\models\PaymentMethod.java
-C:\Users\Usuario\OneDrive\Imagens\Área de Trabalho\Programação\ED\CinesSys\src\models\Room.java
-C:\Users\Usuario\OneDrive\Imagens\Área de Trabalho\Programação\ED\CinesSys\src\models\Session.java
-C:\Users\Usuario\OneDrive\Imagens\Área de Trabalho\Programação\ED\CinesSys\src\models\Ticket.java
-C:\Users\Usuario\OneDrive\Imagens\Área de Trabalho\Programação\ED\CinesSys\src\repository\MovieRepository.java
-C:\Users\Usuario\OneDrive\Imagens\Área de Trabalho\Programação\ED\CinesSys\src\structures\list\GenericDynamicList.java
-C:\Users\Usuario\OneDrive\Imagens\Área de Trabalho\Programação\ED\CinesSys\src\structures\list\Listable.java
-C:\Users\Usuario\OneDrive\Imagens\Área de Trabalho\Programação\ED\CinesSys\src\structures\list\Node.java
-C:\Users\Usuario\OneDrive\Imagens\Área de Trabalho\Programação\ED\CinesSys\src\structures\queue\GenericDynamicQueue.java
-C:\Users\Usuario\OneDrive\Imagens\Área de Trabalho\Programação\ED\CinesSys\src\structures\queue\Queueable.java
+src/controller/business/ClientController.java
+src/controller/business/TicketController.java
+src/controller/business/SessionController.java
+src/controller/business/MovieController.java
+src/controller/business/SaleController.java
+src/controller/business/RoomController.java
+src/controller/viewcontroller/ClientControlController.java
+src/controller/viewcontroller/RoomOccupationController.java
+src/controller/viewcontroller/RegisterClientController.java
+src/controller/viewcontroller/UpdateSessionController.java
+src/controller/viewcontroller/SellTicketController.java
+src/controller/viewcontroller/RegisterMovieController.java
+src/controller/viewcontroller/OversoldController.java
+src/controller/viewcontroller/SessionControlController.java
+src/controller/viewcontroller/ClientHistoryController.java
+src/controller/viewcontroller/PopUpRegisteredSaleController.java
+src/controller/viewcontroller/PopUpClientController.java
+src/controller/viewcontroller/RegisterSessionController.java
+src/controller/viewcontroller/PayPerSessionController.java
+src/controller/viewcontroller/MovieControlController.java
+src/controller/viewcontroller/EditMovieController.java
+src/controller/viewcontroller/MainViews.java
+src/controller/viewcontroller/PopUpMovieController.java
+src/controller/viewcontroller/PopUpDiscountController.java
+src/controller/viewcontroller/ChangeClientController.java
+src/controller/viewcontroller/PopUpSessionController.java
+src/controller/viewcontroller/PurchaseRecordController.java
+src/controller/viewcontroller/HomeScreenController.java
+src/controller/viewcontroller/OccupationRelatoryController.java
+src/controller/viewcontroller/PurchaseHistoryController.java
+src/models/Session.java
+src/models/Client.java
+src/models/Room.java
+src/models/Movie.java
+src/models/Ticket.java
+src/repository/SessionRepository.java
+src/repository/RoomRepository.java
+src/repository/TicketRepository.java
+src/repository/ClientRepository.java
+src/repository/MovieRepository.java
+src/enums/PaymentMethod.java
+src/structures/queue/GenericDynamicQueue.java
+src/structures/queue/Queueable.java
+src/structures/list/GenericDynamicList.java
+src/structures/list/Node.java
+src/structures/list/Listable.java
+src/services/MovieService.java
+src/services/TicketService.java
+src/services/SessionService.java
+src/services/RoomService.java
+src/services/ClientService.java

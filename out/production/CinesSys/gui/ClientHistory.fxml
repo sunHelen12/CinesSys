@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Point3D?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="720.0" maxWidth="1320.0" minHeight="720.0" minWidth="1320.0" prefHeight="720.0" prefWidth="1320.0" style="-fx-background-color: #03002C;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.viewcontroller.ClientHistoryController">
+   <children>
+      <AnchorPane prefHeight="100.0" prefWidth="1320.0" style="-fx-background-color: #BB0029;">
+         <children>
+            <Label layoutX="51.0" layoutY="29.0" prefHeight="43.0" prefWidth="411.0" style="-fx-font-weight: bold;" text="Histórico de Compras" textFill="#f2e8c6">
+               <font>
+                  <Font name="Arial" size="35.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Label id="lblClient" alignment="TOP_LEFT" layoutX="127.0" layoutY="188.0" prefHeight="23.0" prefWidth="72.0" style="-fx-font-weight: bold;" text="Nome: " textFill="#f2e8c6">
+         <font>
+            <Font name="Arial" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lnlNome" layoutX="192.0" layoutY="190.0" prefHeight="18.0" prefWidth="226.0" textFill="#f2e8c6">
+         <font>
+            <Font name="Arial" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="127.0" layoutY="214.0" prefHeight="20.0" prefWidth="48.0" style="-fx-font-weight: bold;" text="Id:" textFill="#f2e8c6">
+         <font>
+            <Font name="Arial" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblID" layoutX="158.0" layoutY="215.0" prefHeight="20.0" prefWidth="123.0" text="id" textFill="#f2e8c6">
+         <font>
+            <Font name="Arial" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="126.0" layoutY="237.0" prefHeight="21.0" prefWidth="81.0" style="-fx-font-weight: bold;" text="Email:" textFill="#f2e8c6">
+         <font>
+            <Font name="Arial" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblEmail" layoutX="192.0" layoutY="238.0" prefHeight="18.0" prefWidth="226.0" textFill="#f2e8c6">
+         <font>
+            <Font name="Arial" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="126.0" layoutY="260.0" style="-fx-font-weight: bold;" text="Data de Nascimento:" textFill="#f2e8c6">
+         <font>
+            <Font name="Arial" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblNascimento" layoutX="313.0" layoutY="261.0" prefHeight="20.0" prefWidth="158.0" textFill="#f2e8c6">
+         <font>
+            <Font name="Arial" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="126.0" layoutY="283.0" style="-fx-font-weight: bold;" text="Número de ingressos Comprados: " textFill="#f2e8c6">
+         <font>
+            <Font name="Arial" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblNumIngressos" layoutX="427.0" layoutY="284.0" prefHeight="20.0" prefWidth="63.0" textFill="#f2e8c6">
+         <font>
+            <Font name="Arial" size="16.0" />
+         </font>
+      </Label>
+      <Label alignment="TOP_LEFT" contentDisplay="TOP" layoutX="555.0" layoutY="188.0" prefHeight="23.0" prefWidth="319.0" style="-fx-font-weight: bold;" text="Filmes e Sessões Assistidas: " textFill="#f2e8c6">
+         <font>
+            <Font name="Arial" size="18.0" />
+         </font>
+      </Label>
+      <Button id="bttVoltar" alignment="CENTER" layoutX="1133.0" layoutY="641.0" mnemonicParsing="false" onAction="#backPurchase" prefHeight="43.0" prefWidth="142.0" style="-fx-font-weight: bold; -fx-background-color: #BB0029;" text="Voltar" textFill="#f2e8c6">
+         <font>
+            <Font name="Arial" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <ScrollPane layoutX="555.0" layoutY="225.0" prefHeight="371.0" prefWidth="506.0">
+         <content>
+            <VBox fx:id="containerResultados" prefHeight="371.0" prefWidth="507.0" style="-fx-background-color: #03002C;" />
+         </content>
+      </ScrollPane>
+   </children>
+   <rotationAxis>
+      <Point3D />
+   </rotationAxis>
+</AnchorPane>

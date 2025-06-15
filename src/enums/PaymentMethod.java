@@ -5,6 +5,7 @@ package enums;
  * 
  * @author Helen Santos Rocha
  * @version 2.0
+ * @since 11/06/2025
  */
 public enum PaymentMethod {
     /**
