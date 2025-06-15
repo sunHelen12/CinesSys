@@ -17,14 +17,23 @@ public class PopUpRegisteredSaleController {
     @FXML
     private Button backButton;
 
+    private Stage stage;
+
+    /**
+     * Fecha a tela de mensagem de sucesso.
+     * 
+     * @param stage
+     */
+    public void setStage(Stage stage) {
+        this.stage = stage;
+    }
+
     /**
      * Fecha o pop-up e volta para a tela de venda.
      */
     @FXML
     private void backToSellTicket() {
-        Stage stage = (Stage) backButton.getScene().getWindow();
+        MainViews.changeScreen("controlSession", null);
         stage.close();
-
-        MainViews.changeScreen("sellTicket", null);
     }
 }

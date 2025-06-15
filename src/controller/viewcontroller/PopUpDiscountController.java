@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import controller.viewcontroller.SellTicketController;
 
 /**
  * Controlador do PopUp de Desconto.
@@ -21,6 +22,8 @@ public class PopUpDiscountController {
     @FXML
     private Button backButton; // Botão de "Voltar" para tela de venda
 
+    private Stage stage;
+
     /**
      * Define o valor de desconto no label da interface.
      *
@@ -31,15 +34,22 @@ public class PopUpDiscountController {
     }
 
     /**
+     * Fecha a tela de mensagem de sucesso.
+     * 
+     * @param stage
+     */
+    public void setStage(Stage stage) {
+        this.stage = stage;
+    }
+
+    /**
      * Fecha o pop-up e retorna para a tela de venda de ingressos.
      */
     @FXML
     private void backClientControl() {
+        // Vai pra tela de confirmação com os dados do ticket
+        SellTicketController.mostrarPopUpSale();
         // Fecha a janelinha
-        Stage stage = (Stage) backButton.getScene().getWindow();
         stage.close();
-
-        // Retorna para a tela de venda
-        MainViews.changeScreen("sellTicket", null);
     }
 }
