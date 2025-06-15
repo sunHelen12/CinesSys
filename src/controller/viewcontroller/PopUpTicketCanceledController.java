@@ -3,6 +3,7 @@ package controller.viewcontroller;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import models.Client;
 
 /**
  * Controlador do pop-up de venda cancelada com sucesso.
@@ -12,7 +13,8 @@ import javafx.stage.Stage;
  * @version 1.0
  */
 public class PopUpTicketCanceledController {
-
+    private Client client;
+    
     @FXML
     private Button backButton;
 
@@ -28,11 +30,18 @@ public class PopUpTicketCanceledController {
     }
 
     /**
+     * Pega um cliente
+     */
+    public void getClient(Client cl) {
+        this.client = cl;
+    }
+
+    /**
      * Fecha o pop-up e volta para a tela de venda.
      */
     @FXML
     private void backToClientHistory() {
-        MainViews.changeScreen("clientHistory", null);
+        MainViews.changeScreen("clientHistory", client);
         stage.close();
     }
 }

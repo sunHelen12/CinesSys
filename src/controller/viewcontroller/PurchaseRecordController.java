@@ -77,6 +77,7 @@ public class PurchaseRecordController implements Initializable {
             PopUpTicketCanceledController controller = loader.getController();
             Stage stage = new Stage();
             controller.setStage(stage);
+            controller.getClient(ticket.getClient());
 
             stage.setScene(new Scene(root));
             stage.setTitle("Confirmação");
