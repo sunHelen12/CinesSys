@@ -57,6 +57,27 @@ public class PurchaseRecordController implements Initializable {
     }
 
     /**
+     * Mostra uma janela.
+     * * @param acao Ação realizada.
+     */
+    public static void mostrarPopUpCancellTicket() {
+        try {
+            FXMLLoader loader = new FXMLLoader(SellTicketController.class.getResource("/gui/PopUpTicketCanceled.fxml"));
+            Parent root = loader.load();
+
+            PurchaseRecordController controller = loader.getController();
+            Stage stage = new Stage();
+            controller.setStage(stage);
+
+            stage.setScene(new Scene(root));
+            stage.setTitle("Confirmação");
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
      * acessa as datas de cada ticket no sistema e exibe na tela
      */
     private void accessTicketData(){

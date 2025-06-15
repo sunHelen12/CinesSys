@@ -5,13 +5,13 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 /**
- * Controlador do pop-up de venda registrada com sucesso.
+ * Controlador do pop-up de venda cancelada com sucesso.
  *
- * @author Helen Santos Rocha
- * @since 14-06-2025
+ * @author Maria Eduarda Campos
+ * @since 15-06-2025
  * @version 1.0
  */
-public class PopUpRegisteredSaleController {
+public class PopUpTicketCanceledController {
 
     @FXML
     private Button backButton;
@@ -32,7 +32,7 @@ public class PopUpRegisteredSaleController {
      */
     @FXML
     private void backToSellTicket() {
-        MainViews.changeScreen("sessionControl", null);
+        MainViews.changeScreen("clientHistory", null);
         stage.close();
     }
 }
