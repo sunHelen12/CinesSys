@@ -246,17 +246,37 @@ public class SessionControlController implements Initializable, MainViews.OnChan
 
     @FXML
     void deleteSession(ActionEvent event) {
+        if (selectedSessions.isEmpty() || selectedSessions.size() > 1) {
+            return;
+        }
 
+        List<Movie> sessionsToDelete = new ArrayList<>(selectedSessions);
+        for (Session session : sessionsToDelete) {
+            SessionController.removeMovieById(session.getId());
+            sessionSelectionMap.remove(session);
+        }
+
+        selectedSessions.clear();
+        refreshTable();
+        mostrarPopUp("excluída");
     }
 
     @FXML
     void ticket(ActionEvent event) {
-
+        if (selectedSessions.isEmpty() || selectedSessions.size() > 1) {
+            return;
+        }
+        Session sessionRelatory = selectedSessions.get(0);
+        // MainViews.changeScreen("", sessionRelatory);
     }
 
     @FXML
     void openRelatory(ActionEvent event) {
-
+        if (selectedSessions.isEmpty() || selectedSessions.size() > 1) {
+            return;
+        }
+        Session sessionRelatory = selectedSessions.get(0);
+        // MainViews.changeScreen("", sessionRelatory);
     }
 
     /**
