@@ -49,11 +49,11 @@ public class UpdateSessionController implements Initializable {
             public void onScreenChanged(String newScreen, Object userDataObject) {
                 if (userDataObject instanceof Session) {
                     session = (Session) userDataObject;
-                    txtDate.setText(session.getBirthday());
-                    txtTime.setText(session.getEmail());
-                    txtMovieId.setText(session.getName());
-                    txtRoom.setText(session.getName());
-                    txtPrice.setText(session.getName());
+                    txtDate.setText(session.getDate());
+                    txtTime.setText(session.getTime());
+                    txtMovieId.setText(session.getMovie().getId() + "");
+                    txtRoom.setText(session.getRoom().getId() + "");
+                    txtPrice.setText(session.getTicketValue() + "");
                 }
             }
         });
@@ -71,8 +71,9 @@ public class UpdateSessionController implements Initializable {
         String room = txtRoom.getText().trim();
         String movie = txtMovieId.getText().trim();
         String ticketPrice = txtPrice.getText().trim();
+        double tck = Double.parseDouble(ticketPrice);
 
-        SessionController.updateSession(session.getId(), date, time, room, movie, ticketPrice);
+        SessionController.updateSession(session.getId(), date, time, session.getRoom(), session.getMovie(), tck);
         txtDate.clear();
         txtTime.clear();
         txtMovieId.clear();

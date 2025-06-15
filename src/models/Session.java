@@ -120,7 +120,7 @@ public class Session {
      * @return Horário formatado no padrão "HH:mm:ss"
      */
     public String getTime() {
-        return time.format(java.time.format.DateTimeFormatter.ofPattern("HH:mm:ss"));
+        return time.format(java.time.format.DateTimeFormatter.ofPattern("HH:mm"));
     }
 
     /**

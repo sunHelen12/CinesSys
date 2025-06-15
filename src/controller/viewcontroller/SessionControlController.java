@@ -26,8 +26,6 @@ import java.util.Map;
 import java.util.HashMap;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TableCell;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import javafx.stage.Stage;
 import controller.viewcontroller.PopUpSessionController;
@@ -50,15 +48,11 @@ public class SessionControlController implements Initializable, MainViews.OnChan
     private TableColumn<Session, String> movieName;
     @FXML
     private TableColumn<Session, String> numberSeats;
+    @FXML
+    private TableColumn<Session, String> data;
+    @FXML
+    private TableColumn<Session, String> time;
 
-    @FXML
-    private Label date1;
-    @FXML
-    private Label date2;
-    @FXML
-    private Label date3;
-    @FXML
-    private Label date4;
 
     private final ObservableList<Session> selectedSessions = FXCollections.observableArrayList();
     private ObservableList<Session> sessionsForTable;
@@ -73,21 +67,11 @@ public class SessionControlController implements Initializable, MainViews.OnChan
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM");
-        LocalDate dt1 = LocalDate.now();
-
-        LocalDate dt2 = dt1.plusDays(1);
-        LocalDate dt3 = dt1.plusDays(2);
-        LocalDate dt4 = dt1.plusDays(3);
-
-        date1.setText(dt1.format(formatter));
-        date2.setText(dt2.format(formatter));
-        date3.setText(dt3.format(formatter));
-        date4.setText(dt4.format(formatter));
-
         sessionsForTable = FXCollections.observableArrayList();
 
         room.setCellValueFactory(cell -> new SimpleStringProperty(String.valueOf((cell.getValue().getRoom().getId()))));
+        data.setCellValueFactory(cell -> new SimpleStringProperty((cell.getValue().getDate())));
+        time.setCellValueFactory(cell -> new SimpleStringProperty((cell.getValue().getTime())));
         numberSeats.setCellValueFactory(
                 cell -> new SimpleStringProperty(String.valueOf(cell.getValue().getRoom().getTotalSeat())));
         classification
@@ -177,15 +161,6 @@ public class SessionControlController implements Initializable, MainViews.OnChan
     @Override
     public void onScreenChanged(String newScreen, Object userDataObject) {
         if (newScreen.equals("sessionControl")) {
-            GenericDynamicList<Session> tempGenericList = SessionController.getAllSessions();
-            if (tempGenericList != null) {
-                this.allSessions = new ArrayList<>();
-                for (Session session : tempGenericList) {
-                    this.allSessions.add(session);
-                }
-            } else {
-                this.allSessions = new ArrayList<>();
-            }
             refreshTable();
         }
     }
@@ -233,43 +208,6 @@ public class SessionControlController implements Initializable, MainViews.OnChan
     }
 
     /**
-     * Filtra e exibe as sessões para a data fornecida.
-     *
-     * @param date A data para filtrar as sessões.
-     */
-    private void filterAndDisplaySessions(LocalDate date) {
-        if (this.allSessions == null || this.allSessions.isEmpty()) { 
-            GenericDynamicList<Session> tempGenericList = SessionController.getAllSessions();
-            if (tempGenericList != null) {
-                this.allSessions = new ArrayList<>();
-                for (Session session : tempGenericList) {
-                    this.allSessions.add(session);
-                }
-            } else {
-                this.allSessions = new ArrayList<>();
-            }
-        }
-        if (this.allSessions != null) {
-            DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-
-            List<Session> filteredSessions = this.allSessions.stream()
-                    .filter(session -> {
-                        try {
-                            return LocalDate.parse(session.getDate(), dateFormatter).equals(date);
-                        } catch (DateTimeParseException e) {
-                            System.err.println(
-                                    "Erro ao parsear data da sessão '" + session.getDate() + "': " + e.getMessage());
-                            return false; 
-                        }
-                    })
-                    .collect(Collectors.toList());
-            refreshTable(filteredSessions);
-        } else {
-            refreshTable(new ArrayList<>());
-        }
-    }
-
-    /**
      * Mostra uma janela de confirmação após a ação de exclusão.
      * * @param acao Ação realizada.
      */
@@ -308,6 +246,16 @@ public class SessionControlController implements Initializable, MainViews.OnChan
 
     @FXML
     void deleteSession(ActionEvent event) {
+
+    }
+
+    @FXML
+    void ticket(ActionEvent event) {
+
+    }
+
+    @FXML
+    void openRelatory(ActionEvent event) {
 
     }
 
@@ -369,25 +317,5 @@ public class SessionControlController implements Initializable, MainViews.OnChan
     @FXML
     void openSessionControl(ActionEvent event) {
         MainViews.changeScreen("sessionControl", null);
-    }
-
-    @FXML
-    void openDate1(ActionEvent event) {
-        filterAndDisplaySessions(LocalDate.now());
-    }
-
-    @FXML
-    void openDate2(ActionEvent event) {
-        filterAndDisplaySessions(LocalDate.now().plusDays(1));
-    }
-
-    @FXML
-    void openDate3(ActionEvent event) {
-        filterAndDisplaySessions(LocalDate.now().plusDays(2));
-    }
-
-    @FXML
-    void openDate4(ActionEvent event) {
-        filterAndDisplaySessions(LocalDate.now().plusDays(3));
     }
 }
