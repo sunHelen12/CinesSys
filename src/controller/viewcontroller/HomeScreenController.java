@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.event.ActionEvent;
+import javafx.application.Platform;
 
 /**
  * Classe referente ao controle da interface "Tela Principal" presente na

@@ -83,8 +83,8 @@ public class SellTicketController {
 
             // Mostra o desconto aplicado
             double discount = ClientController.calculateDiscount(clientID);
-            paymentStr.clear();
-            client.clear();
+            paymentMethod.clear();
+            clientId.clear();
             showDiscountPopup(discount);
 
 
