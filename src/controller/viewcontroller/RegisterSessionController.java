@@ -53,6 +53,8 @@ public class RegisterSessionController implements Initializable {
         txtDate.setStyle("-fx-text-fill: white !important; -fx-background-color: #03002C !important;");
         txtMovieId.setStyle("-fx-text-fill: white !important; -fx-background-color: #03002C !important;");
         txtPrice.setStyle("-fx-text-fill: white !important; -fx-background-color: #03002C !important;");
+        txtRoom.setStyle("-fx-text-fill: white !important; -fx-background-color: #03002C !important;");
+        txtTime.setStyle("-fx-text-fill: white !important; -fx-background-color: #03002C !important;");
     }
 
     /**
