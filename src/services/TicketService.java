@@ -28,7 +28,7 @@ public class TicketService {
      * @param ticketRepository O repositório de tickets.
      */
     public TicketService(TicketRepository ticketRepository){
-        this.ticketRepository = new TicketRepository();
+        this.ticketRepository = ticketRepository;
     }
 
      /**
@@ -106,11 +106,8 @@ public class TicketService {
         // Adicionar ticket no repositório
         ticketRepository.add(ticket);
 
-        // Atualizar fidelidade do cliente
+        // Atualizar fidelidade do cliente, nesse método ele também adiciona o ticket no histórico do cliente.
         ClientController.registerPoints(clientId, ticket);
-
-        // Adicionar ticket no histórico do cliente (se não for automático)
-        ClientController.addTicketToClient(clientId, ticket);
 
         // Atualizando assentos disponíveis da sessão
         session.setTotalAvailableSeats(session.getTotalAvailableSeats()-1);

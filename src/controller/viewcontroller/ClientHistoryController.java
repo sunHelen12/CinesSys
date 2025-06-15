@@ -3,6 +3,8 @@ package controller.viewcontroller;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.fxml.Initializable;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.event.ActionEvent;
 import java.net.URL;
@@ -45,9 +47,29 @@ public class ClientHistoryController implements Initializable {
      */
     @FXML
     void backPurchase(ActionEvent event) {
+        resetScreen();
         MainViews.changeScreen("purchaseRelatory", null);
     }
 
+    /**
+     * Reseta o estado da tela para um estado limpo, removendo as informações do cliente
+     * e o histórico de compras exibido.
+     */
+    private void resetScreen() {
+        client = null; // Zera a referência ao cliente estático
+
+        // Limpa todos os labels com as informações do cliente
+        if (lnlNome != null) lnlNome.setText("");
+        if (lblID != null) lblID.setText("");
+        if (lblEmail != null) lblEmail.setText("");
+        if (lblNascimento != null) lblNascimento.setText("");
+        if (lblNumIngressos != null) lblNumIngressos.setText("");
+
+        // Limpa o contêiner com a lista de tickets
+        if (containerResultados != null) {
+            containerResultados.getChildren().clear();
+        }
+    }
     /**
      * Inicializa o controlador.
      * 
@@ -68,12 +90,12 @@ public class ClientHistoryController implements Initializable {
     }
 
     /**
-     * Acessa os dados do cliente.
+     * Acessa os dados do cliente e exibe seu histórico de compras.
      */
     private void accessClientData(){
         
         lnlNome.setText(client.getName());
-        lblID.setText(String.valueOf(client.getId()));
+        lblID.setText(client.getId()+"");
         lblEmail.setText(client.getEmail());
         lblNascimento.setText(client.getBirthday());
         lblNumIngressos.setText(String.valueOf(client.getPurchasingHistory().size()));
@@ -87,7 +109,7 @@ public class ClientHistoryController implements Initializable {
             labelSession.setStyle(
                     "-fx-text-fill: #f2e8c6 !important; -fx-font-family: Arial !important; -fx-font-size: 14px;");
             Label labelAccess = new Label("Acessar Registro de Compras: ");
-            Label labelEmpty = new Label("");
+            Label labelEmpty = new Label(""); // Usado para espaçamento
             labelAccess.setStyle(
                     "-fx-text-fill: #f2e8c6 !important; -fx-font-family: Arial !important; -fx-font-size: 14px;");
 
