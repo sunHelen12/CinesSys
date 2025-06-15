@@ -112,6 +112,9 @@ public class TicketService {
         // Adicionar ticket no histórico do cliente (se não for automático)
         ClientController.addTicketToClient(clientId, ticket);
 
+        // Atualizando assentos disponíveis da sessão
+        session.setTotalAvailableSeats(session.getTotalAvailableSeats()-1);
+
         return ticket;
     }
 

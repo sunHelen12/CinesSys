@@ -32,6 +32,7 @@ public class SellTicketController {
 
     @FXML private TextField clientId;                     // Campo para digitar o ID do cliente
     @FXML private TextField paymentMethod;                // Campo para informar o método de pagamento
+    private Session session;
 
 
     private final ToggleGroup radioGroup = new ToggleGroup(); // Agrupando os radio buttons
@@ -45,6 +46,14 @@ public class SellTicketController {
      */
     @FXML
     public void initialize() {
+        MainViews.addOnChangeScreenListener(new MainViews.OnChangeScreen() {
+            @Override
+            public void onScreenChanged(String newScreen, Object userDataObject) {
+                if (userDataObject instanceof Session) {
+                    session = (Session) userDataObject;
+                }
+            }
+        });
     }
 
     /**
@@ -58,7 +67,6 @@ public class SellTicketController {
             String paymentStr = paymentMethod.getText();
 
             Client client = ClientController.getClientById(clientID);
-            Session session = getSelectedSession();
 
             // Valida se cliente e sessão foram encontrados
             if (client == null || session == null) {
@@ -94,23 +102,6 @@ public class SellTicketController {
     @FXML
     private void handleBack() {
         MainViews.changeScreen("homeScreen", null);
-    }
-
-    /**
-     * Verifica qual sessão foi selecionada com os radio buttons.
-     * @return A sessão escolhida, ou null se nenhuma estiver selecionada.
-     */
-    private Session getSelectedSession() {
-        return null;
-    }
-
-    /**
-     * Formata a data e hora de uma sessão para exibição.
-     * @param session Sessão a ser formatada.
-     * @return String no formato "data - hora"
-     */
-    private String formatDateTime(Session session) {
-        return session.getDate().toString() + " - " + session.getTime().toString();
     }
 
     /**
