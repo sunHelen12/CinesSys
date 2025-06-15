@@ -11,6 +11,13 @@ import controller.viewcontroller.SessionControlController;
 import models.Session;
 import controller.business.SessionController;
 
+/**
+ * Classe responsável por controlar a tela de alteração de uma sessão.
+ * 
+ * @author Carlos Moreira
+ * @since 14/06/2024
+ * @version 2.0
+ */
 public class UpdateSessionController implements Initializable {
     private static Session session;
 

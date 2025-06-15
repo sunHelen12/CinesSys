@@ -7,9 +7,9 @@ import java.time.LocalDate;
 /**
  * Classe que representa um cliente.
  * 
- * @author
- * @since
- * @version
+ * @author Maria Eduarda Campos
+ * @since 25/05/2025
+ * @version 5.0
  */
 public class Client {
     private static int _idGenerator = 1;

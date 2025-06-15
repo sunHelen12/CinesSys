@@ -33,6 +33,14 @@ import controller.viewcontroller.PopUpSessionController;
 import structures.list.GenericDynamicList; 
 import java.util.stream.Collectors;
 
+/**
+ * Classe responsável por controlar a tela de alteração de um cliente.
+ * 
+ * @author Carlos Moreira
+ * @author Maria Eduarda Campos
+ * @since 14/06/2024
+ * @version 5.0
+ */
 public class SessionControlController implements Initializable, MainViews.OnChangeScreen {
 
     @FXML

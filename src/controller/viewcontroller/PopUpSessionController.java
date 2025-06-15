@@ -5,6 +5,14 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
+
+/**
+ * Classe responsável por controlar a tela de pop up para confirmação de uma ação(cadastro, alteração, exclusão).
+ * 
+ * @author Carlos Moreira
+ * @since 13/06/2025
+ * @version 1.0
+ */
 public class PopUpSessionController {
     private Stage stage;
     @FXML

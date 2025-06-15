@@ -8,7 +8,7 @@ import structures.list.GenericDynamicList;
 
 /**
  * Classe de controle para a lógica de negócio dos filmes.
- * @author Gabryelle Beatriz Duarte Moraes
+ * @author Gabryelle Beatriz Duarte Moraes 
  * @since 11/06/2025
  * @version 1.0
  */

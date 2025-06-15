@@ -9,9 +9,9 @@ import controller.viewcontroller.MainViews;
 /**
  * Classe responsável pela exibição de mensagens de sucesso ou erro na tela de cadastro de clientes.
  * 
- * @author
- * @since
- * @version
+ * @author Maria Eduarda Campos
+ * @since 12/06/2025
+ * @version 1.0
  */
 public class PopUpClientController {
 

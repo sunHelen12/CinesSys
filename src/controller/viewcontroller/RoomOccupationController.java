@@ -7,9 +7,10 @@ import javafx.fxml.FXML;
 /**
  * Classe responsável por controlar a tela de ocupação de salas.
  * 
- * @author
- * @since
- * @version
+ * @author Maria Eduarda Campos
+ * @author Vinicius Nunes de Andrade
+ * @since 31/05/2025
+ * @version 2.0
  */
 public class RoomOccupationController {
 

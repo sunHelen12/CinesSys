@@ -21,9 +21,10 @@ import javafx.event.ActionEvent;
 /**
  * Classe responsável por controlar a tela de histórico de compras.
  * 
- * @author
- * @since
- * @version
+ * @author Vinicius Nunes de Andrade 
+ * @author Maria Eduarda Campos 
+ * @since 30/05/2025
+ * @version 5.0
  */
 public class PurchaseHistoryController implements Initializable {
     @FXML

@@ -11,7 +11,7 @@ import models.Ticket;
 /**
  * Classe responsável por controlar operações relacionadas às vendas de ingressos.
  * 
- * @author Helen Santos Rocha
+ * @author Helen Santos Rocha 
  * @since 11/06/2025
  * @version 1.0
  */

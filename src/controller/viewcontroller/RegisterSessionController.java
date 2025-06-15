@@ -18,9 +18,9 @@ import models.Movie;
 /**
  * Classe responsável por controlar a tela de cadastro de uma sessão.
  * 
- * @author
- * @since
- * @version
+ * @author Carlos Moreira
+ * @since 14/06/2025
+ * @version 2.0
  */
 public class RegisterSessionController implements Initializable {
 

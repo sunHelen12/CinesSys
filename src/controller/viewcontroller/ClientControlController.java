@@ -27,8 +27,8 @@ import models.*;
  * Classe referente ao controle da interface "Controle de Clientes" presente na aplicação.
  * 
  * @author Maria Eduarda Campos
- * @since 31-05-2025
- * @version 3
+ * @since 31/05/2025
+ * @version 3.0
  */
 public class ClientControlController implements Initializable{
     private static Client client;
@@ -249,7 +249,7 @@ public class ClientControlController implements Initializable{
      */
     @FXML
     void openSessionControl(ActionEvent event) {
-        // MainViews.changeScreen("sessionControl", null);
+        MainViews.changeScreen("sessionControl", null);
     }
 
     /**

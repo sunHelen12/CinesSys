@@ -97,9 +97,9 @@
                   </Button>
                </children>
             </AnchorPane>
-            <ScrollPane layoutX="313.0" layoutY="101.0" prefHeight="524.0" prefWidth="964.0">
+            <ScrollPane layoutX="313.0" layoutY="101.0" prefHeight="524.0" prefWidth="977.0">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="529.0" prefWidth="975.0">
                      <children>
                         <TableView fx:id="movieTable" prefHeight="522.0" prefWidth="961.0" style="-fx-background-color: #03002C;">
                            <columns>

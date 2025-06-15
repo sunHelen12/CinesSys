@@ -5,9 +5,9 @@ import enums.PaymentMethod;
 /**
  * Representa um ingresso para uma sessão de cinema.
  * 
- * @author
- * @since
- * @version
+ * @author Helen Santos Rocha
+ * @since 25/05/2025
+ * @version 4.0
  */
 public class Ticket {
 

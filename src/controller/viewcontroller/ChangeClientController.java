@@ -12,9 +12,9 @@ import models.*;
 
 /**
  * Classe responsável por controlar a tela de alteração de um cliente.
- * @author
- * @since
- * @version
+ * @author Maria Eduarda Campos
+ * @since 10/06/2025
+ * @version 5.0
  */
 public class ChangeClientController implements Initializable {
     private static Client client;

@@ -28,7 +28,7 @@ import javafx.scene.control.TableCell;
 import structures.list.GenericDynamicList;
 
 /**
- * Classe responsável por controlar a tela de alteração de um cliente.
+ * Classe responsável por controlar a tela de Filmes.
  * 
  * @author Gabryelle Beatriz Duarte Moraes
  * @author Maria Eduarda Campos
