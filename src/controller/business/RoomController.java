@@ -46,7 +46,7 @@ public class RoomController {
      * @param roomId ID da sala.
      * @return Sessão removida.
      */
-    public static Session removeNextSession(int roomId) {
+    public static Session removeNextSessionFromRoom(int roomId) {
         return roomService.removeNextSessionFromRoom(roomId);
     }
 }

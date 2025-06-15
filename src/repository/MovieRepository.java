@@ -109,4 +109,11 @@ public class MovieRepository {
         }
         return null;
     }
+
+    /**
+     * Remove todos os filmes da lista.
+     */
+    public void clear(){
+        movies.clear();
+    }
 }

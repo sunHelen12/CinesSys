@@ -88,5 +88,12 @@ public class MovieController {
     public static GenericDynamicList<Session> getSessionsByMovie(int id) {
         return movieService.getSessionsByMovie(id);
     }
+
+    /**
+     * Remove todos os filmes cadastrados.
+     */
+    public static void removeAllMovies(){
+        movieService.removeAllMovies();
+    }
     
 }

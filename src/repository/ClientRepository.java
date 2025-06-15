@@ -97,4 +97,11 @@ public class ClientRepository {
         }
         return false;
     }
+
+    /**
+     * Remove todos os clientes do repositório. Limpando a lista de clientes.
+     */
+    public void clear(){
+        clients.clear();
+    }
 }

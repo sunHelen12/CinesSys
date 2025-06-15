@@ -168,4 +168,11 @@ public class MovieService {
         }
         return sessionsWithMovie;
     }
+
+    /**
+     * Remove todas os filmes cadastrados
+     */
+    public void removeAllMovies() {
+        movieRepository.clear();
+    }
 }

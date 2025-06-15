@@ -99,4 +99,11 @@ public class Ticket {
                 " | Cliente: " + client.getName() +
                 " | Valor pago: R$" + String.format("%.2f", finalPrice);
     }
+
+    /**
+     * Define o ID do ingresso.
+     */
+    public static void resetIdGenerator() {
+		_idGenerator = 1;
+	}
 }

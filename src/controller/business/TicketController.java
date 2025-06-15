@@ -54,4 +54,11 @@ public class TicketController {
     public static void removeTicketById(int id) {
         ticketService.removeTicketById(id);
     }
+
+    /**
+     * Remove todos os tickets.
+     */
+    public static void removeAllTickets() {
+        ticketService.removeAllTickets();
+    }
 }
