@@ -18,6 +18,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import controller.viewcontroller.PopUpTicketCanceledController;
 
 
 /**
@@ -73,7 +74,7 @@ public class PurchaseRecordController implements Initializable {
             FXMLLoader loader = new FXMLLoader(PurchaseRecordController.class.getResource("/gui/PopUpTicketCanceled.fxml"));
             Parent root = loader.load();
 
-            PurchaseRecordController controller = loader.getController();
+            PopUpTicketCanceledController controller = loader.getController();
             Stage stage = new Stage();
             controller.setStage(stage);
 
