@@ -3,6 +3,10 @@ package controller.viewcontroller;
 import controller.business.ClientController;
 import controller.business.SessionController;
 import controller.business.TicketController;
+import controller.viewcontroller.SellTicketController;
+import controller.viewcontroller.PopUpDiscountController;
+import controller.viewcontroller.OversoldController;
+import controller.viewcontroller.PopUpRegisteredSaleController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -81,9 +85,6 @@ public class SellTicketController {
             double discount = ClientController.calculateDiscount(clientID);
             showDiscountPopup(discount);
 
-            // Vai pra tela de confirmação com os dados do ticket
-            MainViews.changeScreen("popUpRegisteredSale", List.of(ticket));
-
         } catch (NumberFormatException e) {
             showAlert("ID do cliente inválido.");
         } catch (IllegalArgumentException e) {
@@ -125,20 +126,41 @@ public class SellTicketController {
     @FXML
     private void showDiscountPopup(double discount) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/PopUpDiscount.fxml"));
+            FXMLLoader loader = new FXMLLoader(SellTicketController.class.getResource("/gui/PopUpDiscount.fxml"));
             Parent root = loader.load();
 
             PopUpDiscountController controller = loader.getController();
+            Stage stage = new Stage();
+            controller.setStage(stage);
             controller.setDiscount(discount);
 
-            Stage popupStage = new Stage();
-            popupStage.setTitle("Desconto Aplicado");
-            popupStage.setScene(new Scene(root));
-            popupStage.show();
-
+            stage.setScene(new Scene(root));
+            stage.setTitle("Confirmação");
+            stage.show();
         } catch (IOException e) {
             e.printStackTrace();
             showAlert("Erro ao carregar o pop-up de desconto.");
+        }
+    }
+
+    /**
+     * Mostra uma janela.
+     * * @param acao Ação realizada.
+     */
+    public static void mostrarPopUpSale() {
+        try {
+            FXMLLoader loader = new FXMLLoader(SellTicketController.class.getResource("/gui/PopUpRegisteredSale.fxml"));
+            Parent root = loader.load();
+
+            PopUpRegisteredSaleController controller = loader.getController();
+            Stage stage = new Stage();
+            controller.setStage(stage);
+
+            stage.setScene(new Scene(root));
+            stage.setTitle("Confirmação");
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
