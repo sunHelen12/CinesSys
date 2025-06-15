@@ -15,9 +15,9 @@ import models.*;
 /**
  * Classe responsável por controlar a tela de registro de compras.
  * 
- * @author
- * @since
- * @version
+ * @author Maria Eduarda Campos 
+ * @since 10/06/2025
+ * @version 1.0
  */
 public class PurchaseRecordController implements Initializable {
     private static Ticket ticket;

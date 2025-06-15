@@ -14,7 +14,7 @@ import structures.queue.GenericDynamicQueue;
  * tenha um identificador único no sistema.
  * 
  * @author Maria Eduarda Campos
- * @since 14/06/2025
+ * @since 25/05/2025
  * @version 1.0
  */
 public class Room {

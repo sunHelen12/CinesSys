@@ -15,11 +15,6 @@
       <children>
             <AnchorPane prefHeight="720.0" prefWidth="265.0" style="-fx-background-color: #F5841a; -fx-background-radius: 2px;">
                <children>
-              <Label alignment="CENTER" layoutX="6.0" layoutY="10.0" prefHeight="78.0" prefWidth="202.0" style="-fx-font-weight: bold;" text="CineSys" textAlignment="CENTER" textFill="#f2e8c4" wrapText="false">
-                <font>
-                  <Font name="Arial" size="48.0" />
-                </font>
-              </Label>
                   <Button layoutX="-14.0" layoutY="114.0" mnemonicParsing="false" onAction="#openMovieControl" prefHeight="38.0" prefWidth="224.0" style="-fx-background-color: #F5841a; -fx-border-style: bold;" text="Controle de Filmes" textFill="#f2e8c4">
                      <font>
                         <Font name="Arial" size="20.0" />
@@ -45,7 +40,14 @@
                         <Font name="Arial" size="20.0" />
                      </font>
                   </Button>
-                  <Button layoutX="7.0" layoutY="14.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#openHomeScreen" prefHeight="70.0" prefWidth="208.0" visible="false" />
+                  <Button layoutX="7.0" layoutY="14.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#openHomeScreen" prefHeight="70.0" prefWidth="208.0" style="-fx-background-color: #F5841a;">
+                     <graphic>
+                    <Label alignment="CENTER" prefHeight="78.0" prefWidth="202.0" style="-fx-font-weight: bold;" text="CineSys" textAlignment="CENTER" textFill="#f2e8c4" wrapText="false">
+                      <font>
+                        <Font name="Arial" size="48.0" />
+                      </font>
+                    </Label>
+                     </graphic></Button>
                </children>
             </AnchorPane>
 

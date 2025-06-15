@@ -8,7 +8,7 @@ import javafx.stage.Stage;
  * Controlador do pop-up de venda registrada com sucesso.
  * Fecha a janela e retorna para a tela de venda de ingressos.
  *
- * @author Helen
+ * @author Helen Santos Rocha
  * @since 14-06-2025
  * @version 1.0
  */

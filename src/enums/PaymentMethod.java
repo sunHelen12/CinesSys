@@ -2,6 +2,9 @@ package enums;
 /**
  * Enumeração que representa os métodos de pagamento disponíveis.
  * Cada método possui uma descrição legível para o usuário.
+ * 
+ * @author Helen Santos Rocha
+ * @version 2.0
  */
 public enum PaymentMethod {
     /**

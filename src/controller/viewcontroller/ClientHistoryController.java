@@ -13,9 +13,9 @@ import models.*;
 
 /**
  * Classe responsável por controlar a tela de histórico de um cliente.
- * @author
- * @since
- * @version
+ * @author Maria Eduarda Campos
+ * @since 30/05/2025
+ * @version 3.0
  */
 public class ClientHistoryController implements Initializable {
     private static Client client;

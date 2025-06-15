@@ -10,8 +10,8 @@ import java.util.List;
 
 /**
  * Classe da tela principal do sistema onde é possível navegar entre as telas.
- * * @author Maria Eduarda Campos
- * 
+ * @author Maria Eduarda Campos
+ * @author Vinicius Nunes de Andrade
  * @since 31-05-2025
  * @version 2
  */

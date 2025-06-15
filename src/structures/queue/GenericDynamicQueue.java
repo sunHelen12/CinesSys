@@ -7,7 +7,8 @@ import java.util.Iterator;
 /**
  * Código referente a uma fila genérica que cresce de forma dinâmica.
  *
- * @author Vinícius Nunes de Andrade e Maria Eduarda Campos
+ * @author Vinícius Nunes de Andrade 
+ * @author Maria Eduarda Campos
  * @since 29-05-2025
  * @version 2.1 (Corrigida)
  */

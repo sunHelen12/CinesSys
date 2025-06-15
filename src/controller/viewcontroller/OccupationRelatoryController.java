@@ -34,7 +34,7 @@ import structures.list.GenericDynamicList;
 /**
  * Classe responsável por controlar a tela de relatório de ocupação de salas.
  *
- * @author Maria Eduarda Santos Campos
+ * @author Maria Eduarda Campos
  * @author Vinícius Nunes de Andrade
  * @since 28-05-2025
  * @version 3.0

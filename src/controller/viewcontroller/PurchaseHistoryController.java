@@ -21,9 +21,10 @@ import javafx.event.ActionEvent;
 /**
  * Classe responsável por controlar a tela de histórico de compras.
  * 
- * @author
- * @since
- * @version
+ * @author Vinicius Nunes de Andrade 
+ * @author Maria Eduarda Campos 
+ * @since 30/05/2025
+ * @version 5.0
  */
 public class PurchaseHistoryController implements Initializable {
     @FXML
@@ -44,7 +45,7 @@ public class PurchaseHistoryController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Muda a cor do texto e do fundo dos campos de texto
-        txtBusca.setStyle("-fx-text-fill: white !important; -fx-background-color: #03002C !important;");
+        txtBusca.setStyle("-fx-text-fill: white !important; -fx-background-color:  #BB0029 !important;");
         addFilter();
     }
 
@@ -172,7 +173,7 @@ public class PurchaseHistoryController implements Initializable {
 
             Button botaoAcessar = new Button("Acessar Relatório(s)");
             botaoAcessar.setUserData(client);
-            botaoAcessar.setStyle("-fx-background-color: #D92550; -fx-text-fill: #f2e8c6; -fx-font-weight: bold;");
+            botaoAcessar.setStyle("-fx-background-color: #BB0029; -fx-text-fill: #f2e8c6; -fx-font-weight: bold;");
 
             botaoAcessar.setOnAction(event -> {
                 Client clienteSelecionado = (Client) ((Button) event.getSource()).getUserData();

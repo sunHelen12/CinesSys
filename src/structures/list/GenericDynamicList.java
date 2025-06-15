@@ -7,7 +7,8 @@ import java.util.Iterator;
  * Código referente a lista genérica que cresce
  * de forma dinâmica.
  *
- * @author Vinícius Nunes de Andrade e Maria Eduarda Campos
+ * @author Vinícius Nunes de Andrade
+ * @author Maria Eduarda Campos
  * @since 25-05-2025
  * @version 2
  */
