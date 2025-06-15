@@ -1,7 +1,9 @@
 package services;
 
 import controller.business.ClientController;
+import controller.business.ClientControllerTest;
 import controller.business.SessionController;
+import controller.business.SessionControllerTest;
 import enums.PaymentMethod;
 import models.Client;
 import models.Session;
@@ -113,5 +115,12 @@ public class TicketService {
         ClientController.addTicketToClient(clientId, ticket);
 
         return ticket;
+    }
+
+    /**
+     * Remove todos os tickets.
+     */
+    public void removeAllTickets(){
+        ticketRepository.clear();
     }
 }

@@ -76,4 +76,10 @@ public class SessionController {
         return sessionService.removeSession(id);
     }
 
+    /**
+     * Remove todas as sessões cadastradas no sistema.
+     */
+    public static void removeAllSessions(){
+        sessionService.removeAllSessions();
+    }
 }

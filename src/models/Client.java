@@ -156,5 +156,12 @@ public class Client {
         "\nEmail= "+ email + 
         "\nBirthday= "+ birthday + 
         "\nPurchasing History= " + purchasingHistory;
-    }   
+    }
+
+    /**
+     * Reseta o contador de IDs para testar novamente a aplicação.
+     */
+    public static void resetIdGenerator() {
+        _idGenerator = 1;
+    }
 }

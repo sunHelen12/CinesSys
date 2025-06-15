@@ -121,4 +121,11 @@ public class    SessionRepository {
         }
         return false;
     }
+
+    /**
+     * Remove todas as sessões cadastradas.
+     */
+    public void clear(){
+        sessions.clear();
+    }
 }
