@@ -148,6 +148,6 @@ public class ClientServiceTest {
                 PaymentMethod.CREDIT_CARD
             )
         );
-        clientService.addTicketToClient(client.getId(), new Ticket(client, new Session(LocalDate.now(), LocalTime.now(), new Room(1, 100, 100, 100), new Movie("Filme", "Ação", 120, "Diretor", "Sinopse"), 30.0), 30.0, PaymentMethod.CREDIT_CARD));
+        clientService.addTicketToClient(client.getId(), new Ticket(client, new Session(LocalDate.now(), LocalTime.now(), new Room( 100), new Movie("Filme", "Ação", 120, "Diretor", "Sinopse"), 30.0), 30.0, PaymentMethod.CREDIT_CARD));
     }
 }

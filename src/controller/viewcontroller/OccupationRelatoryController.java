@@ -21,6 +21,8 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import java.time.LocalDate;
+import java.util.stream.Collectors;
+
 import javafx.event.ActionEvent;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
@@ -120,7 +122,8 @@ public class OccupationRelatoryController implements Initializable {
     /**
      * Adiciona um filtro para a ocupação de salas.
      */
-    public void addFilter(){
+    public void addFilter() {
+        filter.clear(); // Limpa a lista para evitar duplicatas se o método for chamado novamente
         filter.add("Filme");
         filter.add("Data");
         filter.add("Horário de Sessão");
@@ -129,11 +132,20 @@ public class OccupationRelatoryController implements Initializable {
         filterOccupation.setItems(items);
 
         filterOccupation.setOnAction(event -> {
-            selected = filterOccupation.getValue();
+            String novoValorSelecionado = filterOccupation.getValue();
+
+            // --- GUARDA CONTRA LOOP INFINITO ---
+            // Se o novo valor for nulo ou igual ao valor já selecionado, não faz nada.
+            if (novoValorSelecionado == null || novoValorSelecionado.equals(selected)) {
+                return;
+            }
+            // ------------------------------------
+
+            selected = novoValorSelecionado; // Atualiza a seleção
             System.out.println("Selecionado: " + selected);
 
             if (room != null) {
-                showFilter(); // chamada única e genérica
+                showFilter(); // Chama o método para mostrar o filtro
             } else {
                 System.err.println("Erro: Não foi possível aplicar filtro, 'room' é nulo.");
             }
@@ -146,24 +158,54 @@ public class OccupationRelatoryController implements Initializable {
     public void showFilter() {
         filterContainer.getChildren().clear();
 
+        if (room == null || room.getSessions() == null || room.getSessions().isEmpty()) {
+            Label noDataLabel = new Label("Não há sessões nesta sala para gerar relatórios.");
+            noDataLabel.setStyle("-fx-text-fill: #f2e8c6; -fx-font-size: 14px; -fx-padding: 15px;");
+            filterContainer.getChildren().add(noDataLabel);
+            return;
+        }
+
+        // --- LÓGICA DO FILTRO "FILME" (CORRIGIDA E MELHORADA) ---
         if ("Filme".equals(selected)) {
-            for (Session session : room.getSessions()) {
-                String movieTitle = session.getMovie().getTitle();
-                double occupation = ((double)(room.getTotalSeat() - session.getTotalAvailableSeats()) / room.getTotalSeat()) * 100;
 
-                Text titleText = new Text(movieTitle + " ");
-                titleText.setFont(Font.font("Arial", FontWeight.BOLD, 18));
-                titleText.setFill(javafx.scene.paint.Color.web("#f2e8c6"));
-
-                Text occupationText = new Text("- Ocupação Média: " + String.format("%.1f", occupation) + "%\n");
-                occupationText.setFont(Font.font("Arial", 18));
-                occupationText.setFill(javafx.scene.paint.Color.web("#f2e8c6"));
-
-                TextFlow textFlow = new TextFlow(titleText, occupationText);
-
-                filterContainer.getChildren().add(textFlow);
-                System.out.println("Filme " + movieTitle + " adicionado");
+            // --- PASSO EXTRA: Copiar para uma ArrayList ---
+            List<Session> sessoesList = new ArrayList<>();
+            for (Session s : room.getSessions()) {
+                sessoesList.add(s);
             }
+            // ---------------------------------------------
+
+            // Agora, use a 'sessoesList' que tem o método .stream()
+            if (sessoesList.isEmpty()) {
+                filterContainer.getChildren().add(new Label("Nenhuma sessão encontrada."));
+                return;
+            }
+
+            sessoesList.stream()
+                    .collect(Collectors.groupingBy(Session::getMovie)) // Agrupa sessões pelo objeto Movie
+                    .forEach((movie, sessoesDoFilme) -> { // Para cada filme e sua lista de sessões...
+
+                        // O resto do seu código permanece exatamente o mesmo
+                        double totalOcupacao = 0;
+                        for (Session session : sessoesDoFilme) {
+                            int vendidos = room.getTotalSeat() - session.getTotalAvailableSeats();
+                            totalOcupacao += (double) vendidos;
+                        }
+                        double totalAssentosOferecidos = (double) sessoesDoFilme.size() * room.getTotalSeat();
+                        double ocupacaoMedia = (totalAssentosOferecidos > 0) ? (totalOcupacao / totalAssentosOferecidos) * 100 : 0;
+
+                        Text titleText = new Text(movie.getTitle() + " ");
+                        titleText.setFont(Font.font("Arial", FontWeight.BOLD, 18));
+                        titleText.setFill(javafx.scene.paint.Color.web("#f2e8c6"));
+
+                        Text occupationText = new Text("- Ocupação Média: " + String.format("%.1f", ocupacaoMedia) + "%\n");
+                        occupationText.setFont(Font.font("Arial", 18));
+                        occupationText.setFill(javafx.scene.paint.Color.web("#f2e8c6"));
+
+                        TextFlow textFlow = new TextFlow(titleText, occupationText);
+                        filterContainer.getChildren().add(textFlow);
+                        System.out.println("Resumo do filme '" + movie.getTitle() + "' adicionado.");
+                    });
         } else if ("Data".equals(selected)) {
             // --- 1. Criação das Abas de Filtro de Data ---
             HBox tabs = new HBox(10); // HBox para agrupar os botões de data
