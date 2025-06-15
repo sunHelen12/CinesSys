@@ -47,7 +47,7 @@ public class SaleControllerTest {
         MovieController.addMovie(movie.getTitle(), movie.getGenre(), movie.getDuration(), movie.getClassification(), movie.getSynopsis());
 
         SessionController.addSession(
-                "15-06-2025"
+                "15-06-2025",
                 "14:00",
                 RoomController.getRoomById(1),
                 this.movie,
