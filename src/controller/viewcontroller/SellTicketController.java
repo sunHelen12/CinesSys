@@ -88,7 +88,6 @@ public class SellTicketController {
         } catch (NumberFormatException e) {
             showAlert("ID do cliente inválido.");
         } catch (IllegalArgumentException e) {
-            showAlert("Erro: " + e.getMessage());
             // Redireciona para tela de "lotado" se for o caso
             MainViews.changeScreen("oversold", null);
         } catch (Exception e) {
