@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.CheckBoxTableCell;
+import models.Movie;
 import models.Session;
 import javafx.fxml.Initializable;
 import java.net.URL;
@@ -246,7 +247,19 @@ public class SessionControlController implements Initializable, MainViews.OnChan
 
     @FXML
     void deleteSession(ActionEvent event) {
+        if (selectedSessions.isEmpty() || selectedSessions.size() > 1) {
+            return;
+        }
 
+        List<Session> sessionsToDelete = new ArrayList<>(selectedSessions);
+        for (Session session : sessionsToDelete) {
+            SessionController.removeSession(session.getId());
+            sessionSelectionMap.remove(session);
+        }
+
+        selectedSessions.clear();
+        refreshTable();
+        mostrarPopUp("excluída");
     }
 
     /**
@@ -276,7 +289,11 @@ public class SessionControlController implements Initializable, MainViews.OnChan
 
     @FXML
     void openRelatory(ActionEvent event) {
-
+        if (selectedSessions.isEmpty() || selectedSessions.size() > 1) {
+            return;
+        }
+        Session sessionRelatory = selectedSessions.get(0);
+        // MainViews.changeScreen("", sessionRelatory);
     }
 
     /**
