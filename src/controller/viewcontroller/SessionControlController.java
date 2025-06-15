@@ -47,7 +47,7 @@ public class SessionControlController implements Initializable, MainViews.OnChan
     @FXML
     private TableColumn<Session, String> movieName;
     @FXML
-    private TableColumn<Session, String> numberSeats;
+    private TableColumn<Session, String> price;
     @FXML
     private TableColumn<Session, String> data;
     @FXML
@@ -72,10 +72,9 @@ public class SessionControlController implements Initializable, MainViews.OnChan
         room.setCellValueFactory(cell -> new SimpleStringProperty(String.valueOf((cell.getValue().getRoom().getId()))));
         data.setCellValueFactory(cell -> new SimpleStringProperty((cell.getValue().getDate())));
         time.setCellValueFactory(cell -> new SimpleStringProperty((cell.getValue().getTime())));
-        numberSeats.setCellValueFactory(
-                cell -> new SimpleStringProperty(String.valueOf(cell.getValue().getRoom().getTotalSeat())));
-        classification
-                .setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getMovie().getClassification()));
+        price.setCellValueFactory(
+                cell -> new SimpleStringProperty(String.valueOf(cell.getValue().getTicketValue())));
+        classification.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getMovie().getClassification()));
         movieName.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getMovie().getTitle()));
         duration.setCellValueFactory(cell -> {
             int durationMin = cell.getValue().getMovie().getDuration();

@@ -98,8 +98,8 @@
                               <TableColumn fx:id="duration" minWidth="0.0" prefWidth="90.0" style="-fx-background-color: #F5841a;" text="Duração" />
                               <TableColumn fx:id="classification" prefWidth="93.0" style="-fx-background-color: #F5841a;" text="Classificação" />
                               <TableColumn fx:id="room" prefWidth="88.0" style="-fx-background-color: #F5841a;" text="Sala" />
-                              <TableColumn fx:id="numberSeats" prefWidth="100.0" style="-fx-background-color: #F5841a;" text="N° assentos" />
-                              <TableColumn fx:id="data" prefWidth="113.0" style="-fx-background-color: #F5841a;" text="Data" />
+                              <TableColumn fx:id="price" prefWidth="111.0" style="-fx-background-color: #F5841a;" text="Preço do Ingresso" />
+                              <TableColumn fx:id="data" prefWidth="102.0" style="-fx-background-color: #F5841a;" text="Data" />
                               <TableColumn fx:id="time" prefWidth="73.0" style="-fx-background-color: #F5841a;" text="Horário" />
                           </columns>
                         </TableView>
