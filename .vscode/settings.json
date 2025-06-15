@@ -1,6 +1,7 @@
 {
     "java.debug.settings.onBuildFailureProceed": true,
     "java.project.referencedLibraries": [
-        "/home/kaiquesilvasousa/.java/javafx-sdk-24.0.1/lib/*.jar"
+        "/home/kaiquesilvasousa/.java/javafx-sdk-24.0.1/lib/*.jar",
+        "test-lib/**/*.jar"
     ]
 }
