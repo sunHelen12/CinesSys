@@ -255,7 +255,6 @@ public class MovieControlController implements Initializable, MainViews.OnChange
         }
 
         Movie movieToEdit = selectedMovies.get(0);
-        System.out.println(movieToEdit);
         MainViews.changeScreen("movieEdit", movieToEdit);
     }
 

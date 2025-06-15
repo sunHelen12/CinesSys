@@ -298,7 +298,12 @@ public class SessionControlController implements Initializable, MainViews.OnChan
 
     @FXML
     void changeSession(ActionEvent event) {
+        if (selectedSessions.isEmpty() || selectedSessions.size() > 1) {
+            return;
+        }
 
+        Movie sessionToEdit = selectedSessions.get(0);
+        MainViews.changeScreen("updateSession", sessionToEdit);
     }
 
     @FXML

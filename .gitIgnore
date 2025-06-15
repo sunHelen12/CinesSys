@@ -5,3 +5,4 @@ out/
 .idea/
 CinesSys.iml
 teste.puml
+*.class

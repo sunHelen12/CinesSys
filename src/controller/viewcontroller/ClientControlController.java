@@ -49,7 +49,7 @@ public class ClientControlController implements Initializable{
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Mudança de cor do fundo do campo de busca
-        txtBusca.setStyle("-fx-text-fill: white !important; -fx-background-color: #03002C !important;");
+        txtBusca.setStyle("-fx-text-fill: white !important; -fx-background-color: #F58414 !important;");
         MainViews.addOnChangeScreenListener(new MainViews.OnChangeScreen() {
             @Override
             public void onScreenChanged(String newScreen, Object userDataObject) {
