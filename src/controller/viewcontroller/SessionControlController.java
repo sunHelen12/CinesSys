@@ -52,6 +52,8 @@ public class SessionControlController implements Initializable, MainViews.OnChan
     private TableColumn<Session, String> data;
     @FXML
     private TableColumn<Session, String> time;
+    @FXML
+    private TableColumn<Session, String> freeSeats;
 
 
     private final ObservableList<Session> selectedSessions = FXCollections.observableArrayList();
@@ -70,6 +72,7 @@ public class SessionControlController implements Initializable, MainViews.OnChan
         sessionsForTable = FXCollections.observableArrayList();
 
         room.setCellValueFactory(cell -> new SimpleStringProperty(String.valueOf((cell.getValue().getRoom().getId()))));
+        freeSeats.setCellValueFactory(cell -> new SimpleStringProperty(String.valueOf((cell.getValue().getTotalAvailableSeats()))));
         data.setCellValueFactory(cell -> new SimpleStringProperty((cell.getValue().getDate())));
         time.setCellValueFactory(cell -> new SimpleStringProperty((cell.getValue().getTime())));
         price.setCellValueFactory(
@@ -164,20 +167,18 @@ public class SessionControlController implements Initializable, MainViews.OnChan
         }
     }
 
-    private void refreshTable() {
-        refreshTable(this.allSessions != null ? this.allSessions : new ArrayList<>());
-    }
-
     /**
      * Atualiza a tabela de sessões.
      */
-    private void refreshTable(List<Session> sessionsToDisplay) {
+    private void refreshTable() {
         List<Session> currentlySelectedCopy = new ArrayList<>(selectedSessions);
         selectedSessions.clear();
         sessionsForTable.clear();
 
-        if (sessionsToDisplay != null) {
-            for (Session session : sessionsToDisplay) {
+        GenericDynamicList<Session> currentSessionsFromRepo = SessionController.getAllSessions();
+
+        if (currentSessionsFromRepo != null) {
+            for (Session session : currentSessionsFromRepo) {
                 sessionsForTable.add(session);
 
                 SimpleBooleanProperty prop = sessionSelectionMap.computeIfAbsent(session, k -> {
