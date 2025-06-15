@@ -107,7 +107,7 @@ public class PurchaseHistoryController implements Initializable {
      */
     @FXML
     void openSessionControl(ActionEvent event) {
-        // MainViews.changeScreen("sessionControl", null);
+        MainViews.changeScreen("sessionControl", null);
     }
 
     /**

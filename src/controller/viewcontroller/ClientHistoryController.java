@@ -98,7 +98,6 @@ public class ClientHistoryController implements Initializable {
 
             Button botaoAcessar = new Button("Registro");
             botaoAcessar.setUserData(ticket);
-            //botaoAcessar.setGraphic(imageView); 
             botaoAcessar.setStyle("-fx-background-color:  #D92550; -fx-padding: 0; -fx-border-color:  #D92550; -fx-text-fill: #f2e8c6; -fx-font-weight: bold;");                  
 
             botaoAcessar.setOnAction(event -> {
