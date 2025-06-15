@@ -123,6 +123,7 @@ public class ClientHistoryController implements Initializable {
             botaoAcessar.setStyle("-fx-background-color:  #D92550; -fx-padding: 0; -fx-border-color:  #D92550; -fx-text-fill: #f2e8c6; -fx-font-weight: bold;");                  
 
             botaoAcessar.setOnAction(event -> {
+                resetScreen();
                 Ticket ticketSelecionado = (Ticket) ((Button) event.getSource()).getUserData();
                 MainViews.changeScreen("purchaseRecord", ticketSelecionado);
             });

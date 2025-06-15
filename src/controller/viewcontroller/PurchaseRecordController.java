@@ -82,7 +82,7 @@ public class PurchaseRecordController implements Initializable {
      */
     @FXML
     void backPurchase(ActionEvent event) {
-        MainViews.changeScreen("clientHistory", null);
+        MainViews.changeScreen("clientHistory", ticket.getClient());
     }
 
     /**
