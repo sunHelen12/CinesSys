@@ -10,8 +10,8 @@ import java.util.List;
 
 /**
  * Classe da tela principal do sistema onde é possível navegar entre as telas.
+ * * @author Maria Eduarda Campos
  * 
- * @author Maria Eduarda Campos
  * @since 31-05-2025
  * @version 2
  */
@@ -35,18 +35,23 @@ public class MainViews extends Application {
     private static Scene roomOccupationScene;
     private static Scene sellTicketScene;
     private static Scene sessionControlScene;
+    private static Scene updateSessionScene;
+    private static Scene popUpRegisteredSaleScene;
+    private static Scene popUpDiscountScene;
+    private static Scene popUpSessionScene;
+    private static Scene oversoldScene;
 
     /**
      * Inicializa a aplicação.
+     * * @param primaryStage esta é a tela principal da aplicação.
      * 
-     * @param primaryStage esta é a tela principal da aplicação.
-     * @throws Exception 
+     * @throws Exception
      */
     @Override
     public void start(Stage primaryStage) throws Exception {
         stage = primaryStage;
         primaryStage.setTitle("CineSys");
-        
+
         FXMLLoader loaderHomeScreen = new FXMLLoader(getClass().getResource("/gui/HomeScreen.fxml"));
         FXMLLoader loaderChangeClient = new FXMLLoader(getClass().getResource("/gui/ChangeClient.fxml"));
         FXMLLoader loaderClientControl = new FXMLLoader(getClass().getResource("/gui/ClientControl.fxml"));
@@ -65,11 +70,15 @@ public class MainViews extends Application {
         FXMLLoader loaderSellTicket = new FXMLLoader(getClass().getResource("/gui/SellTicket.fxml"));
         FXMLLoader loaderSessionControl = new FXMLLoader(getClass().getResource("/gui/SessionControl.fxml"));
         FXMLLoader loaderPayPerSession = new FXMLLoader(getClass().getResource("/gui/PayPerSession.fxml"));
-
+        FXMLLoader loaderUpdateSession = new FXMLLoader(getClass().getResource("/gui/UpdateSession.fxml"));
+        FXMLLoader loaderPopUpRegisteredSale = new FXMLLoader(getClass().getResource("/gui/PopUpRegisteredSale.fxml"));
+        FXMLLoader loaderPopUpDiscount = new FXMLLoader(getClass().getResource("/gui/PopUpDiscount.fxml"));
+        FXMLLoader loaderPopUpSession = new FXMLLoader(getClass().getResource("/gui/PopUpSession.fxml"));
+        FXMLLoader loaderOversold = new FXMLLoader(getClass().getResource("/gui/Oversold.fxml"));
 
         Parent homeScreen = loaderHomeScreen.load();
         homeScreenScene = new Scene(homeScreen);
-        
+
         Parent changeClient = loaderChangeClient.load();
         changeClientScene = new Scene(changeClient);
 
@@ -120,19 +129,36 @@ public class MainViews extends Application {
 
         Parent payPerSession = loaderPayPerSession.load();
         payPerSessionScene = new Scene(payPerSession);
-        
+
+        Parent updateSession = loaderUpdateSession.load();
+        updateSessionScene = new Scene(updateSession);
+
+        Parent popUpRegisteredSale = loaderPopUpRegisteredSale.load();
+        popUpRegisteredSaleScene = new Scene(popUpRegisteredSale);
+
+        Parent popUpDiscount = loaderPopUpDiscount.load();
+        popUpDiscountScene = new Scene(popUpDiscount);
+
+        Parent popUpSession = loaderPopUpSession.load();
+        popUpSessionScene = new Scene(popUpSession);
+
+        Parent oversold = loaderOversold.load();
+        oversoldScene = new Scene(oversold);
+
         primaryStage.setScene(homeScreenScene);
         primaryStage.centerOnScreen();
         primaryStage.show();
-    }    
+    }
 
     /**
-     * Troca entre telas da aplicação quando o usuário clica em um botão que leva a outra tela.
+     * Troca entre telas da aplicação quando o usuário clica em um botão que leva a
+     * outra tela.
+     * * @param screen é a tela que o usuário está.
      * 
-     * @param screen é a tela que o usuário está.
-     * @param userDataObject é o objeto que contém os dados que serão passados para a tela.
+     * @param userDataObject é o objeto que contém os dados que serão passados para
+     *                       a tela.
      */
-    public static void changeScreen(String screen, Object userDataObject){
+    public static void changeScreen(String screen, Object userDataObject) {
         switch (screen) {
             case "changeClient":
                 stage.setScene(changeClientScene);
@@ -141,7 +167,7 @@ public class MainViews extends Application {
             case "purchaseRecord":
                 stage.setScene(purchaseRecordScene);
                 notifyAllListerners("purchaseRecord", userDataObject);
-              break;
+                break;
             case "clientControl":
                 stage.setScene(clientControlScene);
                 notifyAllListerners("clientControl", userDataObject);
@@ -205,56 +231,66 @@ public class MainViews extends Application {
             case "payPerSession":
                 stage.setScene(payPerSessionScene);
                 notifyAllListerners("payPerSession", userDataObject);
+                break;
+            case "updateSession":
+                stage.setScene(updateSessionScene);
+                notifyAllListerners("updateSession", userDataObject);
+                break;
+            case "popUpRegisteredSale":
+                stage.setScene(popUpRegisteredSaleScene);
+                notifyAllListerners("popUpRegisteredSale", userDataObject);
+                break;
+            case "popUpDiscount":
+                stage.setScene(popUpDiscountScene);
+                notifyAllListerners("popUpDiscount", userDataObject);
+                break;
+            case "popUpSession":
+                stage.setScene(popUpSessionScene);
+                notifyAllListerners("popUpSession", userDataObject);
+                break;
+            case "oversold":
+                stage.setScene(oversoldScene);
+                notifyAllListerners("oversold", userDataObject);
+                break;
             default:
                 break;
-        }        
+        }
     }
 
     /**
      * método principal da classe
-     * 
-     * @param args
+     * * @param args
      */
     public static void main(String[] args) {
         launch(args);
     }
 
-    //Processamento de Dados na Troca de Tela
+    // Processamento de Dados na Troca de Tela
     private static List<OnChangeScreen> listeners = new ArrayList<>();
-
 
     /**
      * Interface para processamento de dados na troca de tela
      */
-    public static interface OnChangeScreen{
+    public static interface OnChangeScreen {
         void onScreenChanged(String newScreen, Object userDataObject);
     }
 
     /**
      * Adiciona um novo listener para a troca de tela
-     * 
-     * @param newListener novo listener
+     * * @param newListener novo listener
      */
-    public static void addOnChangeScreenListener(OnChangeScreen newListener){
+    public static void addOnChangeScreenListener(OnChangeScreen newListener) {
         listeners.add(newListener);
     }
 
     /**
      * Notifica todos os listeners sobre a troca de tela
+     * * @param newScreen Nova tela
      * 
-     * @param newScreen Nova tela
      * @param userDataObject objeto de dados da troca de tela
      */
-    private static void notifyAllListerners(String newScreen, Object userDataObject){
-        for(OnChangeScreen l:listeners)
+    private static void notifyAllListerners(String newScreen, Object userDataObject) {
+        for (OnChangeScreen l : listeners)
             l.onScreenChanged(newScreen, userDataObject);
     }
 }
-
-//compilar
-// javac -d out --module-path "C:\javafx-sdk-21.0.7\lib" --add-modules javafx.controls,javafx.fxml src/controller/viewcontroller/MainViews.java
-//executar
-// java --module-path "C:\javafx-sdk-21.0.7\lib" --add-modules javafx.controls,javafx.fxml -cp "out;src" controller.viewcontroller.MainViews
-
-//compilar tudo
-// javac -d out --module-path "C:\javafx-sdk-21.0.7\lib" --add-modules javafx.controls,javafx.fxml (Get-ChildItem -Recurse -Filter *.java -Path src).FullName
