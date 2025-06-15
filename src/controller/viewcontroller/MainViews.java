@@ -301,4 +301,4 @@ public class MainViews extends Application {
 // javac -d out --module-path "C:\javafx-sdk-21.0.7\lib" --add-modules javafx.controls,javafx.fxml (Get-ChildItem -Recurse -Filter *.java -Path src).FullName
 
 //executar
-//java--module-path"C:\javafx-sdk-21.0.7\lib"--add-modules javafx.controls,javafx.fxml-cp"out;src"controller.viewcontroller.MainViews
+//java--module-path "C:\javafx-sdk-21.0.7\lib"--add-modules javafx.controls,javafx.fxml-cp "out;src"controller.viewcontroller.MainViews

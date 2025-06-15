@@ -7,14 +7,18 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
+import controller.viewcontroller.SessionControlController;
+import models.Session;
+import controller.business.SessionController;
 
 public class UpdateSessionController implements Initializable {
+    private static Session session;
 
     @FXML
     private TextField txtDate;
 
     @FXML
-    private TextField txtMovie;
+    private TextField txtMovieId;
 
     @FXML
     private TextField txtPrice;
@@ -35,10 +39,24 @@ public class UpdateSessionController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // Muda a cor do texto e do fundo dos campos de texto
         txtDate.setStyle("-fx-text-fill: white !important; -fx-background-color: #03002C !important;");
-        txtMovie.setStyle("-fx-text-fill: white !important; -fx-background-color: #03002C !important;");
+        txtMovieId.setStyle("-fx-text-fill: white !important; -fx-background-color: #03002C !important;");
         txtPrice.setStyle("-fx-text-fill: white !important; -fx-background-color: #03002C !important;");
         txtRoom.setStyle("-fx-text-fill: white !important; -fx-background-color: #03002C !important;");
         txtTime.setStyle("-fx-text-fill: white !important; -fx-background-color: #03002C !important;");
+
+        MainViews.addOnChangeScreenListener(new MainViews.OnChangeScreen() {
+            @Override
+            public void onScreenChanged(String newScreen, Object userDataObject) {
+                if (userDataObject instanceof Session) {
+                    session = (Session) userDataObject;
+                    txtDate.setText(session.getBirthday());
+                    txtTime.setText(session.getEmail());
+                    txtMovieId.setText(session.getName());
+                    txtRoom.setText(session.getName());
+                    txtPrice.setText(session.getName());
+                }
+            }
+        });
     }
 
     @FXML
@@ -51,10 +69,16 @@ public class UpdateSessionController implements Initializable {
         String date = txtDate.getText().trim();
         String time = txtTime.getText().trim();
         String room = txtRoom.getText().trim();
-        String movie = txtMovie.getText().trim();
+        String movie = txtMovieId.getText().trim();
         String ticketPrice = txtPrice.getText().trim();
 
-
+        SessionController.updateSession(session.getId(), date, time, room, movie, ticketPrice);
+        txtDate.clear();
+        txtTime.clear();
+        txtMovieId.clear();
+        txtRoom.clear();
+        txtPrice.clear();
+        SessionControlController.mostrarPopUp("alterada");
     }
 
 }

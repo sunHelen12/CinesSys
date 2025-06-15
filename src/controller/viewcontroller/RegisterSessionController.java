@@ -88,7 +88,7 @@ public class RegisterSessionController implements Initializable {
             txtTime.clear();
             txtRoom.clear();
             txtPrice.clear();
-            SessionControlController.mostrarPopUp("cadastrado");
+            SessionControlController.mostrarPopUp("cadastrada");
         }
     }
 
