@@ -34,11 +34,9 @@ public class SaleControllerTest {
      */
     @Before
     public void setUp() {
-        // Limpa os repositórios de dados para garantir a independência dos testes
         ClientController.removeAllClients();
         SessionController.removeAllSessions();
         MovieController.removeAllMovies();
-        // A linha RoomController.reset() foi removida conforme sua solicitação
 
         // Adiciona e atribui o cliente para ser usado nos testes
         ClientController.addClient("João", "joao@email.com", "12-10-2003");
@@ -48,19 +46,15 @@ public class SaleControllerTest {
         this.movie = new Movie("Matrix", "Sci-Fi", 136, "R", "Neo discovers reality.");
         MovieController.addMovie(movie.getTitle(), movie.getGenre(), movie.getDuration(), movie.getClassification(), movie.getSynopsis());
 
-        // --- CORREÇÃO APLICADA AQUI ---
-
-        // 1. Chama o método 'addSession' (que é void). Ele cria e salva a sessão, mas não a retorna.
         SessionController.addSession(
-                "15-06-2025", // Usando data fixa para consistência do teste
-                "14:00",      // Usando hora fixa
-                RoomController.getRoomById(1), // Pega a sala
+                "15-06-2025"
+                "14:00",
+                RoomController.getRoomById(1),
                 this.movie,
                 20.0,
-                10 // Define que esta sessão específica tem 10 assentos disponíveis
+                10
         );
 
-        // 2. Busca a sessão que acabou de ser adicionada, pegando o último elemento da lista geral.
         GenericDynamicList<Session> allSessions = SessionController.getAllSessions();
         this.session = allSessions.get(allSessions.size() - 1);
     }
