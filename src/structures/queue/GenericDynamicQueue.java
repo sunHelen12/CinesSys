@@ -173,7 +173,6 @@ public class GenericDynamicQueue<T> implements Queueable<T>, Iterable<T> {
      */
     @Override
     public Iterator<T> iterator() {
-        // Sua implementação do Iterator está correta!
         return new Iterator<T>() {
             private Node<T> current = headPointer;
 
@@ -184,7 +183,7 @@ public class GenericDynamicQueue<T> implements Queueable<T>, Iterable<T> {
 
             @Override
             public T next() {
-                if (!hasNext()) { // Verifica usando hasNext() para consistência
+                if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
                 T value = current.getElement();
