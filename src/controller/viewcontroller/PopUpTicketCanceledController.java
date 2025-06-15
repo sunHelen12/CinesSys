@@ -31,7 +31,7 @@ public class PopUpTicketCanceledController {
      * Fecha o pop-up e volta para a tela de venda.
      */
     @FXML
-    private void backToSellTicket() {
+    private void backToClientHistory() {
         MainViews.changeScreen("clientHistory", null);
         stage.close();
     }

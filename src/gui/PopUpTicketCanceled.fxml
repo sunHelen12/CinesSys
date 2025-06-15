@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="350.0" maxWidth="500.0" minHeight="350.0" minWidth="500.0" prefHeight="350.0" prefWidth="500.0" style="-fx-background-color: #03002C; -fx-border-radius: 7px;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.viewcontroller.PopUpRegisteredSaleController">
+<AnchorPane maxHeight="350.0" maxWidth="500.0" minHeight="350.0" minWidth="500.0" prefHeight="350.0" prefWidth="500.0" style="-fx-background-color: #03002C; -fx-background-radius: 7px; -fx-border-radius: 7px;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.viewcontroller.PopUpRegisteredSaleController">
     <children>
         <Button fx:id="backButton" layoutX="337.0" layoutY="265.0" mnemonicParsing="false" onAction="#backToClientHistory" prefHeight="41.0" prefWidth="125.0" style="-fx-background-color: #BB0029; -fx-font-weight: bold;" text="Voltar" textFill="WHITE">
             <font>
