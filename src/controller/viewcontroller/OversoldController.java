@@ -22,11 +22,7 @@ public class OversoldController {
      */
     @FXML
     private void handleBack() {
-        // Fecha a janela atual
-        Stage stage = (Stage) backButton.getScene().getWindow();
-        stage.close();
-
-        // Volta para a tela de venda
-        MainViews.changeScreen("sellTicket", null);
+       // Volta para a tela de venda
+        MainViews.changeScreen("sessionControl", null);
     }
 }

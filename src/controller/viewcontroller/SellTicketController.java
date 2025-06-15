@@ -93,9 +93,9 @@ public class SellTicketController {
         } catch (IllegalArgumentException e) {
             // Redireciona para tela de "lotado" se for o caso
             MainViews.changeScreen("oversold", null);
-        } catch (Exception e) {
-            e.printStackTrace();
-            showAlert("Erro inesperado.");
+        } catch (RuntimeException e) {
+            // Redireciona para tela de "lotado" se for o caso
+            MainViews.changeScreen("oversold", null);
         }
     }
 
