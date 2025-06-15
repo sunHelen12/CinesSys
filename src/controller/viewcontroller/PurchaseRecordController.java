@@ -14,6 +14,11 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import models.*;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
 
 /**
  * Classe responsável por controlar a tela de registro de compras.
@@ -65,7 +70,7 @@ public class PurchaseRecordController implements Initializable {
      */
     public static void mostrarPopUpCancellTicket() {
         try {
-            FXMLLoader loader = new FXMLLoader(SellTicketController.class.getResource("/gui/PopUpTicketCanceled.fxml"));
+            FXMLLoader loader = new FXMLLoader(PurchaseRecordController.class.getResource("/gui/PopUpTicketCanceled.fxml"));
             Parent root = loader.load();
 
             PurchaseRecordController controller = loader.getController();
@@ -117,7 +122,7 @@ public class PurchaseRecordController implements Initializable {
     @FXML
     void cancelTicket(ActionEvent event) {
         SaleController.cancelSale(ticket.getId());
-
+        mostrarPopUpCancellTicket();
     }
 
     /**
