@@ -1,5 +1,8 @@
 package controller.viewcontroller;
 
+import com.sun.tools.javac.Main;
+import controller.business.SaleController;
+import controller.business.TicketController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -113,7 +116,8 @@ public class PurchaseRecordController implements Initializable {
      */
     @FXML
     void cancelTicket(ActionEvent event) {
-        //controller ticket
+        SaleController.cancelSale(ticket.getId());
+
     }
 
     /**
