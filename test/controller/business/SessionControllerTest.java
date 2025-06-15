@@ -6,37 +6,61 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
+/**
+ * Classe de testes unitários para a classe SessionController.
+ *
+ * @author Vinícius Nunes de Andrade
+ * @author Kaique Silva sousa
+ * @version 1.0
+ * @since 15-06-2025
+ */
 public class SessionControllerTest {
 
+    /**
+     * Prepara o ambiente para cada teste, limpando o repositório
+     * e resetando o gerador de IDs para garantir a independência dos testes.
+     */
     @Before
     public void setup() {
         SessionController.removeAllSessions();
         Session.resetIdGenerator();
     }
 
+    /**
+     * Testa se o repositório de sessões inicia vazio.
+     */
     @Test
     public void testConstructorInitialState() {
         assertEquals(0, SessionController.getAllSessions().size());
     }
 
+    /**
+     * Testa a adição bem-sucedida de uma nova sessão.
+     */
     @Test
     public void testAddSession() {
         SessionController.addSession("12-10-2025", "14:00", RoomController.getRoomById(1), new Movie("Inception", "Sci-Fi", 148, "PG-13", "A mind-bending thriller."), 30.0);
         assertEquals(1, SessionController.getAllSessions().size());
     }
 
+    /**
+     * Testa se a tentativa de adicionar uma sessão na mesma sala, data
+     * e horário é bloqueada, lançando a exceção esperada.
+     */
     @Test(expected = IllegalArgumentException.class)
     public void testAddSessionWithSameDate(){
-        
         String date = "12-10-2025";
         String time = "14:00";
         SessionController.addSession(date, time, RoomController.getRoomById(1), new Movie("Inception", "Sci-Fi", 148, "PG-13", "A mind-bending thriller."), 30.0);
         SessionController.addSession(date, time, RoomController.getRoomById(1), new Movie("Inception", "Sci-Fi", 148, "PG-13", "A mind-bending thriller."), 30.0);
     }
 
+    /**
+     * Testa se é permitido adicionar sessões na mesma sala e horário,
+     * mas em datas diferentes.
+     */
     @Test
     public void testAddSessionWithDifferentDatesSameRoomAndTime() {
-        // Deve permitir sessões no mesmo horário e sala em datas diferentes
         String time = "14:00";
         Movie movie = new Movie("Movie", "Genre", 120, "PG", "Description");
 
@@ -46,12 +70,18 @@ public class SessionControllerTest {
         assertEquals(2, SessionController.getAllSessions().size());
     }
 
+    /**
+     * Testa se a busca por todas as sessões retorna uma lista vazia
+     * quando nenhuma sessão foi adicionada.
+     */
     @Test
     public void testGetAllSessionsWhenNoSessionsAdded() {
-        // Estado inicial: nenhuma sessão adicionada
         assertTrue(SessionController.getAllSessions().isEmpty());
     }
 
+    /**
+     * Testa a adição de múltiplas sessões em sequência.
+     */
     @Test
     public void testAddMultipleSessions() {
         Movie movie = new Movie("Inception", "Sci-Fi", 148, "PG-13", "A mind-bending thriller.");
@@ -61,6 +91,9 @@ public class SessionControllerTest {
         assertEquals(5, SessionController.getAllSessions().size());
     }
 
+    /**
+     * Testa a busca de uma sessão específica pelo seu ID.
+     */
     @Test
     public void testGetSessionById() {
         SessionController.addSession("12-10-2025", "14:00", RoomController.getRoomById(4), new Movie("Gladiator", "Action", 155, "R", "Roman general story"), 40.0);
@@ -68,12 +101,18 @@ public class SessionControllerTest {
         assertEquals("Gladiator", SessionController.getSessionById(session.getId()).getMovie().getTitle());
     }
 
+    /**
+     * Testa se a busca por um ID inválido (zero) retorna nulo.
+     */
     @Test
     public void testGetSessionByInvalidId() {
         Session session = SessionController.getSessionById(0);
         assertNull(session);
     }
 
+    /**
+     * Testa a atualização bem-sucedida dos dados de uma sessão existente.
+     */
     @Test
     public void testUpdateSessionSuccessfully() {
         Movie movie = new Movie("Original", "Drama", 100, "PG", "Original movie.");
@@ -90,12 +129,18 @@ public class SessionControllerTest {
         assertEquals(40.0, updatedSession.getTicketValue(), 0.01);
     }
 
+    /**
+     * Testa se a tentativa de atualizar uma sessão que não existe lança uma exceção.
+     */
     @Test(expected = IllegalArgumentException.class)
     public void testUpdateNonExistentSession() {
         Movie movie = new Movie("Teste", "Drama", 90, "PG", "Teste");
         SessionController.updateSession(999, "12-10-2025", "14:00", RoomController.getRoomById(3), movie, 50.0);
     }
 
+    /**
+     * Testa a remoção bem-sucedida de uma sessão pelo seu ID.
+     */
     @Test
     public void testRemoveSessionByIdSuccessfully() {
         Movie movie = new Movie("Para Remover", "Suspense", 110, "PG-13", "Remover.");
@@ -107,6 +152,9 @@ public class SessionControllerTest {
         assertEquals(0, SessionController.getAllSessions().size());
     }
 
+    /**
+     * Testa se a tentativa de remover uma sessão com ID inválido lança uma exceção.
+     */
     @Test(expected = IllegalArgumentException.class)
     public void testRemoveSessionWithInvalidId() {
         SessionController.removeSession(0);
