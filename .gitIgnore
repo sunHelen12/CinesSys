@@ -3,6 +3,7 @@ lib/
 doc/
 out/
 .idea/
+sources.txt
 CinesSys.iml
 teste.puml
 *.class
