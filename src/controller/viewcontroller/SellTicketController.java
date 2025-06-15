@@ -30,20 +30,9 @@ public class SellTicketController {
 
     // Componentes da interface gráfica (FXML)
 
-    @FXML private Label movieName;                        // Nome do filme exibido
-    @FXML private Label room2DateTime;                    // Data/hora da sessão sala 2 (1ª exibição)
-    @FXML private Label room3DateTime;                    // Data/hora da sessão sala 3
-    @FXML private Label room2DateTime2;                   // Data/hora da sessão sala 2 (2ª exibição)
-    @FXML private Label seatsFreeTotalRoom2;              // Total de assentos livres na sala 2 (1ª exibição)
-    @FXML private Label seatsFreeTotalRoom3;              // Total de assentos livres na sala 3
-    @FXML private Label seatsFreeTotalRoom2_2;            // Total de assentos livres na sala 2 (2ª exibição)
-    @FXML private RadioButton radioRoom2;                 // Opção de seleção sala 2 (1ª)
-    @FXML private RadioButton radioRoom3;                 // Opção de seleção sala 3
-    @FXML private RadioButton radioRoom2_2;               // Opção de seleção sala 2 (2ª)
     @FXML private TextField clientId;                     // Campo para digitar o ID do cliente
     @FXML private TextField paymentMethod;                // Campo para informar o método de pagamento
-    @FXML private Button saleRegister;                    // Botão para registrar a venda
-    @FXML private Button backButton;                      // Botão para voltar para a tela anterior
+
 
     private final ToggleGroup radioGroup = new ToggleGroup(); // Agrupando os radio buttons
 
@@ -56,40 +45,6 @@ public class SellTicketController {
      */
     @FXML
     public void initialize() {
-        // Muda a cor do texto e do fundo dos campos de texto
-        clientId.setStyle("-fx-text-fill: white !important; -fx-background-color: #03002C !important;");
-        paymentMethod.setStyle("-fx-text-fill: white !important; -fx-background-color: #03002C !important;");
-
-        // Agrupando os radio buttons pra garantir que só um possa ser selecionado por vez
-        radioRoom2.setToggleGroup(radioGroup);
-        radioRoom3.setToggleGroup(radioGroup);
-        radioRoom2_2.setToggleGroup(radioGroup);
-
-        // Obtém todas as sessões disponíveis
-        sessions = Arrays.asList((Session[]) SessionController.getAllSessions().getAll());
-
-        if (sessions != null && sessions.size() >= 3) {
-            // Formata e exibe infos das três sessões
-            room2DateTime.setText(formatDateTime(sessions.get(0)));
-            room3DateTime.setText(formatDateTime(sessions.get(1)));
-            room2DateTime2.setText(formatDateTime(sessions.get(2)));
-
-            seatsFreeTotalRoom2.setText(sessions.get(0).getTotalAvailableSeats() + " disponíveis");
-            seatsFreeTotalRoom3.setText(sessions.get(1).getTotalAvailableSeats() + " disponíveis");
-            seatsFreeTotalRoom2_2.setText(sessions.get(2).getTotalAvailableSeats() + " disponíveis");
-
-            // Mostra o nome do filme (assumindo que seja o mesmo nas 3 sessões)
-            movieName.setText(sessions.get(0).getMovie().getTitle());
-        } else {
-            // Se não tiver sessões, limpa tudo
-            room2DateTime.setText("");
-            room3DateTime.setText("");
-            room2DateTime2.setText("");
-            seatsFreeTotalRoom2.setText("");
-            seatsFreeTotalRoom3.setText("");
-            seatsFreeTotalRoom2_2.setText("");
-            movieName.setText("");
-        }
     }
 
     /**
@@ -146,10 +101,6 @@ public class SellTicketController {
      * @return A sessão escolhida, ou null se nenhuma estiver selecionada.
      */
     private Session getSelectedSession() {
-        if (sessions == null || sessions.size() < 3) return null;
-        if (radioRoom2.isSelected()) return sessions.get(0);
-        if (radioRoom3.isSelected()) return sessions.get(1);
-        if (radioRoom2_2.isSelected()) return sessions.get(2);
         return null;
     }
 

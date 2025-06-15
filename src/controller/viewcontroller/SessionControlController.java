@@ -270,20 +270,10 @@ public class SessionControlController implements Initializable, MainViews.OnChan
      */
     @FXML
     void ticket(ActionEvent event) {
-        if (selectedSessions.isEmpty()) {
-            System.out.println("Nenhuma sessão selecionada para vender ingressos.");
-            mostrarPopUp("Selecione uma sessão para vender um ingresso.");
-            return; // Sai do método se nenhuma sessão foi selecionada
-        }
-        if (selectedSessions.size() > 1) {
-            System.out.println("Múltiplas sessões selecionadas. Por favor, selecione apenas uma.");
-            // Opcional: Mostrar um pop-up ou alerta.
-            mostrarPopUp("Por favor, selecione apenas UMA sessão para continuar.");
-            return; // Sai do método se mais de uma sessão foi selecionada
+        if (selectedSessions.isEmpty() || selectedSessions.size() > 1) {
+            return;
         }
         Session sessaoParaVenda = selectedSessions.get(0);
-
-        System.out.println("Navegando para a tela de venda de ingressos para a sessão do filme: " + sessaoParaVenda.getMovie().getTitle());
         MainViews.changeScreen("sellTicket", sessaoParaVenda);
     }
 
