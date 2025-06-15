@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.event.ActionEvent;
+import javafx.application.Platform;
 
 /**
  * Classe referente ao controle da interface "Tela Principal" presente na
@@ -25,6 +26,16 @@ public class HomeScreenController {
     @FXML
     void openClientControl(ActionEvent event) {
         MainViews.changeScreen("clientControl", null); 
+    }
+
+    /**
+     * Método do botão que fecha o programa.
+     * 
+     * @param event Evento ao apertar o botão, caso necessário.
+     */
+    @FXML
+    void closeCineSys(ActionEvent event) {
+        Platform.exit();
     }
 
     /**

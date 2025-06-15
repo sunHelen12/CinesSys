@@ -33,7 +33,7 @@ public class PopUpRegisteredSaleController {
      */
     @FXML
     private void backToSellTicket() {
-        MainViews.changeScreen("controlSession", null);
+        MainViews.changeScreen("sessionControl", null);
         stage.close();
     }
 }

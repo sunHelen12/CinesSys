@@ -72,9 +72,9 @@ public class SellTicketController {
 
             Client client = ClientController.getClientById(clientID);
 
-            // Valida se cliente e sessão foram encontrados
-            if (client == null || session == null) {
-                showAlert("Selecione um cliente e uma sessão válidos.");
+            // Valida se cliente foi encontrado
+            if (client == null ) {
+                showAlert("Selecione um cliente válido.");
                 return;
             }
 
@@ -83,16 +83,19 @@ public class SellTicketController {
 
             // Mostra o desconto aplicado
             double discount = ClientController.calculateDiscount(clientID);
+            paymentMethod.clear();
+            clientId.clear();
             showDiscountPopup(discount);
+
 
         } catch (NumberFormatException e) {
             showAlert("ID do cliente inválido.");
         } catch (IllegalArgumentException e) {
             // Redireciona para tela de "lotado" se for o caso
             MainViews.changeScreen("oversold", null);
-        } catch (Exception e) {
-            e.printStackTrace();
-            showAlert("Erro inesperado.");
+        } catch (RuntimeException e) {
+            // Redireciona para tela de "lotado" se for o caso
+            MainViews.changeScreen("oversold", null);
         }
     }
 
