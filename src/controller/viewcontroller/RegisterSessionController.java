@@ -8,6 +8,7 @@ import controller.business.ClientController;
 import controller.business.MovieController;
 import controller.business.RoomController;
 import controller.business.SessionController;
+import controller.viewcontroller.SessionControlController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -27,7 +28,7 @@ public class RegisterSessionController implements Initializable {
     private TextField txtDate;
 
     @FXML
-    private TextField txtMovie;
+    private TextField txtMovieId;
 
     @FXML
     private TextField txtPrice;
@@ -38,18 +39,20 @@ public class RegisterSessionController implements Initializable {
     @FXML
     private TextField txtTime;
 
+
     /**
+     * Add commentMore actions
      * inicializa mudando a cor do texto e do fundo dos campos de texto
      * 
      * @param url O URL de onde o controlador foi carregado.
-     * @param rb O ResourceBundle associado ao controlador.
+     * @param rb  O ResourceBundle associado ao controlador.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // Muda a cor do texto e do fundo dos campos de texto
-        //txtDate.setStyle("-fx-text-fill: white !important; -fx-background-color: #03002C !important;");
-        //txtMovie.setStyle("-fx-text-fill: white !important; -fx-background-color: #03002C !important;");
-        //txtPrice.setStyle("-fx-text-fill: white !important; -fx-background-color: #03002C !important;");
+        txtDate.setStyle("-fx-text-fill: white !important; -fx-background-color: #03002C !important;");
+        txtMovieId.setStyle("-fx-text-fill: white !important; -fx-background-color: #03002C !important;");
+        txtPrice.setStyle("-fx-text-fill: white !important; -fx-background-color: #03002C !important;");
     }
 
     /**
@@ -72,19 +75,20 @@ public class RegisterSessionController implements Initializable {
         String date = txtDate.getText().trim();
         String time = txtTime.getText().trim();
         String room = txtRoom.getText().trim();
-        String movie = txtMovie.getText().trim();
+        String movie = txtMovieId.getText().trim();
+        int id = Integer.parseInt(movie);
         String ticketPrice = txtPrice.getText().trim();
 
         if (!date.isEmpty() && !time.isEmpty() && !room.isEmpty() && !movie.isEmpty() && !ticketPrice.isEmpty()) {
             int roomId = Integer.parseInt(room);
             double ticketPriceValue = Double.parseDouble(ticketPrice);
-            SessionController.addSession(date, time, RoomController.getRoomById(roomId), MovieController.getMovieByName(movie), ticketPriceValue);
-            txtMovie.clear();
+            SessionController.addSession(date, time, RoomController.getRoomById(roomId), MovieController.getMovieById(id), ticketPriceValue);
+            txtMovieId.clear();
             txtDate.clear();
             txtTime.clear();
             txtRoom.clear();
             txtPrice.clear();
-            ClientControlController.mostrarPopUp("cadastrado");
+            SessionControlController.mostrarPopUp("cadastrado");
         }
     }
 

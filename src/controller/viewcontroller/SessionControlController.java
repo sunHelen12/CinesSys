@@ -28,32 +28,46 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.TableCell;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import javafx.stage.Stage;
 import controller.viewcontroller.PopUpSessionController;
-import structures.list.GenericDynamicList;
+import structures.list.GenericDynamicList; 
+import java.util.stream.Collectors;
 
-public class SessionControlController implements Initializable, MainViews.OnChangeScreen{
-    
-    @FXML private TableView<Session> table;
-    @FXML private TableColumn<Session, Boolean> selectColumn;
-    @FXML private TableColumn<Session, String> classification;
-    @FXML private TableColumn<Session, String> room;
-    @FXML private TableColumn<Session, String> duration;
-    @FXML private TableColumn<Session, String> movieName;
-    @FXML private TableColumn<Session, String> numberSeats;
+public class SessionControlController implements Initializable, MainViews.OnChangeScreen {
 
-    @FXML private Label date1;
-    @FXML private Label date2;
-    @FXML private Label date3;
-    @FXML private Label date4;
+    @FXML
+    private TableView<Session> table;
+    @FXML
+    private TableColumn<Session, Boolean> selectColumn;
+    @FXML
+    private TableColumn<Session, String> classification;
+    @FXML
+    private TableColumn<Session, String> room;
+    @FXML
+    private TableColumn<Session, String> duration;
+    @FXML
+    private TableColumn<Session, String> movieName;
+    @FXML
+    private TableColumn<Session, String> numberSeats;
+
+    @FXML
+    private Label date1;
+    @FXML
+    private Label date2;
+    @FXML
+    private Label date3;
+    @FXML
+    private Label date4;
 
     private final ObservableList<Session> selectedSessions = FXCollections.observableArrayList();
     private ObservableList<Session> sessionsForTable;
     private final Map<Session, SimpleBooleanProperty> sessionSelectionMap = new HashMap<>();
+    private List<Session> allSessions; 
 
     /**
      * Inicializa o controlador.
-     * 
+     *
      * @param url            URL de localização do arquivo FXML, se necessário.
      * @param resourceBundle Conjunto de recursos localizados, se necessário.
      */
@@ -74,8 +88,10 @@ public class SessionControlController implements Initializable, MainViews.OnChan
         sessionsForTable = FXCollections.observableArrayList();
 
         room.setCellValueFactory(cell -> new SimpleStringProperty(String.valueOf((cell.getValue().getRoom().getId()))));
-        numberSeats.setCellValueFactory(cell -> new SimpleStringProperty(String.valueOf(cell.getValue().getRoom().getTotalSeat())));
-        classification.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getMovie().getClassification()));
+        numberSeats.setCellValueFactory(
+                cell -> new SimpleStringProperty(String.valueOf(cell.getValue().getRoom().getTotalSeat())));
+        classification
+                .setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getMovie().getClassification()));
         movieName.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getMovie().getTitle()));
         duration.setCellValueFactory(cell -> {
             int durationMin = cell.getValue().getMovie().getDuration();
@@ -140,34 +156,54 @@ public class SessionControlController implements Initializable, MainViews.OnChan
         });
 
         MainViews.addOnChangeScreenListener(this);
+        GenericDynamicList<Session> tempGenericList = SessionController.getAllSessions();
+        if (tempGenericList != null) {
+            this.allSessions = new ArrayList<>();
+            for (Session session : tempGenericList) {
+                this.allSessions.add(session);
+            }
+        } else {
+            this.allSessions = new ArrayList<>(); 
+        }
         refreshTable();
     }
 
     /**
      * Chama o refreshTable() toda vez que a tela for chamada
-     * 
+     *
      * @param newScreen      tela de mudança
      * @param userDataObject dados passados
      */
     @Override
     public void onScreenChanged(String newScreen, Object userDataObject) {
         if (newScreen.equals("sessionControl")) {
+            GenericDynamicList<Session> tempGenericList = SessionController.getAllSessions();
+            if (tempGenericList != null) {
+                this.allSessions = new ArrayList<>();
+                for (Session session : tempGenericList) {
+                    this.allSessions.add(session);
+                }
+            } else {
+                this.allSessions = new ArrayList<>();
+            }
             refreshTable();
         }
+    }
+
+    private void refreshTable() {
+        refreshTable(this.allSessions != null ? this.allSessions : new ArrayList<>());
     }
 
     /**
      * Atualiza a tabela de sessões.
      */
-    private void refreshTable() {
+    private void refreshTable(List<Session> sessionsToDisplay) {
         List<Session> currentlySelectedCopy = new ArrayList<>(selectedSessions);
         selectedSessions.clear();
         sessionsForTable.clear();
 
-        GenericDynamicList<Session> currentSessionsFromRepo = SessionController.getAllSessions();
-
-        if (currentSessionsFromRepo != null) {
-            for (Session session : currentSessionsFromRepo) {
+        if (sessionsToDisplay != null) {
+            for (Session session : sessionsToDisplay) {
                 sessionsForTable.add(session);
 
                 SimpleBooleanProperty prop = sessionSelectionMap.computeIfAbsent(session, k -> {
@@ -194,6 +230,43 @@ public class SessionControlController implements Initializable, MainViews.OnChan
         }
         table.setItems(sessionsForTable);
         table.refresh();
+    }
+
+    /**
+     * Filtra e exibe as sessões para a data fornecida.
+     *
+     * @param date A data para filtrar as sessões.
+     */
+    private void filterAndDisplaySessions(LocalDate date) {
+        if (this.allSessions == null || this.allSessions.isEmpty()) { 
+            GenericDynamicList<Session> tempGenericList = SessionController.getAllSessions();
+            if (tempGenericList != null) {
+                this.allSessions = new ArrayList<>();
+                for (Session session : tempGenericList) {
+                    this.allSessions.add(session);
+                }
+            } else {
+                this.allSessions = new ArrayList<>();
+            }
+        }
+        if (this.allSessions != null) {
+            DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+            List<Session> filteredSessions = this.allSessions.stream()
+                    .filter(session -> {
+                        try {
+                            return LocalDate.parse(session.getDate(), dateFormatter).equals(date);
+                        } catch (DateTimeParseException e) {
+                            System.err.println(
+                                    "Erro ao parsear data da sessão '" + session.getDate() + "': " + e.getMessage());
+                            return false; 
+                        }
+                    })
+                    .collect(Collectors.toList());
+            refreshTable(filteredSessions);
+        } else {
+            refreshTable(new ArrayList<>());
+        }
     }
 
     /**
@@ -292,25 +365,24 @@ public class SessionControlController implements Initializable, MainViews.OnChan
     void openSessionControl(ActionEvent event) {
         MainViews.changeScreen("sessionControl", null);
     }
-  
+
     @FXML
     void openDate1(ActionEvent event) {
-
+        filterAndDisplaySessions(LocalDate.now());
     }
 
     @FXML
     void openDate2(ActionEvent event) {
-
+        filterAndDisplaySessions(LocalDate.now().plusDays(1));
     }
 
     @FXML
     void openDate3(ActionEvent event) {
-
+        filterAndDisplaySessions(LocalDate.now().plusDays(2));
     }
 
     @FXML
     void openDate4(ActionEvent event) {
-
+        filterAndDisplaySessions(LocalDate.now().plusDays(3));
     }
-
 }
