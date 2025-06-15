@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Objects;
 
+import controller.business.RoomController;
 import models.Movie;
 import models.Room;
 import models.Session;
@@ -73,6 +74,12 @@ public class SessionService {
         }
 
         sessionRepository.add(newSession);
+        //Adiciona a sessão na fila de sessões daquela sala.
+        try {
+            room.addSession(newSession);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     /**
