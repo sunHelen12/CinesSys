@@ -28,6 +28,16 @@ public class HomeScreenController {
     }
 
     /**
+     * Método do botão que fecha o programa.
+     * 
+     * @param event Evento ao apertar o botão, caso necessário.
+     */
+    @FXML
+    void closeCineSys(ActionEvent event) {
+        Platform.exit();
+    }
+
+    /**
      * Método que abre a Tela de Registro de Clientes.
      * 
      * @param event Evento ao apertar o botão, caso necessário.

@@ -72,9 +72,9 @@ public class SellTicketController {
 
             Client client = ClientController.getClientById(clientID);
 
-            // Valida se cliente e sessão foram encontrados
-            if (client == null || session == null) {
-                showAlert("Selecione um cliente e uma sessão válidos.");
+            // Valida se cliente foi encontrado
+            if (client == null ) {
+                showAlert("Selecione um cliente válido.");
                 return;
             }
 
@@ -83,7 +83,10 @@ public class SellTicketController {
 
             // Mostra o desconto aplicado
             double discount = ClientController.calculateDiscount(clientID);
+            paymentStr.clear();
+            client.clear();
             showDiscountPopup(discount);
+
 
         } catch (NumberFormatException e) {
             showAlert("ID do cliente inválido.");
