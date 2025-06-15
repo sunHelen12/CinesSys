@@ -69,7 +69,7 @@ public class SessionControlController implements Initializable, MainViews.OnChan
      * Inicializa o controlador.
      *
      * @param url            URL de localização do arquivo FXML, se necessário.
-     * @param resourceBundle Conjunto de recursos localizados, se necessário.
+     * @param rb Conjunto de recursos localizados, se necessário.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
