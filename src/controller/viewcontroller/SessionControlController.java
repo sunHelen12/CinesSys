@@ -302,7 +302,7 @@ public class SessionControlController implements Initializable, MainViews.OnChan
             return;
         }
 
-        Movie sessionToEdit = selectedSessions.get(0);
+        Session sessionToEdit = selectedSessions.get(0);
         MainViews.changeScreen("updateSession", sessionToEdit);
     }
 
