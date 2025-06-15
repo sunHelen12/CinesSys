@@ -71,7 +71,7 @@ public class RoomOccupationController {
      */
     @FXML
     void openSessionControl(ActionEvent event) {
-        // MainViews.changeScreen("sessionControl", null);
+        MainViews.changeScreen("sessionControl", null);
     }
 
 

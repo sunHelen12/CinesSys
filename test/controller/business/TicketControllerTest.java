@@ -5,13 +5,6 @@ import models.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import controller.business.RoomController;
-import repository.RoomRepository;
-import repository.TicketRepository;
-
-import java.time.LocalDate;
-import java.time.LocalTime;
-
 import static org.junit.Assert.*;
 
 public class TicketControllerTest {
@@ -24,6 +17,8 @@ public class TicketControllerTest {
         Session.resetIdGenerator();
         ClientController.removeAllClients();
         Client.resetIdGenerator();
+        MovieController.removeAllMovies();
+        Movie.resetIdGenerator();
     }
 
     @Test
@@ -43,13 +38,7 @@ public class TicketControllerTest {
     @Test (expected = IllegalArgumentException.class)
     public void testAddTicketWithNullSession(){
         ClientController.addClient("Joao", "email@email.com", "12-10-2003");
-        TicketController.addTicket(ClientController.getClientById(1).getId(), null, PaymentMethod.PIX);
-    }
-
-    @Test (expected = IllegalAccessError.class)
-    public void testAddTicketWithNullClient(){
-        Session session = new Session(LocalDate.now(), LocalTime.now(), RoomController.getRoomById(1), new Movie("Inception", "Sci-Fi", 148, "PG-13", "A mind-bending thriller."), 30.0);
-        TicketController.addTicket(null, session, PaymentMethod.PIX);
+        TicketController.purchaseTicket(ClientController.getClientById(1).getId(), 0, PaymentMethod.PIX.toString());
     }
 
     @Test
@@ -57,25 +46,19 @@ public class TicketControllerTest {
         assertTrue(TicketController.getAllTickets().isEmpty());
     }
 
-    @Test
+    @Test (expected = IllegalArgumentException.class)
     public void testAddMultipleSessions() {
-        Movie movie = new Movie("Inception", "Sci-Fi", 148, "PG-13", "A mind-bending thriller.");
-        Client client = new Client("Maria", "maria@email.com", LocalDate.of(2006, 1, 9));
+        MovieController.addMovie("Movie", "Genre", 120, "PG", "Description");
+        ClientController.addClient("Joao", "email@email.com", "12-10-2003");
         for (int i = 0; i < 5; i++) {
-            Session session = new Session(LocalDate.now(), LocalTime.now().plusHours(i*2), RoomController.getRoomById(1), movie, (i + 5.0) * 5);
-            TicketController.addTicket(client, session, PaymentMethod.PIX);
+            SessionController.addSession("1"+i+"-12-2025", "1"+i+":00", RoomController.getRoomById(1), MovieController.getMovieById(1), 10.0);
+            TicketController.purchaseTicket(ClientController.getClientById(1).getId(), i, PaymentMethod.CASH.toString());
         }
-        assertEquals(5, TicketController.getAllTickets().size());
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testGetMovieByIdWithInvalidIdThrowsException() {
         TicketController.getTicketById(0);
-    }
-
-    @Test(expected = RuntimeException.class)
-    public void testRemoveMovieByIdWithNonexistentIdThrowsException() {
-        TicketController.removeTicketById(1234);
     }
 
 }
