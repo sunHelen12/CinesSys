@@ -7,9 +7,6 @@ import static org.junit.Assert.*;
 /**
  * Classe de testes para a classe GenericDynamicList.
  *
- * Testa a funcionalidade dos métodos da lista, incluindo casos de sucesso,
- * casos de borda e o lançamento de exceções.
- *
  * @author Vinícius Nunes de Andrade
  * @version 2.0
  * @since 20-05-2025
