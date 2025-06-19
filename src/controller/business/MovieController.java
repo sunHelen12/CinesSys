@@ -1,10 +1,12 @@
 package controller.business;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import models.Movie;
 import models.Session;
 import repository.MovieRepository;
 import services.MovieService;
-import structures.list.GenericDynamicList;
 
 /**
  * Classe de controle para a lógica de negócio dos filmes.
@@ -47,8 +49,8 @@ public class MovieController {
      * Pega todos os filmes cadastrados.
      * @return Lista de filmes.
      */
-    public static GenericDynamicList<Movie> getAllMovies(){
-        return movieService.getAllMovies();
+    public static List<Movie> getAllMovies(){
+        return (LinkedList<Movie>) movieService.getAllMovies();
     }
 
     /**
@@ -85,8 +87,8 @@ public class MovieController {
      * @param id id do filme a ser pesquisado
      * @return lista de sessões que irão passar o filme fornecido
      */
-    public static GenericDynamicList<Session> getSessionsByMovie(int id) {
-        return movieService.getSessionsByMovie(id);
+    public static List<Session> getSessionsByMovie(int id) {
+        return (LinkedList<Session>) movieService.getSessionsByMovie(id);
     }
 
     /**

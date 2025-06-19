@@ -1,10 +1,11 @@
 package controller.business;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import models.Ticket;
 import repository.TicketRepository;
 import services.TicketService;
-import structures.list.GenericDynamicList;
-
 /**
  * Classe responsável por controlar operações relacionadas aos tickets
  *
@@ -32,8 +33,8 @@ public class TicketController {
      * 
      * @return uma lista dinâmica contendo todos os tickets.
      */
-    public static GenericDynamicList<Ticket> getAllTickets() {
-        return ticketService.getAllTickets();
+    public static List<Ticket> getAllTickets() {
+        return (LinkedList<Ticket>) ticketService.getAllTickets();
     }
 
     /**

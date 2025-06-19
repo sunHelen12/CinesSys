@@ -3,14 +3,14 @@ package controller.business;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.LinkedList;
+import java.util.List;
 
 import models.Movie;
 import models.Room;
 import models.Session;
 import repository.SessionRepository;
 import services.SessionService;
-import structures.list.GenericDynamicList;
-
 /**
  * Classe de controle responsável pela lógica de negócio das sessões de cinema.
  * @author Kaique Silva Sousa
@@ -78,8 +78,8 @@ public class SessionController {
      * Pega todas as sessões cadastradas no sistema.
      * @return Uma lista de todas as sessões.
      */
-    public static GenericDynamicList<Session> getAllSessions(){
-        return sessionService.getAllSessions();
+    public static List<Session> getAllSessions(){
+        return (LinkedList<Session>) sessionService.getAllSessions();
     }
 
     /**

@@ -1,5 +1,8 @@
 package services;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import controller.business.ClientController;
 import controller.business.SessionController;
 import enums.PaymentMethod;
@@ -7,8 +10,6 @@ import models.Client;
 import models.Session;
 import models.Ticket;
 import repository.TicketRepository;
-import structures.list.GenericDynamicList;
-
 /**
  *
  * Serviço responsável por gerenciar operações relacionadas aos tickets.
@@ -36,8 +37,8 @@ public class TicketService {
      *
      * @return Uma lista dinâmica contendo todos os tickets.
      */
-    public GenericDynamicList<Ticket> getAllTickets(){
-        return ticketRepository.getAll();
+    public List<Ticket> getAllTickets(){
+        return (LinkedList<Ticket>) ticketRepository.getAll();
     }
 
     /**

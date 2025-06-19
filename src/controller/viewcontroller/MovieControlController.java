@@ -25,7 +25,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.scene.control.CheckBox; 
 import javafx.scene.control.TableCell;
-import structures.list.GenericDynamicList;
 
 /**
  * Classe responsável por controlar a tela de Filmes.
@@ -161,7 +160,7 @@ public class MovieControlController implements Initializable, MainViews.OnChange
         selectedMovies.clear();
         moviesForTable.clear();
 
-        GenericDynamicList<Movie> currentMoviesFromRepo = MovieController.getAllMovies();
+        List<Movie> currentMoviesFromRepo = MovieController.getAllMovies();
 
         if (currentMoviesFromRepo != null) {
             for (Movie movie : currentMoviesFromRepo) {

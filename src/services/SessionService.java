@@ -2,14 +2,14 @@ package services;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Objects;
 
-import controller.business.RoomController;
 import models.Movie;
 import models.Room;
 import models.Session;
 import repository.SessionRepository;
-import structures.list.GenericDynamicList;
 
 /**
  * Classe de serviço responsável pela lógica de negócio das sessões de cinema.
@@ -65,7 +65,7 @@ public class SessionService {
         Session newSession = new Session(date, time, room, movie, ticketValue);
 
         // Verifica se já existe uma sessão com horário conflitante na mesma sala        
-        GenericDynamicList<Session> sessionsInRoom = sessionRepository.getAll();
+        List<Session> sessionsInRoom = sessionRepository.getAll();
         for(int i = 0; i < sessionsInRoom.size(); i++){
             if( sessionsInRoom.get(i).getDate().equals(newSession.getDate()) &&
                 sessionsInRoom.get(i).getTime().equals(newSession.getTime())){
@@ -120,7 +120,7 @@ public class SessionService {
         Session newSession = new Session(date, time, room, movie, ticketValue, totalAvailableSeats);
 
         // Verifica se já existe uma sessão com horário conflitante na mesma sala
-        GenericDynamicList<Session> sessionsInRoom = sessionRepository.getAll();
+        List<Session> sessionsInRoom = sessionRepository.getAll();
         for(int i = 0; i < sessionsInRoom.size(); i++){
             if( sessionsInRoom.get(i).getDate().equals(newSession.getDate()) &&
                     sessionsInRoom.get(i).getTime().equals(newSession.getTime())){
@@ -190,8 +190,8 @@ public class SessionService {
      *
      * @return Uma GenericDynamicList contendo todas as sessões.
      */
-    public GenericDynamicList<Session> getAllSessions(){
-        return sessionRepository.getAll();
+    public List<Session> getAllSessions(){
+        return (LinkedList<Session>) sessionRepository.getAll();
     }
 
     /**
@@ -200,8 +200,8 @@ public class SessionService {
      * @param date Data para filtrar as sessões.
      * @return Uma GenericDynamicList contendo as sessões cuja data coincide com a informada.
      */
-    public GenericDynamicList<Session> getSessionsByDate(LocalDate date){
-        return sessionRepository.getByDate(date);
+    public List<Session> getSessionsByDate(LocalDate date){
+        return (LinkedList<Session>) sessionRepository.getByDate(date);
     }
     
     /**

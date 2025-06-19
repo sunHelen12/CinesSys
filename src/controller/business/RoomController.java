@@ -1,11 +1,12 @@
 package controller.business;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import models.Room;
 import models.Session;
 import repository.RoomRepository;
 import services.RoomService;
-import structures.list.GenericDynamicList;
-
 /**
  * Classe de controle para a lógica de negócio das salas que já se inicia com 5 salas cadastradas.
  * @author Kaique Silva Sousa 
@@ -19,8 +20,8 @@ public class RoomController {
     /**
      * Pega todas as salas cadastradas.
      */
-    public static GenericDynamicList<Room> getAllRooms() {
-        return roomService.getAllRooms();
+    public static List<Room> getAllRooms() {
+        return (LinkedList<Room>) roomService.getAllRooms();
     }
 
     /**

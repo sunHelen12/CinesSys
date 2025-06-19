@@ -1,6 +1,7 @@
 package models;
 
-import structures.queue.GenericDynamicQueue;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Classe que representa uma sala de cinema no sistema.
@@ -28,7 +29,7 @@ public class Room {
     private int totalSeat;
     
     /** Fila dinâmica que armazena as sessões programadas para esta sala */
-    private GenericDynamicQueue<Session> sessions;
+    private List<Session> sessions;
 
     /**
      * Construtor da classe Room.
@@ -42,7 +43,7 @@ public class Room {
     public Room(int totalSeat){
         this.totalSeat = totalSeat;
         this.id = _idGenerator++;
-        this.sessions = new GenericDynamicQueue<Session>();
+        this.sessions = new LinkedList<Session>();
     }
 
     /**
@@ -73,7 +74,7 @@ public class Room {
      * @throws Exception se ocorrer erro ao adicionar a sessão na fila
      */
     public void addSession(Session session) throws Exception{
-        sessions.enqueue(session);
+        sessions.add(session);
     }
 
     /**
@@ -85,7 +86,7 @@ public class Room {
      * @return a próxima sessão da fila, ou null se a fila estiver vazia
      */
     public Session removeSession(){
-        return sessions.dequeue();
+        return sessions.removeFirst();
     }
 
     /**
@@ -97,8 +98,8 @@ public class Room {
      * 
      * @return a fila dinâmica contendo todas as sessões da sala
      */
-    public GenericDynamicQueue<Session> getSessions() {
-        return sessions;
+    public List<Session> getSessions() {
+        return (LinkedList<Session>) sessions;
     }
 
     /**
