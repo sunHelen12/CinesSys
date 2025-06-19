@@ -1,5 +1,6 @@
 package models;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
@@ -11,7 +12,7 @@ import java.util.List;
  * @since 25/05/2025
  * @version 5.0
  */
-public class Client {
+public class Client implements Serializable{
     private static int _idGenerator = 1;
     private int id;
     private String name;
@@ -146,27 +147,9 @@ public class Client {
         }
     }
 
-    /**
-     * Incrementa os pontos de fidelidade do cliente.
-     *
-     * @param additionalPoints quantidade de pontos a somar
-     */
-    public void addPoints(int additionalPoints) {
-        this.points += additionalPoints;
-    }
+   
 
-    /**
-     * Retorna uma representação em string do histórico do cliente.
-     * @return Uma string contendo o histórico de compras do cliente.
-     */
-    public String printHistory(){
-        String result = "";
-        for (int i = 0; i < purchasingHistory.size(); i++) {
-            result += purchasingHistory.get(i).toString() + "\n";
-        }
-        return result;
-    }
-
+    
     /**
      * Retorna uma representação em string do cliente. sobrescreve o método toString da classe Object.
      * @return Uma string contendo as informações do cliente.

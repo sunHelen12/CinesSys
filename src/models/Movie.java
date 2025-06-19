@@ -1,5 +1,7 @@
 package models;
 
+import java.io.Serializable;
+
 /**
  * Classe que representa um filme.
  * 
@@ -7,7 +9,7 @@ package models;
  * @since 01/06/2024
  * @version 1.0
  */
-public class Movie {
+public class Movie implements Serializable {
 	private static int _idGenerator = 1;
 	private int id;
 	private String title;
