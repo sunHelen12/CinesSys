@@ -122,9 +122,6 @@ public class ClientControlController implements Initializable{
             Label labeldt = new Label("Data de Nascimento: " + client.getBirthday());
             labeldt.setStyle(
                     "-fx-text-fill: #f2e8c6 !important; -fx-font-family: Arial !important; -fx-font-size: 14px;");   
-            Label lblPoint = new Label("Pontos do Cliente: " + client.getPoints());
-            lblPoint.setStyle(
-                    "-fx-text-fill: #f2e8c6 !important; -fx-font-family: Arial !important; -fx-font-size: 14px;");
             Label labelRelatory= new Label("Acessar Relatório de Compras: ");
             labelRelatory.setStyle(
                     "-fx-text-fill: #f2e8c6 !important; -fx-font-family: Arial !important; -fx-font-size: 14px;"); 
@@ -156,7 +153,7 @@ public class ClientControlController implements Initializable{
 
             VBox caixaEntradaResultado = new VBox(5);
             caixaEntradaResultado.setPadding(new Insets(0, 0, 10, 0));
-            caixaEntradaResultado.getChildren().addAll(labelNome, labelId, labelEmail, labeldt, lblPoint, labelRelatory, botaoRel, botaoExcluir, botaoAlterar);
+            caixaEntradaResultado.getChildren().addAll(labelNome, labelId, labelEmail, labeldt, labelRelatory, botaoRel, botaoExcluir, botaoAlterar);
 
             containerResultados.getChildren().add(caixaEntradaResultado);
         }

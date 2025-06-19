@@ -86,26 +86,6 @@ public class ClientController {
     }
 
     /**
-     * Calcula o desconto de um cliente chamando o método calculateDiscount da classe ClientService.
-     * 
-     * @param clientId ID do cliente.
-     * @return Desconto do cliente.
-     */
-    public static double calculateDiscount(int clientId) {
-        return clientService.calculateDiscount(clientId);
-    }
-
-    /**
-     * Registra os pontos de fidelidade de um cliente chamando o método registerPoints da classe ClientService.
-     * 
-     * @param clientId ID do cliente.
-     * @param ticket Ticket que será usado para registrar os pontos.
-     */
-    public static void registerPoints(int clientId, Ticket ticket) {
-        clientService.registerPoints(clientId, ticket);      
-    }
-
-    /**
      * Remove todos os clientes cadastrados chamando o método removeAllClients da classe ClientService.
      */
     public static void removeAllClients() {
@@ -122,13 +102,4 @@ public class ClientController {
         clientService.removeTicketFromHistory(clientId, ticket);
     }
 
-    /**
-     * Remove uma quantidade de pontos de fidelidade de um cliente.
-     * Delega a chamada para o método correspondente em ClientService.
-     * * @param clientId O ID do cliente.
-     * @param pointsToRemove A quantidade de pontos a ser removida.
-     */
-    public static void removePoints(int clientId, int pointsToRemove) {
-        clientService.removePoints(clientId, pointsToRemove);
-    }
 }

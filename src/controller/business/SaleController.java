@@ -81,11 +81,6 @@ public class SaleController {
         ClientController.removeTicketFromHistory(client.getId(), ticket);
         System.out.println("Ticket removido do histórico do cliente " + client.getName());
 
-        // 5. Remover os pontos de fidelidade que foram ganhos com esta compra.
-        //    (Assumindo que cada compra gera 5 pontos, como no seu ClientService).
-        ClientController.removePoints(client.getId(), 5);
-        System.out.println("Pontos removidos do cliente " + client.getName());
-
         // 6. Finalmente, remover o ticket do repositório principal de tickets.
         TicketController.removeTicketById(ticketId);
         System.out.println("Ticket ID " + ticketId + " removido do sistema.");

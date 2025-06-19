@@ -96,19 +96,11 @@ public class TicketService {
             throw new IllegalArgumentException("Método de pagamento inválido: " + paymentMethod);
         }
 
-        // Calcular desconto
-        double discount = ClientController.calculateDiscount(clientId);
-        double basePrice = 20.0; // Pode ser dinâmico no futuro
-        double precoFinal = basePrice * (1 - discount / 100.0);
-
         // Criar ticket com desconto
-        Ticket ticket = new Ticket(client, session, precoFinal, method);
+        Ticket ticket = new Ticket(client, session, session.getTicketValue(), method);
 
         // Adicionar ticket no repositório
         ticketRepository.add(ticket);
-
-        // Atualizar fidelidade do cliente, nesse método ele também adiciona o ticket no histórico do cliente.
-        ClientController.registerPoints(clientId, ticket);
 
         // Atualizando assentos disponíveis da sessão
         session.setTotalAvailableSeats(session.getTotalAvailableSeats()-1);

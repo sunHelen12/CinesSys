@@ -81,12 +81,8 @@ public class SellTicketController {
             // Realiza a venda do ticket com base nas infos fornecidas
             Ticket ticket = TicketController.purchaseTicket(clientID, session.getId(), paymentStr);
 
-            // Mostra o desconto aplicado
-            double discount = ClientController.calculateDiscount(clientID);
             paymentMethod.clear();
             clientId.clear();
-            showDiscountPopup(discount);
-
 
         } catch (NumberFormatException e) {
             showAlert("ID do cliente inválido.");
@@ -116,33 +112,6 @@ public class SellTicketController {
         alert.setHeaderText("Erro");
         alert.setContentText(msg);
         alert.show();
-    }
-
-    /**
-     * Exibe uma janela pop-up com o valor do desconto aplicado ao cliente.
-     * Essa janela é carregada a partir do arquivo FXML "PopUpDiscount.fxml"
-     * e mostra dinamicamente o valor do desconto.
-     *
-     * @param discount Valor percentual do desconto (ex: 10.0 para 10%)
-     */
-    @FXML
-    private void showDiscountPopup(double discount) {
-        try {
-            FXMLLoader loader = new FXMLLoader(SellTicketController.class.getResource("/gui/PopUpDiscount.fxml"));
-            Parent root = loader.load();
-
-            PopUpDiscountController controller = loader.getController();
-            Stage stage = new Stage();
-            controller.setStage(stage);
-            controller.setDiscount(discount);
-
-            stage.setScene(new Scene(root));
-            stage.setTitle("Confirmação");
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-            showAlert("Erro ao carregar o pop-up de desconto.");
-        }
     }
 
     /**
