@@ -1,8 +1,7 @@
 package models;
 
-import structures.list.GenericDynamicList;
-
 import java.time.LocalDate;
+import structures.list.GenericDynamicList;
 
 /**
  * Classe que representa um cliente.
@@ -31,8 +30,6 @@ public class Client {
         this.name = name;
         this.email = email;
         this.birthday = birthday;
-        this.points = 0;
-        purchasingHistory = new GenericDynamicList<>();
         id = _idGenerator++;
     }
 
@@ -69,44 +66,10 @@ public class Client {
         return birthday.format(java.time.format.DateTimeFormatter.ofPattern("dd-MM-yyyy"));
     }
 
-    /**
-     * Obtém os pontos do cliente.
-     * @return Os pontos do cliente.
-     */
-    public int getPoints() {
-        return points;
-    }
-
-    /**
-     * Seta os pontos do cliente.
-     */
-    public void setPoints(int points) {
-        this.points = points;
-    }
-
-    /**
-     * Subtrai uma quantidade de pontos do cliente.
-     * Garante que a pontuação não se torne negativa.
-     *
-     * @param pointsToRemove A quantidade de pontos a ser removida.
-     */
-    public void removePoints(int pointsToRemove) {
-        if (pointsToRemove > 0) {
-            this.points -= pointsToRemove;
-            if (this.points < 0) {
-                this.points = 0; // Garante que não fique negativo
-            }
-        }
-    }
-
-    /**
-     * Obtém o histórico de compras do cliente.
-     * @return Uma lista dinâmica contendo os tickets comprados pelo cliente.
-     */
-    public GenericDynamicList<Ticket> getPurchasingHistory() {
-        return purchasingHistory;
-    }
-
+   
+  
+    
+    
     /**
      * Define o nome do cliente.
      * @param name O novo nome do cliente.
@@ -146,27 +109,9 @@ public class Client {
         }
     }
 
-    /**
-     * Incrementa os pontos de fidelidade do cliente.
-     *
-     * @param additionalPoints quantidade de pontos a somar
-     */
-    public void addPoints(int additionalPoints) {
-        this.points += additionalPoints;
-    }
+   
 
-    /**
-     * Retorna uma representação em string do histórico do cliente.
-     * @return Uma string contendo o histórico de compras do cliente.
-     */
-    public String printHistory(){
-        String result = "";
-        for (int i = 0; i < purchasingHistory.size(); i++) {
-            result += purchasingHistory.get(i).toString() + "\n";
-        }
-        return result;
-    }
-
+    
     /**
      * Retorna uma representação em string do cliente. sobrescreve o método toString da classe Object.
      * @return Uma string contendo as informações do cliente.
