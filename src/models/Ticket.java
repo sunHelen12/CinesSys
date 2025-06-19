@@ -1,6 +1,7 @@
 package models;
 
 import enums.PaymentMethod;
+import java.io.Serializable;
 
 /**
  * Representa um ingresso para uma sessão de cinema.
@@ -9,7 +10,7 @@ import enums.PaymentMethod;
  * @since 25/05/2025
  * @version 4.0
  */
-public class Ticket {
+public class Ticket implements Serializable{
 
     private static int _idGenerator = 1;
     private int id;

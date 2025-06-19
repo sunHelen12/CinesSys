@@ -1,5 +1,7 @@
 package models;
 
+import java.io.Serializable;
+
 import structures.queue.GenericDynamicQueue;
 
 /**
@@ -17,7 +19,7 @@ import structures.queue.GenericDynamicQueue;
  * @since 25/05/2025
  * @version 1.0
  */
-public class Room {
+public class Room implements Serializable{
     /** Gerador automático de IDs para as salas */
     private static int _idGenerator = 1;
     

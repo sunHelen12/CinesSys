@@ -1,5 +1,6 @@
 package models;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import structures.list.GenericDynamicList;
 
@@ -10,7 +11,7 @@ import structures.list.GenericDynamicList;
  * @since 25/05/2025
  * @version 5.0
  */
-public class Client {
+public class Client implements Serializable{
     private static int _idGenerator = 1;
     private int id;
     private String name;
