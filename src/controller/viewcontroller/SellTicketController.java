@@ -50,6 +50,8 @@ public class SellTicketController {
      */
     @FXML
     public void initialize() {
+        clientId.setStyle("-fx-text-fill: white !important; -fx-background-color: #03002C !important;");
+        paymentMethod.setStyle("-fx-text-fill: white !important; -fx-background-color: #03002C !important;");
         MainViews.addOnChangeScreenListener(new MainViews.OnChangeScreen() {
             @Override
             public void onScreenChanged(String newScreen, Object userDataObject) {
@@ -81,6 +83,7 @@ public class SellTicketController {
             // Realiza a venda do ticket com base nas infos fornecidas
             Ticket ticket = TicketController.purchaseTicket(clientID, session.getId(), paymentStr);
 
+            mostrarPopUpSale();
             paymentMethod.clear();
             clientId.clear();
 

@@ -102,6 +102,9 @@ public class TicketService {
         // Adicionar ticket no repositório
         ticketRepository.add(ticket);
 
+        // Adicionar ticket ao cliente
+        client.addTicketToHistory(ticket);
+
         // Atualizando assentos disponíveis da sessão
         session.setTotalAvailableSeats(session.getTotalAvailableSeats()-1);
 

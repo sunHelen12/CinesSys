@@ -81,7 +81,7 @@
             <Font name="Arial" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="dateTime" layoutX="415.0" layoutY="128.0" prefHeight="21.0" prefWidth="205.0" textFill="#f2e8c4">
+      <Label fx:id="dateTime" layoutX="415.0" layoutY="128.0" prefHeight="21.0" prefWidth="250.0" textFill="#f2e8c4">
          <font>
             <Font name="Arial" size="24.0" />
          </font>

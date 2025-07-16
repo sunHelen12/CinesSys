@@ -290,7 +290,7 @@ public class SessionControlController implements Initializable, MainViews.OnChan
             return;
         }
         Session sessionRelatory = selectedSessions.get(0);
-        // MainViews.changeScreen("", sessionRelatory);
+        MainViews.changeScreen("payPerSession", sessionRelatory);
     }
 
     /**

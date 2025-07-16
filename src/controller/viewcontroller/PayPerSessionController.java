@@ -50,7 +50,7 @@ public class PayPerSessionController  implements Initializable {
 
     @FXML
     void voltar(ActionEvent event) {
-        MainViews.changeScreen("sessionController", null);
+        MainViews.changeScreen("sessionControl", null);
     }
 
     /**
@@ -84,6 +84,8 @@ public class PayPerSessionController  implements Initializable {
             Double valueEarned = (session.getRoom().getTotalSeat() - session.getTotalAvailableSeats()) * session.getTicketValue();
             valueCollected.setText(valueEarned+"");
             movieDuration.setText(session.getMovie().getDuration()+"");
+            ticketValue.setText(session.getTicketValue()+"");
+            soldTickets.setText((session.getRoom().getTotalSeat() - session.getTotalAvailableSeats())+"");
 
         } else {
             movieName.setText("Sala (N/A)");
