@@ -70,7 +70,6 @@ public class MainViews extends Application {
         FXMLLoader loaderPayPerSession = new FXMLLoader(getClass().getResource("/gui/PayPerSession.fxml"));
         FXMLLoader loaderUpdateSession = new FXMLLoader(getClass().getResource("/gui/UpdateSession.fxml"));
         FXMLLoader loaderPopUpRegisteredSale = new FXMLLoader(getClass().getResource("/gui/PopUpRegisteredSale.fxml"));
-        FXMLLoader loaderPopUpDiscount = new FXMLLoader(getClass().getResource("/gui/PopUpDiscount.fxml"));
         FXMLLoader loaderPopUpSession = new FXMLLoader(getClass().getResource("/gui/PopUpSession.fxml"));
         FXMLLoader loaderOversold = new FXMLLoader(getClass().getResource("/gui/Oversold.fxml"));
 
@@ -127,9 +126,6 @@ public class MainViews extends Application {
 
         Parent popUpRegisteredSale = loaderPopUpRegisteredSale.load();
         popUpRegisteredSaleScene = new Scene(popUpRegisteredSale);
-
-        Parent popUpDiscount = loaderPopUpDiscount.load();
-        popUpDiscountScene = new Scene(popUpDiscount);
 
         Parent popUpSession = loaderPopUpSession.load();
         popUpSessionScene = new Scene(popUpSession);
