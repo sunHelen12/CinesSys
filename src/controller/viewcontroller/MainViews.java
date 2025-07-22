@@ -8,6 +8,8 @@ import javafx.stage.Stage;
 import java.util.ArrayList;
 import java.util.List;
 
+import controller.business.ClientController;
+
 /**
  * Classe da tela principal do sistema onde é possível navegar entre as telas.
  * @author Maria Eduarda Campos
@@ -49,6 +51,9 @@ public class MainViews extends Application {
      */
     @Override
     public void start(Stage primaryStage) throws Exception {
+        // carregando os dados das entidades
+        ClientController.loadData();
+
         stage = primaryStage;
         primaryStage.setTitle("CineSys");
 

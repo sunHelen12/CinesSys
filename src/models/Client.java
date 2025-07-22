@@ -5,6 +5,8 @@ import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
 
+import controller.business.ClientController;
+
 /**
  * Classe que representa um cliente.
  * 
@@ -34,6 +36,8 @@ public class Client implements Serializable{
         purchasingHistory = new LinkedList<>();
         id = _idGenerator++;
     }
+
+
 
     /**
      * Obtém o ID do cliente.
@@ -136,5 +140,9 @@ public class Client implements Serializable{
      */
     public static void resetIdGenerator() {
         _idGenerator = 1;
+    }
+
+    public static void updateIdGenerator(int ultimoId) {
+        _idGenerator = ultimoId + 1;
     }
 }

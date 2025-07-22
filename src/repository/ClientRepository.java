@@ -1,5 +1,11 @@
 package repository;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -13,6 +19,7 @@ import models.Client;
  */
 public class ClientRepository {
     private List<Client> clients = new LinkedList<>();
+    private final String FILE_PATH = "data/client.dat";
 
     /**
      * Adiciona um cliente ao repositório.
@@ -104,5 +111,30 @@ public class ClientRepository {
      */
     public void clear(){
         clients.clear();
+    }
+
+    public void saveData() {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(FILE_PATH))) {
+            oos.writeObject(clients);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    public void loadData() {
+        File arquivo = new File(FILE_PATH);
+        if (arquivo.exists()) {
+            try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(FILE_PATH))) {
+                clients = (List<Client>) ois.readObject();
+                Client.updateIdGenerator(getSize());
+            } catch (IOException | ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public int getSize() {
+        return clients.size();
     }
 }

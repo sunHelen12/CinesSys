@@ -102,4 +102,15 @@ public class ClientController {
         clientService.removeTicketFromHistory(clientId, ticket);
     }
 
+    public static void saveData() {
+        clientService.saveData();
+    }
+
+    public static void loadData() {
+        clientService.loadData();
+    }
+
+    public static int getSize() {
+        return clientService.getSize();
+    }
 }

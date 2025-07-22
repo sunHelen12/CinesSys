@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.event.ActionEvent;
+import controller.business.ClientController;
 import javafx.application.Platform;
 
 /**
@@ -35,6 +36,7 @@ public class HomeScreenController {
      */
     @FXML
     void closeCineSys(ActionEvent event) {
+        ClientController.saveData();
         Platform.exit();
     }
 

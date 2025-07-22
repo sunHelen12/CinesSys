@@ -202,4 +202,15 @@ public class ClientService {
         }
     }
 
+    public void saveData() {
+        clientRepository.saveData();
+    }
+
+    public void loadData() {
+        clientRepository.loadData();
+    }
+
+    public int getSize() {
+        return clientRepository.getSize();
+    }
 }
