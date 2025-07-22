@@ -9,6 +9,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import controller.viewcontroller.SessionControlController;
 import models.Session;
+import controller.business.MovieController;
+import controller.business.RoomController;
 import controller.business.SessionController;
 
 /**
@@ -80,7 +82,8 @@ public class UpdateSessionController implements Initializable {
         String ticketPrice = txtPrice.getText().trim();
         double tck = Double.parseDouble(ticketPrice);
 
-        SessionController.updateSession(session.getId(), date, time, session.getRoom(), session.getMovie(), tck);
+
+        SessionController.updateSession(session.getId(), date, time, RoomController.getRoomById(Integer.parseInt(room)), MovieController.getMovieById(Integer.parseInt(movie)), tck);
         txtDate.clear();
         txtTime.clear();
         txtMovieId.clear();
