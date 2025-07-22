@@ -18,7 +18,6 @@ public class Client implements Serializable{
     private String name;
     private String email;
     private LocalDate birthday;
-    private int points;
     private List<Ticket> purchasingHistory;
     
     /**
@@ -32,7 +31,6 @@ public class Client implements Serializable{
         this.name = name;
         this.email = email;
         this.birthday = birthday;
-        this.points = 0;
         purchasingHistory = new LinkedList<>();
         id = _idGenerator++;
     }
