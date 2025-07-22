@@ -40,7 +40,7 @@ public class PurchaseHistoryController implements Initializable {
      * Inicializa a tela de histórico de compras.
      * 
      * @param url URL da tela
-     * @param resourceBundle ResourceBundle da tela
+     * @param resourceBundle ResourceBundlsrc/guie da tela
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -88,16 +88,6 @@ public class PurchaseHistoryController implements Initializable {
     @FXML
     void openPurchaseHistory(ActionEvent event) {
         MainViews.changeScreen("purchaseRelatory", null);
-    }
-
-    /**
-     * Abre a tela de ocupação de salas.
-     * 
-     * @param event
-     */
-    @FXML
-    void openRoomOccupation(ActionEvent event) {
-        MainViews.changeScreen("roomOccupation", null);
     }
 
     /**

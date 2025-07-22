@@ -59,16 +59,6 @@ public class HomeScreenController {
     }
 
     /**
-     * Método que abre a Tela de Relatório de Ocupação.
-     * 
-     * @param event Evento ao apertar o botão, caso necessário.
-     */
-    @FXML
-    void openOccupationRelatory(ActionEvent event) {
-        MainViews.changeScreen("roomOccupation", null);
-    }
-
-    /**
      * Método que abre a Tela de Controle de Compras.
      * 
      * @param event Evento ao apertar o botão, caso necessário.

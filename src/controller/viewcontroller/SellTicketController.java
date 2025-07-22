@@ -4,7 +4,6 @@ import controller.business.ClientController;
 import controller.business.SessionController;
 import controller.business.TicketController;
 import controller.viewcontroller.SellTicketController;
-import controller.viewcontroller.PopUpDiscountController;
 import controller.viewcontroller.OversoldController;
 import controller.viewcontroller.PopUpRegisteredSaleController;
 import javafx.fxml.FXML;

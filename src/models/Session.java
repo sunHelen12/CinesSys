@@ -98,6 +98,15 @@ public class Session implements Serializable {
     }
 
     /**
+     * Retorna a data da sessão como objeto LocalDate.
+     * 
+     * @return Data como LocalDate "
+     */
+    public LocalDate getDateObject() {
+        return date;
+    }
+
+    /**
      * Define a data da sessão.
      * 
      * @param date Nova data da sessão
@@ -122,6 +131,15 @@ public class Session implements Serializable {
      */
     public String getTime() {
         return time.format(java.time.format.DateTimeFormatter.ofPattern("HH:mm"));
+    }
+
+    /**
+     * Retorna o horário como objeto LocalTime.
+     * 
+     * @return Horário como LocalTime
+     */
+    public LocalTime getTimeObject() {
+        return time;
     }
 
     /**

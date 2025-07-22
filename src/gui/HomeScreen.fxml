@@ -153,21 +153,6 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button mnemonicParsing="false" onAction="#openOccupationRelatory" prefHeight="120.0" prefWidth="300.0" style="-fx-background-color: #F58414; -fx-font-weight: bold;" text="Relatórios de Ocupação&#10;das salas" textAlignment="CENTER" textFill="#f2e8c6">
-               <font>
-                  <Font name="Arial" size="18.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="54.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../assets/img/relatorios.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
             <Button mnemonicParsing="false" onAction="#openPurchaseRelatory" prefHeight="120.0" prefWidth="300.0" style="-fx-background-color: #bb0029; -fx-font-weight: bold;" text="Relatórios de&#10;Compras" textAlignment="CENTER" textFill="#f2e8c6">
                <font>
                   <Font name="Arial" size="20.0" />

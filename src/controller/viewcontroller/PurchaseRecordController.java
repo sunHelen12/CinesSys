@@ -5,12 +5,14 @@ import controller.business.SaleController;
 import controller.business.TicketController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.fxml.Initializable;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import models.*;
@@ -123,8 +125,23 @@ public class PurchaseRecordController implements Initializable {
      */
     @FXML
     void cancelTicket(ActionEvent event) {
-        SaleController.cancelSale(ticket.getId());
-        mostrarPopUpCancellTicket();
+        LocalDate date = ticket.getSession().getDateObject();
+        LocalTime time = ticket.getSession().getTimeObject();
+
+        LocalDate dateNow = LocalDate.now();
+        LocalTime timeNow = LocalTime.now();
+
+        LocalDateTime dateTimeNow = LocalDateTime.of(dateNow, timeNow);
+        LocalDateTime dateTime = LocalDateTime.of(date, time);
+
+        long diff = java.time.Duration.between(dateTimeNow, dateTime).toHours();
+
+        if (diff > 2) {
+            SaleController.cancelSale(ticket.getId());
+            mostrarPopUpCancellTicket();
+        } else {
+            showAlert("Não é possível cancelar o ingresso com menos de 2 horas de antes do horário da sessão.");
+        }
     }
 
     /**
@@ -135,5 +152,16 @@ public class PurchaseRecordController implements Initializable {
     @FXML
     void openClient(ActionEvent event) {
         MainViews.changeScreen("clientControl", ticket.getClient());
+    }
+
+    /**
+     * Exibe um alerta de erro na tela.
+     * @param msg Mensagem de erro a ser exibida.
+     */
+    private void showAlert(String msg) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setHeaderText("Erro");
+        alert.setContentText(msg);
+        alert.show();
     }
 }

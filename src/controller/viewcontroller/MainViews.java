@@ -58,14 +58,12 @@ public class MainViews extends Application {
         FXMLLoader loaderClientHistory = new FXMLLoader(getClass().getResource("/gui/ClientHistory.fxml"));
         FXMLLoader loaderMovieControl = new FXMLLoader(getClass().getResource("/gui/MovieControl.fxml"));
         FXMLLoader loaderMovieEdit = new FXMLLoader(getClass().getResource("/gui/MovieEdit.fxml"));
-        FXMLLoader loaderOccupationRelatory = new FXMLLoader(getClass().getResource("/gui/OccupationRelatory.fxml"));
         FXMLLoader loaderPopUpClient = new FXMLLoader(getClass().getResource("/gui/PopUpClient.fxml"));
         FXMLLoader loaderPopUpMovies = new FXMLLoader(getClass().getResource("/gui/PopUpMovies.fxml"));
         FXMLLoader loaderPurchaseRelatory = new FXMLLoader(getClass().getResource("/gui/PurchaseRelatory.fxml"));
         FXMLLoader loaderRegisterClient = new FXMLLoader(getClass().getResource("/gui/RegisterClient.fxml"));
         FXMLLoader loaderRegisterMovie = new FXMLLoader(getClass().getResource("/gui/RegisterMovie.fxml"));
         FXMLLoader loaderRegisterSession = new FXMLLoader(getClass().getResource("/gui/RegisterSession.fxml"));
-        FXMLLoader loaderRoomOccupation = new FXMLLoader(getClass().getResource("/gui/RoomOccupation.fxml"));
         FXMLLoader loaderPurchaseRecord = new FXMLLoader(getClass().getResource("/gui/PurchaseRecord.fxml"));
         FXMLLoader loaderSellTicket = new FXMLLoader(getClass().getResource("/gui/SellTicket.fxml"));
         FXMLLoader loaderSessionControl = new FXMLLoader(getClass().getResource("/gui/SessionControl.fxml"));
@@ -94,9 +92,6 @@ public class MainViews extends Application {
         Parent movieEdit = loaderMovieEdit.load();
         movieEditScene = new Scene(movieEdit);
 
-        Parent occupationRelatory = loaderOccupationRelatory.load();
-        occupationRelatoryScene = new Scene(occupationRelatory);
-
         Parent popUpClient = loaderPopUpClient.load();
         popUpClientScene = new Scene(popUpClient);
 
@@ -114,9 +109,6 @@ public class MainViews extends Application {
 
         Parent registerSession = loaderRegisterSession.load();
         registerSessionScene = new Scene(registerSession);
-
-        Parent roomOccupation = loaderRoomOccupation.load();
-        roomOccupationScene = new Scene(roomOccupation);
 
         Parent sellTicket = loaderSellTicket.load();
         sellTicketScene = new Scene(sellTicket);

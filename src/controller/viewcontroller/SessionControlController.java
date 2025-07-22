@@ -334,16 +334,6 @@ public class SessionControlController implements Initializable, MainViews.OnChan
     }
 
     /**
-     * Método que abre a Tela de Ocupação de Salas.
-     *
-     * @param event Evento ao apertar o botão, caso necessário.
-     */
-    @FXML
-    void openRoomOccupation(ActionEvent event) {
-        MainViews.changeScreen("roomOccupation", null);
-    }
-
-    /**
      * Método que abre a Tela de Controle de Sessões.
      *
      * @param event Evento ao apertar o botão, caso necessário.

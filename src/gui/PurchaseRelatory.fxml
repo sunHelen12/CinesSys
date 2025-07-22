@@ -49,14 +49,6 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button layoutX="1.0" layoutY="333.0" mnemonicParsing="false" onAction="#openRoomOccupation" style="-fx-background-color: #BB0029;" text="Relatórios de Ocupação" textFill="#f2e8c4">
-                     <font>
-                        <Font name="Arial" size="20.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
                   <Button layoutX="14.0" layoutY="13.0" maxHeight="85.0" maxWidth="212.0" minHeight="85.0" minWidth="212.0" mnemonicParsing="false" onAction="#openHomeScreen" prefHeight="85.0" prefWidth="212.0" style="-fx-background-color: #BB0029;">
                      <graphic>
                     <Label alignment="CENTER" minWidth="-Infinity" style="-fx-font-weight: bold;" text="CineSys" textAlignment="CENTER" textFill="#f2e8c4" wrapText="false">

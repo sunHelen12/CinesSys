@@ -51,11 +51,6 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="55.0" layoutY="288.0" style="-fx-font-weight: bold;" text="Mapa de Assentos:" textAlignment="CENTER" textFill="#f2e8c4" wrapText="false">
-         <font>
-            <Font name="Arial" size="20.0" />
-         </font>
-      </Label>
       <Button fx:id="backButton" layoutX="1046.0" layoutY="566.0" mnemonicParsing="false" onAction="#voltar" prefHeight="43.0" prefWidth="142.0" style="-fx-background-color: #F58414;" styleClass="-fx" text="Voltar" textFill="#f2e8c4">
          <font>
             <Font name="System Bold" size="18.0" />
