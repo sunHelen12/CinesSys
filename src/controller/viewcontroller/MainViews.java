@@ -4,9 +4,12 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import controller.business.ClientController;
 
@@ -52,10 +55,11 @@ public class MainViews extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         // carregando os dados das entidades
-        ClientController.loadData();
-
+        loadData();
+        
         stage = primaryStage;
         primaryStage.setTitle("CineSys");
+        saveAndClose(primaryStage);
 
         FXMLLoader loaderHomeScreen = new FXMLLoader(getClass().getResource("/gui/HomeScreen.fxml"));
         FXMLLoader loaderChangeClient = new FXMLLoader(getClass().getResource("/gui/ChangeClient.fxml"));
@@ -248,6 +252,37 @@ public class MainViews extends Application {
             default:
                 break;
         }
+    }
+
+    public static void saveAndClose(Stage primaryStage) {
+        // Evento ao clicar no X da janela
+        primaryStage.setOnCloseRequest(event -> {
+            System.out.println("Janela está sendo fechada!");;
+
+            // salva os dados antes de fechar
+            saveData();
+
+            // confirmação de saída
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Sair");
+            alert.setHeaderText("Deseja realmente sair?");
+            alert.setContentText("As alterações serão salvas.");
+
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.isEmpty() || result.get() != ButtonType.OK) {
+                event.consume(); // Impede que a janela feche
+            }
+        });
+    }
+
+    public static void loadData() {
+        // Carrega os dados do arquivo
+        ClientController.loadData();
+    }
+
+    public static void saveData() {
+        // Salva os dados no arquivo
+        ClientController.saveData();
     }
 
     /**

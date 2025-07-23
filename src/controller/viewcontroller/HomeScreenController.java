@@ -36,7 +36,7 @@ public class HomeScreenController {
      */
     @FXML
     void closeCineSys(ActionEvent event) {
-        ClientController.saveData();
+        saveData();
         Platform.exit();
     }
 
@@ -89,4 +89,8 @@ public class HomeScreenController {
     void openSessionControl(ActionEvent event) {
         MainViews.changeScreen("sessionControl", null);
     }    
+
+    public static void saveData() {
+        ClientController.saveData();
+    }
 }
