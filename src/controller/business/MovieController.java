@@ -90,7 +90,17 @@ public class MovieController {
     public static List<Session> getSessionsByMovie(int id) {
         return (LinkedList<Session>) movieService.getSessionsByMovie(id);
     }
+    public static void saveData() {
+        movieService.saveData();
+    }
 
+    public static void loadData() {
+        movieService.loadData();
+    }
+
+    public static int getSize() {
+        return movieService.getSize();
+    }
     /**
      * Remove todos os filmes cadastrados.
      */
