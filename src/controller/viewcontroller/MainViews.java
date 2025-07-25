@@ -1,5 +1,8 @@
 package controller.viewcontroller;
 
+import controller.business.RoomController;
+import controller.business.SessionController;
+import controller.business.TicketController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,6 +15,8 @@ import java.util.List;
 import java.util.Optional;
 
 import controller.business.ClientController;
+import services.SessionService;
+import services.TicketService;
 
 /**
  * Classe da tela principal do sistema onde é possível navegar entre as telas.
@@ -278,11 +283,17 @@ public class MainViews extends Application {
     public static void loadData() {
         // Carrega os dados do arquivo
         ClientController.loadData();
+        TicketController.loadData();
+        SessionController.loadData();
+        RoomController.loadData();
     }
 
     public static void saveData() {
         // Salva os dados no arquivo
         ClientController.saveData();
+        TicketController.saveData();
+        SessionController.saveData();
+        RoomController.saveData();
     }
 
     /**

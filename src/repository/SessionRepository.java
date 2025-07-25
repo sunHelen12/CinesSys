@@ -1,10 +1,13 @@
 package repository;
 
+import java.io.*;
 import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
 
+import models.Client;
 import models.Session;
+import models.Ticket;
 
 /**
  * Classe que gerencia as sessões (Session) do cinema.
@@ -16,6 +19,8 @@ import models.Session;
  */
 public class SessionRepository {
     private List<Session> sessions = new LinkedList<>();
+    private final String FILE_PATH = "data/session.dat";
+
 
     /**
      * Adiciona uma nova sessão a lista.
@@ -121,6 +126,46 @@ public class SessionRepository {
             }
         }
         return false;
+    }
+
+    /**
+     * Salva a lista de sessões no arquivo especificado em FILE_PATH.
+     * Utiliza serialização para persistir os dados.
+     * Em caso de erro de IO, imprime o stack trace.
+     */
+    public void saveData() {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(FILE_PATH))) {
+            oos.writeObject(sessions);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Carrega a lista de sessões do arquivo especificado em FILE_PATH.
+     * Se o arquivo existir, desserializa a lista de sessões e atualiza o gerador de IDs dos clientes.
+     * Em caso de erro de IO ou de classe não encontrada, imprime o stack trace.
+     */
+   @SuppressWarnings("unchecked")
+   public void loadData() {
+       File arquivo = new File(FILE_PATH);
+       if (arquivo.exists()) {
+           try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(FILE_PATH))) {
+               sessions = (List<Session>) ois.readObject();
+               Session.resetIdGenerator();
+           } catch (IOException | ClassNotFoundException e) {
+               e.printStackTrace();
+           }
+       }
+   }
+
+    /**
+     * Retorna a quantidade de sessões cadastradas.
+     *
+     * @return O número de sessões na lista.
+     */
+    public int getSize() {
+        return sessions.size();
     }
 
     /**

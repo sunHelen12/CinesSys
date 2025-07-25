@@ -126,4 +126,26 @@ public class RoomService {
         return room.removeSession();
     }
 
+    /**
+     * Salva os dados das salas persistindo no repositório.
+     */
+    public void saveData() {
+        roomRepository.saveData();
+    }
+
+    /**
+     * Carrega os dados das salas do repositório.
+     */
+    public void loadData() {
+        roomRepository.loadData();
+    }
+
+    /**
+     * Retorna a quantidade total de salas cadastradas.
+     * @return número de salas cadastradas
+     */
+    public int getSize() {
+        return roomRepository.getSize();
+    }
+
 }

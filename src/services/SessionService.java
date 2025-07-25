@@ -217,6 +217,28 @@ public class SessionService {
         return sessionReturn;
     }
 
+   /**
+    * Salva os dados das sessões persistindo no repositório.
+    */
+    public void saveData() {
+        sessionRepository.saveData();
+    }
+
+    /**
+    * Carrega os dados das sessões do repositório.
+    */
+    public void loadData() {
+        sessionRepository.loadData();
+    }
+
+    /**
+    * Retorna a quantidade total de sessões cadastradas.
+    * @return número de sessões cadastradas
+    */
+    public int getSize() {
+        return sessionRepository.getSize();
+    }
+
     /**
      * Remove todas as sessões cadastradas.
      */
