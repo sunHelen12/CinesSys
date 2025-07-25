@@ -24,7 +24,7 @@ public class ClientHistoryController implements Initializable {
 
     @FXML
     private VBox containerResultados;
-    
+
     @FXML
     private Label lblEmail;
 
@@ -42,7 +42,7 @@ public class ClientHistoryController implements Initializable {
 
     /**
      * Volta para a tela anterior.
-     * 
+     *
      * @param event
      */
     @FXML
@@ -72,7 +72,7 @@ public class ClientHistoryController implements Initializable {
     }
     /**
      * Inicializa o controlador.
-     * 
+     *
      * @param url O URL de onde o controlador foi carregado.
      * @param rb O ResourceBundle associado ao controlador.
      */
@@ -83,7 +83,7 @@ public class ClientHistoryController implements Initializable {
             public void onScreenChanged(String newScreen, Object userDataObject) {
                 if (userDataObject instanceof Client) {
                     client = (Client) userDataObject;
-                    accessClientData(); 
+                    accessClientData();
                 }
             }
         });
@@ -93,7 +93,7 @@ public class ClientHistoryController implements Initializable {
      * Acessa os dados do cliente e exibe seu histórico de compras.
      */
     private void accessClientData(){
-        
+
         lnlNome.setText(client.getName());
         lblID.setText(client.getId()+"");
         lblEmail.setText(client.getEmail());
@@ -115,12 +115,12 @@ public class ClientHistoryController implements Initializable {
 
             //Image imagem = new Image("@../../assets/img/pasta_cor_BB0029.png");
             //ImageView imageView = new ImageView(imagem);
-            //imageView.setFitWidth(40); 
+            //imageView.setFitWidth(40);
             //imageView.setFitHeight(40);
 
             Button botaoAcessar = new Button("Registro");
             botaoAcessar.setUserData(ticket);
-            botaoAcessar.setStyle("-fx-background-color:  #D92550; -fx-padding: 0; -fx-border-color:  #D92550; -fx-text-fill: #f2e8c6; -fx-font-weight: bold;");                  
+            botaoAcessar.setStyle("-fx-background-color:  #D92550; -fx-padding: 0; -fx-border-color:  #D92550; -fx-text-fill: #f2e8c6; -fx-font-weight: bold;");
 
             botaoAcessar.setOnAction(event -> {
                 resetScreen();
