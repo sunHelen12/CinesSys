@@ -19,7 +19,7 @@ import models.Ticket;
  */
 public class SessionRepository {
     private List<Session> sessions = new LinkedList<>();
-    private final String FILE_PATH = "data/session.dat";
+    private final String FILE_PATH = "data/session.txt";
 
 
     /**

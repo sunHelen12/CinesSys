@@ -17,7 +17,7 @@ import models.Ticket;
  */
 public class TicketRepository {
     private List<Ticket> tickets = new LinkedList<>();
-    private final String FILE_PATH = "data/ticket.dat";
+    private final String FILE_PATH = "data/ticket.txt";
 
 
     /**

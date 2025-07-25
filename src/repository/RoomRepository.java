@@ -18,7 +18,7 @@ import models.Ticket;
  */
 public class RoomRepository {
     private List<Room> rooms = new LinkedList<>();
-    private final String FILE_PATH = "data/rooms.dat";
+    private final String FILE_PATH = "data/rooms.txt";
 
     /**
      * Adiciona uma nova sala a lista.

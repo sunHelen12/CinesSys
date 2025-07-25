@@ -19,7 +19,7 @@ import models.Client;
  */
 public class ClientRepository {
     private List<Client> clients = new LinkedList<>();
-    private final String FILE_PATH = "data/client.dat";
+    private final String FILE_PATH = "data/client.txt";
 
     /**
      * Adiciona um cliente ao repositório.
