@@ -15,7 +15,7 @@ import models.Movie;
  */
 public class MovieRepository {
     private List<Movie> movies = new LinkedList<>();
-    private final String FILE_PATH = "data/movies.dat";
+    private final String FILE_PATH = "data/movies.txt";
     /**
      * Adiciona um filme à lista de filmes
      * 
