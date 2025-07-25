@@ -1,5 +1,8 @@
 package controller.viewcontroller;
-
+import controller.business.MovieController;
+import controller.business.RoomController;
+import controller.business.SessionController;
+import controller.business.TicketController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -279,11 +282,19 @@ public class MainViews extends Application {
     public static void loadData() {
         // Carrega os dados do arquivo
         ClientController.loadData();
+        TicketController.loadData();
+        SessionController.loadData();
+        RoomController.loadData();
+        MovieController.loadData();
     }
 
     public static void saveData() {
         // Salva os dados no arquivo
         ClientController.saveData();
+        TicketController.saveData();
+        SessionController.saveData();
+        RoomController.saveData();
+        MovieController.saveData();
     }
 
     /**
@@ -323,8 +334,6 @@ public class MainViews extends Application {
             l.onScreenChanged(newScreen, userDataObject);
     }
 }
-
-
 
 //compilar tudo
 // javac -d out --module-path "C:\javafx-sdk-21.0.7\lib" --add-modules javafx.controls,javafx.fxml (Get-ChildItem -Recurse -Filter *.java -Path src).FullName

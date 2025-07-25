@@ -1,5 +1,6 @@
 package repository;
 
+import java.io.*;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -14,7 +15,7 @@ import models.Movie;
  */
 public class MovieRepository {
     private List<Movie> movies = new LinkedList<>();
-    
+    private final String FILE_PATH = "data/movies.txt";
     /**
      * Adiciona um filme à lista de filmes
      * 
@@ -116,5 +117,38 @@ public class MovieRepository {
      */
     public void clear(){
         movies.clear();
+    }
+
+    public void saveData() {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(FILE_PATH))) {
+            oos.writeObject(movies);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    public void loadData() {
+        File file = new File(FILE_PATH);
+        if (file.exists()) {
+            try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(FILE_PATH))) {
+                movies = (List<Movie>) ois.readObject();
+                // Atualiza o ID dos filmes, similar ao Client
+                if (!movies.isEmpty()) {
+                    int ultimoId = movies.get(movies.size() - 1).getId();
+                    Movie.resetIdGenerator();
+                    for (int i = 0; i < ultimoId; i++) {
+                        // apenas para avançar o ID até o último
+                        new Movie("temp", "temp", 1, "temp", "temp");
+                    }
+                }
+            } catch (IOException | ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public int getSize() {
+        return movies.size();
     }
 }

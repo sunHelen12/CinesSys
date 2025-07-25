@@ -91,6 +91,31 @@ public class SessionController {
         return sessionService.removeSession(id);
     }
 
+
+   /**
+    * Salva os dados das sessões no repositório persistente.
+    * Este método deve ser chamado para garantir que todas as alterações realizadas nas sessões
+    * sejam gravadas em disco ou outro meio de armazenamento persistente.
+    */
+    public static void saveData() {
+       sessionService.saveData();
+    }
+    /**
+     * Carrega os dados das sessões do Service.
+     */
+    public static void loadData() {
+        sessionService.loadData();
+    }
+
+    /**
+     * Retorna a quantidade de sessões armazenadas.
+     *
+     * @return o número total de sessões.
+     */
+    public static int getSize() {
+        return sessionService.getSize();
+    }
+
     /**
      * Remove todas as sessões cadastradas no sistema.
      */

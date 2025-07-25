@@ -111,6 +111,29 @@ public class TicketService {
         return ticket;
     }
 
+   /**
+    * Salva os dados dos tickets no repositório.
+    */
+   public void saveData() {
+       ticketRepository.saveData();
+   }
+
+   /**
+    * Carrega os dados dos tickets do repositório.
+    */
+   public void loadData() {
+       ticketRepository.loadData();
+   }
+
+   /**
+    * Retorna a quantidade de tickets armazenados.
+    *
+    * @return o número total de tickets.
+    */
+   public int getSize() {
+       return ticketRepository.getSize();
+   }
+
     /**
      * Remove todos os tickets.
      */

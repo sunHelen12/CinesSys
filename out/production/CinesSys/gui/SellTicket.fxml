@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="720.0" maxWidth="1320.0" minHeight="720.0" minWidth="1320.0" prefHeight="720.0" prefWidth="1320.0" style="-fx-background-color: #03002C;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.viewcontroller.SellTicketController">
+   <children>
+      <AnchorPane prefHeight="100.0" prefWidth="1320.0" style="-fx-background-color: #F58414; -fx-background-radius: 2px;">
+         <children>
+            <Label alignment="CENTER" layoutX="63.0" layoutY="30.0" style="-fx-font-weight: bold;" text="Vender  ingresso para  a sessão " textAlignment="CENTER" textFill="#f2e8c4" wrapText="false">
+               <font>
+                  <Font name="Arial" size="35.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Label fx:id="room2DateTime" layoutX="208.0" layoutY="172.0" prefHeight="25.0" prefWidth="154.0" textFill="#f2e8c6">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="room3DateTime" layoutX="214.0" layoutY="215.0" prefHeight="25.0" prefWidth="154.0" textFill="#f2e8c6">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="room2DateTime2" layoutX="214.0" layoutY="259.0" prefHeight="25.0" prefWidth="154.0" textFill="#f2e8c6">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="244.0" layoutY="255.0" prefHeight="209.0" prefWidth="832.0" style="-fx-background-color: #F58414; -fx-background-radius: 6px;">
+         <children>
+            <Label alignment="CENTER" layoutX="39.0" layoutY="30.0" style="-fx-font-weight: bold;" text="Preencha os campos:" textAlignment="CENTER" textFill="#f2e8c4">
+               <font>
+                  <Font name="Arial" size="24.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="39.0" layoutY="95.0" style="&#10;" text="ID do Cliente: * " textAlignment="CENTER" textFill="#f2e8c4" wrapText="false">
+               <font>
+                  <Font name="Arial" size="20.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="425.0" layoutY="95.0" style="&#10;" text="Método de Pagamento:" textAlignment="CENTER" textFill="#f2e8c4" wrapText="false">
+               <font>
+                  <Font name="Arial" size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="clientId" layoutX="39.0" layoutY="125.0" opacity="0.52" prefHeight="42.0" prefWidth="350.0" style="-fx-background-color: #03002C; -fx-background-radius: 5px;">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </TextField>
+            <TextField fx:id="paymentMethod" layoutX="425.0" layoutY="125.0" opacity="0.52" prefHeight="42.0" prefWidth="350.0" style="-fx-background-color: #03002C; -fx-background-radius: 5px;">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </TextField>
+         </children>
+      </AnchorPane>
+      <Button fx:id="backButton" layoutX="43.0" layoutY="637.0" mnemonicParsing="false" onAction="#handleBack" prefHeight="43.0" prefWidth="142.0" style="-fx-background-color: #F58414; -fx-background-radius: 5px; -fx-font-weight: bold;" text="Voltar" textFill="#f2e8c6">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="862.0" layoutY="484.0" mnemonicParsing="false" onAction="#handleRegisterSale" prefHeight="43.0" prefWidth="213.0" style="-fx-background-color: #F58414; -fx-background-radius: 5px; -fx-font-weight: bold;" text="Registrar Compra" textFill="#f2e8c6">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+      <Label fx:id="seatsFreeTotalRoom2" layoutX="576.0" layoutY="173.0" prefHeight="21.0" prefWidth="142.0" textFill="#f2e8c6">
+         <font>
+            <Font name="Arial" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="seatsFreeTotalRoom3" layoutX="576.0" layoutY="218.0" prefHeight="21.0" prefWidth="142.0" textFill="#f2e8c6">
+         <font>
+            <Font name="Arial" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="seatsFreeTotalRoom2_2" layoutX="576.0" layoutY="262.0" prefHeight="21.0" prefWidth="142.0" textFill="#f2e8c6">
+         <font>
+            <Font name="Arial" size="18.0" />
+         </font>
+      </Label>
+      <Accordion />
+   </children>
+</AnchorPane>

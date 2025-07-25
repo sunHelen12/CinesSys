@@ -50,4 +50,27 @@ public class RoomController {
     public static Session removeNextSessionFromRoom(int roomId) {
         return roomService.removeNextSessionFromRoom(roomId);
     }
+
+    /**
+     * Salva os dados das salas persistindo as informações atuais.
+     */
+    public static void saveData() {
+        roomService.saveData();
+    }
+
+    /**
+     * Carrega os dados das salas do Service.
+     */
+    public static void loadData() {
+        roomService.loadData();
+    }
+
+    /**
+     * Retorna a quantidade de salas armazenadas.
+     *
+     * @return o número total de salas.
+     */
+    public static int getSize() {
+        return roomService.getSize();
+    }
 }

@@ -1,8 +1,10 @@
 package repository;
 
+import java.io.*;
 import java.util.LinkedList;
 import java.util.List;
 
+import models.Client;
 import models.Ticket;
 
 /**
@@ -15,6 +17,8 @@ import models.Ticket;
  */
 public class TicketRepository {
     private List<Ticket> tickets = new LinkedList<>();
+    private final String FILE_PATH = "data/ticket.txt";
+
 
     /**
      * Adiciona um ticket ao repositório.
@@ -106,5 +110,47 @@ public class TicketRepository {
      */
     public void clear(){
         tickets.clear();
+    }
+
+   /**
+    * Salva a lista de tickets no arquivo especificado em FILE_PATH.
+    * Utiliza serialização para persistir os dados dos tickets.
+    * Em caso de erro de E/S, imprime o stack trace.
+    */
+   public void saveData() {
+       try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(FILE_PATH))) {
+           oos.writeObject(tickets);
+       } catch (IOException e) {
+           e.printStackTrace();
+       }
+   }
+
+   /**
+    * Carrega os dados dos tickets a partir do arquivo especificado.
+    * Se o arquivo existir, os tickets são desserializados e carregados na lista.
+    * Também atualiza o gerador de IDs do cliente com base na quantidade de tickets carregados.
+    *
+    * Suprime o aviso de conversão não verificada devido à desserialização.
+    */
+   @SuppressWarnings("unchecked")
+   public void loadData() {
+       File arquivo = new File(FILE_PATH);
+       if (arquivo.exists()) {
+           try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(FILE_PATH))) {
+               tickets = (List<Ticket>) ois.readObject();
+               Ticket.resetIdGenerator();
+           } catch (IOException | ClassNotFoundException e) {
+               e.printStackTrace();
+           }
+       }
+   }
+
+   /**
+     * Retorna a quantidade de tickets armazenados no repositório.
+     *
+     * @return o número total de tickets.
+     */
+    public int getSize() {
+        return tickets.size();
     }
 }

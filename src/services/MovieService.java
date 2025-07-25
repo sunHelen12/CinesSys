@@ -169,6 +169,17 @@ public class MovieService {
         }
         return sessionsWithMovie;
     }
+    public void saveData() {
+        movieRepository.saveData();
+    }
+
+    public void loadData() {
+        movieRepository.loadData();
+    }
+
+    public int getSize() {
+        return movieRepository.getSize();
+    }
 
     /**
      * Remove todas os filmes cadastrados

@@ -1,5 +1,8 @@
 package controller.business;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -56,10 +59,35 @@ public class TicketController {
         ticketService.removeTicketById(id);
     }
 
+
+    /**
+     * Salva os dados dos tickets persistindo-os em arquivo.
+     */
+    public static void saveData() {
+        ticketService.saveData();
+    }
+
+    /**
+     * Carrega os dados dos tickets a partir do arquivo persistido.
+     */
+    public static void loadData() {
+        ticketService.loadData();
+    }
+
+    /**
+     * Retorna a quantidade total de tickets cadastrados.
+     *
+     * @return o número de tickets cadastrados.
+     */
+    public static int getSize() {
+        return ticketService.getSize();
+    }
+
     /**
      * Remove todos os tickets.
      */
     public static void removeAllTickets() {
         ticketService.removeAllTickets();
     }
+
 }

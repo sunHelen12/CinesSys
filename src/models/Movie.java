@@ -10,6 +10,8 @@ import java.io.Serializable;
  * @version 1.0
  */
 public class Movie implements Serializable {
+	private static final long serialVersionUID = 1L;
+
 	private static int _idGenerator = 1;
 	private int id;
 	private String title;
@@ -158,5 +160,12 @@ public class Movie implements Serializable {
 	 */
 	public static void resetIdGenerator() {
 		_idGenerator = 1;
+	}
+
+	/**
+	 * Atualiza o gerador de IDs com base no último filme carregado do arquivo.
+	 */
+	public static void updateIdGenerator(int ultimoId) {
+		_idGenerator = ultimoId + 1;
 	}
 }
