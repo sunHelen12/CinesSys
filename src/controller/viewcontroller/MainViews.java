@@ -284,7 +284,7 @@ public class MainViews extends Application {
         ClientController.loadData();
         TicketController.loadData();
         SessionController.loadData();
-        RoomController.loadData();
+
         MovieController.loadData();
     }
 
@@ -293,7 +293,7 @@ public class MainViews extends Application {
         ClientController.saveData();
         TicketController.saveData();
         SessionController.saveData();
-        RoomController.saveData();
+
         MovieController.saveData();
     }
 
