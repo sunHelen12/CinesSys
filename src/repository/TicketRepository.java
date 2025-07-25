@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import models.Client;
+import models.Session;
 import models.Ticket;
 
 /**
@@ -132,27 +133,20 @@ public class TicketRepository {
     *
     * Suprime o aviso de conversão não verificada devido à desserialização.
     */
-
    @SuppressWarnings("unchecked")
    public void loadData() {
        File arquivo = new File(FILE_PATH);
        if (arquivo.exists()) {
            try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(FILE_PATH))) {
                tickets = (List<Ticket>) ois.readObject();
-               // Atualiza o gerador de IDs para evitar duplicidade
-               int maxId = tickets.stream().mapToInt(Ticket::getId).max().orElse(0);
-               Ticket.resetIdGenerator();
-               for (int i = 1; i < maxId; i++) {
-                   // Avança o ID até o último utilizado
-                   new Ticket(null, null, 0.0, null);
-               }
+               Ticket.updateIdGenerator(getSize());
            } catch (IOException | ClassNotFoundException e) {
                e.printStackTrace();
            }
        }
    }
 
-   /**
+    /**
      * Retorna a quantidade de tickets armazenados no repositório.
      *
      * @return o número total de tickets.

@@ -70,57 +70,16 @@ public class RoomRepository {
                     rooms.remove(i);
                 } catch (Exception e) {
                     e.printStackTrace();
-                }
-                return true;
-            }
-        }
-        return false;
-    }
-
-    /**
+               /**
      * Salva a lista de salas no arquivo especificado em FILE_PATH.
      * Utiliza serialização para gravar o estado atual da lista de salas.
      * Em caso de erro de IO, imprime o stack trace.
      */
-    public void saveData() {
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(FILE_PATH))) {
-            oos.writeObject(rooms);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * Carrega a lista de salas a partir do arquivo especificado em FILE_PATH.
-     * Utiliza desserialização para restaurar o estado da lista de salas.
-     * Se o arquivo não existir, não faz nada.
-     * Em caso de erro de IO ou de classe não encontrada, imprime o stack trace.
-     */
-    @SuppressWarnings("unchecked")
-    public void loadData() {
-        File arquivo = new File(FILE_PATH);
-        if (arquivo.exists()) {
-            try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(FILE_PATH))) {
-                rooms = (List<Room>) ois.readObject();
-                // Atualiza o gerador de IDs para evitar duplicidade
-                int maxId = rooms.stream().mapToInt(Room::getId).max().orElse(0);
-                Room.resetIdGenerator();
-                for (int i = 1; i < maxId; i++) {
-                    // Avança o ID até o último utilizado
-                    new Room(1); // valor dummy para totalSeat
-                }
-            } catch (IOException | ClassNotFoundException e) {
-                e.printStackTrace();
+     }
+                return true;
             }
         }
-    }
-    /**
-     * Retorna a quantidade de salas cadastradas.
-     *
-     * @return O número de salas na lista.
-     */
-    public int getSize() {
-        return rooms.size();
+        return false;
     }
 
 }

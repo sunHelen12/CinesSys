@@ -107,4 +107,8 @@ public class Ticket implements Serializable{
     public static void resetIdGenerator() {
 		_idGenerator = 1;
 	}
+
+    public static void updateIdGenerator(int ultimoId) {
+        _idGenerator = ultimoId + 1;
+    }
 }

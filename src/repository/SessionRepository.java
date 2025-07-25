@@ -146,33 +146,19 @@ public class SessionRepository {
      * Se o arquivo existir, desserializa a lista de sessões e atualiza o gerador de IDs dos clientes.
      * Em caso de erro de IO ou de classe não encontrada, imprime o stack trace.
      */
-     @SuppressWarnings("unchecked")
-     public void loadData() {
-         File file = new File(FILE_PATH);
-         if (file.exists()) {
-             try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(FILE_PATH))) {
-                 sessions = (List<Session>) ois.readObject();
-                 // Atualiza o ID das sessões para evitar duplicidade
-                 if (!sessions.isEmpty()) {
-                     int ultimoId = sessions.stream().mapToInt(Session::getId).max().orElse(0);
-                     Session.resetIdGenerator();
-                     for (int i = 0; i < ultimoId; i++) {
-                         // Avança o ID até o último utilizado
-                         // Use valores dummy para os parâmetros
-                         new Session(
-                             java.time.LocalDate.now(),
-                             java.time.LocalTime.now(),
-                             null, // Room
-                             null, // Movie
-                             0.0
-                         );
-                     }
-                 }
-             } catch (IOException | ClassNotFoundException e) {
-                 e.printStackTrace();
-             }
-         }
-     }
+
+    @SuppressWarnings("unchecked")
+    public void loadData() {
+        File arquivo = new File(FILE_PATH);
+        if (arquivo.exists()) {
+            try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(FILE_PATH))) {
+                sessions = (List<Session>) ois.readObject();
+                Session.updateIdGenerator(getSize());
+            } catch (IOException | ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
     /**
      * Retorna a quantidade de sessões cadastradas.
