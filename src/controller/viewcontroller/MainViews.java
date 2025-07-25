@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 import controller.business.ClientController;
+import controller.business.MovieController;
 
 /**
  * Classe da tela principal do sistema onde é possível navegar entre as telas.
