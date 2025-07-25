@@ -1,5 +1,5 @@
 package controller.viewcontroller;
-
+import controller.business.MovieController;
 import controller.business.RoomController;
 import controller.business.SessionController;
 import controller.business.TicketController;
@@ -286,6 +286,7 @@ public class MainViews extends Application {
         TicketController.loadData();
         SessionController.loadData();
         RoomController.loadData();
+        MovieController.loadData();
     }
 
     public static void saveData() {
@@ -294,6 +295,7 @@ public class MainViews extends Application {
         TicketController.saveData();
         SessionController.saveData();
         RoomController.saveData();
+        MovieController.saveData();
     }
 
     /**
