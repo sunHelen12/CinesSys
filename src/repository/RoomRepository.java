@@ -102,6 +102,13 @@ public class RoomRepository {
         if (arquivo.exists()) {
             try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(FILE_PATH))) {
                 rooms = (List<Room>) ois.readObject();
+                // Atualiza o gerador de IDs para evitar duplicidade
+                int maxId = rooms.stream().mapToInt(Room::getId).max().orElse(0);
+                Room.resetIdGenerator();
+                for (int i = 1; i < maxId; i++) {
+                    // Avança o ID até o último utilizado
+                    new Room(1); // valor dummy para totalSeat
+                }
             } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();
             }
